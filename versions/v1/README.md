@@ -4,7 +4,7 @@ Imported on 2026-10-19 from the AISTATS experimental snapshot `data/current`.
 This release numbering is independent of the workspace's historical `data/v1`
 and `data/v2-bird-legal` directories.
 
-- Primary reference: `data/v1/labels/gpt-5.4/dataset.jsonl`.
+- Preserved source reference: `data/v1/source/labels/gpt-5.4/dataset.jsonl`.
 - v1 uses GPT-5.4 references only: 500 instances and 2,500 context pairs.
 - Hugging Face exposes one dataset configuration named `v1`; no teacher name is needed.
 - Five domains; 100 instances per domain; 5 contexts and 7 features per domain.
@@ -29,3 +29,10 @@ historical paths are preserved intentionally.
 No dataset-wide license is inferred from this import. The archived config license
 applies to its referenced source material; choose a dataset license before
 claiming a general reuse grant.
+
+## Public representation
+
+The canonical public file is `data/v1/samples.jsonl`, with query, context, entity,
+feature values, string true/false labels, domain, and split. Query/context/feature
+metadata lives in `versions/v1/metadata/`. The untouched experimental files are
+archived under `data/v1/source/`. See [SCHEMA.md](SCHEMA.md) for field mappings.

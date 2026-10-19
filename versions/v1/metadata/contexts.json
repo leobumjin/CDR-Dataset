@@ -1,0 +1,154 @@
+{
+  "contexts": [
+    {
+      "context_id": "dry_20m",
+      "context_str": "Short flight with dry plumage. Travel 20 metres continuously through the air. The bird's feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count. Use the stipulated developmental stage, wing condition, and fatigue without changing them.",
+      "query_id": "can_fly",
+      "source_context_id": "c_1"
+    },
+    {
+      "context_id": "dry_500m",
+      "context_str": "Long flight with dry plumage. Travel 500 metres continuously through the air. The bird's feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count. Use the stipulated developmental stage, wing condition, and fatigue without changing them.",
+      "query_id": "can_fly",
+      "source_context_id": "c_2"
+    },
+    {
+      "context_id": "wet_20m",
+      "context_str": "Short flight with wet plumage. Travel 20 metres continuously through the air immediately after heavy rain. The bird's body and wing feathers are thoroughly wet and remain wet throughout the attempt; it cannot dry them before taking off. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count. Use the stipulated developmental stage, wing condition, and fatigue without changing them.",
+      "query_id": "can_fly",
+      "source_context_id": "c_3"
+    },
+    {
+      "context_id": "dry_5m",
+      "context_str": "Very short flight with dry plumage. Travel 5 metres continuously through the air. The bird's feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count. Use the stipulated developmental stage, wing condition, and fatigue without changing them.",
+      "query_id": "can_fly",
+      "source_context_id": "c_4"
+    },
+    {
+      "context_id": "wet_500m",
+      "context_str": "Long flight with wet plumage. Travel 500 metres continuously through the air immediately after heavy rain. The bird's body and wing feathers are thoroughly wet and remain wet throughout the attempt; it cannot dry them before taking off. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count. Use the stipulated developmental stage, wing condition, and fatigue without changing them.",
+      "query_id": "can_fly",
+      "source_context_id": "c_5"
+    },
+    {
+      "context_id": "run_100m_8kmh",
+      "context_str": "Run 100 metres continuously at 8 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as the person's demonstrated rested capacity, not a guarantee in a fatigued or injured state.",
+      "query_id": "can_run",
+      "source_context_id": "c_1"
+    },
+    {
+      "context_id": "run_5km_10kmh",
+      "context_str": "Run 5,000 metres continuously at 10 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as demonstrated rested capacity, not a guarantee in a fatigued or injured state.",
+      "query_id": "can_run",
+      "source_context_id": "c_2"
+    },
+    {
+      "context_id": "run_1km_uphill",
+      "context_str": "Run 1,000 metres continuously at 8 km/h on a dry gravel trail with a constant 10 percent uphill gradient at 20 C. No walking breaks or external assistance. The reported level-track test does not itself establish uphill endurance; consider the stipulated training, mobility, and fatigue.",
+      "query_id": "can_run",
+      "source_context_id": "c_3"
+    },
+    {
+      "context_id": "run_100m_12kmh",
+      "context_str": "Run 100 metres continuously at 12 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as demonstrated rested capacity, not a guarantee in a fatigued or injured state. Keep the stipulated mobility and fatigue unchanged.",
+      "query_id": "can_run",
+      "source_context_id": "c_4"
+    },
+    {
+      "context_id": "run_10km_8kmh",
+      "context_str": "Run 10,000 metres continuously at 8 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as demonstrated rested capacity, not a guarantee in a fatigued or injured state. Keep the stipulated mobility and fatigue unchanged.",
+      "query_id": "can_run",
+      "source_context_id": "c_5"
+    },
+    {
+      "context_id": "mammal_mild_7d",
+      "context_str": "Survive 7 days at a temperature suitable for the species, with species-appropriate food and hydration supplied as needed. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question.",
+      "query_id": "can_survive_mammal",
+      "source_context_id": "c_1"
+    },
+    {
+      "context_id": "mammal_cold_24h",
+      "context_str": "Survive 24 hours at a constant -20 C. Food and hydration are supplied as needed. There is no heated shelter, insulation added by humans, or opportunity to leave the cold environment. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question.",
+      "query_id": "can_survive_mammal",
+      "source_context_id": "c_2"
+    },
+    {
+      "context_id": "mammal_heat_24h",
+      "context_str": "Survive 24 hours at a constant 40 C. Food and hydration are supplied as needed. There is no active cooling or opportunity to leave the hot environment. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question.",
+      "query_id": "can_survive_mammal",
+      "source_context_id": "c_3"
+    },
+    {
+      "context_id": "mammal_no_water_food_3d",
+      "context_str": "Survive 3 days at a temperature suitable for the species with no fluid intake, including drinking, absorption, and moisture from food. Food is not supplied during this interval. A species-required supporting medium remains available but cannot provide hydration; this is a constructed exposure condition. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question.",
+      "query_id": "can_survive_mammal",
+      "source_context_id": "c_4"
+    },
+    {
+      "context_id": "mammal_no_food_14d",
+      "context_str": "Survive 14 days at a temperature suitable for the species without food or calorie intake. Hydration is supplied as needed. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question.",
+      "query_id": "can_survive_mammal",
+      "source_context_id": "c_5"
+    },
+    {
+      "context_id": "plant_no_water_3d",
+      "context_str": "Remain for 3 days without watering or rain at a constant 20 C, 50 percent relative humidity, and bright indirect light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable well-drained substrate, no external water reservoir, and no pests. Judge survival at the end, allowing temporary wilting.",
+      "query_id": "can_survive_plant",
+      "source_context_id": "c_1"
+    },
+    {
+      "context_id": "plant_hot_drought_30d",
+      "context_str": "Remain for 30 days without watering or rain at a constant 35 C, 30 percent relative humidity, and direct sunlight for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable well-drained substrate, no external water reservoir, and no pests. Judge survival at the end, allowing temporary damage.",
+      "query_id": "can_survive_plant",
+      "source_context_id": "c_2"
+    },
+    {
+      "context_id": "plant_freezing_7d",
+      "context_str": "Remain for 7 days without watering or rain at a constant -10 C, including roots and substrate, with daylight for 8 hours per day and no frost protection. The plant starts in the stipulated state in a 10-litre pot with suitable substrate, no external water reservoir, and no pests. Judge survival at the end, allowing temporary damage or dormancy.",
+      "query_id": "can_survive_plant",
+      "source_context_id": "c_3"
+    },
+    {
+      "context_id": "plant_watered_7d",
+      "context_str": "Remain for 7 days at a constant 20 C, 50 percent relative humidity, and bright indirect light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable well-drained substrate and no pests. Water is supplied as needed to maintain suitable soil moisture after the start, without waterlogging. Keep the stipulated root condition and initial health. Judge survival at the end, allowing temporary damage.",
+      "query_id": "can_survive_plant",
+      "source_context_id": "c_4"
+    },
+    {
+      "context_id": "plant_waterlogged_7d",
+      "context_str": "Remain for 7 days at a constant 20 C, 50 percent relative humidity, and bright indirect light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable substrate and no pests. Immediately after the start, the entire root zone is continuously saturated with standing water and no drainage for the full interval. Keep the stipulated root condition and initial health. Judge survival at the end, allowing temporary damage.",
+      "query_id": "can_survive_plant",
+      "source_context_id": "c_5"
+    },
+    {
+      "context_id": "ordinary_situation",
+      "context_str": "Ordinary situation: there is no imminent serious danger and the person is not performing official duties. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context.",
+      "query_id": "is_guilty",
+      "source_context_id": "c_1"
+    },
+    {
+      "context_id": "emergency_necessity",
+      "context_str": "Emergency situation: imminent serious danger threatens a person; the actor is not performing official duties. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context.",
+      "query_id": "is_guilty",
+      "source_context_id": "c_2"
+    },
+    {
+      "context_id": "official_duties",
+      "context_str": "Official-duty situation: the person is performing official duties and there is no imminent serious danger. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context.",
+      "query_id": "is_guilty",
+      "source_context_id": "c_3"
+    },
+    {
+      "context_id": "supervisors_order",
+      "context_str": "Supervisor's order situation: a workplace supervisor has ordered the actor to damage the property. There is no imminent serious danger and the actor is not performing official duties. The supervisor or friend does not act on behalf of the property owner; the order or request does not establish owner consent. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context.",
+      "query_id": "is_guilty",
+      "source_context_id": "c_4"
+    },
+    {
+      "context_id": "friends_request",
+      "context_str": "Friend's request situation: a friend has asked the actor to damage the property. There is no imminent serious danger and the actor is not performing official duties. The supervisor or friend does not act on behalf of the property owner; the order or request does not establish owner consent. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context.",
+      "query_id": "is_guilty",
+      "source_context_id": "c_5"
+    }
+  ]
+}

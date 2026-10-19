@@ -9,7 +9,7 @@ are ignored. Run commands from the CDR-Dataset repository root.
 See `versions/v1/generation/README.md` for the archived generation pipeline.
 
 ```bash
-python shells/evaluate.py --data data/v1 --output runs/v1/evaluation.json
+python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
 python shells/release.py verify v1
 ```
 
@@ -43,7 +43,7 @@ HF: leo-bjpark/CDR-Dataset
 ```
 
 Preparation verifies local hashes, evaluates the data, and stages the selected
-version in `runs/huggingface/v1`. The card explicitly selects canonical records;
+version in `runs/huggingface/v1`. The card explicitly selects `data/samples.jsonl` records;
 raw annotation files are not interpreted as additional dataset examples.
 
 Upload creates or updates the chosen version folder and merges its config into
@@ -65,10 +65,10 @@ record the commit SHA as well as the config name.
 ```python
 from datasets import load_dataset
 
-data = load_dataset('leo-bjpark/CDR-Dataset', 'v1', split='all')
-train = data.filter(lambda row: row['split'] == 'train')
+train = load_dataset('leo-bjpark/CDR-Dataset', 'v1', split='train')
+test = load_dataset('leo-bjpark/CDR-Dataset', 'v1', split='test')
 # Future release:
-# data = load_dataset('leo-bjpark/CDR-Dataset', 'v2', split='all')
+# data = load_dataset('leo-bjpark/CDR-Dataset', 'v2', split='train')
 ```
 
 `revision` is optional and pins an HF Git commit; it is separate from the v1 config.
@@ -83,3 +83,10 @@ Download uses the recorded config publication's commit SHA when available,
 otherwise `main`, and reads `v1/data`. It checks every file against the local
 Git-tracked manifest before copying to `data/v1`. Existing local data is never
 overwritten. Old tag-based receipts are not used to locate config payloads.
+
+The public schema and feature metadata are documented in [v1 schema](../versions/v1/SCHEMA.md).
+
+HF publishes separate `train` (1,000), `test` (500), `revision_1` (500), and
+`revision_2` (500) splits under `v1/splits/`. Each HF record has only the eight
+query/context/entity/feature/label fields; local canonical rows retain domain and
+split for audit. Source revision-1/revision-2 map to HF revision_1/revision_2.

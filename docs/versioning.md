@@ -10,6 +10,7 @@ CDR-Dataset/
 │   └── v1/
 │       ├── README.md              # Release notes, provenance, limitations
 │       ├── manifest.json          # Data and generator checksums
+│       ├── metadata/              # Git-tracked query/context/feature definitions
 │       ├── statistics.json
 │       ├── huggingface.json       # Created after successful HF publication
 │       └── generation/
@@ -20,9 +21,9 @@ CDR-Dataset/
 │           └── README.md
 ├── shells/
 │   ├── huggingface.sh              # HF command entrypoint
-│   ├── evaluate.py                # Local data integrity and distribution checks
 │   ├── release.py                 # Offline checksum verification and restoration
 │   └── huggingface.py             # Prepare, upload, and download
+├── evaluation/evaluate.py         # Local integrity and distribution checks
 ├── docs/                          # Website and shared documentation
 ├── data/v1/                       # Local/downloaded dataset; Git ignored
 ├── runs/                          # Generation, evaluation, staging; Git ignored
@@ -44,7 +45,7 @@ python -m pip install -r versions/v1/generation/requirements.txt
 python versions/v1/generation/run.py inputs --run trial-001
 # Continue feature/label generation and final splitting as documented in:
 # versions/v1/generation/README.md
-python shells/evaluate.py --data data/v1 --output runs/v1/evaluation.json
+python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
 python shells/release.py verify v1
 bash shells/huggingface.sh prepare --version v1
 ```
@@ -76,3 +77,6 @@ Published data, generation code, labels, contexts, splits, and prompt text stay
 frozen together. New revisions receive a new version; new changes use a new config. Experiments record the config and HF commit SHA.
 
 See [Hugging Face workflow](huggingface.md) for details.
+
+Metadata definitions live in `versions/vN/metadata` and are included in checksum
+verification. HF uploads copy them into `vN/metadata` alongside release notes.

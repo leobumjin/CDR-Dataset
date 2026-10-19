@@ -1,0 +1,804 @@
+{
+  "features": [
+    {
+      "feature_id": "adult_size_class",
+      "domain": "birds",
+      "feature_str": "Stipulated source profile: adult size class.",
+      "possible_values": [
+        "large",
+        "medium",
+        "small",
+        "tiny",
+        "very_large"
+      ]
+    },
+    {
+      "feature_id": "developmental_stage",
+      "domain": "birds",
+      "feature_str": "Stipulated source profile: developmental stage.",
+      "possible_values": [
+        "adult",
+        "juvenile_with_complete_plumage",
+        "nestling"
+      ]
+    },
+    {
+      "feature_id": "fatigue",
+      "domain": "birds",
+      "feature_str": "Stipulated source profile: fatigue.",
+      "possible_values": [
+        "moderate",
+        "rested",
+        "severe"
+      ]
+    },
+    {
+      "feature_id": "has_developed_flight_plumage",
+      "domain": "birds",
+      "feature_str": "Adult or juvenile with complete flight plumage = 1; nestling = 0. This does not imply a flight-capable species.",
+      "possible_values": [
+        0,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_flight_wings",
+      "domain": "birds",
+      "feature_str": "Wing structure is feathered, broad_feathered, or short_feathered, rather than flippers or loose noninterlocking feathers.",
+      "possible_values": [
+        0,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_intact_wings",
+      "domain": "birds",
+      "feature_str": "Wing integrity: intact = 1, minor feather damage = 0.5, unhealed fracture = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_severe_fatigue",
+      "domain": "birds",
+      "feature_str": "Fatigue severity: severe = 1, moderate = 0.5, rested = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_unhealed_fracture",
+      "domain": "birds",
+      "feature_str": "The stipulated wing condition includes an unhealed fracture.",
+      "possible_values": [
+        0,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_large",
+      "domain": "birds",
+      "feature_str": "Adult size judgment: large/very_large = 1, medium = 0.5, small/tiny = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_rested",
+      "domain": "birds",
+      "feature_str": "Rest judgment: rested = 1, moderate fatigue = 0.5, severe fatigue = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "species",
+      "domain": "birds",
+      "feature_str": "The source species identity.",
+      "possible_values": [
+        "African penguin (Spheniscus demersus)",
+        "American robin (Turdus migratorius)",
+        "Bald eagle (Haliaeetus leucocephalus)",
+        "Common ostrich (Struthio camelus)",
+        "Mallard (Anas platyrhynchos)",
+        "Ruby-throated hummingbird (Archilochus colubris)"
+      ]
+    },
+    {
+      "feature_id": "wing_condition",
+      "domain": "birds",
+      "feature_str": "Stipulated source profile: wing condition.",
+      "possible_values": [
+        "intact",
+        "minor_feather_damage",
+        "unhealed_fracture"
+      ]
+    },
+    {
+      "feature_id": "wing_structure",
+      "domain": "birds",
+      "feature_str": "Stipulated source profile: wing structure.",
+      "possible_values": [
+        "broad_feathered",
+        "feathered",
+        "flattened_flippers",
+        "loose_noninterlocking_feathers",
+        "short_feathered"
+      ]
+    },
+    {
+      "feature_id": "can_sustain_10kmh",
+      "domain": "humans",
+      "feature_str": "The demonstrated rested sustained test pace is at least 10 km/h.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "experience",
+      "domain": "humans",
+      "feature_str": "Stipulated source profile: experience.",
+      "possible_values": [
+        "competitive",
+        "recreational",
+        "untrained"
+      ]
+    },
+    {
+      "feature_id": "fatigue",
+      "domain": "humans",
+      "feature_str": "Stipulated source profile: fatigue.",
+      "possible_values": [
+        "exhausted",
+        "moderate",
+        "rested"
+      ]
+    },
+    {
+      "feature_id": "has_100m_endurance",
+      "domain": "humans",
+      "feature_str": "The demonstrated rested sustained test distance is at least 100 metres.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_5km_endurance",
+      "domain": "humans",
+      "feature_str": "The demonstrated rested sustained test distance is at least 5,000 metres.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_regular_training",
+      "domain": "humans",
+      "feature_str": "Training judgment: competitive = 1, recreational = 0.5, untrained = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_unrestricted_mobility",
+      "domain": "humans",
+      "feature_str": "Mobility: unrestricted = 1, mild ankle pain = 0.5, unable to bear weight = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_uphill_training",
+      "domain": "humans",
+      "feature_str": "The stipulated profile includes regular uphill training.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_rested",
+      "domain": "humans",
+      "feature_str": "Rest judgment: rested = 1, moderate fatigue = 0.5, exhausted = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "mobility",
+      "domain": "humans",
+      "feature_str": "Stipulated source profile: mobility.",
+      "possible_values": [
+        "mild_ankle_pain",
+        "unable_to_bear_weight",
+        "unrestricted"
+      ]
+    },
+    {
+      "feature_id": "regular_uphill_training",
+      "domain": "humans",
+      "feature_str": "Stipulated source profile: regular uphill training.",
+      "possible_values": [
+        false,
+        true
+      ]
+    },
+    {
+      "feature_id": "sustained_test_distance_m",
+      "domain": "humans",
+      "feature_str": "Stipulated source profile: sustained test distance m.",
+      "possible_values": [
+        10000,
+        50,
+        500,
+        5000
+      ]
+    },
+    {
+      "feature_id": "sustained_test_pace_kmh",
+      "domain": "humans",
+      "feature_str": "Stipulated source profile: sustained test pace kmh.",
+      "possible_values": [
+        10,
+        12,
+        8
+      ]
+    },
+    {
+      "feature_id": "caused_property_damage",
+      "domain": "legal_cases",
+      "feature_str": "The person damaged the property.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "damage_necessary_within_official_scope",
+      "domain": "legal_cases",
+      "feature_str": "Stipulated source profile: damage necessary within official scope.",
+      "possible_values": [
+        false,
+        true
+      ]
+    },
+    {
+      "feature_id": "damage_solely_necessary_to_prevent_imminent_serious_harm",
+      "domain": "legal_cases",
+      "feature_str": "Stipulated source profile: damage solely necessary to prevent imminent serious harm.",
+      "possible_values": [
+        false,
+        true
+      ]
+    },
+    {
+      "feature_id": "has_lawful_authorisation",
+      "domain": "legal_cases",
+      "feature_str": "Lawful authorisation is present. Official-duty exemption separately requires necessary damage within the authorised scope; authorisation alone does not establish exemption.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_owner_consent",
+      "domain": "legal_cases",
+      "feature_str": "The owner consented to this damage.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "intentional_damage",
+      "domain": "legal_cases",
+      "feature_str": "The damage was intentional.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "lawful_authorisation",
+      "domain": "legal_cases",
+      "feature_str": "Stipulated source profile: lawful authorisation.",
+      "possible_values": [
+        false,
+        true
+      ]
+    },
+    {
+      "feature_id": "necessary_to_prevent_imminent_harm",
+      "domain": "legal_cases",
+      "feature_str": "In the emergency context, the damage was solely necessary to prevent the stipulated imminent serious danger; this fact does not establish an emergency in other contexts.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "owner_consent",
+      "domain": "legal_cases",
+      "feature_str": "Stipulated source profile: owner consent.",
+      "possible_values": [
+        false,
+        true
+      ]
+    },
+    {
+      "feature_id": "property_belongs_to_another",
+      "domain": "legal_cases",
+      "feature_str": "The damaged property belongs to another person.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "property_damage",
+      "domain": "legal_cases",
+      "feature_str": "Stipulated source profile: property damage.",
+      "possible_values": [
+        false,
+        true
+      ]
+    },
+    {
+      "feature_id": "within_official_scope",
+      "domain": "legal_cases",
+      "feature_str": "The damage was necessary and within the authorised scope of the official duties assessed in the official-duty context.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "developmental_stage",
+      "domain": "mammals",
+      "feature_str": "Stipulated source profile: developmental stage.",
+      "possible_values": [
+        "adult",
+        "juvenile",
+        "neonate"
+      ]
+    },
+    {
+      "feature_id": "energy_reserves",
+      "domain": "mammals",
+      "feature_str": "Stipulated source profile: energy reserves.",
+      "possible_values": [
+        "adequate",
+        "depleted",
+        "reduced"
+      ]
+    },
+    {
+      "feature_id": "has_adequate_energy_reserves",
+      "domain": "mammals",
+      "feature_str": "Stipulated energy reserves: adequate = 1, reduced = 0.5, depleted = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "health",
+      "domain": "mammals",
+      "feature_str": "Stipulated source profile: health.",
+      "possible_values": [
+        "healthy",
+        "mildly_unwell",
+        "severely_ill"
+      ]
+    },
+    {
+      "feature_id": "is_adult",
+      "domain": "mammals",
+      "feature_str": "The stipulated individual is adult; juvenile and neonate = 0.",
+      "possible_values": [
+        0,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_cold_adapted",
+      "domain": "mammals",
+      "feature_str": "Judge normal adult species-level cold adaptations, independently of the stipulated individual state. 1 = well-established morphological or physiological adaptations for recurring subzero winters (e.g. dense seasonal insulation or cold-specific thermoregulation). 0 = no known special cold adaptation and primarily frost-free ecology. 0.5 = mixed, marginal, or genuinely insufficient species knowledge. Seasonal winter adaptations count. Do not require proof of survival at -20 C in every circumstance; taxonomy or occasional cold exposure alone is insufficient.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_drought_adapted",
+      "domain": "mammals",
+      "feature_str": "Judge normal adult species-level water-conservation adaptations, independently of individual state. 1 = well-established adaptations to scarce free drinking water, such as unusually efficient renal concentration, low evaporative loss or reliance on metabolic water. 0 = frequent hydration dependence without known special water-conservation adaptations. 0.5 = mixed, marginal, or genuinely insufficient species knowledge. Moist food or arid distribution alone do not establish 1. Do not require guaranteed survival for three days with zero fluid intake.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_healthy",
+      "domain": "mammals",
+      "feature_str": "Stipulated health: healthy = 1, mildly_unwell = 0.5, severely_ill = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_heat_adapted",
+      "domain": "mammals",
+      "feature_str": "Judge normal adult species-level heat adaptations, independently of individual state. 1 = well-established morphological or physiological mechanisms for hot arid or hot seasonal environments (e.g. enhanced heat dissipation or heat-tolerant thermoregulation). 0 = no known special heat adaptation and predominantly cool or mild ecology. 0.5 = mixed, marginal, or genuinely insufficient species knowledge. Tropical distribution, ordinary mammalian sweating/panting, nocturnality or shelter-seeking alone do not establish 1. Do not equate adaptation with guaranteed survival at 40 C.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_large",
+      "domain": "mammals",
+      "feature_str": "Species typical adult body mass is at least 50 kg. Estimate from species knowledge; return 0.5 if unknown or the typical range crosses 50 kg.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "species",
+      "domain": "mammals",
+      "feature_str": "The source species identity.",
+      "possible_values": [
+        "Aceramarca Opossum (Gracilinanus aceramarcae)",
+        "Addax (Addax nasomaculatus)",
+        "African Savanna Elephant (Loxodonta africana)",
+        "African Striped Weasel (Poecilogale albinucha)",
+        "Alpine Ibex (Capra ibex)",
+        "Alpine Marmot (Marmota marmota)",
+        "American Bison (Bos bison)",
+        "American Black Bear (Ursus americanus)",
+        "Arabian Oryx (Oryx leucoryx)",
+        "Arctic Fox (Vulpes lagopus)",
+        "Arctic Hare (Lepus arcticus)",
+        "Arfak Pygmy Bandicoot (Microperoryctes aplini)",
+        "Asian Elephant (Elephas maximus)",
+        "Beringian Ermine (Mustela erminea)",
+        "Black Rhinoceros (Diceros bicornis)",
+        "Black-bellied Pangolin (Phataginus tetradactylus)",
+        "Black-tailed Jackrabbit (Lepus californicus)",
+        "Bornean Orangutan (Pongo pygmaeus)",
+        "Brown Bear (Ursus arctos)",
+        "Canadian Lynx (Lynx canadensis)",
+        "Caracal (Caracal caracal)",
+        "Caribou (Rangifer tarandus)",
+        "Cheetah (Acinonyx jubatus)",
+        "Chilean Dolphin (Cephalorhynchus eutropia)",
+        "Chimpanzee (Pan troglodytes)",
+        "Chiru (Pantholops hodgsonii)",
+        "Common Hippopotamus (Hippopotamus amphibius)",
+        "Common Long-eared Hedgehog (Hemiechinus auritus)",
+        "Coyote (Canis latrans)",
+        "Dama Gazelle (Nanger dama)",
+        "De Winton's Golden Mole (Cryptochloris wintoni)",
+        "Desert Hedgehog (Paraechinus aethiopicus)",
+        "Desert Kangaroo Rat (Dipodomys deserti)",
+        "Dorcas Gazelle (Gazella dorcas)",
+        "Eastern Gray Squirrel (Sciurus carolinensis)",
+        "Eurasian Beaver (Castor fiber)",
+        "Eurasian Otter (Lutra lutra)",
+        "Eurasian Red Squirrel (Sciurus vulgaris)",
+        "Eurasian Wild Pig (Sus scrofa)",
+        "European Badger (Meles meles)",
+        "European Hare (Lepus europaeus)",
+        "European Pine Marten (Martes martes)",
+        "European Polecat (Mustela putorius)",
+        "European Rabbit (Oryctolagus cuniculus)",
+        "Fennec Fox (Vulpes zerda)",
+        "Gemsbok (Oryx gazella)",
+        "Giant Anteater (Myrmecophaga tridactyla)",
+        "Golden-rumped Sengi (Rhynchocyon chrysopygus)",
+        "Gray Wolf (Canis lupus)",
+        "Greater Capybara (Hydrochoerus hydrochaeris)",
+        "Greater Egyptian Jerboa (Jaculus orientalis)",
+        "Guianan Greater Long-nosed Armadillo (Dasypus kappleri)",
+        "Hispid Hare (Caprolagus hispidus)",
+        "Incan Shrew-opossum (Lestoros inca)",
+        "Lar Gibbon (Hylobates lar)",
+        "Large Flying Fox (Pteropus vampyrus)",
+        "Lesser Egyptian Jerboa (Jaculus jaculus)",
+        "Linnaeus's Two-toed Sloth (Choloepus didactylus)",
+        "Lion (Panthera leo)",
+        "Lowland Tapir (Tapirus terrestris)",
+        "Mainland Dusky Antechinus (Antechinus mimetes)",
+        "Mandrill (Mandrillus sphinx)",
+        "Meerkat (Suricata suricatta)",
+        "Merriam's Kangaroo Rat (Dipodomys merriami)",
+        "Mexican Large-toothed Shrew (Sorex macrodon)",
+        "Moose (Alces alces)",
+        "Mountain Hare (Lepus timidus)",
+        "Muskox (Ovibos moschatus)",
+        "Nearctic Collared Lemming (Dicrostonyx groenlandicus)",
+        "North American Beaver (Castor canadensis)",
+        "Northern Raccoon (Procyon lotor)",
+        "Northwestern Marsupial Mole (Notoryctes caurinus)",
+        "Ord's Kangaroo Rat (Dipodomys ordii)",
+        "Phyllis's Forest Wallaby (Dorcopsis phyllis)",
+        "Platypus (Ornithorhynchus anatinus)",
+        "Polar Bear (Ursus maritimus)",
+        "Red Fox (Vulpes vulpes)",
+        "Ring-tailed Lemur (Lemur catta)",
+        "Rocky Mountain Goat (Oreamnos americanus)",
+        "Sand Cat (Felis margarita)",
+        "Scimitar-horned Oryx (Oryx dammah)",
+        "Snow Leopard (Panthera uncia)",
+        "Southern Giraffe (Giraffa giraffa)",
+        "Southern Monito del Monte (Dromiciops gliroides)",
+        "Southern Tamandua (Tamandua tetradactyla)",
+        "Southern Tree Hyrax (Dendrohyrax arboreus)",
+        "Springbok (Antidorcas marsupialis)",
+        "Sulawesi Harpy Fruit Bat (Harpyionycteris celebensis)",
+        "Sunda Colugo (Galeopterus variegatus)",
+        "Tiger (Panthera tigris)",
+        "Virginia Opossum (Didelphis virginiana)",
+        "West European Hedgehog (Erinaceus europaeus)",
+        "Western Gorilla (Gorilla gorilla)",
+        "Western Red Deer (Cervus elaphus)",
+        "Western Roe Deer (Capreolus capreolus)",
+        "White Rhinoceros (Ceratotherium simum)",
+        "White-tailed Deer (Odocoileus virginianus)",
+        "Wild Bactrian Camel (Camelus ferus)",
+        "Wild Yak (Bos mutus)",
+        "Wolverine (Gulo gulo)"
+      ]
+    },
+    {
+      "feature_id": "taxonomic_family",
+      "domain": "mammals",
+      "feature_str": "Stipulated source profile: taxonomic family.",
+      "possible_values": [
+        "Bovidae",
+        "Caenolestidae",
+        "Camelidae",
+        "Canidae",
+        "Castoridae",
+        "Caviidae",
+        "Cercopithecidae",
+        "Cervidae",
+        "Choloepodidae",
+        "Chrysochloridae",
+        "Cricetidae",
+        "Cynocephalidae",
+        "Dasypodidae",
+        "Dasyuridae",
+        "Delphinidae",
+        "Didelphidae",
+        "Dipodidae",
+        "Elephantidae",
+        "Erinaceidae",
+        "Felidae",
+        "Giraffidae",
+        "Herpestidae",
+        "Heteromyidae",
+        "Hippopotamidae",
+        "Hominidae",
+        "Hylobatidae",
+        "Lemuridae",
+        "Leporidae",
+        "Macropodidae",
+        "Macroscelididae",
+        "Manidae",
+        "Microbiotheriidae",
+        "Mustelidae",
+        "Myrmecophagidae",
+        "Notoryctidae",
+        "Ornithorhynchidae",
+        "Peramelidae",
+        "Procaviidae",
+        "Procyonidae",
+        "Pteropodidae",
+        "Rhinocerotidae",
+        "Sciuridae",
+        "Soricidae",
+        "Suidae",
+        "Tapiridae",
+        "Ursidae"
+      ]
+    },
+    {
+      "feature_id": "taxonomic_order",
+      "domain": "mammals",
+      "feature_str": "Stipulated source profile: taxonomic order.",
+      "possible_values": [
+        "Afrosoricida",
+        "Artiodactyla",
+        "Carnivora",
+        "Chiroptera",
+        "Cingulata",
+        "Dasyuromorphia",
+        "Dermoptera",
+        "Didelphimorphia",
+        "Diprotodontia",
+        "Eulipotyphla",
+        "Hyracoidea",
+        "Lagomorpha",
+        "Macroscelidea",
+        "Microbiotheria",
+        "Monotremata",
+        "Notoryctemorphia",
+        "Paucituberculata",
+        "Peramelemorphia",
+        "Perissodactyla",
+        "Pholidota",
+        "Pilosa",
+        "Primates",
+        "Proboscidea",
+        "Rodentia"
+      ]
+    },
+    {
+      "feature_id": "growth_form",
+      "domain": "plants",
+      "feature_str": "Stipulated source profile: growth form.",
+      "possible_values": [
+        "climber",
+        "fern",
+        "perennial_herb",
+        "shrub",
+        "succulent"
+      ]
+    },
+    {
+      "feature_id": "has_established_roots",
+      "domain": "plants",
+      "feature_str": "Root establishment: established = 1, recently transplanted = 0.5, severely damaged = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_moist_soil",
+      "domain": "plants",
+      "feature_str": "Soil moisture: moist = 1, slightly moist = 0.5, dry = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "has_succulent_leaves",
+      "domain": "plants",
+      "feature_str": "Succulent leaves: explicit true = 1, explicit false = 0; absent observations make the judgment ambiguous (0.5).",
+      "possible_values": [
+        0,
+        0.5
+      ]
+    },
+    {
+      "feature_id": "health",
+      "domain": "plants",
+      "feature_str": "Stipulated source profile: health.",
+      "possible_values": [
+        "healthy",
+        "severely_stressed_but_alive",
+        "wilting_but_alive"
+      ]
+    },
+    {
+      "feature_id": "initial_soil_moisture",
+      "domain": "plants",
+      "feature_str": "Stipulated source profile: initial soil moisture.",
+      "possible_values": [
+        "dry",
+        "moist",
+        "slightly_moist"
+      ]
+    },
+    {
+      "feature_id": "is_fern",
+      "domain": "plants",
+      "feature_str": "The source growth form is fern.",
+      "possible_values": [
+        0,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_healthy",
+      "domain": "plants",
+      "feature_str": "Health judgment: healthy = 1, wilting but alive = 0.5, severely stressed but alive = 0.",
+      "possible_values": [
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_shrub",
+      "domain": "plants",
+      "feature_str": "The source growth form is shrub.",
+      "possible_values": [
+        0,
+        1
+      ]
+    },
+    {
+      "feature_id": "is_succulent",
+      "domain": "plants",
+      "feature_str": "The source growth form is succulent; this does not infer missing succulent_leaves observations.",
+      "possible_values": [
+        0,
+        1
+      ]
+    },
+    {
+      "feature_id": "root_condition",
+      "domain": "plants",
+      "feature_str": "Stipulated source profile: root condition.",
+      "possible_values": [
+        "established",
+        "recently_transplanted",
+        "severely_damaged"
+      ]
+    },
+    {
+      "feature_id": "species",
+      "domain": "plants",
+      "feature_str": "The source species identity.",
+      "possible_values": [
+        "Aloe vera (Aloe vera)",
+        "Cretan brake (Pteris cretica)",
+        "English lavender (Lavandula angustifolia)",
+        "Swiss cheese plant (Monstera deliciosa)",
+        "Sword fern (Nephrolepis exaltata)",
+        "Venus flytrap (Dionaea muscipula)"
+      ]
+    },
+    {
+      "feature_id": "succulent_leaves",
+      "domain": "plants",
+      "feature_str": "Stipulated source profile: succulent leaves.",
+      "possible_values": [
+        null,
+        true
+      ]
+    }
+  ],
+  "notes": "Feature IDs are scoped by domain. possible_values lists observed v1 values. Numeric 0.5 means an ambiguous judgment, not a probability. Raw profile facts and experimental judgments are both preserved."
+}

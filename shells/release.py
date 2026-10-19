@@ -13,7 +13,7 @@ def verify(version, root=ROOT):
     entry = registry['versions'][version]
     manifest = json.loads((root / entry['manifest']).read_text())
     expected = manifest['files']
-    actual = {str(p.relative_to(root)) for directory in (entry['data'], entry['pipeline'])
+    actual = {str(p.relative_to(root)) for directory in (entry['data'], entry['pipeline'], entry['metadata'])
               for p in (root / directory).rglob('*')
               if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc'}
     if actual != set(expected):

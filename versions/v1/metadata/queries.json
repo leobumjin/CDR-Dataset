@@ -1,0 +1,34 @@
+{
+  "queries": [
+    {
+      "query_id": "can_fly",
+      "query_str": "Can this bird fly?",
+      "domain": "birds",
+      "target_definition": "Complete the required aerial movement under the conditions associated with the context, without external assistance."
+    },
+    {
+      "query_id": "can_run",
+      "query_str": "Can this person run?",
+      "domain": "humans",
+      "target_definition": "Complete the required distance by continuous running at at least the specified pace on the stated terrain, in the stipulated current state, without assistance or walking breaks."
+    },
+    {
+      "query_id": "can_survive_mammal",
+      "query_str": "Can this mammal survive?",
+      "domain": "mammals",
+      "target_definition": "The stipulated individual remains alive for the full interval under the supplied environmental and resource conditions, without rescue. Temporary stress or reversible damage is allowed."
+    },
+    {
+      "query_id": "can_survive_plant",
+      "query_str": "Can this plant survive?",
+      "domain": "plants",
+      "target_definition": "Be alive at the end of the specified interval under the stated conditions. Temporary wilting or damage is allowed; growth, flowering, and perfect health are not required."
+    },
+    {
+      "query_id": "is_guilty",
+      "query_str": "Is this person guilty?",
+      "domain": "legal_cases",
+      "target_definition": "Satisfy all elements of the supplied hypothetical property-damage offence without an applicable situation-specific exception. This is not a determination under real-world law."
+    }
+  ]
+}

@@ -9,8 +9,9 @@ import shutil
 import sys
 import tempfile
 
-from evaluate import evaluate
 from release import ROOT, verify
+sys.path.insert(0, str(ROOT / "evaluation"))
+from evaluate import evaluate
 
 DEFAULT_REPO_ID = "leo-bjpark/CDR-Dataset"
 
@@ -23,7 +24,7 @@ def check_version(version):
 def prepare(version, repo_id=DEFAULT_REPO_ID):
     check_version(version)
     entry, manifest = verify(version)
-    evaluation = evaluate(ROOT / entry['data'])
+    evaluation = evaluate(ROOT / entry['data'], ROOT / entry['metadata'])
     destination = ROOT / 'runs/huggingface' / version
     destination.parent.mkdir(parents=True, exist_ok=True)
     # Stage from verified files, not from an unrestricted working directory.
@@ -32,23 +33,43 @@ def prepare(version, repo_id=DEFAULT_REPO_ID):
         payload = stage / version
         shutil.copytree(ROOT / entry['data'], payload / 'data')
         metadata = payload / 'metadata'
-        metadata.mkdir()
+        shutil.copytree(ROOT / entry['metadata'], metadata)
         (metadata / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
         shutil.copy2(ROOT / 'versions' / version / 'statistics.json', metadata / 'statistics.json')
         shutil.copy2(ROOT / 'versions' / version / 'README.md', metadata / 'release-notes.md')
         (metadata / 'evaluation.json').write_text(json.dumps(evaluation, indent=2) + '\n')
-        configs = [f'  - config_name: {version}', '    default: true',
-                   '    data_files:', '      - split: all',
-                   f'        path: {version}/data/labels/{entry["primary_teacher"]}/dataset.jsonl']
+        # HF splits expose only the requested public record fields. Split/domain
+        # remain in the local canonical file for audit and offline evaluation.
+        split_names = {'train': 'train', 'test': 'test',
+                       'revision-1': 'revision_1', 'revision-2': 'revision_2'}
+        fields = ('query_id', 'query_str', 'context_id', 'context_str',
+                  'entity_id', 'entity_name', 'feature_values', 'label')
+        rows = [json.loads(line) for line in (payload/'data/samples.jsonl').open()]
+        split_dir = payload / 'splits'
+        split_dir.mkdir()
+        configs = [f'  - config_name: {version}', '    default: true', '    data_files:']
+        split_manifest = {}
+        for source_name, hf_name in split_names.items():
+            selected = [row for row in rows if row['split'] == source_name]
+            target = split_dir / f'{hf_name}.jsonl'
+            with target.open('w') as stream:
+                for row in selected:
+                    stream.write(json.dumps({key: row[key] for key in fields}, ensure_ascii=False) + '\n')
+            configs += [f'      - split: {hf_name}', f'        path: {version}/splits/{hf_name}.jsonl']
+            split_manifest[hf_name] = {'samples': len(selected),
+                                       'sha256': hashlib.sha256(target.read_bytes()).hexdigest()}
+        if sum(item['samples'] for item in split_manifest.values()) != len(rows):
+            raise ValueError('Unknown source split; some public samples were not exported')
+        (metadata/'splits.json').write_text(json.dumps(split_manifest, indent=2) + '\n')
         card = '\n'.join(['---', 'language:', '  - en', 'tags:', '  - contextual-reasoning',
                           '  - belief-retraction', 'configs:', *configs, '---', '',
                           '# CDR-Dataset', '', 'Contextual Default Retraction Dataset', '',
                           'A dataset for evaluating contextual default reasoning and belief retraction in language models.', '',
                           f'Release: **{version}**. Teacher-generated references, not independently verified ground truth.', '',
-                          'The `all` split contains all rows; use the `split` column to select train, revision-1, revision-2, or test.', '',
+                          'Available splits: `train`, `test`, `revision_1`, and `revision_2`. Records use query/context/entity fields and string true/false labels.', '',
                           '```python', 'from datasets import load_dataset',
-                          f'data = load_dataset("{repo_id}", "{version}", split="all")',
-                          'train = data.filter(lambda row: row["split"] == "train")', '```', '',
+                          f'train = load_dataset("{repo_id}", "{version}", split="train")',
+                          f'test = load_dataset("{repo_id}", "{version}", split="test")', '```', '',
                           f'See [release notes]({version}/metadata/release-notes.md), [statistics]({version}/metadata/statistics.json),',
                           f'and [evaluation]({version}/metadata/evaluation.json).', '',
                           'Generation code: https://github.com/leobumjin/CDR-Dataset',
@@ -59,6 +80,11 @@ def prepare(version, repo_id=DEFAULT_REPO_ID):
             relative = Path(name).relative_to(entry['data']) if name.startswith(entry['data'] + '/') else None
             if relative is not None and hashlib.sha256((payload/'data'/relative).read_bytes()).hexdigest() != checksum:
                 raise ValueError(f'Data changed during preparation: {name}')
+        for name, checksum in manifest['files'].items():
+            if name.startswith(entry['metadata'] + '/'):
+                staged = metadata / Path(name).relative_to(entry['metadata'])
+                if hashlib.sha256(staged.read_bytes()).hexdigest() != checksum:
+                    raise ValueError(f'Metadata changed during preparation: {name}')
         if destination.exists():
             shutil.rmtree(destination)
         shutil.copytree(stage, destination)
@@ -90,7 +116,7 @@ def merge_cards(existing, incoming):
     old.update({k: v for k, v in new.items() if k != 'configs'})
     old['configs'] = configs
     # Replace the old generated revision-based instructions on first migration.
-    body = old_body if any(re.fullmatch(r'v[1-9][0-9]*', c.get('config_name', '')) for c in (split_card(existing)[0].get('configs', []))) else new_body
+    body = new_body
     return '---\n' + yaml.safe_dump(old, sort_keys=False, allow_unicode=True) + '---\n\n' + body
 
 

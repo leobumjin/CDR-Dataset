@@ -68,8 +68,10 @@ versions/v1/                 # Git-tracked version metadata
 ├── README.md                # Release notes
 ├── manifest.json            # Provenance and checksums
 ├── statistics.json
+├── metadata/                # Query, context, and feature definitions
 └── generation/              # Generation source, configs, requirements, runner
-shells/                      # HF entrypoint and local validation tools
+shells/                      # HF entrypoint and release verification
+evaluation/                  # Local integrity and distribution checks
 data/v1/                    # Local dataset, Git ignored
 runs/                        # Local working results, Git ignored
 ```
@@ -91,7 +93,7 @@ mammals, plants, and legal cases. Each domain has seven features.
 | Revision 2 | 100 | 500 |
 | Test | 100 | 500 |
 
-Primary local reference: `data/v1/labels/gpt-5.4/dataset.jsonl`.
+Preserved experimental reference: `data/v1/source/labels/gpt-5.4/dataset.jsonl`.
 GPT-5.4 annotations, raw responses, inputs, run settings, and four student
 prompt variants are preserved. These are teacher-generated references,
 not independently verified ground truth. v1 has one default dataset configuration, generated with GPT-5.4.
@@ -103,7 +105,7 @@ not independently verified ground truth. v1 has one default dataset configuratio
 ## Local work and Hugging Face
 
 ```bash
-python shells/evaluate.py --data data/v1 --output runs/v1/evaluation.json
+python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
 python shells/release.py verify v1
 bash shells/huggingface.sh prepare --version v1
 ```
@@ -121,6 +123,19 @@ See [local evaluation, publication, and download instructions](docs/huggingface.
 
 ```python
 from datasets import load_dataset
-data = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="all")
-train = data.filter(lambda row: row["split"] == "train")
+train = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="train")
+test = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="test")
 ```
+
+## Public sample format
+
+v1 exposes `data/v1/samples.jsonl`; its Git-tracked definitions live in
+`versions/v1/metadata/{queries,contexts,features}.json`.
+Each sample has query/context/entity IDs and text, feature values, a string
+`"true"`/`"false"` label, domain, and the original split. Feature definitions
+are stored once in metadata. See the [v1 schema](versions/v1/SCHEMA.md).
+
+HF publishes separate `train` (1,000), `test` (500), `revision_1` (500), and
+`revision_2` (500) splits under `v1/splits/`. Each HF record has only the eight
+query/context/entity/feature/label fields; local canonical rows retain domain and
+split for audit. Source revision-1/revision-2 map to HF revision_1/revision_2.
