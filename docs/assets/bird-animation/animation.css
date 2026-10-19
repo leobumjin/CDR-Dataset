@@ -1,0 +1,99 @@
+/* All selectors belong to this standalone component. */
+.bird-demo-section { margin: 30px 0 40px; padding: 0; border: 0; text-align: left; }
+.bird-demo-section .bird-demo-card { border: 0; border-radius: 10px; background: #f8f7f1; padding: 0; }
+.bird-demo-section .bird-landscape-viewport { overflow-x: auto; border: 1px solid #d7d5ca; border-radius: 10px; }
+.bird-demo-section .bird-landscape { isolation: isolate; position: relative; min-width: 560px; height: 230px; overflow: hidden; }
+.bird-demo-section .bird-zones { position: relative; z-index: 0; display: grid; grid-template-columns: repeat(4, 1fr); height: 100%; }
+.bird-demo-section .bird-zone { position: relative; display: flex; flex-direction: column; align-items: flex-start; width: 100%; border: 0; border-right: 1px dashed #d4d6cc; border-radius: 0; margin: 0; padding: 14px 12px; background: linear-gradient(to bottom, var(--zone-sky, #fcfbf7) 0 68%, var(--zone-ground, #eeebdf) 75% 100%); color: #142c29; text-align: left; overflow: hidden; opacity: 1; cursor: default; }
+.bird-demo-section .bird-zone:last-child { border-right: 0; }
+.bird-demo-section .zone-puddle { --zone-sky: #f5f8f5; --zone-ground: #e6e9dd; overflow: visible; z-index: 2; }
+.bird-demo-section .zone-rain { --zone-sky: #edf3f3; --zone-ground: #e1e7df; }
+.bird-demo-section .bird-zone[data-active="true"] { box-shadow: inset 0 3px var(--secondary, #52765e); }
+.bird-demo-section .zone-puddle[data-active="true"], .bird-demo-section .zone-rain[data-active="true"] { box-shadow: inset 0 3px var(--accent, #9b324d); }
+.bird-demo-section .zone-sun { position: absolute; width: 46px; height: 46px; top: 22px; right: 18px; fill: #f2dda0; stroke: #ad9654; stroke-width: 1.7; }
+.bird-demo-section .zone-water { position: absolute; bottom: 10px; left: -40%; width: 145%; height: 78px; }
+.bird-demo-section .puddle-bank { fill: #d7d6c7; stroke: none; }
+.bird-demo-section .puddle-surface { fill: #bfdad6; stroke: #8eafa8; stroke-width: .7; }
+.bird-demo-section .puddle-reflection { fill: none; stroke: #f5f8f0; stroke-width: 1.3; stroke-linecap: round; }
+.bird-demo-section .puddle-ripple { fill: none; stroke: #8eafa3; stroke-width: .6; opacity: .55; transform-origin: 93px 24px; }
+.bird-demo-section .zone-puddle[data-active="true"] .puddle-ripple { animation: puddleRipple 1.6s ease-out infinite; }
+.bird-demo-section .zone-puddle[data-active="true"] .puddle-ripple-outer { animation-delay: -.8s; }
+.bird-demo-section .zone-cloud { position: absolute; z-index: 2; top: 18px; right: 12px; width: 76px; height: 49px; fill: #c4d2d6; stroke: #718d96; stroke-width: 1.5; }
+.bird-demo-section .zone-rain-drops { position: absolute; z-index: 1; top: 58px; left: 8px; width: calc(100% - 16px); height: 116px; pointer-events: none; overflow: hidden; }
+.bird-demo-section .rain-drop { fill: none; stroke: #7399a6; stroke-width: 1.2; stroke-linecap: round; opacity: .65; transform: translateY(var(--rain-rest)); animation: fallingRain var(--rain-duration) linear var(--rain-delay) infinite; }
+.bird-demo-section .bird-traveller { z-index: 10; position: absolute; left: 6%; top: 105px; width: 64px; height: 44px; transform: translate(-50%, -50%); pointer-events: none; transition: top .55s ease; }
+.bird-demo-section .bird-traveller.walking { top: 150px; }
+.bird-demo-section .bird-sprite { width: 100%; height: 100%; }
+.bird-demo-section .bird-svg { width: 100%; height: 100%; overflow: visible; }
+.bird-demo-section .bird-shape { fill: #f4e875; stroke: #8b8544; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.bird-demo-section .bird-tail { fill: #d9cc55; }
+.bird-demo-section .bird-body { fill: #f7ed8b; }
+.bird-demo-section .bird-flight-wing { fill: #e7dc69; transform-origin: 67px 39px; }
+.bird-demo-section .bird-wing-back { fill: #f2e89a; opacity: .8; }
+.bird-demo-section .bird-flight-feather { fill: none; stroke: #fffbd0; stroke-width: 1; }
+.bird-demo-section .bird-rest-wing { fill: #e7dc69; stroke-width: 1.2; }
+.bird-demo-section .bird-eye { fill: #403321; stroke: none; }
+.bird-demo-section .bird-eye-glint { stroke: #f9faf4; stroke-width: 1; }
+.bird-demo-section .bird-beak { fill: #a49346; stroke-width: 1; }
+.bird-demo-section .bird-leg { fill: none; stroke: #6e7862; stroke-width: 1.5; transform-box: fill-box; transform-origin: 50% 0; }
+.bird-demo-section .bird-flight-wings { display: none; }
+.bird-demo-section .flying .bird-flight-wings { display: block; }
+.bird-demo-section .flying .bird-rest-wing, .bird-demo-section .flying .bird-leg { opacity: 0; }
+.bird-demo-section .flying .bird-wing-front { animation: regionWing .2s ease-in-out infinite alternate; }
+.bird-demo-section .flying .bird-wing-back { animation: regionWing .2s ease-in-out -.1s infinite alternate; }
+.bird-demo-section .flying .bird-flight-feather { opacity: .6; }
+.bird-demo-section .walking .bird-leg { animation: regionStep .24s ease-in-out infinite alternate; }
+.bird-demo-section .walking .bird-leg-back { animation-delay: -.24s; }
+.bird-demo-section .walking .bird-sprite { animation: regionWalkBob .24s ease-in-out infinite alternate; }
+.bird-demo-section.is-paused *, .bird-demo-section.is-paused *::before { animation-play-state: paused !important; }
+/* Wet plumage is attached to the bird and follows it through both wet regions. */
+.bird-demo-section .bird-wet-details { display: none; }
+.bird-demo-section.is-wet .bird-wet-details { display: block; }
+.bird-demo-section.is-wet .bird-rest-wing { visibility: hidden; }
+.bird-demo-section.is-wet .bird-body { fill: #e6db73; }
+.bird-demo-section.is-wet .bird-tail { fill: #bdb351; }
+.bird-demo-section .bird-wet-wing { fill: #bcb257; stroke: #857d3d; stroke-width: 1.3; }
+.bird-demo-section .bird-wet-feathers { fill: none; stroke: #7d7738; stroke-width: 1.1; }
+.bird-demo-section .bird-wet-sheen { fill: none; stroke: #fff7b9; stroke-width: 1.7; }
+.bird-demo-section .bird-water-drop { fill: #87b9c0; stroke: #558e9c; stroke-width: .7; animation: wingDrip 1.35s ease-in infinite; }
+.bird-demo-section .bird-water-drop-b { animation-delay: -.45s; }
+.bird-demo-section .bird-water-drop-c { animation-delay: -.9s; }
+@keyframes wingDrip { 0% { opacity: .9; transform: translateY(-2px) scaleY(.9); } 65% { opacity: .85; } 100% { opacity: 0; transform: translateY(9px) scaleY(1.15); } }
+@keyframes regionWing { from { transform: rotate(-12deg) scaleY(.7); } to { transform: rotate(18deg) scaleY(1); } }
+@keyframes puddleRipple { from { opacity: .6; transform: scale(.65); } to { opacity: 0; transform: scale(1.4); } }
+@keyframes regionStep { from { transform: rotate(-15deg); } to { transform: rotate(15deg); } }
+@keyframes regionWalkBob { from { transform: translateY(0); } to { transform: translateY(-1.5px); } }
+@keyframes fallingRain { 0% { opacity: 0; transform: translate(3px, 0); } 10% { opacity: .7; } 80% { opacity: .6; } 100% { opacity: 0; transform: translate(-5px, 126px); } }
+@media (max-width: 680px) {
+  .bird-demo-section .bird-demo-card { padding: 0; }
+}
+/* The feeding vignette is illustrative: fish are not a v1 feature. */
+.bird-demo-section .puddle-fish { z-index: 3; position: absolute; left: 20%; bottom: 51px; width: 28px; height: 16px; transform: translateX(-50%) rotate(-6deg); overflow: visible; transition: opacity .08s; }
+.bird-demo-section .fish-body, .bird-demo-section .fish-tail { fill: #9fb7ac; stroke: #648b7c; stroke-width: 1.1; }
+.bird-demo-section .fish-fin { fill: #c2d0ba; stroke: #648b7c; stroke-width: .8; }
+.bird-demo-section .puddle-fish circle { fill: #345548; }
+.bird-demo-section .fish-gill { fill: none; stroke: #648b7c; stroke-width: .8; }
+.bird-demo-section.fish-eaten .puddle-fish { opacity: 0; }
+.bird-demo-section .puddle-splash { z-index: 4; position: absolute; width: 48px; height: 30px; left: 20%; bottom: 54px; transform: translateX(-50%); fill: none; stroke: #7faea9; stroke-width: 1.5; stroke-linecap: round; opacity: 0; }
+.bird-demo-section.is-splashing .puddle-splash { animation: feedingSplash .45s ease-out both; }
+.bird-demo-section.is-feeding .bird-traveller { top: 158px; transition: top .18s ease; }
+.bird-demo-section.is-feeding .bird-sprite { animation: feedingDip .65s ease-in-out both; transform-origin: 65% 75%; }
+.bird-demo-section.is-feeding .bird-leg { animation: none; }
+@keyframes feedingDip { 0%, 100% { transform: rotate(0); } 30%, 57% { transform: rotate(34deg); } 72% { transform: rotate(12deg); } }
+@keyframes feedingSplash { 0% { opacity: 0; transform: translateX(-50%) scale(.6); } 30% { opacity: .85; } 100% { opacity: 0; transform: translateX(-50%) scale(1.2); } }
+@media (prefers-reduced-motion: reduce) {
+  .bird-demo-section *, .bird-demo-section *::before { animation: none !important; transition: none !important; }
+}
+
+/* Narration stays outside the landscape so it never covers the bird. */
+.bird-demo-section .bird-story-caption {
+  margin: 14px auto 0;
+  padding: 0 12px;
+  min-height: 3em;
+  max-width: 680px;
+  color: var(--text, #343a36);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: pretty;
+}

@@ -1,0 +1,119 @@
+{
+  "mammals": {
+    "source_entity": "mammal 038",
+    "source": "data/v1/source/labels/gpt-5.4/dataset.jsonl",
+    "features": [
+      "Small",
+      "Adult",
+      "Healthy",
+      "Cold-adapted",
+      "Not heat-adapted",
+      "Not drought-adapted",
+      "Low energy reserves"
+    ],
+    "contexts": {
+      "c_1": {
+        "label": "Mild · 7 days",
+        "query": "At a temperature suitable for its species, with appropriate food and hydration supplied, can this mammal survive 7 days in a safe enclosure? Keep its age, health, and energy reserves unchanged.",
+        "code": "1",
+        "verdict": "Can survive"
+      },
+      "c_2": {
+        "label": "−20°C · 24 h",
+        "query": "Food and hydration are supplied, but there is no heated shelter, added insulation, or escape from the cold. Can this mammal survive 24 hours at −20°C? Keep its age, health, and energy reserves unchanged.",
+        "code": "1",
+        "verdict": "Can survive"
+      },
+      "c_3": {
+        "label": "40°C · 24 h",
+        "query": "Food and hydration are supplied, but there is no active cooling or escape from the heat. Can this mammal survive 24 hours at 40°C? Keep its age, health, and energy reserves unchanged.",
+        "code": "0",
+        "verdict": "Cannot survive"
+      },
+      "c_4": {
+        "label": "No water · 3 days",
+        "query": "At a temperature suitable for its species, no food or fluid intake is available for 3 days, including moisture from food or the supporting medium. Can this mammal survive? Keep its age, health, and energy reserves unchanged.",
+        "code": "1",
+        "verdict": "Can survive"
+      }
+    }
+  },
+  "plants": {
+    "source_entity": "plant 014",
+    "source": "data/v1/source/labels/gpt-5.4/dataset.jsonl",
+    "features": [
+      "Established roots",
+      "Healthy",
+      "Moist soil",
+      "Not succulent",
+      "Not a fern",
+      "Not a shrub",
+      "Succulent leaves: ambiguous"
+    ],
+    "contexts": {
+      "c_1": {
+        "label": "No water · 3 days",
+        "query": "The plant stays in a 10-litre pot with suitable well-drained soil, no pests, and no external water reservoir. Without watering or rain, can it survive 3 days at 20°C and 50% humidity, with 12 hours of bright indirect light daily?",
+        "code": "1",
+        "verdict": "Can survive"
+      },
+      "c_2": {
+        "label": "Hot drought · 30 days",
+        "query": "Without watering or rain, can this plant survive 30 days at 35°C and 30% humidity, with 12 hours of direct sunlight daily? It starts with the same roots and health in a 10-litre pot with suitable well-drained soil, no pests, and no external water reservoir.",
+        "code": "0",
+        "verdict": "Cannot survive"
+      },
+      "c_3": {
+        "label": "Freezing · 7 days",
+        "query": "Including its roots and soil, the plant stays at −10°C for 7 days without watering, rain, or frost protection, with 8 hours of daylight daily. In its 10-litre pot with suitable soil, no pests, and no external water reservoir, can it survive?",
+        "code": "0",
+        "verdict": "Cannot survive"
+      },
+      "c_4": {
+        "label": "Watered · 7 days",
+        "query": "Water is supplied as needed without waterlogging. Keeping the initial roots and health unchanged, can the plant survive 7 days at 20°C and 50% humidity, with 12 hours of bright indirect light daily, in a 10-litre pot with suitable well-drained soil and no pests?",
+        "code": "1",
+        "verdict": "Can survive"
+      }
+    }
+  },
+  "humans": {
+    "source_entity": "human 018",
+    "source": "data/v1/source/labels/gpt-5.4/dataset.jsonl",
+    "features": [
+      "Rested",
+      "Unrestricted mobility",
+      "Uphill training",
+      "Can sustain 10 km/h",
+      "No regular training",
+      "100 m endurance: false",
+      "5 km endurance: false"
+    ],
+    "contexts": {
+      "c_1": {
+        "label": "100 m · 8 km/h",
+        "query": "On a dry, level track at 20°C, can this person run 100 metres continuously at 8 km/h without walking breaks or external assistance? Keep their training, mobility, and fatigue unchanged.",
+        "code": "1",
+        "verdict": "Can run"
+      },
+      "c_2": {
+        "label": "5 km · 10 km/h",
+        "query": "On a dry, level track at 20°C, can this person run 5,000 metres continuously at 10 km/h without walking breaks or external assistance? Keep their training, mobility, and fatigue unchanged.",
+        "code": "0",
+        "verdict": "Cannot run"
+      },
+      "c_3": {
+        "label": "Uphill · 1 km",
+        "query": "On a dry gravel trail with a constant 10% uphill gradient at 20°C, can this person run 1,000 metres continuously at 8 km/h without walking breaks or external assistance? Consider the same training, mobility, and fatigue.",
+        "code": "1",
+        "verdict": "Can run"
+      },
+      "c_4": {
+        "label": "100 m · 12 km/h",
+        "query": "On a dry, level track at 20°C, can this person run 100 metres continuously at 12 km/h without walking breaks or external assistance? Keep their mobility and fatigue unchanged.",
+        "code": "1",
+        "verdict": "Can run"
+      }
+    }
+  }
+}

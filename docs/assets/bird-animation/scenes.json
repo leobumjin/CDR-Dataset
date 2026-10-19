@@ -1,0 +1,42 @@
+[
+  {
+    "id": "bird_010",
+    "region": "Normal",
+    "condition": "Normal \u00b7 dry",
+    "sourceContext": "dry_20m",
+    "answerValue": "true",
+    "movement": "Flying",
+    "description": "Dry conditions: the bird flies across the first region.",
+    "caption": "Meet Alice, a bird flying on dry wings."
+  },
+  {
+    "id": "bird_010",
+    "region": "Puddle",
+    "condition": "Puddle \u00b7 wet",
+    "sourceContext": "wet_20m",
+    "answerValue": "false",
+    "movement": "Walking",
+    "description": "The puddle represents wet feathers. CanFly is false, so the bird walks across this region.",
+    "caption": "Alice stops for a fish. Her wings get wet in the puddle, so she walks."
+  },
+  {
+    "id": "bird_010",
+    "region": "Normal",
+    "condition": "Normal \u00b7 dry again",
+    "sourceContext": "dry_20m",
+    "answerValue": "true",
+    "movement": "Flying",
+    "description": "Dry conditions are restored for this region. CanFly is true, and the bird takes off again.",
+    "caption": "Her wings are dry again, and Alice takes flight."
+  },
+  {
+    "id": "bird_010",
+    "region": "Rain",
+    "condition": "Rain \u00b7 wet",
+    "sourceContext": "wet_20m",
+    "answerValue": "false",
+    "movement": "Walking",
+    "description": "Rain represents wet feathers. CanFly is false, so the bird lands and walks to the end.",
+    "caption": "Heavy rain wets her wings again. Alice lands and walks."
+  }
+]

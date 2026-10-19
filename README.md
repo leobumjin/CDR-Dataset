@@ -4,163 +4,137 @@
 
 ### Contextual Default Retraction Dataset
 
-A dataset for evaluating contextual default reasoning and belief retraction in language models.
+Evaluating how language models reason with defaults and revise beliefs.
 
-[![GitHub](https://img.shields.io/badge/GitHub-Code-181717?logo=github)](https://github.com/leobumjin/CDR-Dataset)
-[![Project Page](https://img.shields.io/badge/Project-Page-537448)](https://leobumjin.github.io/CDR-Dataset/)
-[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-FFD21E)](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset)
-![Task](https://img.shields.io/badge/Task-Default%20Reasoning-2563EB)
-![Focus](https://img.shields.io/badge/Focus-Belief%20Retraction-7C3AED)
+**Latest version: [v1](https://leobumjin.github.io/CDR-Dataset/v1/)**
 
----
-
-**Reason with defaults. Reconsider with context.**
+[Project Page](https://leobumjin.github.io/CDR-Dataset/) · [🤗 Hugging Face](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset) · [Code](https://github.com/leobumjin/CDR-Dataset)
 
 </div>
 
-| Resource | Link | What you’ll find |
-| :--- | :--- | :--- |
-| 🌐 **Project Page** | [CDR-Dataset](https://leobumjin.github.io/CDR-Dataset/) | Overview and interactive Bird / Guilty examples |
-| 🤗 **Hugging Face** | [leo-bjpark/CDR-Dataset](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset) | Dataset files and version configs |
-| 📦 **Dataset v1** | [View v1](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/tree/main/v1) | 500 instances · 2,500 context pairs |
-| 💻 **GitHub** | [leobumjin/CDR-Dataset](https://github.com/leobumjin/CDR-Dataset) | Versioned generation code, statistics, and documentation |
-
 ## Overview
 
-Language models often need to draw reasonable conclusions from incomplete information. Those conclusions should remain open to revision when new context introduces an exception.
+CDR-Dataset evaluates context-dependent conclusions while keeping the query and entity features fixed. Changing the context can preserve or defeat a conclusion, supporting comparisons of contextual default reasoning and belief retraction.
 
-**CDR-Dataset** (Contextual Default Retraction Dataset) is designed to evaluate this ability, with a focus on two connected aspects of reasoning:
+**Query + Domain + Context + Features → Label**
 
-| Capability | Evaluation focus |
+| Domain | Query |
 | :--- | :--- |
-| **Contextual default reasoning** | Drawing defeasible conclusions from the available context. |
-| **Belief retraction** | Withdrawing a previously supported conclusion when new context defeats its justification. |
+| **Birds** | Can this bird fly? |
+| **Legal Cases** | Is this person guilty? |
+| **Humans** | Can this person run? |
+| **Mammals** | Can this mammal survive? |
+| **Plants** | Can this plant survive? |
 
-## Motivation
+Explore all five domains through the [interactive examples](https://leobumjin.github.io/CDR-Dataset/#examples). Choose a context to see how the question and answer change for the same entity.
 
-A plausible default is useful only when a model can recognize its limits. Evaluating both the initial inference and its subsequent retraction helps assess whether a model can adapt its conclusions to changing evidence.
+## Dataset statistics
 
-> **Illustrative example — not a dataset record**
->
-> **Default:** Birds typically fly.
->
-> **Initial context:** Pip is a bird.
->
-> **Default conclusion:** Pip can fly.
->
-> **New context:** Pip is a penguin, and penguins cannot fly.
->
-> **Retraction:** The default conclusion that Pip can fly no longer holds.
+| Version | # Domains | # Queries / domain | # Contexts / domain | # Entities / domain | # Features / entity | Total samples |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: |
+| [**v1 ↗**](https://leobumjin.github.io/CDR-Dataset/v1/) | 5 | 1 | 5 | 100 | 7 | **2,500** |
 
-## Repository
+Each domain contains **100 entities × 5 contexts = 500 samples**. Across five domains, v1 contains **500 entities and 2,500 samples**. The homepage examples show four selected contexts; the dataset contains five per domain.
 
-The dataset repository is hosted at [**leobumjin/CDR-Dataset**](https://github.com/leobumjin/CDR-Dataset).
+The feature count refers to seven experimental judgments per entity. Their encoding is **0 = False · 0.5 = Ambiguous · 1 = True**; 0.5 is not a probability. Public records also preserve raw profile attributes.
 
-```bash
-git clone https://github.com/leobumjin/CDR-Dataset.git
-cd CDR-Dataset
-```
+| Split | Entities / domain | Samples / domain | Total samples |
+| :--- | ---: | ---: | ---: |
+| `train` | 40 | 200 | 1,000 |
+| `test` | 20 | 100 | 500 |
+| `revision_1` | 20 | 100 | 500 |
+| `revision_2` | 20 | 100 | 500 |
 
-## Repository structure
+Splitting uses seed 2027 and keeps all five contexts of an entity together. Revision splits add entities while retaining the same context set. There is no validation split; entity separation does not guarantee unseen species or feature vectors.
 
-```text
-versions/v1/                 # Git-tracked version metadata
-├── README.md                # Release notes
-├── manifest.json            # Provenance and checksums
-├── statistics.json
-├── metadata/                # Query, context, and feature definitions
-└── generation/              # Generation source, configs, requirements, runner
-shells/                      # HF entrypoint and release verification
-evaluation/                  # Local integrity and distribution checks
-data/v1/                    # Local dataset, Git ignored
-runs/                        # Local working results, Git ignored
-```
+## Load the dataset
 
-Version 2 and later get their own `versions/v2`, `versions/v3`, etc. Generation
-code remains tracked; payloads are distributed through Hugging Face configs.
-See the [layout and versioning guide](docs/versioning.md).
-
-## Dataset v1
-
-The first version preserves the existing AISTATS experimental snapshot: **500
-instances × 5 contexts = 2,500 instance–context pairs**, across birds, humans,
-mammals, plants, and legal cases. Each domain has seven features.
-
-| Version | # Query Type | # Domain / Query | # Context / Query | # Entity / Query | Total / Query |
-| :--- | ---: | ---: | ---: | ---: | ---: |
-| **v1** | **5** | **1** | **5** | **100** | **500** |
-
-Query Type counts the five distinct `query_id` values. All remaining columns
-are **per query**: 1 domain × 5 contexts × 100 entities = 500 samples.
-Mammal and plant survival are separate queries. The full v1 release has 2,500 samples.
-
-| Split | Instances | Pairs |
-| :--- | ---: | ---: |
-| Train | 200 | 1,000 |
-| Revision 1 | 100 | 500 |
-| Revision 2 | 100 | 500 |
-| Test | 100 | 500 |
-
-Preserved experimental reference: `data/v1/source/labels/gpt-5.4/dataset.jsonl`.
-GPT-5.4 annotations, raw responses, inputs, run settings, and four student
-prompt variants are preserved. These are teacher-generated references,
-not independently verified ground truth. v1 has one default dataset configuration, generated with GPT-5.4.
-
-- [v1 release notes](versions/v1/README.md)
-- [Detailed statistics](versions/v1/statistics.json)
-- [v1 generation instructions](versions/v1/generation/README.md)
-
-## Local work and Hugging Face
-
-```bash
-python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
-python shells/release.py verify v1
-bash shells/huggingface.sh prepare --version v1
-```
-
-Publish explicitly after reviewing the prepared payload:
-
-```bash
-python -m pip install -r requirements-huggingface.txt
-hf auth login
-bash shells/huggingface.sh --version v1
-```
-
-Download on another machine with `download --version v1 --repo-id leo-bjpark/CDR-Dataset`.
-See [local evaluation, publication, and download instructions](docs/huggingface.md).
+[**🤗 Explore v1 on Hugging Face ↗**](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/viewer/v1/train)
 
 ```python
 from datasets import load_dataset
+
 train = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="train")
 test = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="test")
+revision_1 = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="revision_1")
+revision_2 = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="revision_2")
 ```
 
-## Public sample format
+Versions are Hugging Face **configs** (`v1`, `v2`, …). To pin an exact dataset snapshot, additionally pass `revision="<commit SHA>"`.
 
-v1 exposes `data/v1/samples.jsonl`; its Git-tracked definitions live in
-`versions/v1/metadata/{queries,contexts,features}.json`.
-Each sample has query/context/entity IDs and text, feature values, a string
-`"true"`/`"false"` label, domain, and the original split. Feature definitions
-are stored once in metadata. See the [v1 schema](versions/v1/SCHEMA.md).
+### Sample format
 
-HF publishes separate `train` (1,000), `test` (500), `revision_1` (500), and
-`revision_2` (500) splits under `v1/splits/`. Each HF record has only the eight
-query/context/entity/feature/label fields; local canonical rows retain domain and
-split for audit. Source revision-1/revision-2 map to HF revision_1/revision_2.
+Each Hugging Face record contains eight fields:
 
-## v2 development
+| Fields | Contents |
+| :--- | :--- |
+| `query_id`, `query_str` | Query identifier and question |
+| `context_id`, `context_str` | Context identifier and definition |
+| `entity_id`, `entity_name` | Entity identifier and source name |
+| `feature_values` | Raw profile attributes and experimental feature judgments |
+| `label` | String `"true"` or `"false"` |
 
-The `v2` branch is used for the next dataset version. Its separate project page
-is maintained in [`docs/v2/index.html`](docs/v2/index.html), linked from the main
-page. v2 dataset contents and results have not been released yet.
+Definitions are stored separately in [query](versions/v1/metadata/queries.json), [context](versions/v1/metadata/contexts.json), and [feature](versions/v1/metadata/features.json) metadata. Local canonical records additionally retain `domain` and `split` for auditing. See the [public schema](versions/v1/SCHEMA.md) for field mappings.
 
-## Local project page
+## Data generation
+
+v1 preserves the AISTATS experimental snapshot with **GPT-5.4 teacher reference labels**. Domains, queries, contexts, and feature predicates are specified in the generation code. Entity profiles combine source catalogs and constructed individual states; human and legal profiles are fictional.
+
+Experimental features are derived from the constructed profiles for Humans and Legal Cases, and annotated with GPT-5.4 for Birds, Mammals, and Plants. Query labels assess each entity under each stipulated context. These generated references are not independently verified ground truth; legal examples use a supplied hypothetical offence and exceptions.
+
+The [v1 details page](https://leobumjin.github.io/CDR-Dataset/v1/) documents domains and queries, entities, feature categories and labeling, context categories, and query labeling. Version-specific [generation instructions](versions/v1/generation/README.md), [release notes](versions/v1/README.md), and [statistics](versions/v1/statistics.json) are retained in this repository.
+
+## Repository and versioning
+
+```text
+CDR-Dataset/
+├── versions/
+│   ├── registry.json          # Current version registry
+│   └── v1/
+│       ├── generation/        # Version-specific source and configuration
+│       ├── metadata/          # Query, context, and feature definitions
+│       ├── SCHEMA.md
+│       ├── statistics.json
+│       └── manifest.json      # Provenance and checksums
+├── shells/                    # Local preview, HF publication, release checks
+├── evaluation/                # Dataset integrity and distribution audits
+├── docs/                      # GitHub Pages and version detail pages
+├── data/                      # Local dataset payloads — Git ignored
+└── runs/                      # Local generation and audit outputs — Git ignored
+```
+
+Generation code and metadata remain tracked in Git. Dataset payloads are distributed through Hugging Face. Future versions get their own `versions/v2/`, `versions/v3/`, and corresponding Hugging Face configs, keeping each version's generation code and definitions together. Only v1 is currently released. See the [versioning guide](docs/versioning.md).
+
+### Download and audit locally
+
+```bash
+python -m pip install -r requirements-huggingface.txt
+bash shells/huggingface.sh download --version v1
+
+python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
+python shells/release.py verify v1
+```
+
+Fresh generation runs are kept under `runs/`; follow the [v1 generation guide](versions/v1/generation/README.md) for dependencies and API stages. The evaluation command above audits the dataset rather than running language-model experiments.
+
+### Publish to Hugging Face
+
+```bash
+hf auth login
+
+# Prepare and check the payload locally.
+bash shells/huggingface.sh --version v1 --dry-run
+
+# Prepare and upload the public v1 config.
+bash shells/huggingface.sh --version v1
+```
+
+The default destination is `leo-bjpark/CDR-Dataset`. Uploads update the selected version and preserve other version configs. See the [Hugging Face workflow](docs/huggingface.md) for staging, authentication, and download details.
+
+### Preview the project page
 
 ```bash
 bash shells/serve.sh
-# Optional port and bind address:
-# bash shells/serve.sh 8080 0.0.0.0
 ```
 
-Open http://127.0.0.1:8000/ for the main page or
-http://127.0.0.1:8000/v2/ for v2. Stop the server with Ctrl+C.
+Open [localhost:8000](http://127.0.0.1:8000/) for the project page or [localhost:8000/v1/](http://127.0.0.1:8000/v1/) for v1 details. An optional port can be supplied with `bash shells/serve.sh 8080`.
