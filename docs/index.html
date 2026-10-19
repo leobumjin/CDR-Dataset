@@ -4,163 +4,217 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CDR-Dataset: Contextual Default Retraction Dataset. Evaluating contextual default reasoning and belief retraction in language models.">
-  <meta name="theme-color" content="#142c29">
+  <meta name="theme-color" content="#9b324d">
   <title>CDR-Dataset · Contextual Default Retraction Dataset</title>
-  <style>
-    :root{color-scheme:light;--ink:#142c29;--muted:#53655f;--paper:#f5f5ee;--line:#d6ddd2;--accent:#b8ec80}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid #40854b;outline-offset:5px}header,main,footer{max-width:1100px;margin:auto;padding:0 28px}header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:26px;border-bottom:1px solid var(--line)}.brand{font-weight:800;letter-spacing:-.04em;text-decoration:none;font-size:22px}.repo{font-size:14px;text-underline-offset:5px}.hero{padding:82px 0 65px;max-width:900px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}h1{font-size:clamp(44px,7vw,82px);line-height:1.08;letter-spacing:-.055em;margin:24px 0}h1 span{color:#537448}.lead{font-size:20px;color:var(--muted);max-width:680px}.button{display:inline-block;background:var(--ink);color:white;padding:12px 22px;border-radius:7px;text-decoration:none;font-weight:650;font-size:15px;margin-top:18px}.label{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:30px;padding:4px 12px;margin-top:26px;color:var(--muted)}section{padding:45px 0;border-top:1px solid var(--line)}h2{font-size:30px;line-height:1.2;letter-spacing:-.035em;margin:12px 0 20px}.intro{max-width:730px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:30px}.number{font-size:13px;font-family:monospace;color:var(--muted)}h3{font-size:20px;margin:10px 0}.grid p{color:var(--muted);margin:0}.demo{background:var(--ink);color:var(--paper);border-radius:14px;padding:30px;margin-top:28px}.demo .eyebrow{color:#c3cfbe}.steps{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:22px 0}.step{border-left:2px solid #5a7163;padding-left:18px}.step strong{display:block;font-size:13px;color:var(--accent);margin-bottom:8px}.step p{margin:0}button{border:0;border-radius:6px;background:var(--accent);color:var(--ink);padding:12px 18px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}.result{margin-bottom:0;color:var(--accent)}[hidden]{display:none!important}footer{padding-top:28px;padding-bottom:35px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}code{font-size:.9em}@media(max-width:600px){.hero{padding:50px 0}.grid,.steps{grid-template-columns:1fr}.demo{padding:22px}header,main,footer{padding-left:20px;padding-right:20px}footer{flex-direction:column}.lead{font-size:18px}}
-    .examples{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}.example{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fffef8}.example-head{padding:24px 26px 18px;display:flex;align-items:center;gap:15px}.example-icon{font-size:34px;line-height:1}.example-head h3{margin:0;font-size:24px}.example-head .number{font-size:12px}.example-body{padding:0 26px 26px}.facts{font-size:15px;color:var(--muted);min-height:76px;margin:0 0 20px}.context-panel{background:#edf2e8;border-radius:9px;padding:20px;min-height:225px;transition:background .2s}.example.changed .context-panel{background:#f4eadb}.context-panel .eyebrow{font-size:11px}.context-panel h4{font-size:20px;line-height:1.3;margin:12px 0 8px}.context-panel p{font-size:15px;margin:0;color:var(--muted)}.verdict{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:18px;font-weight:750}.verdict-code{display:inline-grid;place-items:center;min-width:32px;height:32px;background:var(--ink);color:white;border-radius:6px;font-family:monospace}.example button{width:100%;margin-top:18px;min-height:48px}.explanation{font-size:14px;color:var(--muted);margin:16px 0 0;min-height:70px}.source{display:block;font-size:12px;color:var(--muted);margin-top:18px}.takeaway{margin-top:24px;padding:20px 24px;border-left:3px solid #537448;background:#edf2e8}.takeaway p{margin:0}.example button:focus-visible{outline-offset:3px}@media(max-width:760px){.examples{grid-template-columns:1fr}.facts,.explanation{min-height:0}.context-panel{min-height:0}.example-head{padding:22px 22px 18px}.example-body{padding:0 22px 22px}}
-    .resource-table-wrap{overflow-x:auto;margin-top:26px;border:1px solid var(--line);border-radius:12px;background:#fffef8}.resource-table{width:100%;border-collapse:collapse;text-align:left;font-size:15px}.resource-table caption{text-align:left;padding:18px 22px;font-weight:700}.resource-table th,.resource-table td{padding:16px 22px;border-top:1px solid var(--line);vertical-align:top}.resource-table thead{background:#edf2e8}.resource-table th{font-weight:650}.resource-table td:last-child{color:var(--muted)}.resource-table a{font-weight:650;text-underline-offset:4px;overflow-wrap:anywhere}.hero-links{display:flex;gap:12px;flex-wrap:wrap}.button.secondary{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}@media(max-width:600px){.resource-table th,.resource-table td{padding:12px;font-size:13px}}
-    .stat-value{background:transparent;color:var(--ink);font:inherit;font-size:20px;font-weight:750;padding:5px 8px;margin:-5px -8px;white-space:nowrap;border-bottom:1px dashed #759666;border-radius:4px}.stat-value span{font-size:12px;color:var(--muted)}.stat-value:hover,.stat-value:focus-visible,.stat-value.active{background:#d9ecc7}.stat-detail{margin-top:14px;padding:20px 24px;border:1px solid var(--line);border-left:3px solid #537448;border-radius:8px;background:#edf2e8;min-height:220px}.stat-detail strong{font-size:16px}.stat-detail p{white-space:pre-line;font-size:15px;color:var(--muted);margin:8px 0 0}
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/bird-animation/animation.css?v=alice-lemon-4">
 </head>
 <body>
-  <header><a class="brand" href="./">CDR-Dataset<span aria-hidden="true"> ↗</span></a><a class="repo" href="https://github.com/leobumjin/CDR-Dataset">View on GitHub ↗</a></header>
-  <main>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
     <div class="hero">
-      <div class="eyebrow">Contextual Default Retraction Dataset</div>
-      <h1>Reason with defaults.<br><span>Reconsider with context.</span></h1>
-      <p class="lead">A dataset for evaluating contextual default reasoning and belief retraction in language models.</p>
-      <div class="hero-links"><a class="button" href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset">🤗 Get the dataset ↗</a><a class="button secondary" href="https://github.com/leobumjin/CDR-Dataset">View generation code ↗</a></div>
-      <span class="label">v1 · 500 instances · 2,500 context pairs</span>
+      <div data-bird-demo><p class="source">Bird transition example · dry → wet → dry conditions.</p></div>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <h1>C<span class="title-d">D</span><span class="title-r">R</span>-Dataset</h1>
+      <p class="subtitle">Contextual Default Retraction Dataset</p>
+      <p class="lead">Evaluating how language models reason with defaults and revise beliefs.</p>
+      <div class="hero-links"><a class="button" href="https://github.com/leobumjin/CDR-Dataset"><svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.64 5.28-5.15 5.56.4.35.76 1.04.76 2.1v3.07c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/></svg> GitHub</a><a class="button" href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 1 1 14 0"/><path d="M9 12h.01M15 12h.01M9 15q3 3 6 0"/><path d="m8 20-4-2-2-4q-.5-1.5 1-1.5L5 15l-1-4q0-1.5 1.3-1L8 15m8 5 4-2 2-4q.5-1.5-1-1.5L19 15l1-4q0-1.5-1.3-1L16 15"/></svg> Hugging Face</a></div>
+      <p class="latest-version">Latest version: <a id="latest-version-link" href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/tree/main/v1">v1</a></p>
+      <div class="category-overview" aria-label="Latest version categories">
+      <ul id="latest-categories" class="category-cards">
+        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#bird"></use></svg><strong>Birds</strong><span>Can this bird fly?</span></li>
+        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#legal"></use></svg><strong>Legal Cases</strong><span>Is this person guilty?</span></li>
+        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#human"></use></svg><strong>Humans</strong><span>Can this person run?</span></li>
+        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#mammal"></use></svg><strong>Mammals</strong><span>Can this mammal survive?</span></li>
+        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#plant"></use></svg><strong>Plants</strong><span>Can this plant survive?</span></li>
+      </ul></div>
     </div>
-    <section aria-labelledby="dataset-overview-title">
-      <div class="eyebrow">Dataset at a glance</div>
-      <h2 id="dataset-overview-title">One release. Five reasoning domains.</h2>
-      <div class="resource-table-wrap">
-        <table class="resource-table">
-          <caption>Dataset statistics · per query</caption>
-          <thead><tr><th scope="col">Version</th><th scope="col"># Query Type</th><th scope="col"># Domain / Query</th><th scope="col"># Context / Query</th><th scope="col"># Entity / Query</th><th scope="col">Total / Query</th></tr></thead>
-          <tbody><tr><th scope="row">v1</th><td><button class="stat-value" type="button" data-stat="queries" aria-controls="stat-detail" aria-label="Query types: 5. Show examples">5<span aria-hidden="true"> ⓘ</span></button></td><td><button class="stat-value" type="button" data-stat="domains" aria-controls="stat-detail" aria-label="Domains · one per query: 1. Show examples">1<span aria-hidden="true"> ⓘ</span></button></td><td><button class="stat-value" type="button" data-stat="contexts" aria-controls="stat-detail" aria-label="Contexts · Bird example: 5. Show examples">5<span aria-hidden="true"> ⓘ</span></button></td><td><button class="stat-value" type="button" data-stat="entities" aria-controls="stat-detail" aria-label="Entities · examples: 100. Show examples">100<span aria-hidden="true"> ⓘ</span></button></td><td><button class="stat-value" type="button" data-stat="total" aria-controls="stat-detail" aria-label="Samples · per query: 500. Show examples">500<span aria-hidden="true"> ⓘ</span></button></td></tr></tbody>
-        </table>
+    <section id="examples" aria-labelledby="examples-title">
+      <h2 id="examples-title">Interactive Dataset Examples</h2>
+      <p class="examples-intro">Explore how context changes the answer while the entity’s features stay fixed.</p>
+      <div class="example-domain-tabs" role="tablist" aria-label="Example domain">
+        <button type="button" id="tab-bird" role="tab" aria-selected="true" aria-controls="bird-example" tabindex="0">Bird</button>
+        <button type="button" id="tab-guilty" role="tab" aria-selected="false" aria-controls="guilty-example" tabindex="-1">Legal Cases</button>
+        <button type="button" id="tab-humans" role="tab" aria-selected="false" aria-controls="humans-example" tabindex="-1">Humans</button>
+        <button type="button" id="tab-mammals" role="tab" aria-selected="false" aria-controls="mammals-example" tabindex="-1">Mammals</button>
+        <button type="button" id="tab-plants" role="tab" aria-selected="false" aria-controls="plants-example" tabindex="-1">Plants</button>
       </div>
-      <div class="stat-detail" id="stat-detail" role="region" aria-label="Dataset statistic examples" aria-live="polite" aria-atomic="true">
-        <strong id="stat-detail-title">Explore the numbers</strong>
-        <p id="stat-detail-text">Hover over a number, focus it with the keyboard, or tap it to see types and examples.</p>
-      </div>
-      <p class="source">Query Type counts all 5 query IDs. Other columns are per query: 1 domain × 5 contexts × 100 entities = 500 samples. Mammal and plant survival are separate queries. Full v1 release: 2,500 samples.</p>
-    </section>
-    <section>
-      <div class="eyebrow">The research question</div>
-      <h2>Can a model revise a reasonable conclusion?</h2>
-      <p class="intro">Incomplete information often calls for a default inference. When new context introduces an exception, that inference may no longer be justified. CDR-Dataset focuses on this transition.</p>
-      <div class="grid">
-        <div><span class="number">01 / INFER</span><h3>Contextual default reasoning</h3><p>Draw defeasible conclusions from the available context: conclusions that remain open to revision.</p></div>
-        <div><span class="number">02 / REVISE</span><h3>Belief retraction</h3><p>Withdraw a previously supported conclusion when new context defeats its justification.</p></div>
-      </div>
-    </section>
-    <section aria-labelledby="examples-title">
-      <div class="eyebrow">Explore two examples</div>
-      <h2 id="examples-title">Same instance. Different context. Different answer.</h2>
-      <p class="intro">Change the context below and watch the reference label switch. These are simplified summaries of two v1 records, with GPT-5.4 teacher labels.</p>
       <div class="examples">
-        <article class="example" id="bird-example">
-          <div class="example-head"><span class="example-icon" aria-hidden="true">🐦</span><div><span class="number">BIRDS / CanFly</span><h3>Can this bird fly?</h3></div></div>
+        <article class="example" id="bird-example" role="tabpanel" aria-labelledby="tab-bird" tabindex="0">
+          <div class="example-head"><svg class="domain-art" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 36c6-2 8-10 15-13 2-9 13-12 19-5l9 2-7 5c1 10-5 16-16 16H20l-8 6 3-10-9-3z"/><path d="M25 31c4 1 10 1 15-5M31 42l-2 7m9-7 2 7"/><circle cx="45" cy="20" r="1"/></svg><div><span class="number">BIRDS / CanFly</span><h3>Can this bird fly?</h3></div></div>
           <div class="example-body">
-            <p class="facts"><strong>The bird stays the same:</strong> small, rested, with developed flight plumage and intact flight wings; no fracture or severe fatigue.</p>
-            <div class="context-panel" id="bird-state" aria-live="polite" aria-atomic="true">
-              <div class="eyebrow" data-field="context">Context c_1 · Dry plumage</div>
-              <h4 data-field="heading">A short flight on dry wings.</h4>
-              <p data-field="description">Fly 20 metres continuously, taking off from level ground. The feathers stay dry.</p>
-              <div class="verdict"><span class="verdict-code" data-field="code">1</span><span data-field="verdict">Can fly</span></div>
-              <p class="explanation" data-field="explanation">The teacher reference supports this short flight under dry conditions.</p>
+            <div class="example-information">
+<div class="bird-scene" aria-label="The same bird under dry or wet conditions"><svg viewBox="0 0 260 94" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M24 78h212"/><g transform="translate(91 12) scale(1.05)"><path d="M14 36c6-2 8-10 15-13 2-9 13-12 19-5l9 2-7 5c1 10-5 16-16 16H20l-8 6 3-10-9-3z"/><path d="M25 31c4 1 10 1 15-5M31 42l-2 7m9-7 2 7"/><circle cx="45" cy="20" r="1"/></g><g class="dry-weather"><circle cx="211" cy="22" r="8"/><path d="M211 8V4m0 32v4m-14-18h-4m32 0h4m-28-10-3-3m23 23 3 3m-23-3-3 3m23-23 3-3"/></g><g class="wet-weather"><path d="M193 23c-8-1-9-14 0-16 4-10 20-7 21 2 12-1 15 14 4 14zM197 33l-3 7m13-7-3 7m13-7-3 7"/></g></svg></div>
+            <p class="facts"><strong>Features</strong> <span class="feature-tags"><span class="feature-tag">Small</span><span class="feature-tag">Rested</span><span class="feature-tag">Developed flight plumage</span><span class="feature-tag">Intact flight wings</span><span class="feature-tag">No fracture</span><span class="feature-tag">No severe fatigue</span></span></p>
+            <p class="context-picker-label">Contexts</p>
+            <div class="context-choices" role="group" aria-label="Bird flight contexts">
+              <button type="button" data-bird-context="c_1" aria-pressed="true" aria-controls="bird-state">Dry · 20 m</button>
+              <button type="button" data-bird-context="c_3" aria-pressed="false" aria-controls="bird-state">Wet · 20 m</button>
+              <button type="button" data-bird-context="c_2" aria-pressed="false" aria-controls="bird-state">Dry · 500 m</button>
+              <button type="button" data-bird-context="c_5" aria-pressed="false" aria-controls="bird-state">Wet · 500 m</button>
             </div>
-            <button type="button" data-example="bird" aria-pressed="false" aria-controls="bird-state">What if the feathers are wet? ↓</button>
-            <small class="source">v1 · bird 010 · c_1 → c_3 · GPT-5.4 reference</small>
+            </div>
+            <div class="chat-conversation" id="bird-state" aria-live="polite" aria-atomic="true">
+              <div class="chat-message chat-question"><div class="chat-author"><span class="chat-avatar chat-avatar-human" role="img" aria-label="User"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20v-2a7 7 0 0 1 14 0v2"/></svg></span><span class="chat-author-name">User</span></div><p class="chat-query" data-field="query">Its feathers are dry throughout the attempt. Can this bird take off from level ground and fly 20 metres continuously without assistance?</p></div>
+              <div class="chat-message chat-answer"><div class="chat-author"><span class="chat-avatar chat-avatar-ai" role="img" aria-label="AI reference answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="13" rx="4"/><path d="M12 7V4M2 12v4m20-4v4m-13 0h6"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="12" r=".8"/><circle cx="15" cy="12" r=".8"/></svg></span><span class="chat-author-name">Assistant</span></div><div class="verdict"><span class="verdict-code" data-field="code">1</span><span data-field="verdict">Can fly</span></div></div>
+              <p class="chat-disclaimer">* Assistant responses are illustrative and do not represent the actual dataset, factual truths, or normative judgments.</p>
+            </div>
           </div>
         </article>
-        <article class="example" id="guilty-example">
-          <div class="example-head"><span class="example-icon" aria-hidden="true">⚖️</span><div><span class="number">LEGAL CASES / IsGuilty</span><h3>Is this person guilty?</h3></div></div>
+        <article class="example" id="guilty-example" role="tabpanel" aria-labelledby="tab-guilty" tabindex="0" hidden>
+          <div class="example-head"><svg class="domain-art" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 10v43m-15 0h30M12 21h40M16 21 7 38h18zm32 0-9 17h18zM7 38c3 7 15 7 18 0m14 0c3 7 15 7 18 0"/><circle cx="32" cy="16" r="4"/></svg><div><span class="number">LEGAL CASES / IsGuilty</span><h3>Is this person guilty?</h3></div></div>
           <div class="example-body">
-            <p class="facts"><strong>The act stays the same:</strong> intentionally damaging another person’s property without consent. The stipulated necessity feature is true.</p>
-            <div class="context-panel" id="guilty-state" aria-live="polite" aria-atomic="true">
-              <div class="eyebrow" data-field="context">Context c_1 · Ordinary situation</div>
-              <h4 data-field="heading">Property damage, with no exception.</h4>
-              <p data-field="description">There is no imminent serious danger or official duty. The hypothetical rule provides no applicable exception.</p>
-              <div class="verdict"><span class="verdict-code" data-field="code">1</span><span data-field="verdict">Guilty</span></div>
-              <p class="explanation" data-field="explanation">Intentional damage to another’s property without consent satisfies the supplied offence in this context.</p>
+            <div class="example-information">
+            <div class="legal-scene" aria-label="Hypothetical property-damage rule and context-specific exception"><svg viewBox="0 0 260 94" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 78h212"/><g transform="translate(98 7)"><path d="M32 10v52m-15 0h30M12 23h40M16 23 7 40h18zm32 0-9 17h18zM7 40c3 7 15 7 18 0m14 0c3 7 15 7 18 0"/><circle cx="32" cy="17" r="4"/></g><g class="legal-rule-symbol"><path d="M201 19h21v27h-21zm5 7h11m-11 6h11m-11 6h7"/></g><g class="legal-exception-symbol"><path d="m211 17 13 5v11c0 8-13 14-13 14s-13-6-13-14V22zM205 32l4 4 8-9"/></g></svg></div>
+
+            <p class="facts"><strong>Features</strong> <span class="feature-tags"><span class="feature-tag">Property damage</span><span class="feature-tag">Another person’s property</span><span class="feature-tag">Intentional</span><span class="feature-tag">No owner consent</span><span class="feature-tag">Necessity feature: true</span><span class="feature-tag">No lawful authorisation</span><span class="feature-tag">Outside official scope</span></span></p>
+            <p class="context-picker-label">Contexts</p>
+            <div class="context-choices" role="group" aria-label="Legal case contexts">
+              <button type="button" data-legal-context="c_1" aria-pressed="true" aria-controls="guilty-state">Ordinary</button>
+              <button type="button" data-legal-context="c_2" aria-pressed="false" aria-controls="guilty-state">Emergency</button>
+              <button type="button" data-legal-context="c_3" aria-pressed="false" aria-controls="guilty-state">Official duty</button>
+              <button type="button" data-legal-context="c_4" aria-pressed="false" aria-controls="guilty-state">Supervisor’s order</button>
             </div>
-            <button type="button" data-example="guilty" aria-pressed="false" aria-controls="guilty-state">What if it prevents imminent harm? ↓</button>
-            <small class="source">v1 · case 007 · c_1 → c_2 · GPT-5.4 reference</small>
+            </div>
+            <div class="chat-conversation" id="guilty-state" aria-live="polite" aria-atomic="true">
+              <div class="chat-message chat-question"><div class="chat-author"><span class="chat-avatar chat-avatar-human" role="img" aria-label="User"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20v-2a7 7 0 0 1 14 0v2"/></svg></span><span class="chat-author-name">User</span></div><p class="chat-query" data-field="query">This person intentionally damaged someone else’s property without consent. There is no imminent serious danger or official duty, so no exception applies. Under the supplied hypothetical rule, is this person guilty?</p></div>
+              <div class="chat-message chat-answer"><div class="chat-author"><span class="chat-avatar chat-avatar-ai" role="img" aria-label="AI reference answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="13" rx="4"/><path d="M12 7V4M2 12v4m20-4v4m-13 0h6"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="12" r=".8"/><circle cx="15" cy="12" r=".8"/></svg></span><span class="chat-author-name">Assistant</span></div><div class="verdict"><span class="verdict-code" data-field="code">1</span><span data-field="verdict">Guilty</span></div></div>
+              <p class="chat-disclaimer">* Assistant responses are illustrative and do not represent the actual dataset, factual truths, or normative judgments.</p>
+            </div>
+          </div>
+        </article>
+        <article class="example" id="mammals-example" role="tabpanel" aria-labelledby="tab-mammals" tabindex="0" hidden>
+          <div class="example-head"><svg class="domain-art" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="assets/project-overview/icons.svg#mammal"></use></svg><div><span class="number">MAMMALS / CanSurvive</span><h3>Can this mammal survive?</h3></div></div>
+          <div class="example-body">
+            <div class="example-information">
+            <div class="domain-scene" aria-label="Mammals example"><svg viewBox="0 0 260 94" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 78h212"/><use href="assets/project-overview/icons.svg#mammal" x="99" y="8" width="62" height="62"></use></svg></div>
+
+            <p class="facts"><strong>Features</strong> <span class="feature-tags"><span class="feature-tag">Small</span><span class="feature-tag">Adult</span><span class="feature-tag">Healthy</span><span class="feature-tag">Cold-adapted</span><span class="feature-tag">Not heat-adapted</span><span class="feature-tag">Not drought-adapted</span><span class="feature-tag">Low energy reserves</span></span></p>
+            <p class="context-picker-label">Contexts</p>
+            <div class="context-choices" role="group" aria-label="Mammals contexts">
+              <button type="button" data-demo-domain="mammals" data-demo-context="c_1" aria-pressed="true" aria-controls="mammals-state">Mild · 7 days</button>
+              <button type="button" data-demo-domain="mammals" data-demo-context="c_2" aria-pressed="false" aria-controls="mammals-state">−20°C · 24 h</button>
+              <button type="button" data-demo-domain="mammals" data-demo-context="c_3" aria-pressed="false" aria-controls="mammals-state">40°C · 24 h</button>
+              <button type="button" data-demo-domain="mammals" data-demo-context="c_4" aria-pressed="false" aria-controls="mammals-state">No water · 3 days</button>
+            </div>
+            </div>
+            <div class="chat-conversation" id="mammals-state" aria-live="polite" aria-atomic="true">
+              <div class="chat-message chat-question"><div class="chat-author"><span class="chat-avatar chat-avatar-human" role="img" aria-label="User"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20v-2a7 7 0 0 1 14 0v2"/></svg></span><span class="chat-author-name">User</span></div><p class="chat-query" data-field="query">At a temperature suitable for its species, with appropriate food and hydration supplied, can this mammal survive 7 days in a safe enclosure? Keep its age, health, and energy reserves unchanged.</p></div>
+              <div class="chat-message chat-answer"><div class="chat-author"><span class="chat-avatar chat-avatar-ai" role="img" aria-label="AI reference answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="13" rx="4"/><path d="M12 7V4M2 12v4m20-4v4m-13 0h6"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="12" r=".8"/><circle cx="15" cy="12" r=".8"/></svg></span><span class="chat-author-name">Assistant</span></div><div class="verdict"><span class="verdict-code" data-field="code">1</span><span data-field="verdict">Can survive</span></div></div>
+              <p class="chat-disclaimer">* Assistant responses are illustrative and do not represent the actual dataset, factual truths, or normative judgments.</p>
+            </div>
+          </div>
+        </article>
+        <article class="example" id="plants-example" role="tabpanel" aria-labelledby="tab-plants" tabindex="0" hidden>
+          <div class="example-head"><svg class="domain-art" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="assets/project-overview/icons.svg#plant"></use></svg><div><span class="number">PLANTS / CanSurvive</span><h3>Can this plant survive?</h3></div></div>
+          <div class="example-body">
+            <div class="example-information">
+            <div class="domain-scene" aria-label="Plants example"><svg viewBox="0 0 260 94" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 78h212"/><use href="assets/project-overview/icons.svg#plant" x="99" y="8" width="62" height="62"></use></svg></div>
+
+            <p class="facts"><strong>Features</strong> <span class="feature-tags"><span class="feature-tag">Established roots</span><span class="feature-tag">Healthy</span><span class="feature-tag">Moist soil</span><span class="feature-tag">Not succulent</span><span class="feature-tag">Not a fern</span><span class="feature-tag">Not a shrub</span><span class="feature-tag">Succulent leaves: ambiguous</span></span></p>
+            <p class="context-picker-label">Contexts</p>
+            <div class="context-choices" role="group" aria-label="Plants contexts">
+              <button type="button" data-demo-domain="plants" data-demo-context="c_1" aria-pressed="true" aria-controls="plants-state">No water · 3 days</button>
+              <button type="button" data-demo-domain="plants" data-demo-context="c_2" aria-pressed="false" aria-controls="plants-state">Hot drought · 30 days</button>
+              <button type="button" data-demo-domain="plants" data-demo-context="c_3" aria-pressed="false" aria-controls="plants-state">Freezing · 7 days</button>
+              <button type="button" data-demo-domain="plants" data-demo-context="c_4" aria-pressed="false" aria-controls="plants-state">Watered · 7 days</button>
+            </div>
+            </div>
+            <div class="chat-conversation" id="plants-state" aria-live="polite" aria-atomic="true">
+              <div class="chat-message chat-question"><div class="chat-author"><span class="chat-avatar chat-avatar-human" role="img" aria-label="User"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20v-2a7 7 0 0 1 14 0v2"/></svg></span><span class="chat-author-name">User</span></div><p class="chat-query" data-field="query">The plant stays in a 10-litre pot with suitable well-drained soil, no pests, and no external water reservoir. Without watering or rain, can it survive 3 days at 20°C and 50% humidity, with 12 hours of bright indirect light daily?</p></div>
+              <div class="chat-message chat-answer"><div class="chat-author"><span class="chat-avatar chat-avatar-ai" role="img" aria-label="AI reference answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="13" rx="4"/><path d="M12 7V4M2 12v4m20-4v4m-13 0h6"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="12" r=".8"/><circle cx="15" cy="12" r=".8"/></svg></span><span class="chat-author-name">Assistant</span></div><div class="verdict"><span class="verdict-code" data-field="code">1</span><span data-field="verdict">Can survive</span></div></div>
+              <p class="chat-disclaimer">* Assistant responses are illustrative and do not represent the actual dataset, factual truths, or normative judgments.</p>
+            </div>
+          </div>
+        </article>
+        <article class="example" id="humans-example" role="tabpanel" aria-labelledby="tab-humans" tabindex="0" hidden>
+          <div class="example-head"><svg class="domain-art" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="assets/project-overview/icons.svg#human"></use></svg><div><span class="number">HUMANS / CanRun</span><h3>Can this person run?</h3></div></div>
+          <div class="example-body">
+            <div class="example-information">
+            <div class="domain-scene" aria-label="Humans example"><svg viewBox="0 0 260 94" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 78h212"/><use href="assets/project-overview/icons.svg#human" x="99" y="8" width="62" height="62"></use></svg></div>
+
+            <p class="facts"><strong>Features</strong> <span class="feature-tags"><span class="feature-tag">Rested</span><span class="feature-tag">Unrestricted mobility</span><span class="feature-tag">Uphill training</span><span class="feature-tag">Can sustain 10 km/h</span><span class="feature-tag">No regular training</span><span class="feature-tag">100 m endurance: false</span><span class="feature-tag">5 km endurance: false</span></span></p>
+            <p class="context-picker-label">Contexts</p>
+            <div class="context-choices" role="group" aria-label="Humans contexts">
+              <button type="button" data-demo-domain="humans" data-demo-context="c_1" aria-pressed="true" aria-controls="humans-state">100 m · 8 km/h</button>
+              <button type="button" data-demo-domain="humans" data-demo-context="c_2" aria-pressed="false" aria-controls="humans-state">5 km · 10 km/h</button>
+              <button type="button" data-demo-domain="humans" data-demo-context="c_3" aria-pressed="false" aria-controls="humans-state">Uphill · 1 km</button>
+              <button type="button" data-demo-domain="humans" data-demo-context="c_4" aria-pressed="false" aria-controls="humans-state">100 m · 12 km/h</button>
+            </div>
+            </div>
+            <div class="chat-conversation" id="humans-state" aria-live="polite" aria-atomic="true">
+              <div class="chat-message chat-question"><div class="chat-author"><span class="chat-avatar chat-avatar-human" role="img" aria-label="User"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20v-2a7 7 0 0 1 14 0v2"/></svg></span><span class="chat-author-name">User</span></div><p class="chat-query" data-field="query">On a dry, level track at 20°C, can this person run 100 metres continuously at 8 km/h without walking breaks or external assistance? Keep their training, mobility, and fatigue unchanged.</p></div>
+              <div class="chat-message chat-answer"><div class="chat-author"><span class="chat-avatar chat-avatar-ai" role="img" aria-label="AI reference answer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="13" rx="4"/><path d="M12 7V4M2 12v4m20-4v4m-13 0h6"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="12" r=".8"/><circle cx="15" cy="12" r=".8"/></svg></span><span class="chat-author-name">Assistant</span></div><div class="verdict"><span class="verdict-code" data-field="code">1</span><span data-field="verdict">Can run</span></div></div>
+              <p class="chat-disclaimer">* Assistant responses are illustrative and do not represent the actual dataset, factual truths, or normative judgments.</p>
+            </div>
           </div>
         </article>
       </div>
-      <div class="takeaway"><p><strong>The key idea:</strong> a conclusion supported in one context can lose its support in another. The instance features remain fixed; the context changes.</p></div>
-      <p class="source">Labels shown here are stored teacher references, not live model predictions. The Guilty example follows a supplied hypothetical offence and its exceptions.</p>
+
     </section>
-    <section>
-      <div class="eyebrow">Access & documentation</div>
-      <h2>Explore the project. Get the data.</h2>
-      <p class="intro">Version 1 preserves the experimental snapshot across five domains, with 500 instances and 2,500 instance–context pairs. Explore the release notes, statistics, and versioned generation pipeline in the repository.</p>
-      <div class="resource-table-wrap">
+    <section id="statistics" aria-labelledby="statistics-title">
+      <h2 id="statistics-title">Dataset Statistics</h2>
+      <div class="resource-table-wrap dataset-summary">
         <table class="resource-table">
-          <caption>CDR-Dataset resources</caption>
-          <thead><tr><th scope="col">Resource</th><th scope="col">Link</th><th scope="col">What you’ll find</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">🌐 Project Page</th><td><a href="https://leobumjin.github.io/CDR-Dataset/">CDR-Dataset ↗</a></td><td>Overview and interactive examples</td></tr>
-            <tr><th scope="row">🤗 Hugging Face</th><td><a href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset">leo-bjpark/CDR-Dataset ↗</a></td><td>Dataset files and version configs</td></tr>
-            <tr><th scope="row">📦 Dataset v1</th><td><a href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/tree/main/v1">View v1 ↗</a></td><td>500 instances · 2,500 context pairs</td></tr>
-            <tr><th scope="row">💻 GitHub</th><td><a href="https://github.com/leobumjin/CDR-Dataset">leobumjin/CDR-Dataset ↗</a></td><td>Generation code, statistics, and documentation</td></tr>
-          </tbody>
+          <caption class="sr-only">Version 1 dataset structure</caption>
+          <thead><tr><th scope="col">Version</th><th scope="col"># Domains</th><th scope="col"># Queries / Domain</th><th scope="col"># Contexts / Domain</th><th scope="col"># Entities / Domain</th><th scope="col"># Features / Entity</th><th scope="col">Total</th></tr></thead>
+          <tbody><tr><th scope="row"><a class="version-detail-link" href="v1/" aria-label="View v1 dataset details" title="View v1 dataset details">v1 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg></a></th><td><button type="button" class="stat-example-button" data-statistic="domains" aria-describedby="statistic-examples" aria-label="5. Show example domains">5</button></td><td><button type="button" class="stat-example-button" data-statistic="queries" aria-describedby="statistic-examples" aria-label="1. Show example queries">1</button></td><td><button type="button" class="stat-example-button" data-statistic="contexts" aria-describedby="statistic-examples" aria-label="5. Show example contexts">5</button></td><td><button type="button" class="stat-example-button" data-statistic="entities" aria-describedby="statistic-examples" aria-label="100. Show example entities">100</button></td><td><button type="button" class="stat-example-button" data-statistic="features" aria-describedby="statistic-examples" aria-label="7. Show example features">7</button></td><td><button type="button" class="stat-example-button" data-statistic="total" aria-describedby="statistic-examples" aria-label="2,500. Show example sample combinations">2,500</button></td></tr></tbody>
         </table>
       </div>
+      <div id="statistic-examples" class="statistic-tooltip" role="tooltip" hidden><strong id="statistic-example-title"></strong><p id="statistic-example-text"></p></div>
+      <p class="statistics-note">v1 contains 5 contexts per domain; the examples above show 4. Feature counts refer to the 7 experimental judgments per entity.</p>
     </section>
   </main>
-  <footer><span>CDR-Dataset · Contextual Default Retraction Dataset</span><a href="https://github.com/leobumjin/CDR-Dataset">leobumjin/CDR-Dataset</a></footer>
+  <footer><span>CDR-Dataset · Contextual Default Retraction Dataset</span><a href="https://github.com/leobumjin/CDR-Dataset">GitHub</a></footer>
+  <script src="assets/dataset-examples/examples.js" defer></script>
+  <script src="assets/project-overview/statistics.js" defer></script>
+  <script src="assets/project-overview/overview.js" defer></script>
+  <script src="assets/bird-animation/animation.js?v=alice-captions-2" defer></script>
   <script>
-    const statisticExamples = {"queries": {"title": "Query types", "text": "Can this bird fly?\nCan this person run?\nCan this mammal survive?\nCan this plant survive?\nIs this person guilty?"}, "domains": {"title": "Domains · one per query", "text": "Birds · Humans · Mammals · Plants · Legal cases\nEach query belongs to one of these domains."}, "contexts": {"title": "Contexts · Bird example", "text": "Dry feathers: 20 m flight\nDry feathers: 500 m flight\nWet feathers: 20 m flight\nDry feathers: 5 m flight\nWet feathers: 500 m flight"}, "entities": {"title": "Entities · examples", "text": "bird_010 · bird_011 · bird_012\ncase_001 · case_002 · case_007\nEach query evaluates 100 distinct entities across the same 5 contexts."}, "total": {"title": "Samples · per query", "text": "100 entities × 5 contexts = 500 samples\nExample: can_fly + dry_20m + bird_010 → true\nAll 5 queries together: 2,500 samples."}};
-    const statButtons = document.querySelectorAll('[data-stat]');
-    const statTitle = document.getElementById('stat-detail-title');
-    const statText = document.getElementById('stat-detail-text');
-    statButtons.forEach(button => {
-      const show = () => {
-        const detail = statisticExamples[button.dataset.stat];
-        statTitle.textContent = detail.title;
-        statText.textContent = detail.text;
-        statButtons.forEach(item => item.classList.toggle('active', item === button));
-      };
-      button.addEventListener('mouseenter', show);
-      button.addEventListener('focus', show);
-      button.addEventListener('click', show);
-      button.addEventListener('keydown', event => {
-        if (event.key === 'Escape') {
-          statTitle.textContent = 'Explore the numbers';
-          statText.textContent = 'Hover over a number, focus it with the keyboard, or tap it to see types and examples.';
-          statButtons.forEach(item => item.classList.remove('active'));
-        }
-      });
-    });
 
-    const alternativeContexts = {
-      bird: {
-        context: 'Context c_3 · Wet plumage',
-        heading: 'The same flight, just after heavy rain.',
-        description: 'Fly the same 20 metres. Body and wing feathers are thoroughly wet, stay wet, and cannot be dried before takeoff.',
-        code: '0', verdict: 'Cannot fly',
-        explanation: 'The teacher reference no longer supports the flight. Retract “can fly” when the wet-plumage context applies.'
-      },
-      guilty: {
-        context: 'Context c_2 · Emergency situation',
-        heading: 'Necessary damage to prevent serious harm.',
-        description: 'Imminent serious danger threatens a person. Under the supplied rule, damage solely necessary to prevent that danger is exempt.',
-        code: '0', verdict: 'Not guilty',
-        explanation: 'The necessity feature now activates the emergency exception. Retract “guilty” under this hypothetical offence.'
-      }
-    };
-    document.querySelectorAll('button[data-example]').forEach(button => {
-      const card = button.closest('.example');
-      const fields = card.querySelectorAll('[data-field]');
-      const initial = Object.fromEntries(Array.from(fields, field => [field.dataset.field, field.textContent]));
-      const initialButton = button.textContent;
-      button.addEventListener('click', () => {
-        const changed = button.getAttribute('aria-pressed') !== 'true';
-        const state = changed ? alternativeContexts[button.dataset.example] : initial;
-        fields.forEach(field => { field.textContent = state[field.dataset.field]; });
-        card.classList.toggle('changed', changed);
-        button.setAttribute('aria-pressed', String(changed));
-        button.textContent = changed ? 'Return to the original context ↑' : initialButton;
+    const domainTabs = Array.from(document.querySelectorAll('[role="tab"][aria-controls]'));
+    function selectExampleDomain(tab, focus = false) {
+      domainTabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+      if (focus) tab.focus();
+    }
+    domainTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectExampleDomain(tab));
+      tab.addEventListener('keydown', event => {
+        let next;
+        if (event.key === 'ArrowRight') next = (index + 1) % domainTabs.length;
+        else if (event.key === 'ArrowLeft') next = (index - 1 + domainTabs.length) % domainTabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = domainTabs.length - 1;
+        else return;
+        event.preventDefault();
+        selectExampleDomain(domainTabs[next], true);
       });
     });
+    const birdContextStates = {"c_1": {"query": "Its feathers are dry throughout the attempt. Can this bird take off from level ground and fly 20 metres continuously without assistance?", "code": "1", "verdict": "Can fly"}, "c_2": {"query": "Its feathers are dry throughout the attempt. Can this bird take off from level ground and fly 500 metres continuously without assistance?", "code": "1", "verdict": "Can fly"}, "c_3": {"query": "Its feathers are thoroughly wet after heavy rain and cannot dry before takeoff. Can this bird take off from level ground and fly 20 metres continuously without assistance?", "code": "0", "verdict": "Cannot fly"}, "c_4": {"query": "Its feathers are dry throughout the attempt. Can this bird take off from level ground and fly 5 metres continuously without assistance?", "code": "1", "verdict": "Can fly"}, "c_5": {"query": "Its feathers are thoroughly wet after heavy rain and cannot dry before takeoff. Can this bird take off from level ground and fly 500 metres continuously without assistance?", "code": "0", "verdict": "Cannot fly"}};
+    function setBirdContext(contextId) {
+      const card = document.getElementById('bird-example');
+      const state = birdContextStates[contextId];
+      card.querySelectorAll('[data-field]').forEach(field => { field.textContent = state[field.dataset.field]; });
+      const wet = contextId === 'c_3' || contextId === 'c_5';
+      card.classList.toggle('changed', wet);
+      document.querySelectorAll('[data-bird-context]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.birdContext === contextId)));
+    }
+    document.querySelectorAll('[data-bird-context]').forEach(button => button.addEventListener('click', () => setBirdContext(button.dataset.birdContext)));
+
+    const legalContextStates = {"c_1": {"query": "This person intentionally damaged someone else\u2019s property without consent. There is no imminent serious danger or official duty, so no exception applies. Under the supplied hypothetical rule, is this person guilty?", "code": "1", "verdict": "Guilty"}, "c_2": {"query": "The same damage was solely necessary to prevent imminent serious harm to a person. In this emergency context, the supplied hypothetical rule exempts necessary damage. Is this person guilty?", "code": "0", "verdict": "Not guilty"}, "c_3": {"query": "The person is performing official duties, with no imminent serious danger. The damage was not lawfully authorised and was outside the authorised scope. Under the supplied rule, official status alone does not excuse the damage. Is this person guilty?", "code": "1", "verdict": "Guilty"}, "c_4": {"query": "A supervisor ordered the person to damage the property. There is no emergency or official duty, and the supervisor does not act for the property owner. Under the supplied rule, the order creates neither consent nor an exception. Is this person guilty?", "code": "1", "verdict": "Guilty"}};
+    function setLegalContext(contextId) {
+      const card = document.getElementById('guilty-example');
+      const state = legalContextStates[contextId];
+      card.querySelectorAll('[data-field]').forEach(field => { field.textContent = state[field.dataset.field]; });
+      card.classList.toggle('changed', state.code === '0');
+      document.querySelectorAll('[data-legal-context]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.legalContext === contextId)));
+    }
+    document.querySelectorAll('[data-legal-context]').forEach(button => button.addEventListener('click', () => setLegalContext(button.dataset.legalContext)));
   </script>
 </body>
 </html>

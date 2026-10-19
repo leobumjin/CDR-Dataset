@@ -1,0 +1,30 @@
+{
+  "source": "data/v1/source/labels/gpt-5.4/dataset.jsonl",
+  "source_sha256": "0e23041cac0116c1c97c1b83bab41f60da98bc68dd5b473f2555d3e101d87d26",
+  "domain_sample_counts": {
+    "birds": 500,
+    "humans": 500,
+    "mammals": 500,
+    "plants": 500,
+    "legal_cases": 500
+  },
+  "label_comparisons": {
+    "definition": "For each entity, compare c_1 against c_2, c_3, c_4, c_5. Not temporal updates.",
+    "total": 2000,
+    "counts": {
+      "true \u2192 true": 951,
+      "false \u2192 false": 581,
+      "true \u2192 false": 461,
+      "false \u2192 true": 7
+    }
+  },
+  "feature_ambiguity": {
+    "definition": "Number of feature_vector entries equal to 0.5, counted once per entity, grouped as 0 / 1-2 / 3+. Not difficulty levels.",
+    "entities": 500,
+    "counts": {
+      "0 ambiguous": 67,
+      "3+ ambiguous": 120,
+      "1\u20132 ambiguous": 313
+    }
+  }
+}
