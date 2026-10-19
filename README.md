@@ -86,6 +86,14 @@ The first version preserves the existing AISTATS experimental snapshot: **500
 instances × 5 contexts = 2,500 instance–context pairs**, across birds, humans,
 mammals, plants, and legal cases. Each domain has seven features.
 
+| Version | # Query Type | # Domain / Query | # Context / Query | # Entity / Query | Total / Query |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| **v1** | **5** | **1** | **5** | **100** | **500** |
+
+Query Type counts the five distinct `query_id` values. All remaining columns
+are **per query**: 1 domain × 5 contexts × 100 entities = 500 samples.
+Mammal and plant survival are separate queries. The full v1 release has 2,500 samples.
+
 | Split | Instances | Pairs |
 | :--- | ---: | ---: |
 | Train | 200 | 1,000 |
