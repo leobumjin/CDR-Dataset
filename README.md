@@ -21,8 +21,8 @@ A dataset for evaluating contextual default reasoning and belief retraction in l
 | Resource | Link | What you’ll find |
 | :--- | :--- | :--- |
 | 🌐 **Project Page** | [CDR-Dataset](https://leobumjin.github.io/CDR-Dataset/) | Overview and interactive Bird / Guilty examples |
-| 🤗 **Hugging Face** | [leo-bjpark/CDR-Dataset](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset) | Dataset files and version tags |
-| 📦 **Dataset v1** | [View v1](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/tree/v1) | 500 instances · 2,500 context pairs |
+| 🤗 **Hugging Face** | [leo-bjpark/CDR-Dataset](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset) | Dataset files and version configs |
+| 📦 **Dataset v1** | [View v1](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/tree/main/v1) | 500 instances · 2,500 context pairs |
 | 💻 **GitHub** | [leobumjin/CDR-Dataset](https://github.com/leobumjin/CDR-Dataset) | Versioned generation code, statistics, and documentation |
 
 ## Overview
@@ -75,7 +75,7 @@ runs/                        # Local working results, Git ignored
 ```
 
 Version 2 and later get their own `versions/v2`, `versions/v3`, etc. Generation
-code remains tracked; payloads are distributed through Hugging Face tags.
+code remains tracked; payloads are distributed through Hugging Face configs.
 See the [layout and versioning guide](docs/versioning.md).
 
 ## Dataset v1
@@ -92,10 +92,9 @@ mammals, plants, and legal cases. Each domain has seven features.
 | Test | 100 | 500 |
 
 Primary local reference: `data/v1/labels/gpt-5.4/dataset.jsonl`.
-GPT-4o alternate annotations, raw responses, inputs, run settings, and four student
-prompt variants are also preserved. These are teacher-generated references,
-not independently verified ground truth. The two teachers annotate the same
-2,500 pairs, rather than distinct examples.
+GPT-5.4 annotations, raw responses, inputs, run settings, and four student
+prompt variants are preserved. These are teacher-generated references,
+not independently verified ground truth. v1 has one default dataset configuration, generated with GPT-5.4.
 
 - [v1 release notes](versions/v1/README.md)
 - [Detailed statistics](versions/v1/statistics.json)
@@ -119,3 +118,9 @@ bash shells/huggingface.sh --version v1
 
 Download on another machine with `download --version v1 --repo-id leo-bjpark/CDR-Dataset`.
 See [local evaluation, publication, and download instructions](docs/huggingface.md).
+
+```python
+from datasets import load_dataset
+data = load_dataset("leo-bjpark/CDR-Dataset", "v1", split="all")
+train = data.filter(lambda row: row["split"] == "train")
+```

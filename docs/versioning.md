@@ -1,7 +1,7 @@
 # Repository layout and versioning
 
 Git tracks code and metadata grouped by dataset version. Actual dataset payloads
-are local under `data/` and distributed through Hugging Face version tags.
+are local under `data/` and distributed through Hugging Face version configs.
 
 ```text
 CDR-Dataset/
@@ -32,7 +32,7 @@ CDR-Dataset/
 
 Only v1 exists today. Future versions use `versions/v2`, `versions/v3`, etc.
 Generation source and data do not share a directory: code is tracked, payloads
-are not. The HF repository has version tags v1/v2/v3, rather than cumulative
+are not. The HF repository has version configs v1/v2/v3, rather than cumulative
 version folders. `huggingface.json` appears only after actual publication.
 
 ## Local generation and evaluation
@@ -73,7 +73,6 @@ and distribution audit; model training/evaluation is an independent local task.
    Data stays out of Git. Advance the registry's `latest` after acceptance.
 
 Published data, generation code, labels, contexts, splits, and prompt text stay
-frozen together. New revisions receive a new version; published HF tags are never
-moved. Experiments pin the version and HF commit SHA instead of `main` or `latest`.
+frozen together. New revisions receive a new version; new changes use a new config. Experiments record the config and HF commit SHA.
 
 See [Hugging Face workflow](huggingface.md) for details.
