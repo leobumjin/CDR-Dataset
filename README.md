@@ -147,3 +147,20 @@ HF publishes separate `train` (1,000), `test` (500), `revision_1` (500), and
 `revision_2` (500) splits under `v1/splits/`. Each HF record has only the eight
 query/context/entity/feature/label fields; local canonical rows retain domain and
 split for audit. Source revision-1/revision-2 map to HF revision_1/revision_2.
+
+## v2 development
+
+The `v2` branch is used for the next dataset version. Its separate project page
+is maintained in [`docs/v2/index.html`](docs/v2/index.html), linked from the main
+page. v2 dataset contents and results have not been released yet.
+
+## Local project page
+
+```bash
+bash shells/serve.sh
+# Optional port and bind address:
+# bash shells/serve.sh 8080 0.0.0.0
+```
+
+Open http://127.0.0.1:8000/ for the main page or
+http://127.0.0.1:8000/v2/ for v2. Stop the server with Ctrl+C.
