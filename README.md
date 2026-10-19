@@ -6,7 +6,9 @@
 
 A dataset for evaluating contextual default reasoning and belief retraction in language models.
 
-[![GitHub](https://img.shields.io/badge/GitHub-leobumjin%2FCDR--Dataset-181717?logo=github)](https://github.com/leobumjin/CDR-Dataset)
+[![GitHub](https://img.shields.io/badge/GitHub-Code-181717?logo=github)](https://github.com/leobumjin/CDR-Dataset)
+[![Project Page](https://img.shields.io/badge/Project-Page-537448)](https://leobumjin.github.io/CDR-Dataset/)
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-FFD21E)](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset)
 ![Task](https://img.shields.io/badge/Task-Default%20Reasoning-2563EB)
 ![Focus](https://img.shields.io/badge/Focus-Belief%20Retraction-7C3AED)
 
@@ -15,6 +17,13 @@ A dataset for evaluating contextual default reasoning and belief retraction in l
 **Reason with defaults. Reconsider with context.**
 
 </div>
+
+| Resource | Link | What you’ll find |
+| :--- | :--- | :--- |
+| 🌐 **Project Page** | [CDR-Dataset](https://leobumjin.github.io/CDR-Dataset/) | Overview and interactive Bird / Guilty examples |
+| 🤗 **Hugging Face** | [leo-bjpark/CDR-Dataset](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset) | Dataset files and version tags |
+| 📦 **Dataset v1** | [View v1](https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/tree/v1) | 500 instances · 2,500 context pairs |
+| 💻 **GitHub** | [leobumjin/CDR-Dataset](https://github.com/leobumjin/CDR-Dataset) | Versioned generation code, statistics, and documentation |
 
 ## Overview
 
@@ -52,6 +61,61 @@ git clone https://github.com/leobumjin/CDR-Dataset.git
 cd CDR-Dataset
 ```
 
-## Release information
+## Repository structure
 
-Dataset files, format documentation, evaluation instructions, and citation details will be documented here as they become available.
+```text
+versions/v1/                 # Git-tracked version metadata
+├── README.md                # Release notes
+├── manifest.json            # Provenance and checksums
+├── statistics.json
+└── generation/              # Generation source, configs, requirements, runner
+shells/                      # HF entrypoint and local validation tools
+data/v1/                    # Local dataset, Git ignored
+runs/                        # Local working results, Git ignored
+```
+
+Version 2 and later get their own `versions/v2`, `versions/v3`, etc. Generation
+code remains tracked; payloads are distributed through Hugging Face tags.
+See the [layout and versioning guide](docs/versioning.md).
+
+## Dataset v1
+
+The first version preserves the existing AISTATS experimental snapshot: **500
+instances × 5 contexts = 2,500 instance–context pairs**, across birds, humans,
+mammals, plants, and legal cases. Each domain has seven features.
+
+| Split | Instances | Pairs |
+| :--- | ---: | ---: |
+| Train | 200 | 1,000 |
+| Revision 1 | 100 | 500 |
+| Revision 2 | 100 | 500 |
+| Test | 100 | 500 |
+
+Primary local reference: `data/v1/labels/gpt-5.4/dataset.jsonl`.
+GPT-4o alternate annotations, raw responses, inputs, run settings, and four student
+prompt variants are also preserved. These are teacher-generated references,
+not independently verified ground truth. The two teachers annotate the same
+2,500 pairs, rather than distinct examples.
+
+- [v1 release notes](versions/v1/README.md)
+- [Detailed statistics](versions/v1/statistics.json)
+- [v1 generation instructions](versions/v1/generation/README.md)
+
+## Local work and Hugging Face
+
+```bash
+python shells/evaluate.py --data data/v1 --output runs/v1/evaluation.json
+python shells/release.py verify v1
+bash shells/huggingface.sh prepare --version v1
+```
+
+Publish explicitly after reviewing the prepared payload:
+
+```bash
+python -m pip install -r requirements-huggingface.txt
+hf auth login
+bash shells/huggingface.sh --version v1
+```
+
+Download on another machine with `download --version v1 --repo-id leo-bjpark/CDR-Dataset`.
+See [local evaluation, publication, and download instructions](docs/huggingface.md).

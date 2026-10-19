@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Unpublished generation runs and local release verification outputs
+/runs/
+
+# Dataset payloads live locally and on Hugging Face, not in Git.
+/data/

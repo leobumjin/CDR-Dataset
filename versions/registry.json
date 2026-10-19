@@ -1,0 +1,12 @@
+{
+  "latest": "v1",
+  "versions": {
+    "v1": {
+      "status": "frozen",
+      "data": "data/v1",
+      "pipeline": "versions/v1/generation",
+      "manifest": "versions/v1/manifest.json",
+      "primary_teacher": "gpt-5.4"
+    }
+  }
+}

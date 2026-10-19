@@ -1,0 +1,3039 @@
+{
+  "provenance": {
+    "catalog_version": 4,
+    "retrieved_date": "2026-10-04",
+    "mdd_commit": "749c2de16a949099cfc13ccbd2b86d427641e844",
+    "mdd_source_url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+    "mdd_license": "MIT; see configs/MDD_LICENSE.txt",
+    "mammal_selection": "100 extant non-domestic species: 20 cold/montane candidates, 20 arid/semiarid candidates, 20 warm-region candidates, 20 generalist/temperate candidates, 20 additional taxonomically diverse species. Selection groups are editorial sampling strata, not verified adaptation labels or teacher answers; no response-based filtering.",
+    "bird_size_classes": "Editorial bins of typical adult mass: tiny (<10 g), small (<200 g), medium (<2000 g), large (<10000 g), very_large (>=10000 g). Not an individual measured mass.",
+    "unknown_policy": "Uncollected raw attributes are null or omitted. Feature judgments use 0/0.5/1, with 0.5 for ambiguous evidence. Intermediate states, source missingness, and induced ambiguity are recorded separately.",
+    "construction": "6 bird and 6 plant species with constructed states; 100 distinct mammal species; human and legal profiles are fictional.",
+    "source_scope": "Curated supplementary sources. ConceptNet has not been collected for this implementation.",
+    "mammal_adaptation_reference": "Feature thresholds separate morphological/physiological adaptations from survival in a specific test or avoidance alone. Example desert mechanisms: https://www.nationalzoo.si.edu/animals/news/how-does-fennec-fox-survive-desert-and-other-questions-answered"
+  },
+  "birds": [
+    {
+      "species_id": "american_robin",
+      "name": "American robin",
+      "scientific_name": "Turdus migratorius",
+      "attributes": {
+        "adult_mass_g_range": [
+          77,
+          85
+        ],
+        "wing_structure": "feathered"
+      },
+      "student_features": {
+        "adult_size_class": "small",
+        "wing_structure": "feathered"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Cornell Lab of Ornithology",
+          "url": "https://www.allaboutbirds.org/guide/American_Robin/id",
+          "fields": [
+            "adult_mass_g_range",
+            "wing_structure"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mallard",
+      "name": "Mallard",
+      "scientific_name": "Anas platyrhynchos",
+      "attributes": {
+        "adult_mass_g_range": [
+          1000,
+          1300
+        ],
+        "wing_structure": "broad_feathered"
+      },
+      "student_features": {
+        "adult_size_class": "medium",
+        "wing_structure": "broad_feathered"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Cornell Lab of Ornithology",
+          "url": "https://www.allaboutbirds.org/guide/Mallard/id",
+          "fields": [
+            "adult_mass_g_range",
+            "wing_structure"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "bald_eagle",
+      "name": "Bald eagle",
+      "scientific_name": "Haliaeetus leucocephalus",
+      "attributes": {
+        "adult_mass_g_range": [
+          3000,
+          6300
+        ],
+        "wing_structure": "broad_feathered"
+      },
+      "student_features": {
+        "adult_size_class": "large",
+        "wing_structure": "broad_feathered"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Cornell Lab of Ornithology",
+          "url": "https://www.allaboutbirds.org/guide/Bald_Eagle/id",
+          "fields": [
+            "adult_mass_g_range",
+            "wing_structure"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "ruby_throated_hummingbird",
+      "name": "Ruby-throated hummingbird",
+      "scientific_name": "Archilochus colubris",
+      "attributes": {
+        "adult_mass_g_range": [
+          2,
+          6
+        ],
+        "wing_structure": "short_feathered"
+      },
+      "student_features": {
+        "adult_size_class": "tiny",
+        "wing_structure": "short_feathered"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Cornell Lab of Ornithology",
+          "url": "https://www.allaboutbirds.org/guide/Ruby-throated_Hummingbird/id",
+          "fields": [
+            "adult_mass_g_range",
+            "wing_structure"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "common_ostrich",
+      "name": "Common ostrich",
+      "scientific_name": "Struthio camelus",
+      "attributes": {
+        "adult_mass_g_range": [
+          90000,
+          130000
+        ],
+        "wing_structure": "loose_noninterlocking_feathers"
+      },
+      "student_features": {
+        "adult_size_class": "very_large",
+        "wing_structure": "loose_noninterlocking_feathers"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "San Diego Zoo Wildlife Alliance",
+          "url": "https://animals.sandiegozoo.org/animals/ostrich",
+          "fields": [
+            "adult_mass_g_range",
+            "wing_structure"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "african_penguin",
+      "name": "African penguin",
+      "scientific_name": "Spheniscus demersus",
+      "attributes": {
+        "adult_mass_g_range": [
+          2200,
+          3500
+        ],
+        "wing_structure": "flattened_flippers"
+      },
+      "student_features": {
+        "adult_size_class": "large",
+        "wing_structure": "flattened_flippers"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "South African National Biodiversity Institute",
+          "url": "https://www.sanbi.org/animal-of-the-week/african-penguin/",
+          "fields": [
+            "adult_mass_g_range",
+            "wing_structure"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    }
+  ],
+  "plants": [
+    {
+      "species_id": "aloe_vera",
+      "name": "Aloe vera",
+      "scientific_name": "Aloe vera",
+      "attributes": {
+        "growth_form": "succulent",
+        "succulent_leaves": true
+      },
+      "student_features": {
+        "growth_form": "succulent",
+        "succulent_leaves": true
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Royal Horticultural Society",
+          "url": "https://www.rhs.org.uk/plants/types/cacti-succulents/houseplants",
+          "fields": [
+            "growth_form",
+            "succulent_leaves"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "english_lavender",
+      "name": "English lavender",
+      "scientific_name": "Lavandula angustifolia",
+      "attributes": {
+        "growth_form": "shrub",
+        "succulent_leaves": null
+      },
+      "student_features": {
+        "growth_form": "shrub",
+        "succulent_leaves": null
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Royal Horticultural Society",
+          "url": "https://www.rhs.org.uk/plants/lavender/growing-guide",
+          "fields": [
+            "growth_form",
+            "succulent_leaves"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "monstera",
+      "name": "Swiss cheese plant",
+      "scientific_name": "Monstera deliciosa",
+      "attributes": {
+        "growth_form": "climber",
+        "succulent_leaves": null
+      },
+      "student_features": {
+        "growth_form": "climber",
+        "succulent_leaves": null
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Royal Horticultural Society",
+          "url": "https://www.rhs.org.uk/plants/11192/monstera-deliciosa-f/details",
+          "fields": [
+            "growth_form",
+            "succulent_leaves"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "sword_fern",
+      "name": "Sword fern",
+      "scientific_name": "Nephrolepis exaltata",
+      "attributes": {
+        "growth_form": "fern",
+        "succulent_leaves": null
+      },
+      "student_features": {
+        "growth_form": "fern",
+        "succulent_leaves": null
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Royal Horticultural Society",
+          "url": "https://www.rhs.org.uk/plants/types/ferns/tender-ferns-houseplants",
+          "fields": [
+            "growth_form",
+            "succulent_leaves"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "cretan_brake",
+      "name": "Cretan brake",
+      "scientific_name": "Pteris cretica",
+      "attributes": {
+        "growth_form": "fern",
+        "succulent_leaves": null
+      },
+      "student_features": {
+        "growth_form": "fern",
+        "succulent_leaves": null
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Royal Horticultural Society",
+          "url": "https://www.rhs.org.uk/plants/types/ferns/tender-ferns-houseplants",
+          "fields": [
+            "growth_form",
+            "succulent_leaves"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "venus_flytrap",
+      "name": "Venus flytrap",
+      "scientific_name": "Dionaea muscipula",
+      "attributes": {
+        "growth_form": "perennial_herb",
+        "succulent_leaves": null
+      },
+      "student_features": {
+        "growth_form": "perennial_herb",
+        "succulent_leaves": null
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "Royal Horticultural Society",
+          "url": "https://www.rhs.org.uk/garden-inspiration/plants-we-love/caring-for-a-venus-fly-trap",
+          "fields": [
+            "growth_form",
+            "succulent_leaves"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    }
+  ],
+  "mammals": [
+    {
+      "species_id": "mdd_1005972",
+      "name": "Arctic Fox",
+      "scientific_name": "Vulpes lagopus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005972",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005936",
+      "name": "Polar Bear",
+      "scientific_name": "Ursus maritimus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Ursidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Ursidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005936",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006202",
+      "name": "Muskox",
+      "scientific_name": "Ovibos moschatus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006202",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006306",
+      "name": "Caribou",
+      "scientific_name": "Rangifer tarandus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006306",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005816",
+      "name": "Wolverine",
+      "scientific_name": "Gulo gulo",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005816",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006285",
+      "name": "Moose",
+      "scientific_name": "Alces alces",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006285",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006256",
+      "name": "American Bison",
+      "scientific_name": "Bos bison",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006256",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006264",
+      "name": "Wild Yak",
+      "scientific_name": "Bos mutus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006264",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006024",
+      "name": "Snow Leopard",
+      "scientific_name": "Panthera uncia",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006024",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006210",
+      "name": "Chiru",
+      "scientific_name": "Pantholops hodgsonii",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006210",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006185",
+      "name": "Alpine Ibex",
+      "scientific_name": "Capra ibex",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006185",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006201",
+      "name": "Rocky Mountain Goat",
+      "scientific_name": "Oreamnos americanus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006201",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001081",
+      "name": "Arctic Hare",
+      "scientific_name": "Lepus arcticus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001081",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1002125",
+      "name": "Nearctic Collared Lemming",
+      "scientific_name": "Dicrostonyx groenlandicus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Cricetidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Cricetidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1002125",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005935",
+      "name": "Brown Bear",
+      "scientific_name": "Ursus arctos",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Ursidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Ursidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005935",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005943",
+      "name": "Gray Wolf",
+      "scientific_name": "Canis lupus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005943",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006006",
+      "name": "Canadian Lynx",
+      "scientific_name": "Lynx canadensis",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006006",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005863",
+      "name": "Beringian Ermine",
+      "scientific_name": "Mustela erminea",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005863",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001106",
+      "name": "Mountain Hare",
+      "scientific_name": "Lepus timidus",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001106",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001732",
+      "name": "Alpine Marmot",
+      "scientific_name": "Marmota marmota",
+      "selection_group": "cold_or_montane",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Sciuridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Sciuridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001732",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006384",
+      "name": "Wild Bactrian Camel",
+      "scientific_name": "Camelus ferus",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Camelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Camelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006384",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005978",
+      "name": "Fennec Fox",
+      "scientific_name": "Vulpes zerda",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005978",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006233",
+      "name": "Addax",
+      "scientific_name": "Addax nasomaculatus",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006233",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006149",
+      "name": "Dorcas Gazelle",
+      "scientific_name": "Gazella dorcas",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006149",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006164",
+      "name": "Dama Gazelle",
+      "scientific_name": "Nanger dama",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006164",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006240",
+      "name": "Arabian Oryx",
+      "scientific_name": "Oryx leucoryx",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006240",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006238",
+      "name": "Scimitar-horned Oryx",
+      "scientific_name": "Oryx dammah",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006238",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006239",
+      "name": "Gemsbok",
+      "scientific_name": "Oryx gazella",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006239",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006138",
+      "name": "Springbok",
+      "scientific_name": "Antidorcas marsupialis",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Bovidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006138",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006070",
+      "name": "Meerkat",
+      "scientific_name": "Suricata suricatta",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Herpestidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Herpestidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006070",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005988",
+      "name": "Sand Cat",
+      "scientific_name": "Felis margarita",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005988",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005981",
+      "name": "Caracal",
+      "scientific_name": "Caracal caracal",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005981",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1003818",
+      "name": "Desert Hedgehog",
+      "scientific_name": "Paraechinus aethiopicus",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Erinaceidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Erinaceidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1003818",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1003812",
+      "name": "Common Long-eared Hedgehog",
+      "scientific_name": "Hemiechinus auritus",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Erinaceidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Erinaceidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1003812",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001989",
+      "name": "Lesser Egyptian Jerboa",
+      "scientific_name": "Jaculus jaculus",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Dipodidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Dipodidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001989",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001991",
+      "name": "Greater Egyptian Jerboa",
+      "scientific_name": "Jaculus orientalis",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Dipodidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Dipodidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001991",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001892",
+      "name": "Desert Kangaroo Rat",
+      "scientific_name": "Dipodomys deserti",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Heteromyidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Heteromyidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001892",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001897",
+      "name": "Merriam's Kangaroo Rat",
+      "scientific_name": "Dipodomys merriami",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Heteromyidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Heteromyidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001897",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001901",
+      "name": "Ord's Kangaroo Rat",
+      "scientific_name": "Dipodomys ordii",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Heteromyidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Heteromyidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001901",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001083",
+      "name": "Black-tailed Jackrabbit",
+      "scientific_name": "Lepus californicus",
+      "selection_group": "arid_or_semiarid",
+      "attributes": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001083",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000522",
+      "name": "African Savanna Elephant",
+      "scientific_name": "Loxodonta africana",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Proboscidea",
+        "taxonomic_family": "Elephantidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Proboscidea",
+        "taxonomic_family": "Elephantidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000522",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000521",
+      "name": "Asian Elephant",
+      "scientific_name": "Elephas maximus",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Proboscidea",
+        "taxonomic_family": "Elephantidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Proboscidea",
+        "taxonomic_family": "Elephantidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000521",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006390",
+      "name": "Common Hippopotamus",
+      "scientific_name": "Hippopotamus amphibius",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Hippopotamidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Hippopotamidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006390",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006113",
+      "name": "Black Rhinoceros",
+      "scientific_name": "Diceros bicornis",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Perissodactyla",
+        "taxonomic_family": "Rhinocerotidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Perissodactyla",
+        "taxonomic_family": "Rhinocerotidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006113",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006111",
+      "name": "White Rhinoceros",
+      "scientific_name": "Ceratotherium simum",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Perissodactyla",
+        "taxonomic_family": "Rhinocerotidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Perissodactyla",
+        "taxonomic_family": "Rhinocerotidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006111",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006341",
+      "name": "Southern Giraffe",
+      "scientific_name": "Giraffa giraffa",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Giraffidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Giraffidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006341",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006020",
+      "name": "Lion",
+      "scientific_name": "Panthera leo",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006020",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006023",
+      "name": "Tiger",
+      "scientific_name": "Panthera tigris",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006023",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005979",
+      "name": "Cheetah",
+      "scientific_name": "Acinonyx jubatus",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Felidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005979",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000717",
+      "name": "Western Gorilla",
+      "scientific_name": "Gorilla gorilla",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hominidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hominidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000717",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000720",
+      "name": "Chimpanzee",
+      "scientific_name": "Pan troglodytes",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hominidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hominidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000720",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000722",
+      "name": "Bornean Orangutan",
+      "scientific_name": "Pongo pygmaeus",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hominidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hominidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000722",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000732",
+      "name": "Lar Gibbon",
+      "scientific_name": "Hylobates lar",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hylobatidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Hylobatidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000732",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000627",
+      "name": "Mandrill",
+      "scientific_name": "Mandrillus sphinx",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Cercopithecidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Cercopithecidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000627",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001008",
+      "name": "Ring-tailed Lemur",
+      "scientific_name": "Lemur catta",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Lemuridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Primates",
+        "taxonomic_family": "Lemuridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001008",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000433",
+      "name": "Linnaeus's Two-toed Sloth",
+      "scientific_name": "Choloepus didactylus",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Pilosa",
+        "taxonomic_family": "Choloepodidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Pilosa",
+        "taxonomic_family": "Choloepodidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000433",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000442",
+      "name": "Giant Anteater",
+      "scientific_name": "Myrmecophaga tridactyla",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Pilosa",
+        "taxonomic_family": "Myrmecophagidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Pilosa",
+        "taxonomic_family": "Myrmecophagidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000442",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006119",
+      "name": "Lowland Tapir",
+      "scientific_name": "Tapirus terrestris",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Perissodactyla",
+        "taxonomic_family": "Tapiridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Perissodactyla",
+        "taxonomic_family": "Tapiridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006119",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001209",
+      "name": "Greater Capybara",
+      "scientific_name": "Hydrochoerus hydrochaeris",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Caviidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Caviidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001209",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1004507",
+      "name": "Large Flying Fox",
+      "scientific_name": "Pteropus vampyrus",
+      "selection_group": "warm_region",
+      "attributes": {
+        "taxonomic_order": "Chiroptera",
+        "taxonomic_family": "Pteropodidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Chiroptera",
+        "taxonomic_family": "Pteropodidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1004507",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005977",
+      "name": "Red Fox",
+      "scientific_name": "Vulpes vulpes",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005977",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005934",
+      "name": "American Black Bear",
+      "scientific_name": "Ursus americanus",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Ursidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Ursidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005934",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005892",
+      "name": "Northern Raccoon",
+      "scientific_name": "Procyon lotor",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Procyonidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Procyonidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005892",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005859",
+      "name": "European Badger",
+      "scientific_name": "Meles meles",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005859",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006377",
+      "name": "Eurasian Wild Pig",
+      "scientific_name": "Sus scrofa",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Suidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Suidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006377",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006313",
+      "name": "Western Red Deer",
+      "scientific_name": "Cervus elaphus",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006313",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006286",
+      "name": "Western Roe Deer",
+      "scientific_name": "Capreolus capreolus",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006286",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006302",
+      "name": "White-tailed Deer",
+      "scientific_name": "Odocoileus virginianus",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Cervidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006302",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001957",
+      "name": "North American Beaver",
+      "scientific_name": "Castor canadensis",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Castoridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Castoridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001957",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001958",
+      "name": "Eurasian Beaver",
+      "scientific_name": "Castor fiber",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Castoridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Castoridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001958",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005848",
+      "name": "Eurasian Otter",
+      "scientific_name": "Lutra lutra",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005848",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005822",
+      "name": "European Pine Marten",
+      "scientific_name": "Martes martes",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005822",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005876",
+      "name": "European Polecat",
+      "scientific_name": "Mustela putorius",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005876",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001701",
+      "name": "Eurasian Red Squirrel",
+      "scientific_name": "Sciurus vulgaris",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Sciuridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Sciuridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001701",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001680",
+      "name": "Eastern Gray Squirrel",
+      "scientific_name": "Sciurus carolinensis",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Sciuridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Rodentia",
+        "taxonomic_family": "Sciuridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001680",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1003810",
+      "name": "West European Hedgehog",
+      "scientific_name": "Erinaceus europaeus",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Erinaceidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Erinaceidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1003810",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001113",
+      "name": "European Rabbit",
+      "scientific_name": "Oryctolagus cuniculus",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001113",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001090",
+      "name": "European Hare",
+      "scientific_name": "Lepus europaeus",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001090",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000023",
+      "name": "Virginia Opossum",
+      "scientific_name": "Didelphis virginiana",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Didelphimorphia",
+        "taxonomic_family": "Didelphidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Didelphimorphia",
+        "taxonomic_family": "Didelphidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000023",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005941",
+      "name": "Coyote",
+      "scientific_name": "Canis latrans",
+      "selection_group": "generalist_or_temperate",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Canidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005941",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000001",
+      "name": "Platypus",
+      "scientific_name": "Ornithorhynchus anatinus",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Monotremata",
+        "taxonomic_family": "Ornithorhynchidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Monotremata",
+        "taxonomic_family": "Ornithorhynchidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000001",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000483",
+      "name": "De Winton's Golden Mole",
+      "scientific_name": "Cryptochloris wintoni",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Afrosoricida",
+        "taxonomic_family": "Chrysochloridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Afrosoricida",
+        "taxonomic_family": "Chrysochloridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000483",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1006408",
+      "name": "Chilean Dolphin",
+      "scientific_name": "Cephalorhynchus eutropia",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Delphinidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Artiodactyla",
+        "taxonomic_family": "Delphinidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1006408",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005837",
+      "name": "African Striped Weasel",
+      "scientific_name": "Poecilogale albinucha",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Carnivora",
+        "taxonomic_family": "Mustelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005837",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1004405",
+      "name": "Sulawesi Harpy Fruit Bat",
+      "scientific_name": "Harpyionycteris celebensis",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Chiroptera",
+        "taxonomic_family": "Pteropodidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Chiroptera",
+        "taxonomic_family": "Pteropodidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1004405",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000422",
+      "name": "Guianan Greater Long-nosed Armadillo",
+      "scientific_name": "Dasypus kappleri",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Cingulata",
+        "taxonomic_family": "Dasypodidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Cingulata",
+        "taxonomic_family": "Dasypodidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000422",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000175",
+      "name": "Mainland Dusky Antechinus",
+      "scientific_name": "Antechinus mimetes",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Dasyuromorphia",
+        "taxonomic_family": "Dasyuridae"
+      },
+      "student_features": {
+        "taxonomic_order": "Dasyuromorphia",
+        "taxonomic_family": "Dasyuridae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000175",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000535",
+      "name": "Sunda Colugo",
+      "scientific_name": "Galeopterus variegatus",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Dermoptera",
+        "taxonomic_family": "Cynocephalidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Dermoptera",
+        "taxonomic_family": "Cynocephalidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000535",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000098",
+      "name": "Aceramarca Opossum",
+      "scientific_name": "Gracilinanus aceramarcae",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Didelphimorphia",
+        "taxonomic_family": "Didelphidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Didelphimorphia",
+        "taxonomic_family": "Didelphidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000098",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1007026",
+      "name": "Phyllis's Forest Wallaby",
+      "scientific_name": "Dorcopsis phyllis",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Diprotodontia",
+        "taxonomic_family": "Macropodidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Diprotodontia",
+        "taxonomic_family": "Macropodidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1007026",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1004253",
+      "name": "Mexican Large-toothed Shrew",
+      "scientific_name": "Sorex macrodon",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Soricidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Eulipotyphla",
+        "taxonomic_family": "Soricidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1004253",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000524",
+      "name": "Southern Tree Hyrax",
+      "scientific_name": "Dendrohyrax arboreus",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Hyracoidea",
+        "taxonomic_family": "Procaviidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Hyracoidea",
+        "taxonomic_family": "Procaviidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000524",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1001077",
+      "name": "Hispid Hare",
+      "scientific_name": "Caprolagus hispidus",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Lagomorpha",
+        "taxonomic_family": "Leporidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1001077",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000460",
+      "name": "Golden-rumped Sengi",
+      "scientific_name": "Rhynchocyon chrysopygus",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Macroscelidea",
+        "taxonomic_family": "Macroscelididae"
+      },
+      "student_features": {
+        "taxonomic_order": "Macroscelidea",
+        "taxonomic_family": "Macroscelididae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000460",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000139",
+      "name": "Southern Monito del Monte",
+      "scientific_name": "Dromiciops gliroides",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Microbiotheria",
+        "taxonomic_family": "Microbiotheriidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Microbiotheria",
+        "taxonomic_family": "Microbiotheriidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000139",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000141",
+      "name": "Northwestern Marsupial Mole",
+      "scientific_name": "Notoryctes caurinus",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Notoryctemorphia",
+        "taxonomic_family": "Notoryctidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Notoryctemorphia",
+        "taxonomic_family": "Notoryctidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000141",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000011",
+      "name": "Incan Shrew-opossum",
+      "scientific_name": "Lestoros inca",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Paucituberculata",
+        "taxonomic_family": "Caenolestidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Paucituberculata",
+        "taxonomic_family": "Caenolestidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000011",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000228",
+      "name": "Arfak Pygmy Bandicoot",
+      "scientific_name": "Microperoryctes aplini",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Peramelemorphia",
+        "taxonomic_family": "Peramelidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Peramelemorphia",
+        "taxonomic_family": "Peramelidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000228",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1005798",
+      "name": "Black-bellied Pangolin",
+      "scientific_name": "Phataginus tetradactylus",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Pholidota",
+        "taxonomic_family": "Manidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Pholidota",
+        "taxonomic_family": "Manidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1005798",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "species_id": "mdd_1000444",
+      "name": "Southern Tamandua",
+      "scientific_name": "Tamandua tetradactyla",
+      "selection_group": "additional_taxonomic_diversity",
+      "attributes": {
+        "taxonomic_order": "Pilosa",
+        "taxonomic_family": "Myrmecophagidae"
+      },
+      "student_features": {
+        "taxonomic_order": "Pilosa",
+        "taxonomic_family": "Myrmecophagidae"
+      },
+      "sources": [
+        {
+          "kind": "source",
+          "provider": "ASM Mammal Diversity Database",
+          "url": "https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/749c2de16a949099cfc13ccbd2b86d427641e844/assets/data/mdd.csv",
+          "record_id": "1000444",
+          "fields": [
+            "taxonomic_order",
+            "taxonomic_family"
+          ],
+          "retrieved_date": "2026-10-04"
+        }
+      ]
+    }
+  ]
+}
