@@ -1,13 +1,13 @@
 /* All selectors belong to this standalone component. */
 .bird-demo-section { margin: 30px 0 40px; padding: 0; border: 0; text-align: left; }
-.bird-demo-section .bird-demo-card { border: 0; border-radius: 10px; background: #f8f7f1; padding: 0; }
-.bird-demo-section .bird-landscape-viewport { overflow-x: auto; border: 1px solid #d7d5ca; border-radius: 10px; }
+.bird-demo-section .bird-demo-card { border: 0; border-radius: 10px; background: #ffffff; padding: 0; }
+.bird-demo-section .bird-landscape-viewport { overflow-x: auto; border: 1px solid #e4e4e1; border-radius: 10px; }
 .bird-demo-section .bird-landscape { isolation: isolate; position: relative; min-width: 560px; height: 230px; overflow: hidden; }
 .bird-demo-section .bird-zones { position: relative; z-index: 0; display: grid; grid-template-columns: repeat(4, 1fr); height: 100%; }
-.bird-demo-section .bird-zone { position: relative; display: flex; flex-direction: column; align-items: flex-start; width: 100%; border: 0; border-right: 1px dashed #d4d6cc; border-radius: 0; margin: 0; padding: 14px 12px; background: linear-gradient(to bottom, var(--zone-sky, #fcfbf7) 0 68%, var(--zone-ground, #eeebdf) 75% 100%); color: #142c29; text-align: left; overflow: hidden; opacity: 1; cursor: default; }
+.bird-demo-section .bird-zone { position: relative; display: flex; flex-direction: column; align-items: flex-start; width: 100%; border: 0; border-right: 1px dashed #d4d6cc; border-radius: 0; margin: 0; padding: 14px 12px; background: linear-gradient(to bottom, var(--zone-sky, #ffffff) 0 68%, var(--zone-ground, #f5f6f5) 75% 100%); color: #142c29; text-align: left; overflow: hidden; opacity: 1; cursor: default; }
 .bird-demo-section .bird-zone:last-child { border-right: 0; }
-.bird-demo-section .zone-puddle { --zone-sky: #f5f8f5; --zone-ground: #e6e9dd; overflow: visible; z-index: 2; }
-.bird-demo-section .zone-rain { --zone-sky: #edf3f3; --zone-ground: #e1e7df; }
+.bird-demo-section .zone-puddle { --zone-sky: #ffffff; --zone-ground: #f3f6f3; overflow: visible; z-index: 2; }
+.bird-demo-section .zone-rain { --zone-sky: #f4f8f9; --zone-ground: #edf3f1; }
 .bird-demo-section .bird-zone[data-active="true"] { box-shadow: inset 0 3px var(--secondary, #52765e); }
 .bird-demo-section .zone-puddle[data-active="true"], .bird-demo-section .zone-rain[data-active="true"] { box-shadow: inset 0 3px var(--accent, #9b324d); }
 .bird-demo-section .zone-sun { position: absolute; width: 46px; height: 46px; top: 22px; right: 18px; fill: #f2dda0; stroke: #ad9654; stroke-width: 1.7; }
