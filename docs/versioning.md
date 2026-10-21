@@ -1,7 +1,14 @@
 # Repository layout and versioning
 
-Git tracks code and metadata grouped by dataset version. Actual dataset payloads
-are local under `data/` and distributed through Hugging Face version configs.
+Bird/fly definitions use YAML under `catalog/classes/bird` and `catalog/tasks/fly`.
+Their source-run metadata and result histories use JSON under `labels/`.
+Other classes retain their previous layout. See the [catalog guide](../catalog/README.md).
+Future selected outputs belong in `release/`, pinning source-run IDs and annotation
+selections. Release export and the website are not yet connected to this layout.
+
+The existing frozen release workflow below tracks code and metadata grouped by
+dataset version. Released payloads are local under `data/` and distributed through
+Hugging Face version configs.
 
 ```text
 CDR-Dataset/

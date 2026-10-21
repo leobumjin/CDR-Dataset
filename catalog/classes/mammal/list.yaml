@@ -1,0 +1,202 @@
+class_id: mammal
+instances:
+  mammal_0001:
+    name: Domestic dog
+  mammal_0002:
+    name: Domestic cat
+  mammal_0003:
+    name: Gray wolf
+  mammal_0004:
+    name: Red fox
+  mammal_0005:
+    name: Arctic fox
+  mammal_0006:
+    name: Fennec fox
+  mammal_0007:
+    name: Coyote
+  mammal_0008:
+    name: African wild dog
+  mammal_0009:
+    name: Dhole
+  mammal_0010:
+    name: Raccoon dog
+  mammal_0011:
+    name: Lion
+  mammal_0012:
+    name: Tiger
+  mammal_0013:
+    name: Leopard
+  mammal_0014:
+    name: Snow leopard
+  mammal_0015:
+    name: Jaguar
+  mammal_0016:
+    name: Cheetah
+  mammal_0017:
+    name: Cougar
+  mammal_0018:
+    name: Eurasian lynx
+  mammal_0019:
+    name: Bobcat
+  mammal_0020:
+    name: Caracal
+  mammal_0021:
+    name: Brown bear
+  mammal_0022:
+    name: Polar bear
+  mammal_0023:
+    name: American black bear
+  mammal_0024:
+    name: Giant panda
+  mammal_0025:
+    name: Sun bear
+  mammal_0026:
+    name: Sloth bear
+  mammal_0027:
+    name: Raccoon
+  mammal_0028:
+    name: Red panda
+  mammal_0029:
+    name: European badger
+  mammal_0030:
+    name: Honey badger
+  mammal_0031:
+    name: Wolverine
+  mammal_0032:
+    name: Sea otter
+  mammal_0033:
+    name: Eurasian otter
+  mammal_0034:
+    name: American mink
+  mammal_0035:
+    name: Stoat
+  mammal_0036:
+    name: Meerkat
+  mammal_0037:
+    name: Banded mongoose
+  mammal_0038:
+    name: Spotted hyena
+  mammal_0039:
+    name: Striped hyena
+  mammal_0040:
+    name: Aardwolf
+  mammal_0041:
+    name: African savanna elephant
+  mammal_0042:
+    name: Asian elephant
+  mammal_0043:
+    name: White rhinoceros
+  mammal_0044:
+    name: Black rhinoceros
+  mammal_0045:
+    name: Common hippopotamus
+  mammal_0046:
+    name: Pygmy hippopotamus
+  mammal_0047:
+    name: Giraffe
+  mammal_0048:
+    name: Okapi
+  mammal_0049:
+    name: Dromedary
+  mammal_0050:
+    name: Bactrian camel
+  mammal_0051:
+    name: Llama
+  mammal_0052:
+    name: Alpaca
+  mammal_0053:
+    name: Vicuna
+  mammal_0054:
+    name: Domestic horse
+  mammal_0055:
+    name: Plains zebra
+  mammal_0056:
+    name: African wild ass
+  mammal_0057:
+    name: Domestic cattle
+  mammal_0058:
+    name: American bison
+  mammal_0059:
+    name: Wild yak
+  mammal_0060:
+    name: Water buffalo
+  mammal_0061:
+    name: Musk ox
+  mammal_0062:
+    name: Domestic sheep
+  mammal_0063:
+    name: Domestic goat
+  mammal_0064:
+    name: Alpine ibex
+  mammal_0065:
+    name: Saiga
+  mammal_0066:
+    name: Springbok
+  mammal_0067:
+    name: Wildebeest
+  mammal_0068:
+    name: Moose
+  mammal_0069:
+    name: Reindeer
+  mammal_0070:
+    name: Red deer
+  mammal_0071:
+    name: Roe deer
+  mammal_0072:
+    name: White-tailed deer
+  mammal_0073:
+    name: Wild boar
+  mammal_0074:
+    name: Common warthog
+  mammal_0075:
+    name: Capybara
+  mammal_0076:
+    name: Beaver
+  mammal_0077:
+    name: North American porcupine
+  mammal_0078:
+    name: European hedgehog
+  mammal_0079:
+    name: European mole
+  mammal_0080:
+    name: Brown rat
+  mammal_0081:
+    name: House mouse
+  mammal_0082:
+    name: Golden hamster
+  mammal_0083:
+    name: Red squirrel
+  mammal_0084:
+    name: European rabbit
+  mammal_0085:
+    name: Arctic hare
+  mammal_0086:
+    name: Red kangaroo
+  mammal_0087:
+    name: Koala
+  mammal_0088:
+    name: Common wombat
+  mammal_0089:
+    name: Tasmanian devil
+  mammal_0090:
+    name: Virginia opossum
+  mammal_0091:
+    name: Platypus
+  mammal_0092:
+    name: Short-beaked echidna
+  mammal_0093:
+    name: Little brown bat
+  mammal_0094:
+    name: Large flying fox
+  mammal_0095:
+    name: Bottlenose dolphin
+  mammal_0096:
+    name: Orca
+  mammal_0097:
+    name: Blue whale
+  mammal_0098:
+    name: Humpback whale
+  mammal_0099:
+    name: Harbor seal
+  mammal_0100:
+    name: Walrus

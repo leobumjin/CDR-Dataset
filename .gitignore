@@ -224,3 +224,18 @@ __marimo__/
 
 # Dataset payloads live locally and on Hugging Face, not in Git.
 /data/
+
+# Coordination lock for file-based label updates
+/labels/.write.lock
+
+# Keep catalog definitions and the checked-in label template.
+!/catalog/
+!/catalog/**
+/labels/*
+!/labels/README.md
+!/labels/generated/
+/labels/generated/*
+!/labels/generated/random_label/
+!/labels/generated/random_label/**
+!/releases/
+!/releases/**

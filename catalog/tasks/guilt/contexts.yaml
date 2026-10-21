@@ -1,0 +1,26 @@
+task_id: guilt
+contexts:
+  ordinary_situation:
+    description: 'Ordinary situation: there is no imminent serious danger and the person is not performing
+      official duties. Judge only this hypothetical property-damage offence using the stipulated facts;
+      no other offences or defences apply. The same property and act are assessed in each context.'
+  emergency_necessity:
+    description: 'Emergency situation: imminent serious danger threatens a person; the actor is not performing
+      official duties. Judge only this hypothetical property-damage offence using the stipulated facts;
+      no other offences or defences apply. The same property and act are assessed in each context.'
+  official_duties:
+    description: 'Official-duty situation: the person is performing official duties and there is no imminent
+      serious danger. Judge only this hypothetical property-damage offence using the stipulated facts;
+      no other offences or defences apply. The same property and act are assessed in each context.'
+  supervisors_order:
+    description: 'Supervisor''s order situation: a workplace supervisor has ordered the actor to damage
+      the property. There is no imminent serious danger and the actor is not performing official duties.
+      The supervisor or friend does not act on behalf of the property owner; the order or request does
+      not establish owner consent. Judge only this hypothetical property-damage offence using the stipulated
+      facts; no other offences or defences apply. The same property and act are assessed in each context.'
+  friends_request:
+    description: 'Friend''s request situation: a friend has asked the actor to damage the property. There
+      is no imminent serious danger and the actor is not performing official duties. The supervisor or
+      friend does not act on behalf of the property owner; the order or request does not establish owner
+      consent. Judge only this hypothetical property-damage offence using the stipulated facts; no other
+      offences or defences apply. The same property and act are assessed in each context.'

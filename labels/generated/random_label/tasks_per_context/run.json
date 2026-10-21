@@ -1,0 +1,702 @@
+{
+  "human_0001": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0002": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0003": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0004": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0005": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0006": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0007": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0008": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0009": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0010": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "false"
+  },
+  "human_0011": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0012": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0013": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0014": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0015": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0016": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0017": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0018": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0019": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "false"
+  },
+  "human_0020": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0021": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0022": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0023": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0024": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0025": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "false"
+  },
+  "human_0026": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0027": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "false"
+  },
+  "human_0028": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0029": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0030": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0031": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0032": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0033": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0034": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "false"
+  },
+  "human_0035": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0036": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "false"
+  },
+  "human_0037": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0038": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0039": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0040": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0041": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "false"
+  },
+  "human_0042": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0043": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0044": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0045": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0046": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0047": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0048": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0049": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0050": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0051": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0052": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0053": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0054": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0055": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0056": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0057": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0058": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0059": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0060": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "false"
+  },
+  "human_0061": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0062": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0063": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0064": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "false"
+  },
+  "human_0065": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0066": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0067": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0068": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0069": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0070": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "false"
+  },
+  "human_0071": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0072": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "false"
+  },
+  "human_0073": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0074": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0075": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "false"
+  },
+  "human_0076": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0077": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0078": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0079": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0080": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0081": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0082": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "true"
+  },
+  "human_0083": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0084": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0085": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0086": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0087": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0088": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0089": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0090": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "ambiguous",
+    "run_5km_10kmh": "true"
+  },
+  "human_0091": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0092": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0093": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "true",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0094": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0095": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "false",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0096": {
+    "run_100m_12kmh": "false",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "ambiguous"
+  },
+  "human_0097": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "true",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0098": {
+    "run_100m_12kmh": "ambiguous",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "true",
+    "run_5km_10kmh": "false"
+  },
+  "human_0099": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "false",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  },
+  "human_0100": {
+    "run_100m_12kmh": "true",
+    "run_100m_8kmh": "ambiguous",
+    "run_10km_8kmh": "ambiguous",
+    "run_1km_uphill": "false",
+    "run_5km_10kmh": "true"
+  }
+}

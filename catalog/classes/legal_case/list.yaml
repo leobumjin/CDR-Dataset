@@ -1,0 +1,202 @@
+class_id: legal_case
+instances:
+  legal_case_0001:
+    name: Breaking a window without permission
+  legal_case_0002:
+    name: Breaking a window with owner consent
+  legal_case_0003:
+    name: Breaking a window under disputed consent
+  legal_case_0004:
+    name: Breaking a window accidentally
+  legal_case_0005:
+    name: Breaking a window intentionally during a dispute
+  legal_case_0006:
+    name: Breaking a window to rescue a trapped person
+  legal_case_0007:
+    name: Breaking a window to prevent an imminent fire
+  legal_case_0008:
+    name: Breaking a window under official authorisation
+  legal_case_0009:
+    name: Breaking a window outside authorised duties
+  legal_case_0010:
+    name: Breaking a window under disputed emergency necessity
+  legal_case_0011:
+    name: Damaging a door without permission
+  legal_case_0012:
+    name: Damaging a door with owner consent
+  legal_case_0013:
+    name: Damaging a door under disputed consent
+  legal_case_0014:
+    name: Damaging a door accidentally
+  legal_case_0015:
+    name: Damaging a door intentionally during a dispute
+  legal_case_0016:
+    name: Damaging a door to rescue a trapped person
+  legal_case_0017:
+    name: Damaging a door to prevent an imminent fire
+  legal_case_0018:
+    name: Damaging a door under official authorisation
+  legal_case_0019:
+    name: Damaging a door outside authorised duties
+  legal_case_0020:
+    name: Damaging a door under disputed emergency necessity
+  legal_case_0021:
+    name: Cutting a fence without permission
+  legal_case_0022:
+    name: Cutting a fence with owner consent
+  legal_case_0023:
+    name: Cutting a fence under disputed consent
+  legal_case_0024:
+    name: Cutting a fence accidentally
+  legal_case_0025:
+    name: Cutting a fence intentionally during a dispute
+  legal_case_0026:
+    name: Cutting a fence to rescue a trapped person
+  legal_case_0027:
+    name: Cutting a fence to prevent an imminent fire
+  legal_case_0028:
+    name: Cutting a fence under official authorisation
+  legal_case_0029:
+    name: Cutting a fence outside authorised duties
+  legal_case_0030:
+    name: Cutting a fence under disputed emergency necessity
+  legal_case_0031:
+    name: Removing a lock without permission
+  legal_case_0032:
+    name: Removing a lock with owner consent
+  legal_case_0033:
+    name: Removing a lock under disputed consent
+  legal_case_0034:
+    name: Removing a lock accidentally
+  legal_case_0035:
+    name: Removing a lock intentionally during a dispute
+  legal_case_0036:
+    name: Removing a lock to rescue a trapped person
+  legal_case_0037:
+    name: Removing a lock to prevent an imminent fire
+  legal_case_0038:
+    name: Removing a lock under official authorisation
+  legal_case_0039:
+    name: Removing a lock outside authorised duties
+  legal_case_0040:
+    name: Removing a lock under disputed emergency necessity
+  legal_case_0041:
+    name: Damaging a vehicle without permission
+  legal_case_0042:
+    name: Damaging a vehicle with owner consent
+  legal_case_0043:
+    name: Damaging a vehicle under disputed consent
+  legal_case_0044:
+    name: Damaging a vehicle accidentally
+  legal_case_0045:
+    name: Damaging a vehicle intentionally during a dispute
+  legal_case_0046:
+    name: Damaging a vehicle to rescue a trapped person
+  legal_case_0047:
+    name: Damaging a vehicle to prevent an imminent fire
+  legal_case_0048:
+    name: Damaging a vehicle under official authorisation
+  legal_case_0049:
+    name: Damaging a vehicle outside authorised duties
+  legal_case_0050:
+    name: Damaging a vehicle under disputed emergency necessity
+  legal_case_0051:
+    name: Demolishing a wall without permission
+  legal_case_0052:
+    name: Demolishing a wall with owner consent
+  legal_case_0053:
+    name: Demolishing a wall under disputed consent
+  legal_case_0054:
+    name: Demolishing a wall accidentally
+  legal_case_0055:
+    name: Demolishing a wall intentionally during a dispute
+  legal_case_0056:
+    name: Demolishing a wall to rescue a trapped person
+  legal_case_0057:
+    name: Demolishing a wall to prevent an imminent fire
+  legal_case_0058:
+    name: Demolishing a wall under official authorisation
+  legal_case_0059:
+    name: Demolishing a wall outside authorised duties
+  legal_case_0060:
+    name: Demolishing a wall under disputed emergency necessity
+  legal_case_0061:
+    name: Cutting down a tree without permission
+  legal_case_0062:
+    name: Cutting down a tree with owner consent
+  legal_case_0063:
+    name: Cutting down a tree under disputed consent
+  legal_case_0064:
+    name: Cutting down a tree accidentally
+  legal_case_0065:
+    name: Cutting down a tree intentionally during a dispute
+  legal_case_0066:
+    name: Cutting down a tree to rescue a trapped person
+  legal_case_0067:
+    name: Cutting down a tree to prevent an imminent fire
+  legal_case_0068:
+    name: Cutting down a tree under official authorisation
+  legal_case_0069:
+    name: Cutting down a tree outside authorised duties
+  legal_case_0070:
+    name: Cutting down a tree under disputed emergency necessity
+  legal_case_0071:
+    name: Damaging a water pipe without permission
+  legal_case_0072:
+    name: Damaging a water pipe with owner consent
+  legal_case_0073:
+    name: Damaging a water pipe under disputed consent
+  legal_case_0074:
+    name: Damaging a water pipe accidentally
+  legal_case_0075:
+    name: Damaging a water pipe intentionally during a dispute
+  legal_case_0076:
+    name: Damaging a water pipe to rescue a trapped person
+  legal_case_0077:
+    name: Damaging a water pipe to prevent an imminent fire
+  legal_case_0078:
+    name: Damaging a water pipe under official authorisation
+  legal_case_0079:
+    name: Damaging a water pipe outside authorised duties
+  legal_case_0080:
+    name: Damaging a water pipe under disputed emergency necessity
+  legal_case_0081:
+    name: Destroying equipment without permission
+  legal_case_0082:
+    name: Destroying equipment with owner consent
+  legal_case_0083:
+    name: Destroying equipment under disputed consent
+  legal_case_0084:
+    name: Destroying equipment accidentally
+  legal_case_0085:
+    name: Destroying equipment intentionally during a dispute
+  legal_case_0086:
+    name: Destroying equipment to rescue a trapped person
+  legal_case_0087:
+    name: Destroying equipment to prevent an imminent fire
+  legal_case_0088:
+    name: Destroying equipment under official authorisation
+  legal_case_0089:
+    name: Destroying equipment outside authorised duties
+  legal_case_0090:
+    name: Destroying equipment under disputed emergency necessity
+  legal_case_0091:
+    name: Damaging a roof without permission
+  legal_case_0092:
+    name: Damaging a roof with owner consent
+  legal_case_0093:
+    name: Damaging a roof under disputed consent
+  legal_case_0094:
+    name: Damaging a roof accidentally
+  legal_case_0095:
+    name: Damaging a roof intentionally during a dispute
+  legal_case_0096:
+    name: Damaging a roof to rescue a trapped person
+  legal_case_0097:
+    name: Damaging a roof to prevent an imminent fire
+  legal_case_0098:
+    name: Damaging a roof under official authorisation
+  legal_case_0099:
+    name: Damaging a roof outside authorised duties
+  legal_case_0100:
+    name: Damaging a roof under disputed emergency necessity

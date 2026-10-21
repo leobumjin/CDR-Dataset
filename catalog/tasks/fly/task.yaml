@@ -1,0 +1,9 @@
+id: fly
+revision: 3
+name: Flying
+bindings:
+- class_id: bird
+  query_template: Can this bird fly?
+  target_definition: Complete the required aerial movement under the conditions associated with the context,
+    without external assistance.
+  source_query_id: can_fly

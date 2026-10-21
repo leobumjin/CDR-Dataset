@@ -1,0 +1,202 @@
+class_id: human
+instances:
+  human_0001:
+    name: Untrained adult at baseline
+  human_0002:
+    name: Untrained adult after a rest day
+  human_0003:
+    name: Untrained adult after a short walk
+  human_0004:
+    name: Untrained adult after a long training session
+  human_0005:
+    name: Untrained adult with moderate fatigue
+  human_0006:
+    name: Untrained adult with severe fatigue
+  human_0007:
+    name: Untrained adult with mild ankle pain
+  human_0008:
+    name: Untrained adult with a recent leg injury
+  human_0009:
+    name: Untrained adult during rehabilitation
+  human_0010:
+    name: Untrained adult after recovery
+  human_0011:
+    name: Recreational runner at baseline
+  human_0012:
+    name: Recreational runner after a rest day
+  human_0013:
+    name: Recreational runner after a short walk
+  human_0014:
+    name: Recreational runner after a long training session
+  human_0015:
+    name: Recreational runner with moderate fatigue
+  human_0016:
+    name: Recreational runner with severe fatigue
+  human_0017:
+    name: Recreational runner with mild ankle pain
+  human_0018:
+    name: Recreational runner with a recent leg injury
+  human_0019:
+    name: Recreational runner during rehabilitation
+  human_0020:
+    name: Recreational runner after recovery
+  human_0021:
+    name: Competitive runner at baseline
+  human_0022:
+    name: Competitive runner after a rest day
+  human_0023:
+    name: Competitive runner after a short walk
+  human_0024:
+    name: Competitive runner after a long training session
+  human_0025:
+    name: Competitive runner with moderate fatigue
+  human_0026:
+    name: Competitive runner with severe fatigue
+  human_0027:
+    name: Competitive runner with mild ankle pain
+  human_0028:
+    name: Competitive runner with a recent leg injury
+  human_0029:
+    name: Competitive runner during rehabilitation
+  human_0030:
+    name: Competitive runner after recovery
+  human_0031:
+    name: Distance runner at baseline
+  human_0032:
+    name: Distance runner after a rest day
+  human_0033:
+    name: Distance runner after a short walk
+  human_0034:
+    name: Distance runner after a long training session
+  human_0035:
+    name: Distance runner with moderate fatigue
+  human_0036:
+    name: Distance runner with severe fatigue
+  human_0037:
+    name: Distance runner with mild ankle pain
+  human_0038:
+    name: Distance runner with a recent leg injury
+  human_0039:
+    name: Distance runner during rehabilitation
+  human_0040:
+    name: Distance runner after recovery
+  human_0041:
+    name: Sprinter at baseline
+  human_0042:
+    name: Sprinter after a rest day
+  human_0043:
+    name: Sprinter after a short walk
+  human_0044:
+    name: Sprinter after a long training session
+  human_0045:
+    name: Sprinter with moderate fatigue
+  human_0046:
+    name: Sprinter with severe fatigue
+  human_0047:
+    name: Sprinter with mild ankle pain
+  human_0048:
+    name: Sprinter with a recent leg injury
+  human_0049:
+    name: Sprinter during rehabilitation
+  human_0050:
+    name: Sprinter after recovery
+  human_0051:
+    name: Hill runner at baseline
+  human_0052:
+    name: Hill runner after a rest day
+  human_0053:
+    name: Hill runner after a short walk
+  human_0054:
+    name: Hill runner after a long training session
+  human_0055:
+    name: Hill runner with moderate fatigue
+  human_0056:
+    name: Hill runner with severe fatigue
+  human_0057:
+    name: Hill runner with mild ankle pain
+  human_0058:
+    name: Hill runner with a recent leg injury
+  human_0059:
+    name: Hill runner during rehabilitation
+  human_0060:
+    name: Hill runner after recovery
+  human_0061:
+    name: Older adult at baseline
+  human_0062:
+    name: Older adult after a rest day
+  human_0063:
+    name: Older adult after a short walk
+  human_0064:
+    name: Older adult after a long training session
+  human_0065:
+    name: Older adult with moderate fatigue
+  human_0066:
+    name: Older adult with severe fatigue
+  human_0067:
+    name: Older adult with mild ankle pain
+  human_0068:
+    name: Older adult with a recent leg injury
+  human_0069:
+    name: Older adult during rehabilitation
+  human_0070:
+    name: Older adult after recovery
+  human_0071:
+    name: Adolescent runner at baseline
+  human_0072:
+    name: Adolescent runner after a rest day
+  human_0073:
+    name: Adolescent runner after a short walk
+  human_0074:
+    name: Adolescent runner after a long training session
+  human_0075:
+    name: Adolescent runner with moderate fatigue
+  human_0076:
+    name: Adolescent runner with severe fatigue
+  human_0077:
+    name: Adolescent runner with mild ankle pain
+  human_0078:
+    name: Adolescent runner with a recent leg injury
+  human_0079:
+    name: Adolescent runner during rehabilitation
+  human_0080:
+    name: Adolescent runner after recovery
+  human_0081:
+    name: Returning runner at baseline
+  human_0082:
+    name: Returning runner after a rest day
+  human_0083:
+    name: Returning runner after a short walk
+  human_0084:
+    name: Returning runner after a long training session
+  human_0085:
+    name: Returning runner with moderate fatigue
+  human_0086:
+    name: Returning runner with severe fatigue
+  human_0087:
+    name: Returning runner with mild ankle pain
+  human_0088:
+    name: Returning runner with a recent leg injury
+  human_0089:
+    name: Returning runner during rehabilitation
+  human_0090:
+    name: Returning runner after recovery
+  human_0091:
+    name: Mobility-limited adult at baseline
+  human_0092:
+    name: Mobility-limited adult after a rest day
+  human_0093:
+    name: Mobility-limited adult after a short walk
+  human_0094:
+    name: Mobility-limited adult after a long training session
+  human_0095:
+    name: Mobility-limited adult with moderate fatigue
+  human_0096:
+    name: Mobility-limited adult with severe fatigue
+  human_0097:
+    name: Mobility-limited adult with mild ankle pain
+  human_0098:
+    name: Mobility-limited adult with a recent leg injury
+  human_0099:
+    name: Mobility-limited adult during rehabilitation
+  human_0100:
+    name: Mobility-limited adult after recovery

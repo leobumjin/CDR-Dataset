@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore sample labels for a selected class, task and context in CDR-Dataset.">
+  <title>Task–Context · CDR-Dataset</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header><a class="brand" href="../">CDR-Dataset</a><nav class="page-nav" aria-label="Main navigation"><a href="../">Home</a><a href="../instances/">Instances</a><a href="./" aria-current="page">Task–Context</a></nav></header>
+  <main id="main">
+    <div class="catalog-page-heading"><p class="catalog-kicker">Released judgments</p><h1>Task–Context</h1><p>Choose a class, task and context to explore sample labels. Hover or focus a sample to inspect its features.</p></div>
+    <section class="task-context-browser" aria-label="Task and context labels">
+      <div class="task-context-controls">
+        <label>Class<select id="judgment-class" disabled></select></label>
+        <label>Task<select id="judgment-task" disabled></select></label>
+        <label>Context<select id="judgment-context" disabled></select></label>
+        <label>Release<select id="judgment-source" disabled><option value="">No release selected</option></select></label>
+      </div>
+      <div id="judgment-definition" class="judgment-definition"></div>
+      <p id="judgment-source-note" class="catalog-entry-meta"></p>
+      <div class="judgment-list-toolbar"><label>Search samples<input id="judgment-search" type="search" placeholder="Name or instance ID"></label><label>Show<select id="judgment-filter"><option value="all">All labels</option><option value="true">True</option><option value="false">False</option><option value="ambiguous">Ambiguous</option><option value="NA">NA</option></select></label></div>
+      <p id="judgment-count" class="catalog-result-count" role="status" aria-live="polite">Loading samples…</p>
+      <div id="judgment-samples" class="judgment-samples"></div>
+      <noscript><p>Enable JavaScript to explore sample labels.</p></noscript>
+    </section>
+  </main>
+  <div id="sample-tooltip" class="sample-tooltip" role="tooltip" hidden></div>
+  <footer><span>CDR-Dataset · Task–Context</span><a href="../">Back to overview</a></footer>
+  <script src="../assets/task-context.js" defer></script>
+</body>
+</html>

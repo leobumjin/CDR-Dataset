@@ -1,0 +1,23 @@
+class_id: plant
+features:
+  plant_f_001:
+    name: is_succulent
+    description: The plant’s succulent growth form.
+  plant_f_002:
+    name: is_fern
+    description: Whether the plant is a fern.
+  plant_f_003:
+    name: has_established_roots
+    description: How well established the plant’s roots are.
+  plant_f_004:
+    name: is_healthy
+    description: The individual’s health.
+  plant_f_005:
+    name: has_moist_soil
+    description: How moist the soil around the plant is.
+  plant_f_006:
+    name: has_succulent_leaves
+    description: The presence of fleshy, water-storing leaves.
+  plant_f_007:
+    name: is_shrub
+    description: Whether the plant has a shrub growth form.

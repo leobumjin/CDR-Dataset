@@ -1,0 +1,24 @@
+task_id: run
+contexts:
+  run_100m_8kmh:
+    description: Run 100 metres continuously at 8 km/h on a dry, level track at 20 C. No walking breaks
+      or external assistance. Interpret reported sustained test distance and pace as the person's demonstrated
+      rested capacity, not a guarantee in a fatigued or injured state.
+  run_5km_10kmh:
+    description: Run 5,000 metres continuously at 10 km/h on a dry, level track at 20 C. No walking breaks
+      or external assistance. Interpret reported sustained test distance and pace as demonstrated rested
+      capacity, not a guarantee in a fatigued or injured state.
+  run_1km_uphill:
+    description: Run 1,000 metres continuously at 8 km/h on a dry gravel trail with a constant 10 percent
+      uphill gradient at 20 C. No walking breaks or external assistance. The reported level-track test
+      does not itself establish uphill endurance; consider the stipulated training, mobility, and fatigue.
+  run_100m_12kmh:
+    description: Run 100 metres continuously at 12 km/h on a dry, level track at 20 C. No walking breaks
+      or external assistance. Interpret reported sustained test distance and pace as demonstrated rested
+      capacity, not a guarantee in a fatigued or injured state. Keep the stipulated mobility and fatigue
+      unchanged.
+  run_10km_8kmh:
+    description: Run 10,000 metres continuously at 8 km/h on a dry, level track at 20 C. No walking breaks
+      or external assistance. Interpret reported sustained test distance and pace as demonstrated rested
+      capacity, not a guarantee in a fatigued or injured state. Keep the stipulated mobility and fatigue
+      unchanged.

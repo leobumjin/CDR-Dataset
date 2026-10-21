@@ -1,0 +1,60 @@
+{
+  "sources": {
+    "v1": {
+      "kind": "release",
+      "name": "v1",
+      "available": false,
+      "classes": [
+        "bird",
+        "human",
+        "legal_case",
+        "mammal",
+        "plant"
+      ],
+      "instance_range": [
+        1,
+        100
+      ],
+      "feature_range": [
+        1,
+        7
+      ],
+      "contexts": {
+        "fly": [
+          "dry_20m",
+          "dry_500m",
+          "wet_20m",
+          "dry_5m",
+          "wet_500m"
+        ],
+        "guilt": [
+          "ordinary_situation",
+          "emergency_necessity",
+          "official_duties",
+          "supervisors_order",
+          "friends_request"
+        ],
+        "run": [
+          "run_100m_8kmh",
+          "run_5km_10kmh",
+          "run_1km_uphill",
+          "run_100m_12kmh",
+          "run_10km_8kmh"
+        ],
+        "survive": [
+          "mammal_mild_7d",
+          "mammal_cold_24h",
+          "mammal_heat_24h",
+          "mammal_no_water_food_3d",
+          "mammal_no_food_14d",
+          "plant_no_water_3d",
+          "plant_hot_drought_30d",
+          "plant_freezing_7d",
+          "plant_watered_7d",
+          "plant_waterlogged_7d"
+        ]
+      },
+      "features": {}
+    }
+  }
+}

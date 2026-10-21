@@ -1,0 +1,23 @@
+class_id: bird
+features:
+  bird_f_001:
+    name: is_large
+    description: How large the bird's body is relative to birds in general.
+  bird_f_002:
+    name: has_flight_wings
+    description: How well the bird's wing anatomy is suited to powered flight.
+  bird_f_003:
+    name: has_developed_flight_plumage
+    description: How fully the bird's flight feathers have developed.
+  bird_f_004:
+    name: has_intact_wings
+    description: How intact and undamaged the bird's wings are.
+  bird_f_005:
+    name: is_rested
+    description: How rested the bird is.
+  bird_f_006:
+    name: has_unhealed_fracture
+    description: The presence of a wing fracture that has not healed.
+  bird_f_007:
+    name: has_severe_fatigue
+    description: The severity of the bird's current fatigue.

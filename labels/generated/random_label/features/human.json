@@ -1,0 +1,902 @@
+{
+  "human_0001": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0002": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0003": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0004": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0005": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0006": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0007": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0008": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0009": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0010": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0011": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0012": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0013": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0014": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0015": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0016": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0017": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0
+  },
+  "human_0018": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0019": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0020": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0021": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0022": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0023": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0024": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0025": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0026": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0027": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0028": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0
+  },
+  "human_0029": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0030": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0031": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0032": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0033": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0034": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0035": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 1,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0036": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0037": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0038": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0039": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0040": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0041": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0042": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0
+  },
+  "human_0043": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0044": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0045": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0046": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0047": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0048": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0049": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0050": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0051": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0052": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0053": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0054": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0
+  },
+  "human_0055": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0056": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0057": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0058": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0059": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0060": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0061": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0062": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0063": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0064": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0065": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0066": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0067": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0068": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0069": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0070": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0071": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0072": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0073": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0074": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0075": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0076": {
+    "human_f_001": 0,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0077": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0
+  },
+  "human_0078": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0079": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0080": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 1
+  },
+  "human_0081": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 0.5,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0082": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0083": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 1,
+    "human_f_007": 0
+  },
+  "human_0084": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0085": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0086": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0087": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 1
+  },
+  "human_0088": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0089": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 0.5,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0090": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  },
+  "human_0091": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 1,
+    "human_f_004": 0.5,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0092": {
+    "human_f_001": 0.5,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 0.5,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0
+  },
+  "human_0093": {
+    "human_f_001": 0.5,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 0,
+    "human_f_005": 1,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0094": {
+    "human_f_001": 0,
+    "human_f_002": 0,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0095": {
+    "human_f_001": 1,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0,
+    "human_f_007": 0
+  },
+  "human_0096": {
+    "human_f_001": 0,
+    "human_f_002": 0.5,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0.5,
+    "human_f_006": 0,
+    "human_f_007": 1
+  },
+  "human_0097": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 1,
+    "human_f_006": 0,
+    "human_f_007": 0.5
+  },
+  "human_0098": {
+    "human_f_001": 1,
+    "human_f_002": 0,
+    "human_f_003": 1,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 0.5,
+    "human_f_007": 0
+  },
+  "human_0099": {
+    "human_f_001": 1,
+    "human_f_002": 1,
+    "human_f_003": 0,
+    "human_f_004": 1,
+    "human_f_005": 0,
+    "human_f_006": 1,
+    "human_f_007": 0.5
+  },
+  "human_0100": {
+    "human_f_001": 0.5,
+    "human_f_002": 1,
+    "human_f_003": 0.5,
+    "human_f_004": 0,
+    "human_f_005": 0.5,
+    "human_f_006": 0.5,
+    "human_f_007": 0.5
+  }
+}
