@@ -80,7 +80,7 @@ summary { cursor: pointer; color: var(--accent); font-size: 14px; font-weight: 5
 .resource-table th { font-weight: 500; }
 .resource-table thead { color: var(--muted); font-size: 12px; }
 .resource-table a { overflow-wrap: anywhere; }
-pre { overflow-x: auto; background: #eeeee6; border: 1px solid var(--line); border-radius: 4px; padding: 20px; margin: 20px 0; font: 12px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace; }
+pre { overflow-x: auto; background: #ffffff; border: 1px solid var(--line); border-radius: 4px; padding: 20px; margin: 20px 0; font: 12px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace; }
 code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .88em; }
 pre code { font-size: inherit; }
 .sample-record { max-height: 380px; }
@@ -276,7 +276,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 22px
 /* Fixed tooltip floats above the table without affecting its layout. */
 .dataset-summary .resource-table thead th { font-size: 13px; }
 .dataset-summary .resource-table tbody th, .dataset-summary .stat-example-button { font-size: 19px; }
-.statistic-tooltip { position: fixed; z-index: 100; width: max-content; max-width: min(390px, calc(100vw - 24px)); padding: 16px 18px; border: 1px solid #d7c5ca; border-radius: 9px; background: #fffdf9; box-shadow: 0 8px 28px #2d2b291a; pointer-events: auto; }
+.statistic-tooltip { position: fixed; z-index: 100; width: max-content; max-width: min(390px, calc(100vw - 24px)); padding: 16px 18px; border: 1px solid #d7c5ca; border-radius: 9px; background: #ffffff; box-shadow: 0 8px 28px #2d2b291a; pointer-events: auto; }
 .statistic-tooltip strong { display: block; color: var(--accent); font-size: 14px; font-weight: 600; }
 .statistic-tooltip p { white-space: pre-line; color: var(--ink); font-size: 14px; line-height: 1.75; margin: 7px 0 0; overflow-wrap: anywhere; }
 
