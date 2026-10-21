@@ -1,10 +1,10 @@
 :root {
   color-scheme: light;
-  --paper: #f8f7f2;
+  --paper: #ffffff;
   --ink: #2d2b29;
   --muted: #706c67;
-  --line: #dfdcd4;
-  --panel: #fcfbf7;
+  --line: #e4e4e1;
+  --panel: #ffffff;
   --accent: #9b324d;
   --accent-hover: #7d253c;
   --accent-soft: #f2e7e9;
