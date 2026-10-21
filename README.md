@@ -84,10 +84,29 @@ Experimental features are derived from the constructed profiles for Humans and L
 
 The [v1 details page](https://leobumjin.github.io/CDR-Dataset/v1/) documents domains and queries, entities, feature categories and labeling, context categories, and query labeling. Version-specific [generation instructions](versions/v1/generation/README.md), [release notes](versions/v1/README.md), and [statistics](versions/v1/statistics.json) are retained in this repository.
 
+## Incremental catalog
+
+Bird definitions now use YAML under [catalog/classes/bird/](catalog/classes/bird/)
+and [catalog/tasks/fly/](catalog/tasks/fly/). Bird class names and metadata come from CUB-200-2011 using
+`bash shells/catalog/classes_bird_cub.sh` and are stored as JSON under
+[labels/](labels/), grouped by source or execution. Feature and task judgments
+will be stored there separately when produced.
+Instance list entries contain `id` and `name`.
+See the [catalog guide](catalog/README.md) and run `python -m src.catalog validate`.
+Other classes retain their previous format. Frozen v1 and its publication
+workflow are unchanged; `releases/` is reserved for future selected outputs.
+
 ## Repository and versioning
 
 ```text
 CDR-Dataset/
+├── src/catalog/               # Catalog collection, validation and storage code
+├── catalog/                   # Catalog definitions and documentation
+│   ├── classes/               # Groups, instance profiles and feature definitions
+│   ├── tasks/                 # General task definitions and contexts
+│   └── labels/                # Unmigrated legacy results for other classes
+├── labels/                    # Bird source-run JSON metadata and results
+├── release/                   # Future clean selected outputs
 ├── versions/
 │   ├── registry.json          # Current version registry
 │   └── v1/

@@ -1,15 +1,16 @@
-# Latest-version summary
+# Project overview assets
 
-Edit `config.json` to update the hero's latest version and categories. Add a
-`versions.v2` entry with its category list, then change `latestVersion` to `v2`.
-`overview.js` builds the version link and cards from that entry. Category IDs,
-display names, queries, and icon symbol IDs are kept in the configuration.
+The home page now uses `../catalog-explorer.js` and `../catalog.json` to render
+class/task combinations and task summaries. Instance and context browsing live on
+the separate /instances/ and /task-context/ pages. The latter uses task-context.js
+to show sample judgments for a selected task and context. Catalog
+JSON is generated from catalog YAML by `python -m src.catalog.web_assets` and is
+also refreshed after successful manual/CUB catalog generation.
 
-Edit `icons.svg` to change or add SVG symbols. Styles are in `docs/styles.css`
-under “Configurable latest-version summary”. A static v1 fallback is in the HTML
-for unavailable JavaScript/network. Update that fallback when releasing a new
-version if you want it to match as well.
+`icons.svg` provides the class icons. `statistics.js` supports the separate frozen
+v1 release statistics table. `config.json` and `overview.js` are retained legacy
+overview assets; the home page no longer loads overview.js.
 
-This component updates the hero only; the detailed v1 examples and statistics
-elsewhere on the page remain explicitly about v1. No dataset or evaluation files
-are changed. Preview using `bash shells/serve.sh`.
+Generation scope is read from the separate catalog_generation_scripts.json and
+label_generation_scripts.json assets. The catalog snapshot contains definitions,
+not random feature or task judgments. Preview with `bash shells/serve.sh`.

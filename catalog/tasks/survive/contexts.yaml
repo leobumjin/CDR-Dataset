@@ -1,0 +1,70 @@
+task_id: survive
+contexts:
+  mammal_mild_7d:
+    description: Survive 7 days at a temperature suitable for the species, with species-appropriate food
+      and hydration supplied as needed. Use the stipulated developmental stage, health, and energy reserves
+      without changing them before the start. The animal is in a safe enclosure with its species-appropriate
+      supporting medium (air or water), no predators, injury, or external rescue. The specified temperature
+      applies to that surrounding medium throughout the interval. Judge whether this individual is alive
+      at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction
+      question.
+  mammal_cold_24h:
+    description: Survive 24 hours at a constant -20 C. Food and hydration are supplied as needed. There
+      is no heated shelter, insulation added by humans, or opportunity to leave the cold environment.
+      Use the stipulated developmental stage, health, and energy reserves without changing them before
+      the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air
+      or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding
+      medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological
+      stress is allowed. Do not answer a species-level reproduction question.
+  mammal_heat_24h:
+    description: Survive 24 hours at a constant 40 C. Food and hydration are supplied as needed. There
+      is no active cooling or opportunity to leave the hot environment. Use the stipulated developmental
+      stage, health, and energy reserves without changing them before the start. The animal is in a safe
+      enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or
+      external rescue. The specified temperature applies to that surrounding medium throughout the interval.
+      Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do
+      not answer a species-level reproduction question.
+  mammal_no_water_food_3d:
+    description: Survive 3 days at a temperature suitable for the species with no fluid intake, including
+      drinking, absorption, and moisture from food. Food is not supplied during this interval. A species-required
+      supporting medium remains available but cannot provide hydration; this is a constructed exposure
+      condition. Use the stipulated developmental stage, health, and energy reserves without changing
+      them before the start. The animal is in a safe enclosure with its species-appropriate supporting
+      medium (air or water), no predators, injury, or external rescue. The specified temperature applies
+      to that surrounding medium throughout the interval. Judge whether this individual is alive at the
+      end; temporary physiological stress is allowed. Do not answer a species-level reproduction question.
+  mammal_no_food_14d:
+    description: Survive 14 days at a temperature suitable for the species without food or calorie intake.
+      Hydration is supplied as needed. Use the stipulated developmental stage, health, and energy reserves
+      without changing them before the start. The animal is in a safe enclosure with its species-appropriate
+      supporting medium (air or water), no predators, injury, or external rescue. The specified temperature
+      applies to that surrounding medium throughout the interval. Judge whether this individual is alive
+      at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction
+      question.
+  plant_no_water_3d:
+    description: Remain for 3 days without watering or rain at a constant 20 C, 50 percent relative humidity,
+      and bright indirect light for 12 hours per day. The plant starts in the stipulated state in a 10-litre
+      pot with suitable well-drained substrate, no external water reservoir, and no pests. Judge survival
+      at the end, allowing temporary wilting.
+  plant_hot_drought_30d:
+    description: Remain for 30 days without watering or rain at a constant 35 C, 30 percent relative humidity,
+      and direct sunlight for 12 hours per day. The plant starts in the stipulated state in a 10-litre
+      pot with suitable well-drained substrate, no external water reservoir, and no pests. Judge survival
+      at the end, allowing temporary damage.
+  plant_freezing_7d:
+    description: Remain for 7 days without watering or rain at a constant -10 C, including roots and substrate,
+      with daylight for 8 hours per day and no frost protection. The plant starts in the stipulated state
+      in a 10-litre pot with suitable substrate, no external water reservoir, and no pests. Judge survival
+      at the end, allowing temporary damage or dormancy.
+  plant_watered_7d:
+    description: Remain for 7 days at a constant 20 C, 50 percent relative humidity, and bright indirect
+      light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable
+      well-drained substrate and no pests. Water is supplied as needed to maintain suitable soil moisture
+      after the start, without waterlogging. Keep the stipulated root condition and initial health. Judge
+      survival at the end, allowing temporary damage.
+  plant_waterlogged_7d:
+    description: Remain for 7 days at a constant 20 C, 50 percent relative humidity, and bright indirect
+      light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable
+      substrate and no pests. Immediately after the start, the entire root zone is continuously saturated
+      with standing water and no drainage for the full interval. Keep the stipulated root condition and
+      initial health. Judge survival at the end, allowing temporary damage.

@@ -1,0 +1,602 @@
+class_id: bird
+instances:
+  bird_0001:
+    name: House sparrow
+  bird_0002:
+    name: Eurasian tree sparrow
+  bird_0003:
+    name: American robin
+  bird_0004:
+    name: European robin
+  bird_0005:
+    name: Common blackbird
+  bird_0006:
+    name: Song thrush
+  bird_0007:
+    name: Northern cardinal
+  bird_0008:
+    name: Blue jay
+  bird_0009:
+    name: Eurasian magpie
+  bird_0010:
+    name: Carrion crow
+  bird_0011:
+    name: Common raven
+  bird_0012:
+    name: American crow
+  bird_0013:
+    name: Rock pigeon
+  bird_0014:
+    name: Mourning dove
+  bird_0015:
+    name: Eurasian collared dove
+  bird_0016:
+    name: Barn swallow
+  bird_0017:
+    name: Common house martin
+  bird_0018:
+    name: Common swift
+  bird_0019:
+    name: Ruby-throated hummingbird
+  bird_0020:
+    name: Anna hummingbird
+  bird_0021:
+    name: Bald eagle
+  bird_0022:
+    name: Golden eagle
+  bird_0023:
+    name: Peregrine falcon
+  bird_0024:
+    name: Common kestrel
+  bird_0025:
+    name: Red-tailed hawk
+  bird_0026:
+    name: Eurasian sparrowhawk
+  bird_0027:
+    name: Osprey
+  bird_0028:
+    name: Barn owl
+  bird_0029:
+    name: Snowy owl
+  bird_0030:
+    name: Great horned owl
+  bird_0031:
+    name: Eurasian eagle owl
+  bird_0032:
+    name: Great spotted woodpecker
+  bird_0033:
+    name: Downy woodpecker
+  bird_0034:
+    name: Northern flicker
+  bird_0035:
+    name: Common kingfisher
+  bird_0036:
+    name: Belted kingfisher
+  bird_0037:
+    name: European bee-eater
+  bird_0038:
+    name: Hoopoe
+  bird_0039:
+    name: Atlantic puffin
+  bird_0040:
+    name: Razorbill
+  bird_0041:
+    name: Common murre
+  bird_0042:
+    name: Black guillemot
+  bird_0043:
+    name: Wandering albatross
+  bird_0044:
+    name: Black-footed albatross
+  bird_0045:
+    name: Northern fulmar
+  bird_0046:
+    name: European storm petrel
+  bird_0047:
+    name: Brown pelican
+  bird_0048:
+    name: Great white pelican
+  bird_0049:
+    name: Great cormorant
+  bird_0050:
+    name: Anhinga
+  bird_0051:
+    name: Great blue heron
+  bird_0052:
+    name: Grey heron
+  bird_0053:
+    name: Little egret
+  bird_0054:
+    name: Great egret
+  bird_0055:
+    name: White stork
+  bird_0056:
+    name: Shoebill
+  bird_0057:
+    name: Sacred ibis
+  bird_0058:
+    name: Roseate spoonbill
+  bird_0059:
+    name: Greater flamingo
+  bird_0060:
+    name: Sandhill crane
+  bird_0061:
+    name: Common crane
+  bird_0062:
+    name: Mute swan
+  bird_0063:
+    name: Whooper swan
+  bird_0064:
+    name: Canada goose
+  bird_0065:
+    name: Greylag goose
+  bird_0066:
+    name: Mallard
+  bird_0067:
+    name: Mandarin duck
+  bird_0068:
+    name: Wood duck
+  bird_0069:
+    name: Common eider
+  bird_0070:
+    name: Common merganser
+  bird_0071:
+    name: Red-breasted merganser
+  bird_0072:
+    name: Northern pintail
+  bird_0073:
+    name: Eurasian teal
+  bird_0074:
+    name: Common shelduck
+  bird_0075:
+    name: Helmeted guineafowl
+  bird_0076:
+    name: Wild turkey
+  bird_0077:
+    name: Indian peafowl
+  bird_0078:
+    name: Red junglefowl
+  bird_0079:
+    name: Common pheasant
+  bird_0080:
+    name: Japanese quail
+  bird_0081:
+    name: Rock ptarmigan
+  bird_0082:
+    name: Western capercaillie
+  bird_0083:
+    name: Greater roadrunner
+  bird_0084:
+    name: Common cuckoo
+  bird_0085:
+    name: African grey parrot
+  bird_0086:
+    name: Budgerigar
+  bird_0087:
+    name: Kakapo
+  bird_0088:
+    name: Kea
+  bird_0089:
+    name: Sulphur-crested cockatoo
+  bird_0090:
+    name: Scarlet macaw
+  bird_0091:
+    name: Emperor penguin
+  bird_0092:
+    name: King penguin
+  bird_0093:
+    name: African penguin
+  bird_0094:
+    name: Little penguin
+  bird_0095:
+    name: Common ostrich
+  bird_0096:
+    name: Emu
+  bird_0097:
+    name: Southern cassowary
+  bird_0098:
+    name: Greater rhea
+  bird_0099:
+    name: North Island brown kiwi
+  bird_0100:
+    name: Takahe
+  bird_0101:
+    name: Black footed Albatross
+  bird_0102:
+    name: Laysan Albatross
+  bird_0103:
+    name: Sooty Albatross
+  bird_0104:
+    name: Groove billed Ani
+  bird_0105:
+    name: Crested Auklet
+  bird_0106:
+    name: Least Auklet
+  bird_0107:
+    name: Parakeet Auklet
+  bird_0108:
+    name: Rhinoceros Auklet
+  bird_0109:
+    name: Brewer Blackbird
+  bird_0110:
+    name: Red winged Blackbird
+  bird_0111:
+    name: Rusty Blackbird
+  bird_0112:
+    name: Yellow headed Blackbird
+  bird_0113:
+    name: Bobolink
+  bird_0114:
+    name: Indigo Bunting
+  bird_0115:
+    name: Lazuli Bunting
+  bird_0116:
+    name: Painted Bunting
+  bird_0117:
+    name: Cardinal
+  bird_0118:
+    name: Spotted Catbird
+  bird_0119:
+    name: Gray Catbird
+  bird_0120:
+    name: Yellow breasted Chat
+  bird_0121:
+    name: Eastern Towhee
+  bird_0122:
+    name: Chuck will Widow
+  bird_0123:
+    name: Brandt Cormorant
+  bird_0124:
+    name: Red faced Cormorant
+  bird_0125:
+    name: Pelagic Cormorant
+  bird_0126:
+    name: Bronzed Cowbird
+  bird_0127:
+    name: Shiny Cowbird
+  bird_0128:
+    name: Brown Creeper
+  bird_0129:
+    name: American Crow
+  bird_0130:
+    name: Fish Crow
+  bird_0131:
+    name: Black billed Cuckoo
+  bird_0132:
+    name: Mangrove Cuckoo
+  bird_0133:
+    name: Yellow billed Cuckoo
+  bird_0134:
+    name: Gray crowned Rosy Finch
+  bird_0135:
+    name: Purple Finch
+  bird_0136:
+    name: Northern Flicker
+  bird_0137:
+    name: Acadian Flycatcher
+  bird_0138:
+    name: Great Crested Flycatcher
+  bird_0139:
+    name: Least Flycatcher
+  bird_0140:
+    name: Olive sided Flycatcher
+  bird_0141:
+    name: Scissor tailed Flycatcher
+  bird_0142:
+    name: Vermilion Flycatcher
+  bird_0143:
+    name: Yellow bellied Flycatcher
+  bird_0144:
+    name: Frigatebird
+  bird_0145:
+    name: Northern Fulmar
+  bird_0146:
+    name: Gadwall
+  bird_0147:
+    name: American Goldfinch
+  bird_0148:
+    name: European Goldfinch
+  bird_0149:
+    name: Boat tailed Grackle
+  bird_0150:
+    name: Eared Grebe
+  bird_0151:
+    name: Horned Grebe
+  bird_0152:
+    name: Pied billed Grebe
+  bird_0153:
+    name: Western Grebe
+  bird_0154:
+    name: Blue Grosbeak
+  bird_0155:
+    name: Evening Grosbeak
+  bird_0156:
+    name: Pine Grosbeak
+  bird_0157:
+    name: Rose breasted Grosbeak
+  bird_0158:
+    name: Pigeon Guillemot
+  bird_0159:
+    name: California Gull
+  bird_0160:
+    name: Glaucous winged Gull
+  bird_0161:
+    name: Heermann Gull
+  bird_0162:
+    name: Herring Gull
+  bird_0163:
+    name: Ivory Gull
+  bird_0164:
+    name: Ring billed Gull
+  bird_0165:
+    name: Slaty backed Gull
+  bird_0166:
+    name: Western Gull
+  bird_0167:
+    name: Anna Hummingbird
+  bird_0168:
+    name: Ruby throated Hummingbird
+  bird_0169:
+    name: Rufous Hummingbird
+  bird_0170:
+    name: Green Violetear
+  bird_0171:
+    name: Long tailed Jaeger
+  bird_0172:
+    name: Pomarine Jaeger
+  bird_0173:
+    name: Blue Jay
+  bird_0174:
+    name: Florida Jay
+  bird_0175:
+    name: Green Jay
+  bird_0176:
+    name: Dark eyed Junco
+  bird_0177:
+    name: Tropical Kingbird
+  bird_0178:
+    name: Gray Kingbird
+  bird_0179:
+    name: Belted Kingfisher
+  bird_0180:
+    name: Green Kingfisher
+  bird_0181:
+    name: Pied Kingfisher
+  bird_0182:
+    name: Ringed Kingfisher
+  bird_0183:
+    name: White breasted Kingfisher
+  bird_0184:
+    name: Red legged Kittiwake
+  bird_0185:
+    name: Horned Lark
+  bird_0186:
+    name: Pacific Loon
+  bird_0187:
+    name: Mallard
+  bird_0188:
+    name: Western Meadowlark
+  bird_0189:
+    name: Hooded Merganser
+  bird_0190:
+    name: Red breasted Merganser
+  bird_0191:
+    name: Mockingbird
+  bird_0192:
+    name: Nighthawk
+  bird_0193:
+    name: Clark Nutcracker
+  bird_0194:
+    name: White breasted Nuthatch
+  bird_0195:
+    name: Baltimore Oriole
+  bird_0196:
+    name: Hooded Oriole
+  bird_0197:
+    name: Orchard Oriole
+  bird_0198:
+    name: Scott Oriole
+  bird_0199:
+    name: Ovenbird
+  bird_0200:
+    name: Brown Pelican
+  bird_0201:
+    name: White Pelican
+  bird_0202:
+    name: Western Wood Pewee
+  bird_0203:
+    name: Sayornis
+  bird_0204:
+    name: American Pipit
+  bird_0205:
+    name: Whip poor Will
+  bird_0206:
+    name: Horned Puffin
+  bird_0207:
+    name: Common Raven
+  bird_0208:
+    name: White necked Raven
+  bird_0209:
+    name: American Redstart
+  bird_0210:
+    name: Geococcyx
+  bird_0211:
+    name: Loggerhead Shrike
+  bird_0212:
+    name: Great Grey Shrike
+  bird_0213:
+    name: Baird Sparrow
+  bird_0214:
+    name: Black throated Sparrow
+  bird_0215:
+    name: Brewer Sparrow
+  bird_0216:
+    name: Chipping Sparrow
+  bird_0217:
+    name: Clay colored Sparrow
+  bird_0218:
+    name: House Sparrow
+  bird_0219:
+    name: Field Sparrow
+  bird_0220:
+    name: Fox Sparrow
+  bird_0221:
+    name: Grasshopper Sparrow
+  bird_0222:
+    name: Harris Sparrow
+  bird_0223:
+    name: Henslow Sparrow
+  bird_0224:
+    name: Le Conte Sparrow
+  bird_0225:
+    name: Lincoln Sparrow
+  bird_0226:
+    name: Nelson Sharp tailed Sparrow
+  bird_0227:
+    name: Savannah Sparrow
+  bird_0228:
+    name: Seaside Sparrow
+  bird_0229:
+    name: Song Sparrow
+  bird_0230:
+    name: Tree Sparrow
+  bird_0231:
+    name: Vesper Sparrow
+  bird_0232:
+    name: White crowned Sparrow
+  bird_0233:
+    name: White throated Sparrow
+  bird_0234:
+    name: Cape Glossy Starling
+  bird_0235:
+    name: Bank Swallow
+  bird_0236:
+    name: Barn Swallow
+  bird_0237:
+    name: Cliff Swallow
+  bird_0238:
+    name: Tree Swallow
+  bird_0239:
+    name: Scarlet Tanager
+  bird_0240:
+    name: Summer Tanager
+  bird_0241:
+    name: Artic Tern
+  bird_0242:
+    name: Black Tern
+  bird_0243:
+    name: Caspian Tern
+  bird_0244:
+    name: Common Tern
+  bird_0245:
+    name: Elegant Tern
+  bird_0246:
+    name: Forsters Tern
+  bird_0247:
+    name: Least Tern
+  bird_0248:
+    name: Green tailed Towhee
+  bird_0249:
+    name: Brown Thrasher
+  bird_0250:
+    name: Sage Thrasher
+  bird_0251:
+    name: Black capped Vireo
+  bird_0252:
+    name: Blue headed Vireo
+  bird_0253:
+    name: Philadelphia Vireo
+  bird_0254:
+    name: Red eyed Vireo
+  bird_0255:
+    name: Warbling Vireo
+  bird_0256:
+    name: White eyed Vireo
+  bird_0257:
+    name: Yellow throated Vireo
+  bird_0258:
+    name: Bay breasted Warbler
+  bird_0259:
+    name: Black and white Warbler
+  bird_0260:
+    name: Black throated Blue Warbler
+  bird_0261:
+    name: Blue winged Warbler
+  bird_0262:
+    name: Canada Warbler
+  bird_0263:
+    name: Cape May Warbler
+  bird_0264:
+    name: Cerulean Warbler
+  bird_0265:
+    name: Chestnut sided Warbler
+  bird_0266:
+    name: Golden winged Warbler
+  bird_0267:
+    name: Hooded Warbler
+  bird_0268:
+    name: Kentucky Warbler
+  bird_0269:
+    name: Magnolia Warbler
+  bird_0270:
+    name: Mourning Warbler
+  bird_0271:
+    name: Myrtle Warbler
+  bird_0272:
+    name: Nashville Warbler
+  bird_0273:
+    name: Orange crowned Warbler
+  bird_0274:
+    name: Palm Warbler
+  bird_0275:
+    name: Pine Warbler
+  bird_0276:
+    name: Prairie Warbler
+  bird_0277:
+    name: Prothonotary Warbler
+  bird_0278:
+    name: Swainson Warbler
+  bird_0279:
+    name: Tennessee Warbler
+  bird_0280:
+    name: Wilson Warbler
+  bird_0281:
+    name: Worm eating Warbler
+  bird_0282:
+    name: Yellow Warbler
+  bird_0283:
+    name: Northern Waterthrush
+  bird_0284:
+    name: Louisiana Waterthrush
+  bird_0285:
+    name: Bohemian Waxwing
+  bird_0286:
+    name: Cedar Waxwing
+  bird_0287:
+    name: American Three toed Woodpecker
+  bird_0288:
+    name: Pileated Woodpecker
+  bird_0289:
+    name: Red bellied Woodpecker
+  bird_0290:
+    name: Red cockaded Woodpecker
+  bird_0291:
+    name: Red headed Woodpecker
+  bird_0292:
+    name: Downy Woodpecker
+  bird_0293:
+    name: Bewick Wren
+  bird_0294:
+    name: Cactus Wren
+  bird_0295:
+    name: Carolina Wren
+  bird_0296:
+    name: House Wren
+  bird_0297:
+    name: Marsh Wren
+  bird_0298:
+    name: Rock Wren
+  bird_0299:
+    name: Winter Wren
+  bird_0300:
+    name: Common Yellowthroat

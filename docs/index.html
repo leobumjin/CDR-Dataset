@@ -19,19 +19,13 @@
       <p class="subtitle">Contextual Default Retraction Dataset</p>
       <p class="lead">Evaluating how language models reason with defaults and revise beliefs.</p>
       <div class="hero-links"><a class="button" href="https://github.com/leobumjin/CDR-Dataset"><svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.64 5.28-5.15 5.56.4.35.76 1.04.76 2.1v3.07c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/></svg> GitHub</a><a class="button" href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 1 1 14 0"/><path d="M9 12h.01M15 12h.01M9 15q3 3 6 0"/><path d="m8 20-4-2-2-4q-.5-1.5 1-1.5L5 15l-1-4q0-1.5 1.3-1L8 15m8 5 4-2 2-4q.5-1.5-1-1.5L19 15l1-4q0-1.5-1.3-1L16 15"/></svg> Hugging Face</a></div>
-      <p class="latest-version">Latest version: <a id="latest-version-link" href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset/tree/main/v1">v1</a></p>
-      <div class="category-overview" aria-label="Latest version categories">
-      <ul id="latest-categories" class="category-cards">
-        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#bird"></use></svg><strong>Birds</strong><span>Can this bird fly?</span></li>
-        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#legal"></use></svg><strong>Legal Cases</strong><span>Is this person guilty?</span></li>
-        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#human"></use></svg><strong>Humans</strong><span>Can this person run?</span></li>
-        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#mammal"></use></svg><strong>Mammals</strong><span>Can this mammal survive?</span></li>
-        <li class="category-card"><svg class="category-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/project-overview/icons.svg#plant"></use></svg><strong>Plants</strong><span>Can this plant survive?</span></li>
-      </ul></div>
+      <nav class="catalog-nav" aria-label="Dataset navigation"><a href="instances/">Instances</a><a href="task-context/">Task–Context</a><a href="#statistics">Releases</a></nav>
+      <p class="catalog-kicker">A growing catalog of tasks, instances and contexts</p>
+      <ul id="catalog-combinations" class="category-cards" aria-label="Class and task combinations"></ul>
     </div>
     <section id="examples" aria-labelledby="examples-title">
-      <h2 id="examples-title">Interactive Dataset Examples</h2>
-      <p class="examples-intro">Explore how context changes the answer while the entity’s features stay fixed.</p>
+      <h2 id="examples-title">Reasoning examples</h2>
+      <p class="examples-intro">Illustrative examples of how context changes an answer. These examples are separate from the growing catalog and random label templates.</p>
       <div class="example-domain-tabs" role="tablist" aria-label="Example domain">
         <button type="button" id="tab-bird" role="tab" aria-selected="true" aria-controls="bird-example" tabindex="0">Bird</button>
         <button type="button" id="tab-guilty" role="tab" aria-selected="false" aria-controls="guilty-example" tabindex="-1">Legal Cases</button>
@@ -153,7 +147,7 @@
 
     </section>
     <section id="statistics" aria-labelledby="statistics-title">
-      <h2 id="statistics-title">Dataset Statistics</h2>
+      <h2 id="statistics-title">Released datasets</h2>
       <div class="resource-table-wrap dataset-summary">
         <table class="resource-table">
           <caption class="sr-only">Version 1 dataset structure</caption>
@@ -168,11 +162,11 @@
   <footer><span>CDR-Dataset · Contextual Default Retraction Dataset</span><a href="https://github.com/leobumjin/CDR-Dataset">GitHub</a></footer>
   <script src="assets/dataset-examples/examples.js" defer></script>
   <script src="assets/project-overview/statistics.js" defer></script>
-  <script src="assets/project-overview/overview.js" defer></script>
+  <script src="assets/catalog-explorer.js" defer></script>
   <script src="assets/bird-animation/animation.js?v=alice-captions-2" defer></script>
   <script>
 
-    const domainTabs = Array.from(document.querySelectorAll('[role="tab"][aria-controls]'));
+    const domainTabs = Array.from(document.querySelectorAll('.example-domain-tabs [role="tab"][aria-controls]'));
     function selectExampleDomain(tab, focus = false) {
       domainTabs.forEach(item => {
         const selected = item === tab;

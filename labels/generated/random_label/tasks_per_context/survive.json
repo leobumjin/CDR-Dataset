@@ -1,0 +1,1402 @@
+{
+  "mammal_0001": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0002": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0003": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0004": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0005": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0006": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0007": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0008": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0009": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0010": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0011": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0012": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0013": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0014": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0015": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0016": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0017": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0018": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0019": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0020": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0021": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0022": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0023": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0024": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0025": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0026": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0027": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0028": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0029": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0030": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0031": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0032": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0033": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0034": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0035": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0036": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0037": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0038": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0039": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0040": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0041": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0042": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0043": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0044": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0045": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0046": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0047": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0048": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0049": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0050": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0051": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0052": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0053": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0054": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0055": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0056": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0057": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0058": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0059": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0060": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0061": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0062": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0063": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0064": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0065": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0066": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0067": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0068": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0069": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0070": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0071": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0072": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0073": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0074": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0075": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0076": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0077": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0078": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0079": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0080": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0081": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0082": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0083": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0084": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0085": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0086": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0087": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0088": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0089": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0090": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0091": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "false",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0092": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0093": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0094": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0095": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0096": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "false"
+  },
+  "mammal_0097": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "ambiguous",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0098": {
+    "mammal_cold_24h": "false",
+    "mammal_heat_24h": "false",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "ambiguous",
+    "mammal_no_water_food_3d": "ambiguous"
+  },
+  "mammal_0099": {
+    "mammal_cold_24h": "ambiguous",
+    "mammal_heat_24h": "true",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "true",
+    "mammal_no_water_food_3d": "true"
+  },
+  "mammal_0100": {
+    "mammal_cold_24h": "true",
+    "mammal_heat_24h": "ambiguous",
+    "mammal_mild_7d": "true",
+    "mammal_no_food_14d": "false",
+    "mammal_no_water_food_3d": "false"
+  },
+  "plant_0001": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0002": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0003": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0004": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0005": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0006": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0007": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0008": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0009": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0010": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0011": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0012": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0013": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0014": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0015": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0016": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0017": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0018": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0019": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0020": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0021": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0022": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0023": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0024": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0025": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0026": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0027": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0028": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0029": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0030": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0031": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0032": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0033": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0034": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0035": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0036": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0037": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0038": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0039": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0040": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0041": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0042": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0043": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0044": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0045": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0046": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0047": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0048": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0049": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0050": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0051": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0052": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0053": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0054": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0055": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0056": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0057": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0058": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0059": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0060": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0061": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0062": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0063": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0064": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0065": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0066": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0067": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0068": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0069": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0070": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0071": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0072": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0073": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0074": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0075": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0076": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0077": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0078": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0079": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0080": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0081": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0082": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0083": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0084": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0085": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0086": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0087": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0088": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0089": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0090": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0091": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0092": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0093": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0094": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0095": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0096": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "ambiguous",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "ambiguous"
+  },
+  "plant_0097": {
+    "plant_freezing_7d": "false",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "false",
+    "plant_waterlogged_7d": "true"
+  },
+  "plant_0098": {
+    "plant_freezing_7d": "ambiguous",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "false",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0099": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "false",
+    "plant_no_water_3d": "ambiguous",
+    "plant_watered_7d": "true",
+    "plant_waterlogged_7d": "false"
+  },
+  "plant_0100": {
+    "plant_freezing_7d": "true",
+    "plant_hot_drought_30d": "true",
+    "plant_no_water_3d": "true",
+    "plant_watered_7d": "ambiguous",
+    "plant_waterlogged_7d": "false"
+  }
+}

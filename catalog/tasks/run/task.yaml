@@ -1,0 +1,9 @@
+id: run
+revision: 1
+name: Running
+bindings:
+- class_id: human
+  query_template: Can this person run?
+  target_definition: Complete the required distance by continuous running at at least the specified pace
+    on the stated terrain, in the stipulated current state, without assistance or walking breaks.
+  source_query_id: can_run
