@@ -22,7 +22,11 @@ bash releases/v1/shells/run1_prepare_samples.sh --classes bird --count 10 --sour
 
 The wrapper selects catalog version v1 and defaults to source v1_run1_samples.
 It samples a random combination of values for every feature, without object names
-or task labels. --classes defaults to all groups; --count defaults to 100 per group.
+or task labels. --classes defaults to all groups; --count is the total number
+of samples across selected classes, default 100 (10 per class for all ten groups).
+Counts are allocated as evenly as possible. Remainders go to classes chosen using
+the recorded seed; if count is smaller than the class count, only that many classes
+receive one sample. Source selection metadata records total count and class_counts.
 Each feature value is an object with exactly `belief`, `disbelief`, and `uncertain`:
 finite numbers in [0, 1] whose sum is 1 (tolerance 1e-9). These represent support
 for the feature predicate, opposition, and uncommitted uncertainty. By default,

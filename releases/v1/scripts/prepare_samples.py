@@ -51,7 +51,7 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=100,
              feature_values=None, catalog_version='v1', sampling='balanced_regions'):
     root = Path(root)
     catalog = FileCatalog(root, catalog_version=catalog_version)
-    selected = sorted(catalog.classes if classes is None else classes)
+    selected = sorted(set(catalog.classes if classes is None else classes))
     if not selected or not set(selected) <= catalog.classes.keys():
         raise ValueError('Choose known feature groups')
     if type(count) is not int or count < 1:
@@ -83,10 +83,15 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=100,
             region_probabilities={key: 0.25 for key in FEATURE_REGIONS},
             regions=FEATURE_REGIONS, region_counts=region_counts)
 
+    per_class, remainder = divmod(count, len(selected))
+    extra_classes = set(rng.sample(selected, remainder))
+    class_counts = {cid: per_class + int(cid in extra_classes) for cid in selected}
     samples = {}
     for cid in selected:
+        if not class_counts[cid]:
+            continue
         samples[cid] = {}
-        for index in range(1, count + 1):
+        for index in range(1, class_counts[cid] + 1):
             sid = f'{cid}_s_{index:06}'
             samples[cid][sid] = {f['id']: sample_value() for f in catalog.classes[cid]['features']}
     meta = {'status': 'complete', 'purpose': 'sample_preparation', 'seed': seed,
@@ -96,7 +101,7 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=100,
                                  'sampling': sampling if feature_values is None else 'discrete_uniform',
                                  **({'values': feature_values} if feature_values is not None else {})},
             'sampling_config': sampling_metadata if feature_values is None else {'algorithm': 'uniform_choice'},
-            'selection': {'classes': selected, 'count_per_class': count},
+            'selection': {'classes': selected, 'count': count, 'class_counts': class_counts},
             'definition_snapshot': {cid: catalog.classes[cid]['features'] for cid in selected},
             'note': 'Independently sampled feature combinations. No real object identity or observed-feature claim.'}
     run = write_run(root, source_id, meta, samples, catalog_version=catalog_version)
@@ -111,7 +116,8 @@ def main():
     p.add_argument('--catalog-version', default='v1')
     p.add_argument('--seed', type=int, default=0)
     p.add_argument('--source-id', default='samples')
-    p.add_argument('--count', type=int, default=100)
+    p.add_argument('--count', type=int, default=100,
+                   help='Total samples across selected classes (default: 100), allocated as evenly as possible')
     p.add_argument('--classes', nargs='+')
     p.add_argument('--sampling', choices=['balanced_regions', 'uniform_simplex'],
                    default='balanced_regions', help='Default: equal-probability choice of four confidence regions')

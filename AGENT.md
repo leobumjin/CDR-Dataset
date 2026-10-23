@@ -179,3 +179,7 @@ wrappers source shells/common/select_label_model.sh for interactive choices and
 explicit CLI overrides. The default is OpenAI gpt-4o-mini. Noninteractive runs
 use the first configured matching model; --help must bypass selection. Model
 selection alone must not import SDKs, load GPU models or call APIs.
+
+The v1 sampler --count means total samples across selected classes (default 100),
+not samples per class. Allocate evenly with seeded random remainder assignment;
+record total count and class_counts in source selection metadata.

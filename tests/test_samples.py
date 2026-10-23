@@ -216,11 +216,27 @@ class SampleTests(unittest.TestCase):
         self.assertTrue(any(not any(in_region(v, key) for key in FEATURE_REGIONS)
                             for row in run.samples['bird'].values() for v in row.values()))
 
+    def test_total_count_default_remainders_and_small_runs(self):
+        random_samples(self.root, source_id='default')
+        run = SourceRun(self.root, 'default')
+        self.assertEqual(run.stats()['samples'], 100)
+        self.assertEqual({len(rows) for rows in run.samples.values()}, {10})
+        for count in (3, 13):
+            source = f'total_{count}'
+            random_samples(self.root, source_id=source, count=count)
+            result = SourceRun(self.root, source)
+            counts = result.meta['selection']['class_counts']
+            self.assertEqual(result.stats()['samples'], count)
+            self.assertEqual(sum(counts.values()), count)
+            self.assertLessEqual(max(counts.values()) - min(counts.values()), 1)
+            random_samples(self.root, source_id=source + '_repeat', count=count)
+            self.assertEqual(result.samples, SourceRun(self.root, source + '_repeat').samples)
+
     def test_sampler_covers_all_defined_features(self):
         random_samples(self.root, source_id='samples_all', count=10, seed=7)
         run = SourceRun(self.root, 'samples_all')
-        self.assertEqual(run.stats()['samples'], 100)
-        self.assertEqual(run.stats()['feature_values'], 700)
+        self.assertEqual(run.stats()['samples'], 10)
+        self.assertEqual(run.stats()['feature_values'], 70)
         self.assertFalse(run.tasks)
         self.assertNotIn('label_provenance', run.meta)
 
