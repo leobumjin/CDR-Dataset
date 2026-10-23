@@ -34,6 +34,14 @@ select_label_model() {
     return 2
   fi
   if [[ -n "$LABEL_MODEL" ]]; then
+    if [[ "$LABEL_MODEL" == all_vllm_models ]]; then
+      if [[ -n "$LABEL_BACKEND" && "$LABEL_BACKEND" != vllm ]]; then
+        echo 'all_vllm_models requires the vllm backend.' >&2
+        return 2
+      fi
+      LABEL_BACKEND=vllm
+      return
+    fi
     if [[ -z "$LABEL_BACKEND" ]]; then
       local candidate
       for candidate in "${API_MODELS[@]}"; do
@@ -56,6 +64,7 @@ select_label_model() {
   fi
   if [[ -z "$LABEL_BACKEND" || "$LABEL_BACKEND" == vllm ]]; then
     for candidate in "${VLLM_MODELS[@]}"; do models+=("$candidate"); backends+=(vllm); done
+    models+=(all_vllm_models); backends+=(vllm)
   fi
   if [[ ${#models[@]} -eq 0 ]]; then echo 'No configured models for this backend.' >&2; return 2; fi
   choice=1

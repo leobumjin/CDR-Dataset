@@ -51,6 +51,8 @@ def prepare(root, sample_source, *, tasks=None, contexts=None, catalog_version=N
 def parse_output(raw, keys):
     body = raw.strip()
     if body.startswith('```'):
+        if '\n' not in body or not body.endswith('```'):
+            raise ValueError('Malformed fenced JSON response')
         body = body.split('\n', 1)[1].rsplit('```', 1)[0]
     def unique_pairs(items):
         result = {}
@@ -105,12 +107,12 @@ def execute(args, *, backend_factory=create_backend):
                      'catalog_commit': commit.stdout.strip() if commit.returncode == 0 else None})
     write(attempt / 'request_metadata.json', metadata)
     write(attempt / 'requests.json', jobs)
-    records, responses = {}, []
+    records, responses, errors = {}, [], []
     backend = None
     try:
         backend = backend_factory(args)
         metadata.update(backend.metadata)
-        with (attempt / 'responses.jsonl').open('x') as log, tqdm(
+        with (attempt / 'responses.jsonl').open('x') as log, (attempt / 'errors.jsonl').open('x') as error_log, tqdm(
                 total=len(jobs), desc='Label inference', unit='request', file=sys.stderr) as progress:
             for start in range(0, len(jobs), args.batch_size):
                 batch = jobs[start:start + args.batch_size]
@@ -124,19 +126,31 @@ def execute(args, *, backend_factory=create_backend):
                     log.write(json.dumps(response, ensure_ascii=False, allow_nan=False) + '\n')
                     log.flush()
                     responses.append(response)
-                    if output['status'] != 'completed':
-                        raise ValueError('Model response was incomplete; inspect the saved attempt')
-                    labels = parse_output(output['output'], job['keys'])
-                    records.setdefault(job['task_id'], {}).setdefault(job['sample_id'], {}).update(labels)
+                    try:
+                        if output['status'] != 'completed':
+                            raise ValueError('Model response was incomplete')
+                        labels = parse_output(output['output'], job['keys'])
+                    except ValueError as error:
+                        failure = {**response, 'status': 'error', 'response_status': output['status'],
+                                   'error_type': type(error).__name__, 'error': str(error)}
+                        errors.append(failure)
+                        error_log.write(json.dumps(failure, ensure_ascii=False, allow_nan=False) + '\n')
+                        error_log.flush()
+                    else:
+                        records.setdefault(job['task_id'], {}).setdefault(job['sample_id'], {}).update(labels)
                     progress.update(1)
+                    progress.set_postfix(errors=len(errors), refresh=False)
                 if count != len(batch):
                     raise ValueError('Backend output count mismatch')
         metadata['status'] = 'complete'
+        summary.update(succeeded=len(responses) - len(errors), failed=len(errors))
+        metadata.update(succeeded=summary['succeeded'], failed=summary['failed'],
+                        outcome='completed_with_errors' if errors else 'completed')
         if args.backend == 'openai':
             summary['cached_input_tokens'] = sum(r.get('cached_input_tokens', 0) for r in responses)
             metadata['cached_input_tokens'] = summary['cached_input_tokens']
         metadata['response_models'] = sorted({response['model'] for response in responses})
-        write_run(root, sid, metadata, {}, records, extra={'responses.json': responses},
+        write_run(root, sid, metadata, {}, records, extra={'responses.json': responses, 'errors.json': errors},
                   catalog_version=metadata['catalog_version'])
     except Exception as error:
         metadata.update(status='failed', error_type=type(error).__name__)

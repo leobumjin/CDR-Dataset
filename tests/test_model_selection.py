@@ -10,6 +10,28 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ModelSelectionTests(unittest.TestCase):
+    def test_all_vllm_models_use_separate_processes_and_source_ids(self):
+        result = self.launch('--model', 'all_vllm_models', '--source-id', 'experiment',
+                             '--batch-size', '4', '--dry-run')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        runs = [json.loads(line) for line in result.stdout.splitlines()]
+        self.assertEqual(len(runs), 6)
+        sources = set()
+        for args in runs:
+            model = args[args.index('--model') + 1]
+            source = args[args.index('--source-id') + 1]
+            self.assertEqual(source, 'experiment_' + model.replace('/', '_'))
+            self.assertEqual(args[args.index('--backend') + 1], 'vllm')
+            self.assertEqual(args[args.index('--batch-size') + 1], '4')
+            self.assertIn('--dry-run', args)
+            sources.add(source)
+        self.assertEqual(len(sources), 6)
+
+    def test_all_vllm_models_rejects_openai_backend(self):
+        result = self.launch('--backend', 'openai', '--model=all_vllm_models')
+        self.assertEqual(result.returncode, 2)
+        self.assertIn('requires the vllm backend', result.stderr)
+
     def launch(self, *args):
         with tempfile.TemporaryDirectory() as directory:
             interpreter = Path(directory) / 'capture'

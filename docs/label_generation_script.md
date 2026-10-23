@@ -155,8 +155,12 @@ values remain absent keys.
 
 Task-only sources reference sample_source with checksums, retain catalog_version,
 and record ai_generated and unverified provenance. Exact prompts, raw responses,
-actual model/revision and settings are saved. Failed attempts remain under
-runs/inference/; completed sources also preserve responses.json.
+actual model/revision and settings are saved. Attempts remain under runs/inference/. Invalid JSON, invalid ratios, and
+incomplete responses are saved immediately to errors.jsonl and skipped; other
+requests continue. Completed sources preserve responses.json and errors.json.
+Only valid labels are stored; errors never become labels or full-unknown opinions.
+Metadata records succeeded/failed counts and outcome=completed_with_errors when
+needed, including runs with no valid labels. The final summary reports both counts.
 
 Shared options include --model, --batch-size and --max-tokens. --temperature is
 omitted for OpenAI by default and defaults to 0 for vLLM. OpenAI options include
@@ -196,7 +200,7 @@ needed. API keys are read only from the environment and never saved in metadata.
 OpenAI requests use the [official Responses API structured-output format](https://developers.openai.com/api/docs/guides/structured-outputs).
 Both backend paths still validate opinion sums locally. Raw outputs, actual
 response model IDs and provenance are saved, and incomplete/refused/invalid output
-never becomes a completed source. Successful results remain unverified model
+is recorded as an error and never becomes a stored task label. Successful results remain unverified model
 estimates unless separately reviewed with evidence.
 
 ## Shared prompt prefixes and JSON decoding
@@ -221,7 +225,8 @@ vLLM explicitly enables prefix caching and uses per-request
 See [vLLM structured outputs](https://docs.vllm.ai/en/v0.11.0/examples/offline_inference/structured_outputs.html).
 Both paths parse JSON locally, validate exact context keys and integer ranges,
 convert uncertainty and ratios into masses, and validate the resulting masses
-and sum before writing any completed source.
+and sum before storing each label. Per-response validation errors are recorded
+and skipped; backend/runtime and output-count failures still fail the attempt.
 Dry-run reports the number of requests and distinct shared prefixes without
 making model calls. GPU cache hit rates and API cache savings require a real run;
 unit tests only verify prefix stability, backend settings and output validation.
@@ -239,3 +244,26 @@ only the final suffix changes with sample feature values. Samples sharing a
 task/class/context are adjacent, and one vLLM engine with prefix caching enabled
 is reused across all batches. This allows cached prefix computation to be reused;
 actual cache hits depend on token-block alignment and available cache capacity.
+
+## Run every configured vLLM model
+
+Select `all_vllm_models` in the interactive menu, or run:
+
+```bash
+bash releases/v1/shells/run1_prepare_labels.sh --model all_vllm_models --source-id comparison
+```
+
+Models in `shells/common/models.sh` run sequentially in separate Python processes.
+Each process uses a new process group/session (`setsid` is required). The launcher
+waits for the model process to exit and kills any remaining workers in its group
+before starting the next model. Interrupting the launcher also cleans up the
+active process group. Models are never loaded concurrently by this launcher.
+A model that exceeds available GPU memory can still fail; adjust the model,
+tensor parallelism, context length or GPU memory utilization for the hardware.
+
+Outputs use separate source IDs, for example
+`comparison_Qwen_Qwen3-14B`. Other options, including `--sample-source`,
+`--batch-size`, `--dry-run` and GPU settings, are forwarded to every model.
+Failures are reported and remaining models still run; the launcher returns a
+nonzero exit status if any model process failed. Existing source IDs remain
+immutable, so use a new source prefix for another run.

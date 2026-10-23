@@ -150,20 +150,48 @@ class BackendTests(unittest.TestCase):
         self.assertEqual(responses[0]['response_id'], 'response-test')
         self.assertEqual(responses[0]['raw_response']['usage']['output_tokens'], 20)
 
-    def test_invalid_mass_or_incomplete_output_never_creates_source(self):
-        for status, value in [('completed', {'yes': 1, 'no': 1, 'unknown': 1}), ('incomplete', RATIO)]:
-            with self.subTest(status=status):
-                client = FakeClient(status=status, value=value)
-                with self.assertRaises(ValueError):
-                    execute(self.args(), backend_factory=lambda args: OpenAIBackend(args, client=client))
-                self.assertFalse((self.root / 'labels/generated/labels').exists())
-                self.assertTrue(client.closed)
-        attempts = list((self.root / 'runs/inference').iterdir())
-        self.assertEqual(len(attempts), 2)
-        for attempt in attempts:
-            self.assertEqual(load(attempt / 'request_metadata.json')['status'], 'failed')
-            self.assertTrue((attempt / 'responses.jsonl').read_text())
-            self.assertTrue((attempt / 'requests.json').exists())
+    def test_invalid_responses_are_saved_and_later_requests_continue(self):
+        outputs = [
+            {'status': 'completed', 'model': 'test', 'output': json.dumps({'dry_20m': {
+                'uncertainty_percent': 20, 'belief_ratio': 0, 'disbelief_ratio': 0}})},
+            {'status': 'completed', 'model': 'test', 'output': '{bad json'},
+            {'status': 'incomplete', 'model': 'test', 'output': ''},
+        ]
+        class Backend:
+            metadata = {}
+            closed = False
+            def generate(self, jobs):
+                for job in jobs:
+                    if outputs:
+                        yield outputs.pop(0)
+                    else:
+                        yield {'status': 'completed', 'model': 'test',
+                               'output': json.dumps({key: RATIO for key in job['keys']})}
+            def close(self):
+                self.closed = True
+        backend = Backend()
+        result = execute(self.args('vllm', '--batch-size', '2'), backend_factory=lambda args: backend)
+        self.assertEqual((result['succeeded'], result['failed']), (2, 3))
+        run = SourceRun(self.root, 'labels')
+        self.assertEqual(run.stats()['task_labels'], 2)
+        self.assertEqual(run.meta['outcome'], 'completed_with_errors')
+        errors = load(run.directory / 'errors.json')
+        self.assertEqual(len(errors), 3)
+        self.assertIn('0:0', errors[0]['error'])
+        self.assertTrue(all(error['status'] == 'error' for error in errors))
+        self.assertTrue(backend.closed)
+        attempt = next((self.root / 'runs/inference').iterdir())
+        self.assertEqual(len((attempt / 'errors.jsonl').read_text().splitlines()), 3)
+        self.assertEqual(len((attempt / 'responses.jsonl').read_text().splitlines()), 5)
+
+    def test_all_invalid_outputs_leave_an_auditable_source_without_labels(self):
+        client = FakeClient(value={**RATIO, 'belief_ratio': 0, 'disbelief_ratio': 0})
+        result = execute(self.args(), backend_factory=lambda args: OpenAIBackend(args, client=client))
+        self.assertEqual((result['succeeded'], result['failed']), (0, 5))
+        run = SourceRun(self.root, 'labels')
+        self.assertFalse(run.tasks)
+        self.assertEqual(len(load(run.directory / 'errors.json')), 5)
+        self.assertTrue(client.closed)
 
     def test_openai_errors_do_not_echo_request_secrets(self):
         client = FakeClient()
