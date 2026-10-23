@@ -269,7 +269,7 @@ class SampleTests(unittest.TestCase):
                 self.sample, {'fly': {'sample_1': {'dry_20m': {'yes': 1, 'no': 0, 'unknown': 0}}}})
 
     def test_opinion_response_and_unknown_mass(self):
-        raw = '{"a":{"value":{"yes":0,"no":0,"unknown":1},"reason":"no evidence"}}'
+        raw = '{"a":{"uncertainty_percent":100,"belief_ratio":0,"disbelief_ratio":0}}'
         self.assertEqual(parse_output('```json\n' + raw + '\n```', ['a']),
                          {'a': {'yes': 0, 'no': 0, 'unknown': 1}})
         invalid = ['{"a":{"value":{"yes":1,"yes":0,"no":0,"unknown":1},"reason":"basis"}}', '{}', '{"a":{"value":true,"reason":"basis"}}',

@@ -8,6 +8,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 from src.catalog.io import load
+from src.catalog.opinions import opinion_from_ratio, validate_opinion
 from src.catalog.sample_sources import SourceRun
 from src.labels.backends import OpenAIBackend, VLLMBackend
 from src.labels.prepare_labels import execute, parser
@@ -16,12 +17,13 @@ from src.labels.prepare_labels import prepare, parse_output
 from releases.v1.scripts.prompts import common_prefix, sample_suffix, prompt, cache_key
 
 ROOT = Path(__file__).resolve().parents[1]
-OPINION = {'yes': 0.7, 'no': 0.2, 'unknown': 0.1}
+RATIO = {'uncertainty_percent': 20, 'belief_ratio': 4, 'disbelief_ratio': 1}
+OPINION = {'yes': 0.64, 'no': 0.16, 'unknown': 0.2}
 
 
 class FakeResponse:
     def __init__(self, keys, status='completed', value=None):
-        self.output_text = json.dumps({key: {'value': OPINION if value is None else value, 'reason': 'Supplied evidence'} for key in keys})
+        self.output_text = json.dumps({key: RATIO if value is None else value for key in keys})
         self.status = status
         self.id = 'response-test'
         self.model = 'resolved-model'
@@ -49,6 +51,33 @@ class FakeClient:
 
 
 class BackendTests(unittest.TestCase):
+    def test_ratio_conversion_bounds_and_full_uncertainty(self):
+        for uncertainty in range(101):
+            for belief in range(10):
+                for disbelief in range(10):
+                    value = {'uncertainty_percent': uncertainty,
+                             'belief_ratio': belief, 'disbelief_ratio': disbelief}
+                    if uncertainty < 100 and belief == disbelief == 0:
+                        with self.assertRaises(ValueError):
+                            opinion_from_ratio(value)
+                    else:
+                        opinion = opinion_from_ratio(value)
+                        validate_opinion(opinion)
+                        self.assertEqual(opinion['unknown'], uncertainty / 100)
+        for key, invalid_values in {
+            'uncertainty_percent': [-1, 101, 20.0, True, None],
+            'belief_ratio': [-1, 10, 4.0, False, '4'],
+            'disbelief_ratio': [-1, 10, 1.0, True, None],
+        }.items():
+            for value in invalid_values:
+                with self.subTest(key=key, value=value), self.assertRaises(ValueError):
+                    parse_output(json.dumps({'ctx': {**RATIO, key: value}}), ['ctx'])
+        for value in ({**RATIO, 'reason': 'extra'}, {'belief_ratio': 4}, None):
+            with self.assertRaises(ValueError):
+                parse_output(json.dumps({'ctx': value}), ['ctx'])
+        with self.assertRaisesRegex(ValueError, 'Duplicate'):
+            parse_output('{"ctx":{"uncertainty_percent":20,"belief_ratio":4,"belief_ratio":5,"disbelief_ratio":1}}', ['ctx'])
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -104,8 +133,8 @@ class BackendTests(unittest.TestCase):
         self.assertNotIn('seed', request)
         self.assertEqual(request['reasoning'], {'effort': 'low'})
         schema = request['text']['format']['schema']
-        value_schema = next(iter(schema['properties'].values()))['properties']['value']
-        self.assertEqual(set(value_schema['required']), {'yes', 'no', 'unknown'})
+        value_schema = next(iter(schema['properties'].values()))
+        self.assertEqual(set(value_schema['required']), {'uncertainty_percent', 'belief_ratio', 'disbelief_ratio'})
         run = SourceRun(self.root, 'labels')
         self.assertEqual(run.meta['backend'], 'openai')
         self.assertEqual(run.meta['cached_input_tokens'], 640)
@@ -118,7 +147,7 @@ class BackendTests(unittest.TestCase):
         self.assertEqual(responses[0]['raw_response']['usage']['output_tokens'], 20)
 
     def test_invalid_mass_or_incomplete_output_never_creates_source(self):
-        for status, value in [('completed', {'yes': 1, 'no': 1, 'unknown': 1}), ('incomplete', OPINION)]:
+        for status, value in [('completed', {'yes': 1, 'no': 1, 'unknown': 1}), ('incomplete', RATIO)]:
             with self.subTest(status=status):
                 client = FakeClient(status=status, value=value)
                 with self.assertRaises(ValueError):
@@ -149,7 +178,7 @@ class BackendTests(unittest.TestCase):
             def chat(messages, sampling_params):
                 calls['messages'] = messages
                 calls['sampling'] = sampling_params
-                return [SimpleNamespace(outputs=[SimpleNamespace(text=json.dumps({'ctx': {'value': OPINION, 'reason': 'Feature evidence'}}), finish_reason='stop', token_ids=[1, 2])])]
+                return [SimpleNamespace(outputs=[SimpleNamespace(text=json.dumps({'ctx': RATIO}), finish_reason='stop', token_ids=[1, 2])])]
             return SimpleNamespace(chat=chat, llm_engine=SimpleNamespace(model_config=SimpleNamespace(hf_config=SimpleNamespace(_commit_hash='revision-id'))))
         fake = SimpleNamespace(LLM=llm, SamplingParams=lambda **kwargs: kwargs)
         with patch.dict(sys.modules, {'vllm': fake, 'vllm.sampling_params': SimpleNamespace(StructuredOutputsParams=lambda **kwargs: kwargs)}):

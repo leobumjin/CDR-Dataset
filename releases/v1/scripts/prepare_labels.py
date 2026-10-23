@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from src.catalog.files import safe_id
 from src.catalog.io import write
-from src.catalog.opinions import TASK_LABEL_SCHEMA, validate_opinion
+from src.catalog.opinions import TASK_LABEL_SCHEMA, TASK_RESPONSE_SCHEMA, opinion_from_ratio
 from src.catalog.sample_sources import SourceRun, checksums, write_run
 from src.catalog.script_metadata import record_script
 from src.labels.backends import create_backend, effective_settings
@@ -42,6 +42,7 @@ def prepare(root, sample_source, *, tasks=None, contexts=None, catalog_version=N
                                    'feature_definitions': catalog.classes[cid]['features'],
                                    'feature_encoding': source.feature_encoding,
                                    'task_label_schema': TASK_LABEL_SCHEMA,
+                                   'task_response_schema': TASK_RESPONSE_SCHEMA,
                                    'task': {k: v for k, v in binding.items() if k not in ('class_id', 'contexts')},
                                    'context': catalog.contexts[tid, cid, ctxid]}})
     return {'catalog_version': source.meta.get('catalog_version'), 'sample_source': sample_source, 'sample_source_sha256': checksums(source.directory)}, jobs
@@ -63,10 +64,7 @@ def parse_output(raw, keys):
         raise ValueError('Model response keys do not match requested labels')
     labels = {}
     for key, item in result.items():
-        if (not isinstance(item, dict) or set(item) != {'value', 'reason'}
-                or not isinstance(item['reason'], str) or not item['reason'].strip()):
-            raise ValueError('Each label requires value and nonempty reason')
-        labels[key] = validate_opinion(item['value'])
+        labels[key] = opinion_from_ratio(item)
     return labels
 
 
@@ -95,6 +93,9 @@ def execute(args, *, backend_factory=create_backend):
     commit = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=root, text=True,
                             capture_output=True, check=False)
     metadata.update({'status': 'running', 'purpose': 'task_inference',
+                     'response_encoding': {'name': 'uncertainty_percent_ratio_v1',
+                                           'schema': TASK_RESPONSE_SCHEMA,
+                                           'conversion': 'u=uncertainty_percent/100; yes=(1-u)*belief_ratio/total; no=(1-u)*disbelief_ratio/total; unknown=u; total=belief_ratio+disbelief_ratio; u=1 yields full unknown'},
                      'created_at': datetime.now(timezone.utc).isoformat(),
                      'provenance': {'method': 'ai_generated', 'backend': args.backend, 'model': args.model},
                      'label_provenance': {'method': 'ai_generated', 'review_status': 'unverified'},

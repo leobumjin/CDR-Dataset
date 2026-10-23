@@ -1,12 +1,9 @@
 """Optional model backends. Imports and credentials are needed only for real runs."""
+from src.catalog.opinions import TASK_RESPONSE_SCHEMA
 
 
 def response_schema(keys):
-    opinion = {'type': 'object', 'properties': {key: {'type': 'number'} for key in ('yes', 'no', 'unknown')},
-               'required': ['yes', 'no', 'unknown'], 'additionalProperties': False}
-    annotation = {'type': 'object', 'properties': {'value': opinion, 'reason': {'type': 'string'}},
-                  'required': ['value', 'reason'], 'additionalProperties': False}
-    return {'type': 'object', 'properties': {key: annotation for key in keys},
+    return {'type': 'object', 'properties': {key: TASK_RESPONSE_SCHEMA for key in keys},
             'required': list(keys), 'additionalProperties': False}
 
 

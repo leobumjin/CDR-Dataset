@@ -115,19 +115,35 @@ bash tools/setup_vllm.sh --check
 ```
 
 Inputs contain only feature values, their definitions/encoding, task, context and
-task_label_schema. Object names, external identities, sample IDs and hidden raw
+task_label_schema and task_response_schema. Object names, external identities, sample IDs and hidden raw
 profiles never enter prompts. Model responses require all requested context keys:
 
 ```json
-{"dry_20m": {"value": {"yes": 0.7, "no": 0.2, "unknown": 0.1}, "reason": "Basis in supplied features and context."}}
+{"dry_20m": {"uncertainty_percent": 20, "belief_ratio": 4, "disbelief_ratio": 1}}
 ```
 
-Exactly yes, no and unknown are required, finite and in [0, 1], summing to 1 within
-1e-9. These are support, opposition and uncommitted uncertainty masses. Fully
-insufficient evidence is {yes: 0, no: 0, unknown: 1}. Null/scalar labels, extra
-components, duplicate keys, booleans and invalid sums are rejected without automatic
-normalization. An absent judgment means it was not produced; it differs from an
-explicit full-unknown opinion. Missing feature values remain absent keys.
+Each context response contains exactly these three integers, with no `value`
+wrapper or `reason`. `uncertainty_percent` ranges from 0 to 100; both ratio
+components range from 0 to 9. The ratio allocates the mass remaining after
+uncertainty, rather than representing absolute masses. A 0:0 ratio is invalid
+unless uncertainty is 100%; for full uncertainty the prompt requests 100 and 0:0.
+At 100% uncertainty, any in-range ratio decodes to full unknown.
+
+The deterministic conversion is `u = uncertainty_percent / 100`,
+`yes = (1-u) * belief_ratio / (belief_ratio + disbelief_ratio)`,
+`no = (1-u) * disbelief_ratio / (belief_ratio + disbelief_ratio)`, and
+`unknown = u`. Full uncertainty bypasses division and yields
+`{yes: 0, no: 0, unknown: 1}`. The example yields
+`{yes: 0.64, no: 0.16, unknown: 0.20}`.
+
+Stored labels retain exactly yes, no and unknown: finite masses in [0, 1],
+summing to 1 within 1e-9. Conversion validates this contract without silently
+normalizing invalid model responses. Duplicate/extra/missing keys, booleans,
+floats in integer fields and out-of-range values are rejected. Raw responses
+preserve the original integers; run metadata records the response schema and
+conversion under `response_encoding`. Reasons are not generated in this stage.
+An absent judgment differs from an explicit full-unknown opinion. Missing feature
+values remain absent keys.
 
 Task-only sources reference sample_source with checksums, retain catalog_version,
 and record ai_generated and unverified provenance. Exact prompts, raw responses,
@@ -195,8 +211,9 @@ See [OpenAI prompt caching](https://developers.openai.com/api/docs/guides/prompt
 vLLM explicitly enables prefix caching and uses per-request
 `StructuredOutputsParams(json=...)` with the same opinion response schema.
 See [vLLM structured outputs](https://docs.vllm.ai/en/v0.11.0/examples/offline_inference/structured_outputs.html).
-Both paths parse JSON locally, validate exact context keys, nonempty reasons,
-finite masses and the sum constraint before writing any completed source.
+Both paths parse JSON locally, validate exact context keys and integer ranges,
+convert uncertainty and ratios into masses, and validate the resulting masses
+and sum before writing any completed source.
 Dry-run reports the number of requests and distinct shared prefixes without
 making model calls. GPU cache hit rates and API cache savings require a real run;
 unit tests only verify prefix stability, backend settings and output validation.

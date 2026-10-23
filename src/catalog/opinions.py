@@ -2,6 +2,36 @@
 import math
 
 COMPONENTS = ('yes', 'no', 'unknown')
+TASK_RESPONSE_SCHEMA = {
+    'type': 'object',
+    'properties': {
+        'uncertainty_percent': {'type': 'integer', 'minimum': 0, 'maximum': 100},
+        'belief_ratio': {'type': 'integer', 'minimum': 0, 'maximum': 9},
+        'disbelief_ratio': {'type': 'integer', 'minimum': 0, 'maximum': 9},
+    },
+    'required': ['uncertainty_percent', 'belief_ratio', 'disbelief_ratio'],
+    'additionalProperties': False,
+}
+
+
+def opinion_from_ratio(value):
+    """Decode an explicit uncertainty/ratio judgment into stored opinion masses."""
+    if not isinstance(value, dict) or set(value) != set(TASK_RESPONSE_SCHEMA['required']):
+        raise ValueError('Task response must contain exactly uncertainty_percent, belief_ratio and disbelief_ratio')
+    for key, spec in TASK_RESPONSE_SCHEMA['properties'].items():
+        if type(value[key]) is not int or not spec['minimum'] <= value[key] <= spec['maximum']:
+            raise ValueError(f'{key} must be an integer in [{spec["minimum"]}, {spec["maximum"]}]')
+    u = value['uncertainty_percent'] / 100
+    total = value['belief_ratio'] + value['disbelief_ratio']
+    if u == 1:
+        return validate_opinion({'yes': 0, 'no': 0, 'unknown': 1})
+    if total == 0:
+        raise ValueError('Belief/disbelief ratio cannot be 0:0 unless uncertainty is 100%')
+    return validate_opinion({'yes': (1 - u) * value['belief_ratio'] / total,
+                             'no': (1 - u) * value['disbelief_ratio'] / total,
+                             'unknown': u})
+
+
 TASK_LABEL_SCHEMA = {'components': list(COMPONENTS), 'minimum': 0, 'maximum': 1,
                      'sum': 1, 'sum_tolerance': 1e-9,
                      'interpretation': {'yes': 'supporting belief mass',
