@@ -17,8 +17,38 @@ from src.catalog.sample_sources import write_run
 from src.catalog.script_metadata import record_script
 
 
+
+# Each component is sampled independently; regions are disjoint.
+FEATURE_REGIONS = {
+    'high_confidence_true': {'belief': {'minimum': 0.8}},
+    'high_confidence_false': {'disbelief': {'minimum': 0.8}},
+    'balanced': {key: {'minimum': 0.25, 'maximum': 0.40}
+                 for key in ('belief', 'disbelief', 'uncertain')},
+    'high_uncertainty': {'uncertain': {'minimum': 0.7}},
+}
+
+
+def in_region(value, region):
+    return all(bounds.get('minimum', 0) <= value[key] <= bounds.get('maximum', 1)
+               for key, bounds in FEATURE_REGIONS[region].items())
+
+
+def sample_simplex(rng):
+    # Uniform Dirichlet(1,1,1) via two sorted uniform cuts.
+    first, second = sorted((rng.random(), rng.random()))
+    return {'belief': first, 'disbelief': second - first, 'uncertain': 1 - second}
+
+
+def sample_region(rng, region):
+    # Rejection preserves uniform density within the selected region.
+    while True:
+        value = sample_simplex(rng)
+        if in_region(value, region):
+            return value
+
+
 def generate(root, *, seed=0, source_id='samples', classes=None, count=100,
-             feature_values=None, catalog_version='v1'):
+             feature_values=None, catalog_version='v1', sampling='balanced_regions'):
     root = Path(root)
     catalog = FileCatalog(root, catalog_version=catalog_version)
     selected = sorted(catalog.classes if classes is None else classes)
@@ -26,19 +56,32 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=100,
         raise ValueError('Choose known feature groups')
     if type(count) is not int or count < 1:
         raise ValueError('Sample count must be positive')
+    if sampling not in ('balanced_regions', 'uniform_simplex'):
+        raise ValueError('Unknown feature sampling mode')
     if feature_values is not None:
         if not isinstance(feature_values, list) or not feature_values:
             raise ValueError('Supply a nonempty list of feature opinion objects')
         for value in feature_values:
             validate_feature_opinion(value)
     rng = random.Random(seed)
+    region_counts = dict.fromkeys(FEATURE_REGIONS, 0)
 
     def sample_value():
         if feature_values is not None:
             return dict(rng.choice(feature_values))
-        # Two sorted uniform cuts sample uniformly on the three-mass simplex.
-        first, second = sorted((rng.random(), rng.random()))
-        return {'belief': first, 'disbelief': second - first, 'uncertain': 1 - second}
+        if sampling == 'uniform_simplex':
+            return sample_simplex(rng)
+        region = rng.choice(tuple(FEATURE_REGIONS))
+        region_counts[region] += 1
+        return sample_region(rng, region)
+
+    sampling_metadata = {'base_distribution': 'Dirichlet(1,1,1)',
+                         'algorithm': 'two_sorted_uniform_cuts'}
+    if sampling == 'balanced_regions' and feature_values is None:
+        sampling_metadata.update(
+            algorithm='region_choice_then_rejection',
+            region_probabilities={key: 0.25 for key in FEATURE_REGIONS},
+            regions=FEATURE_REGIONS, region_counts=region_counts)
 
     samples = {}
     for cid in selected:
@@ -50,14 +93,15 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=100,
             'created_at': datetime.now(timezone.utc).isoformat(),
             'provenance': {'method': 'random', 'script': os.environ.get('CDR_ENTRYPOINT', 'python releases/v1/scripts/prepare_samples.py')},
             'feature_encoding': {**FEATURE_VALUE_SCHEMA,
-                                 'sampling': 'uniform_simplex' if feature_values is None else 'discrete_uniform',
+                                 'sampling': sampling if feature_values is None else 'discrete_uniform',
                                  **({'values': feature_values} if feature_values is not None else {})},
+            'sampling_config': sampling_metadata if feature_values is None else {'algorithm': 'uniform_choice'},
             'selection': {'classes': selected, 'count_per_class': count},
             'definition_snapshot': {cid: catalog.classes[cid]['features'] for cid in selected},
             'note': 'Independently sampled feature combinations. No real object identity or observed-feature claim.'}
     run = write_run(root, source_id, meta, samples, catalog_version=catalog_version)
     record_script(root, source_id, {'script': os.environ.get('CDR_ENTRYPOINT', 'python releases/v1/scripts/prepare_samples.py'),
-                  'source': source_id, 'seed': seed, **meta['selection']})
+                  'source': source_id, 'seed': seed, 'sampling': meta['feature_encoding']['sampling'], **meta['selection']})
     return run.stats()
 
 
@@ -69,10 +113,12 @@ def main():
     p.add_argument('--source-id', default='samples')
     p.add_argument('--count', type=int, default=100)
     p.add_argument('--classes', nargs='+')
+    p.add_argument('--sampling', choices=['balanced_regions', 'uniform_simplex'],
+                   default='balanced_regions', help='Default: equal-probability choice of four confidence regions')
     p.add_argument('--feature-values', type=json.loads, help='Optional JSON array of belief/disbelief/uncertain objects summing to 1')
     a = p.parse_args()
     print(json.dumps(generate(a.root, seed=a.seed, source_id=a.source_id, classes=a.classes,
-                              count=a.count, feature_values=a.feature_values, catalog_version=a.catalog_version), indent=2))
+                              count=a.count, feature_values=a.feature_values, catalog_version=a.catalog_version, sampling=a.sampling), indent=2))
 
 
 if __name__ == '__main__':

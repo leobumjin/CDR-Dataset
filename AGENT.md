@@ -77,8 +77,11 @@ in model inputs. Validate every response, source and release against it. Label m
 verified status requires evidence references. Preserve raw AI requests/responses.
 
 - prepare_samples samples each feature independently as belief/disbelief/uncertain
-  masses summing to 1, uniformly on the simplex by default or from an explicit
-  list of valid opinion objects; it never generates task labels.
+  masses summing to 1. Default balanced_regions chooses T>=0.8, F>=0.8,
+  balanced (each 0.25–0.40), or uncertain>=0.7 with equal probability, then
+  samples uniformly inside the selected region. Keep uniform_simplex as a
+  baseline and explicit opinion lists as an override. Record region parameters
+  and counts in source metadata; it never generates task labels.
 - prepare_labels uses --backend openai|vllm and an explicit --model. Both backends
   consume the same anonymous requests and validate the same opinion contract.
   --dry-run imports no model SDK and makes no network requests.

@@ -26,9 +26,31 @@ or task labels. --classes defaults to all groups; --count defaults to 100 per gr
 Each feature value is an object with exactly `belief`, `disbelief`, and `uncertain`:
 finite numbers in [0, 1] whose sum is 1 (tolerance 1e-9). These represent support
 for the feature predicate, opposition, and uncommitted uncertainty. By default,
-the generator independently samples each feature uniformly on the three-component
-simplex (Dirichlet(1,1,1)), using two sorted uniform cuts. The seed reproduces the
-same values. `--feature-values` optionally supplies a nonempty list of valid
+the generator chooses one of four regions with probability 0.25 per feature,
+then samples uniformly within that region by rejection from Dirichlet(1,1,1):
+
+| Region | Accepted values |
+| --- | --- |
+| High confidence T | belief >= 0.8 |
+| High confidence F | disbelief >= 0.8 |
+| Balanced | every component between 0.25 and 0.40 |
+| High uncertainty | uncertain >= 0.7 |
+
+Region choices are independent, so realized counts fluctuate around 25%; this
+is not an exact quota. The fixed default seed is 0. The same seed and options
+reproduce the same values. `sources.json` records `sampling_config` with the base
+distribution, rejection algorithm, region probabilities, bounds and actual counts.
+The encoding records `sampling: balanced_regions`.
+
+Use `--sampling uniform_simplex` for the original whole-simplex uniform baseline.
+For a new run after already generating v1_run1_samples, use a new source ID:
+
+```bash
+bash releases/v1/shells/run1_prepare_samples.sh --source-id v1_run1_regions --seed 0
+bash releases/v1/shells/run1_prepare_samples.sh --source-id v1_run1_uniform --sampling uniform_simplex --seed 0
+```
+
+ `--feature-values` optionally supplies a nonempty list of valid
 opinion objects to sample uniformly instead; scalar values are rejected.
 This source encoding is recorded explicitly and is distinct from task labels,
 which continue to use `yes`, `no`, and `unknown`. Historical source encodings
