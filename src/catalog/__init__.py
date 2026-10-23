@@ -1,4 +1,4 @@
-"""File-based incremental CDR catalogs."""
+"""Semantic feature catalogs, independent of sample source runs."""
 from .files import FileCatalog
 
 Catalog = FileCatalog

@@ -1,0 +1,36 @@
+id: fly
+name: Flying
+bindings:
+- class_id: bird
+  query_template: Can this bird fly?
+  target_definition: Complete the required aerial movement under the conditions associated with the context,
+    without external assistance.
+  source_query_id: can_fly
+contexts:
+  dry_20m:
+    description: Short flight with dry plumage. Travel 20 metres continuously through the air. The bird's
+      feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed
+      space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking,
+      jumping, and passive falling do not count.
+  dry_500m:
+    description: Long flight with dry plumage. Travel 500 metres continuously through the air. The bird's
+      feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed
+      space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking,
+      jumping, and passive falling do not count.
+  wet_20m:
+    description: Short flight with wet plumage. Travel 20 metres continuously through the air immediately
+      after heavy rain. The bird's body and wing feathers are thoroughly wet and remain wet throughout
+      the attempt; it cannot dry them before taking off. Take off from level ground with 20 metres of
+      unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance.
+      Walking, jumping, and passive falling do not count.
+  dry_5m:
+    description: Very short flight with dry plumage. Travel 5 metres continuously through the air. The
+      bird's feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed
+      space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking,
+      jumping, and passive falling do not count.
+  wet_500m:
+    description: Long flight with wet plumage. Travel 500 metres continuously through the air immediately
+      after heavy rain. The bird's body and wing feathers are thoroughly wet and remain wet throughout
+      the attempt; it cannot dry them before taking off. Take off from level ground with 20 metres of
+      unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance.
+      Walking, jumping, and passive falling do not count.

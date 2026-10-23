@@ -1,9 +1,0 @@
-id: guilt
-revision: 1
-name: Guilt
-bindings:
-- class_id: legal_case
-  query_template: Is this person guilty?
-  target_definition: Satisfy all elements of the supplied hypothetical property-damage offence without
-    an applicable situation-specific exception. This is not a determination under real-world law.
-  source_query_id: is_guilty

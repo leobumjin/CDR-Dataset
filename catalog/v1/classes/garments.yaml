@@ -1,0 +1,34 @@
+id: garments
+name: Garments
+features:
+  garments_f_001:
+    name: is_machine_washable
+    description: Whether the care label permits machine washing.
+    labeling: 'ISO 3758 washing symbol: machine_wash = 1, hand_wash_only = 0.5, do_not_wash = 0.'
+  garments_f_002:
+    name: tolerates_hot_water
+    description: The maximum wash temperature permitted by the care label.
+    labeling: 'Maximum labelled wash temperature: 60 C or higher = 1, 40 C = 0.5, 30 C = 0.'
+  garments_f_003:
+    name: resists_felting
+    description: The garment’s resistance to felting.
+    labeling: 'Felting: does_not_felt = 1, shrink_resistant_wool (superwash) = 0.5, felts_readily = 0.'
+  garments_f_004:
+    name: is_bleach_safe
+    description: The types of bleach permitted by the care label.
+    labeling: 'ISO 3758 bleaching symbol: any_bleach = 1, oxygen_bleach_only = 0.5, do_not_bleach = 0.'
+  garments_f_005:
+    name: is_tumble_dry_safe
+    description: Whether the care label permits tumble drying.
+    labeling: 'ISO 3758 tumble-drying symbol: normal_temperature (two dots) = 1, low_temperature_only
+      (one dot) = 0.5, do_not_tumble_dry = 0.'
+  garments_f_006:
+    name: is_colorfast
+    description: The garment’s colourfastness during washing.
+    labeling: 'Colourfastness to washing (ISO 105-C06 grey scale): grade_4_to_5 = 1, grade_3 = 0.5, grade_2_or_below
+      = 0.'
+  garments_f_007:
+    name: is_dry_cleanable
+    description: Whether the care label permits professional dry cleaning.
+    labeling: 'ISO 3758 professional-care symbol: professional_dry_clean = 1, gentle_dry_clean_only =
+      0.5, do_not_dry_clean = 0.'

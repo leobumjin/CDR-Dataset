@@ -1,0 +1,33 @@
+id: smartphones
+name: Smartphones
+features:
+  smartphones_f_001:
+    name: is_deep_water_rated
+    description: The phone’s rated resistance to deep water immersion.
+    labeling: 'IEC 60529 rating with manufacturer depth: IP68 to 4 m or more = 1, IP68 to 1.5 m or IP67
+      (1 m) = 0.5, IP54 or unrated = 0.'
+  smartphones_f_002:
+    name: has_intact_water_seal
+    description: The condition of the phone’s water seal.
+    labeling: 'Water seal: factory_intact = 1, authorised_repair = 0.5, third_party_repair_or_cracked_back
+      = 0.'
+  smartphones_f_003:
+    name: has_intact_screen
+    description: The condition of the phone’s screen.
+    labeling: 'Screen: intact = 1, minor_chip = 0.5, cracked = 0.'
+  smartphones_f_004:
+    name: has_protective_case
+    description: The level of protection provided by the phone’s case.
+    labeling: 'Case: rugged_case = 1, slim_case = 0.5, no_case = 0.'
+  smartphones_f_005:
+    name: is_cold_rated
+    description: The manufacturer’s lower operating temperature limit.
+    labeling: 'Manufacturer lower operating temperature: -20 C = 1, -10 C = 0.5, 0 C = 0.'
+  smartphones_f_006:
+    name: has_high_charge
+    description: The phone’s starting battery charge.
+    labeling: 'Starting charge: at least 50 percent = 1, 20-49 percent = 0.5, under 20 percent = 0.'
+  smartphones_f_007:
+    name: has_healthy_battery
+    description: The phone battery’s remaining health.
+    labeling: 'Battery health: at least 85 percent = 1, 70-84 percent = 0.5, under 70 percent = 0.'

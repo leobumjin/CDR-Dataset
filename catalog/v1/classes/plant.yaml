@@ -1,0 +1,45 @@
+id: plant
+name: Plant
+features:
+  plant_f_001:
+    name: is_succulent
+    description: The plant’s succulent growth form.
+    labeling: 'Documented growth form: a succulent with specialised water-storing vegetative tissue =
+      1, weakly or seasonally succulent growth = 0.5, explicitly non-succulent growth = 0. Stem succulents
+      can score 1 even when succulent leaves are absent.'
+  plant_f_002:
+    name: is_fern
+    description: Whether the plant is a fern.
+    labeling: 'Documented botanical identity: fern = 1, non-fern = 0. Missing or conflicting identification
+      remains missing, not 0.5. A common name containing fern is insufficient.'
+  plant_f_003:
+    name: has_established_roots
+    description: How well established the plant’s roots are.
+    labeling: 'Current root establishment: developed roots established in the current growing medium =
+      1, partly rooted cutting or recently transplanted plant with incomplete establishment = 0.5, unrooted
+      cutting or no established roots = 0. A species name alone does not establish rooting state.'
+  plant_f_004:
+    name: is_healthy
+    description: The individual’s health.
+    labeling: 'Current individual health: explicitly healthy with no active impairment = 1, mild or moderate
+      stress, disease, or damage = 0.5, severe disease, stress, or damage with major functional impairment
+      = 0. Do not infer health from species identity or an omitted condition.'
+  plant_f_005:
+    name: has_moist_soil
+    description: How moist the soil around the plant is.
+    labeling: 'Current root-zone soil moisture: moist or wet throughout the root zone, including saturated
+      soil = 1, partly dry or slightly moist = 0.5, dry throughout the root zone = 0. This measures moisture
+      only; a value of 1 does not establish adequate drainage, plant health, or suitable growing conditions.'
+  plant_f_006:
+    name: has_succulent_leaves
+    description: The presence of fleshy, water-storing leaves.
+    labeling: 'Documented leaves: clearly fleshy leaves specialised for water storage = 1, slightly or
+      seasonally fleshy water-storing leaves = 0.5, non-fleshy leaves or no leaves = 0. Water storage
+      in stems alone does not establish succulent leaves.'
+  plant_f_007:
+    name: is_shrub
+    description: Whether the plant has a shrub growth form.
+    labeling: 'Documented growth form of the specified plant: woody shrub with persistent stems branching
+      near the base = 1, intermediate subshrub or explicitly mixed shrub growth form = 0.5, herbaceous
+      plant, tree-form plant, or other explicitly non-shrub growth = 0. Use the stipulated cultivar or
+      growth form when the species permits several forms.'

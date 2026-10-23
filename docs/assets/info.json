@@ -1,0 +1,587 @@
+{
+  "catalog_version": "v1",
+  "sample_definition": "A sample is determined by a random combination of feature values, subject to the selected generation constraints.",
+  "classes": {
+    "bird": {
+      "id": "bird",
+      "name": "Bird"
+    },
+    "cars": {
+      "id": "cars",
+      "name": "Cars"
+    },
+    "foods": {
+      "id": "foods",
+      "name": "Foods"
+    },
+    "garments": {
+      "id": "garments",
+      "name": "Garments"
+    },
+    "human": {
+      "id": "human",
+      "name": "Human"
+    },
+    "kitchenware": {
+      "id": "kitchenware",
+      "name": "Kitchenware"
+    },
+    "legal_case": {
+      "id": "legal_case",
+      "name": "Legal Case"
+    },
+    "mammal": {
+      "id": "mammal",
+      "name": "Mammal"
+    },
+    "plant": {
+      "id": "plant",
+      "name": "Plant"
+    },
+    "smartphones": {
+      "id": "smartphones",
+      "name": "Smartphones"
+    }
+  },
+  "features": {
+    "bird": {
+      "bird_f_001": {
+        "name": "is_large",
+        "description": "How large the bird's body is relative to birds in general.",
+        "labeling": "Adult body mass for the identified species, using the documented typical value or midpoint of its reported adult range: at least 1,000 g = 1, 250 g to under 1,000 g = 0.5, under 250 g = 0. These are dataset size bands. Do not substitute the current individual’s age or condition for species size."
+      },
+      "bird_f_002": {
+        "name": "has_flight_wings",
+        "description": "How well the bird's wing anatomy is suited to powered flight.",
+        "labeling": "Wing anatomy: wings structurally adapted for powered flight = 1, documented reduced or vestigial flight structures retaining partial flight adaptations = 0.5, wings specialised for swimming or lacking functional powered-flight anatomy = 0. Evaluate anatomy independently of injury, fatigue, and current flight performance."
+      },
+      "bird_f_003": {
+        "name": "has_developed_flight_plumage",
+        "description": "How fully the bird's flight feathers have developed.",
+        "labeling": "Flight-feather development: fully developed flight feathers = 1, partially grown or incompletely developed flight feathers = 0.5, flight feathers absent or not yet developed = 0. Use the individual’s documented developmental state; do not infer maturity from the species name."
+      },
+      "bird_f_004": {
+        "name": "has_intact_wings",
+        "description": "How intact and undamaged the bird's wings are.",
+        "labeling": "Current wing condition: both wings intact without documented damage = 1, minor damage with retained wing movement = 0.5, major structural damage or loss of functional use of either wing = 0. A species name alone does not establish intact wings."
+      },
+      "bird_f_005": {
+        "name": "is_rested",
+        "description": "How rested the bird is.",
+        "labeling": "Current rest state: recovered with no documented residual fatigue = 1, partly recovered with mild or moderate residual fatigue = 0.5, exhausted or severely fatigued = 0. Do not infer rest from species identity."
+      },
+      "bird_f_006": {
+        "name": "has_unhealed_fracture",
+        "description": "The presence of a wing fracture that has not healed.",
+        "labeling": "Current wing fracture: confirmed unhealed wing fracture = 1, explicitly no fracture or a fully healed fracture = 0. Uncertain, suspected or conflicting fracture evidence remains missing; do not assign 0.5."
+      },
+      "bird_f_007": {
+        "name": "has_severe_fatigue",
+        "description": "The severity of the bird's current fatigue.",
+        "labeling": "Current fatigue: severe fatigue or exhaustion = 1, mild or moderate fatigue = 0.5, explicitly rested with no fatigue = 0. Use the same documented fatigue state as is_rested, with the scale reversed."
+      }
+    },
+    "cars": {
+      "cars_f_001": {
+        "name": "has_long_range",
+        "description": "The vehicle’s current driving range in mild weather.",
+        "labeling": "Mild-weather current range: at least 400 km = 1, 250-399 km = 0.5, under 250 km = 0."
+      },
+      "cars_f_002": {
+        "name": "is_battery_electric",
+        "description": "Whether the vehicle uses a battery electric powertrain.",
+        "labeling": "Powertrain: battery_electric = 1, plug_in_hybrid = 0.5, hybrid, petrol, or diesel = 0."
+      },
+      "cars_f_003": {
+        "name": "has_winter_tires",
+        "description": "The suitability of the fitted tyres for winter conditions.",
+        "labeling": "Tyres: winter = 1, all_season = 0.5, summer = 0."
+      },
+      "cars_f_004": {
+        "name": "has_snow_traction_drive",
+        "description": "The drive layout’s suitability for traction in snow.",
+        "labeling": "Drive layout: awd or 4wd = 1, fwd = 0.5, rwd = 0."
+      },
+      "cars_f_005": {
+        "name": "has_high_ground_clearance",
+        "description": "The vehicle’s ground clearance.",
+        "labeling": "Ground clearance: at least 200 mm = 1, 160-199 mm = 0.5, under 160 mm = 0."
+      },
+      "cars_f_006": {
+        "name": "has_healthy_starter_battery",
+        "description": "The condition of the 12 V starter battery.",
+        "labeling": "12 V starter battery: healthy = 1, aging = 0.5, weak = 0."
+      },
+      "cars_f_007": {
+        "name": "is_mechanically_sound",
+        "description": "The vehicle’s mechanical condition.",
+        "labeling": "Mechanical condition: sound = 1, minor_issue = 0.5, major_fault = 0."
+      }
+    },
+    "foods": {
+      "foods_f_001": {
+        "name": "is_perishable",
+        "description": "Whether the food requires temperature control to limit spoilage or microbial growth.",
+        "labeling": "Time/temperature-control food (FDA Food Code TCS) = 1, semi_perishable = 0.5, shelf_stable = 0."
+      },
+      "foods_f_002": {
+        "name": "is_high_acid",
+        "description": "The food’s typical acidity.",
+        "labeling": "Typical pH: below 4.2 = 1, 4.2-4.6 = 0.5, above 4.6 = 0 (FDA Food Code Table B bands)."
+      },
+      "foods_f_003": {
+        "name": "is_low_moisture",
+        "description": "The food’s typical water activity.",
+        "labeling": "Typical water activity: below 0.88 = 1, 0.88-0.92 = 0.5, above 0.92 = 0 (FDA Food Code Table B bands)."
+      },
+      "foods_f_004": {
+        "name": "is_fully_cooked",
+        "description": "Whether the food is fully cooked or pasteurised.",
+        "labeling": "Fully cooked or pasteurised = 1, partly_cooked (for example cooked rice with raw fillings) = 0.5, raw = 0."
+      },
+      "foods_f_005": {
+        "name": "contains_raw_animal_protein",
+        "description": "Whether the food contains raw animal protein.",
+        "labeling": "Raw meat, fish, or egg: main_ingredient = 1, partial = 0.5, none = 0."
+      },
+      "foods_f_006": {
+        "name": "is_commercially_sealed",
+        "description": "Whether the food is in commercially sealed packaging.",
+        "labeling": "Packaging: commercially_sealed = 1, opened_and_resealed = 0.5, unpackaged = 0."
+      },
+      "foods_f_007": {
+        "name": "is_cooked_starch_dish",
+        "description": "Whether the food is a cooked starch dish.",
+        "labeling": "Cooked rice or pasta: main_ingredient = 1, partial = 0.5, none = 0 (Bacillus cereus risk, FDA Bad Bug Book)."
+      }
+    },
+    "garments": {
+      "garments_f_001": {
+        "name": "is_machine_washable",
+        "description": "Whether the care label permits machine washing.",
+        "labeling": "ISO 3758 washing symbol: machine_wash = 1, hand_wash_only = 0.5, do_not_wash = 0."
+      },
+      "garments_f_002": {
+        "name": "tolerates_hot_water",
+        "description": "The maximum wash temperature permitted by the care label.",
+        "labeling": "Maximum labelled wash temperature: 60 C or higher = 1, 40 C = 0.5, 30 C = 0."
+      },
+      "garments_f_003": {
+        "name": "resists_felting",
+        "description": "The garment’s resistance to felting.",
+        "labeling": "Felting: does_not_felt = 1, shrink_resistant_wool (superwash) = 0.5, felts_readily = 0."
+      },
+      "garments_f_004": {
+        "name": "is_bleach_safe",
+        "description": "The types of bleach permitted by the care label.",
+        "labeling": "ISO 3758 bleaching symbol: any_bleach = 1, oxygen_bleach_only = 0.5, do_not_bleach = 0."
+      },
+      "garments_f_005": {
+        "name": "is_tumble_dry_safe",
+        "description": "Whether the care label permits tumble drying.",
+        "labeling": "ISO 3758 tumble-drying symbol: normal_temperature (two dots) = 1, low_temperature_only (one dot) = 0.5, do_not_tumble_dry = 0."
+      },
+      "garments_f_006": {
+        "name": "is_colorfast",
+        "description": "The garment’s colourfastness during washing.",
+        "labeling": "Colourfastness to washing (ISO 105-C06 grey scale): grade_4_to_5 = 1, grade_3 = 0.5, grade_2_or_below = 0."
+      },
+      "garments_f_007": {
+        "name": "is_dry_cleanable",
+        "description": "Whether the care label permits professional dry cleaning.",
+        "labeling": "ISO 3758 professional-care symbol: professional_dry_clean = 1, gentle_dry_clean_only = 0.5, do_not_dry_clean = 0."
+      }
+    },
+    "human": {
+      "human_f_001": {
+        "name": "has_5km_endurance",
+        "description": "The demonstrated rested sustained test distance is at least 5,000 metres.",
+        "labeling": "Distance in a documented continuous rested running test: at least 5,000 m = 1, established maximum below 5,000 m = 0. Incomplete tests or conflicting evidence remain missing. Use the same joint distance/pace/terrain/rest-state test record for related features."
+      },
+      "human_f_002": {
+        "name": "can_sustain_10kmh",
+        "description": "The demonstrated rested sustained test pace is at least 10 km/h.",
+        "labeling": "Pace in a documented sustained rested running test: at least 10 km/h = 1, established sustained pace below 10 km/h = 0. Brief peak speed, incomplete tests and conflicting evidence remain missing. Keep pace linked to the same test record as the reported distance."
+      },
+      "human_f_003": {
+        "name": "has_unrestricted_mobility",
+        "description": "How unrestricted the person’s mobility is.",
+        "labeling": "Current mobility: unrestricted gait and limb movement = 1, partial limitation while retaining independent running movement = 0.5, a limitation preventing running movement = 0. Use stipulated functional limitations rather than a diagnosis or role alone."
+      },
+      "human_f_004": {
+        "name": "is_rested",
+        "description": "How rested the person is.",
+        "labeling": "Current rest state: recovered with no documented residual fatigue = 1, partly recovered with mild or moderate residual fatigue = 0.5, exhausted or severely fatigued = 0."
+      },
+      "human_f_005": {
+        "name": "has_uphill_training",
+        "description": "The stipulated profile includes regular uphill training.",
+        "labeling": "Stipulated uphill training: explicitly regular uphill training = 1, occasional or intermittent uphill training = 0.5, explicitly no uphill training = 0. Level-track performance and a role name alone do not establish uphill training."
+      },
+      "human_f_006": {
+        "name": "has_regular_training",
+        "description": "How regularly the person trains.",
+        "labeling": "Training frequency over the stipulated recent four-week period: at least three running or endurance sessions per week on average = 1, at least one but fewer than three = 0.5, fewer than one = 0. An explicitly regular, occasional, or absent training profile maps to 1, 0.5, or 0 respectively when counts are not supplied; contradictory frequency evidence remains unresolved."
+      },
+      "human_f_007": {
+        "name": "has_100m_endurance",
+        "description": "The demonstrated rested sustained test distance is at least 100 metres.",
+        "labeling": "Distance in a documented continuous rested running test: at least 100 m = 1, established maximum below 100 m = 0. Incomplete tests or conflicting evidence remain missing. Use the same test record as has_5km_endurance; a 5 km demonstration also establishes 100 m."
+      }
+    },
+    "kitchenware": {
+      "kitchenware_f_001": {
+        "name": "is_brittle",
+        "description": "The brittleness of the item’s material.",
+        "labeling": "Material: brittle (glass, ceramic, porcelain) = 1, semi_rigid (laminated or tempered glass, hard plastic, acrylic, melamine, enamel) = 0.5, tough (metal, wood, silicone, polyethylene) = 0."
+      },
+      "kitchenware_f_002": {
+        "name": "is_thin_walled",
+        "description": "The thinness of the item’s walls.",
+        "labeling": "Wall thickness: thin = 1, medium = 0.5, thick = 0."
+      },
+      "kitchenware_f_003": {
+        "name": "is_heavy",
+        "description": "The item’s weight.",
+        "labeling": "Weight: heavy = 1, medium = 0.5, light = 0."
+      },
+      "kitchenware_f_004": {
+        "name": "has_fragile_parts",
+        "description": "Whether the item has fragile protruding parts.",
+        "labeling": "Protruding parts: long_or_thin (stem, neck, limbs) = 1, small_handle = 0.5, none = 0."
+      },
+      "kitchenware_f_005": {
+        "name": "is_already_chipped",
+        "description": "The extent of existing chips or surface flaws.",
+        "labeling": "Condition: already_chipped = 1, small_surface_flaw = 0.5, new = 0."
+      },
+      "kitchenware_f_006": {
+        "name": "is_heat_shock_resistant",
+        "description": "The item’s resistance to sudden temperature changes.",
+        "labeling": "Resistance to sudden temperature change: resistant (borosilicate glass, zirconia, metal, silicone) = 1, moderate = 0.5, vulnerable (ordinary glass) = 0."
+      },
+      "kitchenware_f_007": {
+        "name": "is_small",
+        "description": "The item’s size relative to a hand.",
+        "labeling": "Size: smaller than a hand = 1, medium = 0.5, large = 0."
+      }
+    },
+    "legal_case": {
+      "legal_case_f_001": {
+        "name": "caused_property_damage",
+        "description": "The person damaged the property.",
+        "labeling": "Stipulated actual property damage caused by the person = 1; explicitly no actual damage or no causation by that person = 0. Missing or disputed facts stay missing. An attempt without actual damage is 0."
+      },
+      "legal_case_f_002": {
+        "name": "intentional_damage",
+        "description": "The damage was intentional.",
+        "labeling": "Intent to cause the stipulated damage = 1; explicitly accidental or unintended damage = 0. Intent to act alone does not establish intent to damage. Missing or disputed intent stays missing."
+      },
+      "legal_case_f_003": {
+        "name": "property_belongs_to_another",
+        "description": "The damaged property belongs to another person.",
+        "labeling": "Damaged property wholly belongs to another person = 1, jointly belongs to the actor and another person = 0.5, belongs solely to the actor = 0. Unknown or disputed ownership stays missing."
+      },
+      "legal_case_f_004": {
+        "name": "has_owner_consent",
+        "description": "The owner consented to this damage.",
+        "labeling": "Valid owner consent explicitly covers this damage = 1; consent explicitly absent, refused, withdrawn or outside scope = 0. Unknown or disputed consent stays missing; silence is insufficient."
+      },
+      "legal_case_f_005": {
+        "name": "necessary_to_prevent_imminent_harm",
+        "description": "In the emergency context, the damage was solely necessary to prevent the stipulated imminent serious danger; this fact does not establish an emergency in other contexts.",
+        "labeling": "Conditional on the emergency context being applied, this damage is solely necessary to prevent its stipulated imminent serious danger = 1; at least one required condition explicitly fails = 0. Unknown or disputed facts stay missing. This feature does not create an emergency in other contexts."
+      },
+      "legal_case_f_006": {
+        "name": "has_lawful_authorisation",
+        "description": "Lawful authorisation is present. Official-duty exemption separately requires necessary damage within the authorised scope; authorisation alone does not establish exemption.",
+        "labeling": "Valid lawful authorisation explicitly present = 1; explicitly absent or invalid = 0. Unknown or disputed authorisation stays missing. Authorisation alone does not establish necessity or an official-duty exemption."
+      },
+      "legal_case_f_007": {
+        "name": "within_official_scope",
+        "description": "The damage was necessary and within the authorised scope of the official duties assessed in the official-duty context.",
+        "labeling": "Conditional on the official-duty context being applied, this damage is both necessary and within the authorised scope = 1; either condition explicitly fails = 0. Unknown or disputed facts stay missing. A role or authorisation alone is insufficient."
+      }
+    },
+    "mammal": {
+      "mammal_f_001": {
+        "name": "is_large",
+        "description": "How large the mammal’s body is relative to mammals in general.",
+        "labeling": "Adult body mass for the identified species, using the documented typical value or midpoint of its reported adult range: at least 100 kg = 1, 10 kg to under 100 kg = 0.5, under 10 kg = 0. These are dataset size bands. Do not substitute the current individual’s age or condition for species size."
+      },
+      "mammal_f_002": {
+        "name": "is_cold_adapted",
+        "description": "The mammal’s morphological and physiological adaptations to cold conditions.",
+        "labeling": "Documented species adaptations to cold: specialised cold-climate insulation or physiology = 1, moderate or seasonal cold adaptations = 0.5, explicitly limited cold adaptation characteristic of warm-climate specialists = 0. Use documented traits, not a survival judgment for the task’s temperature."
+      },
+      "mammal_f_003": {
+        "name": "is_heat_adapted",
+        "description": "The mammal’s morphological and physiological adaptations to hot conditions.",
+        "labeling": "Documented species adaptations to heat: specialised hot-climate thermoregulation = 1, moderate or seasonal heat adaptations = 0.5, explicitly limited heat adaptation characteristic of cold-climate specialists = 0. Use documented traits, not a survival judgment for the task’s temperature."
+      },
+      "mammal_f_004": {
+        "name": "is_drought_adapted",
+        "description": "The mammal’s adaptations for conserving water when water is scarce.",
+        "labeling": "Documented species adaptations to water scarcity: specialised water-conserving physiology or storage = 1, moderate water-conserving adaptations with continued regular water dependence = 0.5, explicitly little drought adaptation and strong dependence on frequent water access = 0. Do not infer adaptation from a single survival outcome."
+      },
+      "mammal_f_005": {
+        "name": "is_adult",
+        "description": "The individual’s developmental maturity.",
+        "labeling": "Individual developmental stage: reproductively mature adult = 1, subadult approaching maturity = 0.5, infant or juvenile not approaching maturity = 0. Use species-appropriate documented maturity; a species name alone does not establish adulthood."
+      },
+      "mammal_f_006": {
+        "name": "is_healthy",
+        "description": "The individual’s health.",
+        "labeling": "Current individual health: explicitly healthy with no active impairment = 1, mild or moderate illness or injury = 0.5, severe illness or injury with major functional impairment = 0. Do not infer health from species identity or absence of a health statement."
+      },
+      "mammal_f_007": {
+        "name": "has_adequate_energy_reserves",
+        "description": "How adequate the individual’s energy reserves are.",
+        "labeling": "Current individual energy reserves: documented adequate body condition and energy stores for normal maintenance = 1, marginal or depleted reserves without severe emaciation = 0.5, severely depleted reserves or emaciation = 0. Evaluate the stipulated starting condition, independently of predicted task survival."
+      }
+    },
+    "plant": {
+      "plant_f_001": {
+        "name": "is_succulent",
+        "description": "The plant’s succulent growth form.",
+        "labeling": "Documented growth form: a succulent with specialised water-storing vegetative tissue = 1, weakly or seasonally succulent growth = 0.5, explicitly non-succulent growth = 0. Stem succulents can score 1 even when succulent leaves are absent."
+      },
+      "plant_f_002": {
+        "name": "is_fern",
+        "description": "Whether the plant is a fern.",
+        "labeling": "Documented botanical identity: fern = 1, non-fern = 0. Missing or conflicting identification remains missing, not 0.5. A common name containing fern is insufficient."
+      },
+      "plant_f_003": {
+        "name": "has_established_roots",
+        "description": "How well established the plant’s roots are.",
+        "labeling": "Current root establishment: developed roots established in the current growing medium = 1, partly rooted cutting or recently transplanted plant with incomplete establishment = 0.5, unrooted cutting or no established roots = 0. A species name alone does not establish rooting state."
+      },
+      "plant_f_004": {
+        "name": "is_healthy",
+        "description": "The individual’s health.",
+        "labeling": "Current individual health: explicitly healthy with no active impairment = 1, mild or moderate stress, disease, or damage = 0.5, severe disease, stress, or damage with major functional impairment = 0. Do not infer health from species identity or an omitted condition."
+      },
+      "plant_f_005": {
+        "name": "has_moist_soil",
+        "description": "How moist the soil around the plant is.",
+        "labeling": "Current root-zone soil moisture: moist or wet throughout the root zone, including saturated soil = 1, partly dry or slightly moist = 0.5, dry throughout the root zone = 0. This measures moisture only; a value of 1 does not establish adequate drainage, plant health, or suitable growing conditions."
+      },
+      "plant_f_006": {
+        "name": "has_succulent_leaves",
+        "description": "The presence of fleshy, water-storing leaves.",
+        "labeling": "Documented leaves: clearly fleshy leaves specialised for water storage = 1, slightly or seasonally fleshy water-storing leaves = 0.5, non-fleshy leaves or no leaves = 0. Water storage in stems alone does not establish succulent leaves."
+      },
+      "plant_f_007": {
+        "name": "is_shrub",
+        "description": "Whether the plant has a shrub growth form.",
+        "labeling": "Documented growth form of the specified plant: woody shrub with persistent stems branching near the base = 1, intermediate subshrub or explicitly mixed shrub growth form = 0.5, herbaceous plant, tree-form plant, or other explicitly non-shrub growth = 0. Use the stipulated cultivar or growth form when the species permits several forms."
+      }
+    },
+    "smartphones": {
+      "smartphones_f_001": {
+        "name": "is_deep_water_rated",
+        "description": "The phone’s rated resistance to deep water immersion.",
+        "labeling": "IEC 60529 rating with manufacturer depth: IP68 to 4 m or more = 1, IP68 to 1.5 m or IP67 (1 m) = 0.5, IP54 or unrated = 0."
+      },
+      "smartphones_f_002": {
+        "name": "has_intact_water_seal",
+        "description": "The condition of the phone’s water seal.",
+        "labeling": "Water seal: factory_intact = 1, authorised_repair = 0.5, third_party_repair_or_cracked_back = 0."
+      },
+      "smartphones_f_003": {
+        "name": "has_intact_screen",
+        "description": "The condition of the phone’s screen.",
+        "labeling": "Screen: intact = 1, minor_chip = 0.5, cracked = 0."
+      },
+      "smartphones_f_004": {
+        "name": "has_protective_case",
+        "description": "The level of protection provided by the phone’s case.",
+        "labeling": "Case: rugged_case = 1, slim_case = 0.5, no_case = 0."
+      },
+      "smartphones_f_005": {
+        "name": "is_cold_rated",
+        "description": "The manufacturer’s lower operating temperature limit.",
+        "labeling": "Manufacturer lower operating temperature: -20 C = 1, -10 C = 0.5, 0 C = 0."
+      },
+      "smartphones_f_006": {
+        "name": "has_high_charge",
+        "description": "The phone’s starting battery charge.",
+        "labeling": "Starting charge: at least 50 percent = 1, 20-49 percent = 0.5, under 20 percent = 0."
+      },
+      "smartphones_f_007": {
+        "name": "has_healthy_battery",
+        "description": "The phone battery’s remaining health.",
+        "labeling": "Battery health: at least 85 percent = 1, 70-84 percent = 0.5, under 70 percent = 0."
+      }
+    }
+  },
+  "tasks": {
+    "fly": {
+      "id": "fly",
+      "name": "Flying",
+      "bindings": [
+        {
+          "class_id": "bird",
+          "query_template": "Can this bird fly?",
+          "target_definition": "Complete the required aerial movement under the conditions associated with the context, without external assistance.",
+          "source_query_id": "can_fly"
+        }
+      ],
+      "contexts": {
+        "dry_20m": {
+          "description": "Short flight with dry plumage. Travel 20 metres continuously through the air. The bird's feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count."
+        },
+        "dry_500m": {
+          "description": "Long flight with dry plumage. Travel 500 metres continuously through the air. The bird's feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count."
+        },
+        "wet_20m": {
+          "description": "Short flight with wet plumage. Travel 20 metres continuously through the air immediately after heavy rain. The bird's body and wing feathers are thoroughly wet and remain wet throughout the attempt; it cannot dry them before taking off. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count."
+        },
+        "dry_5m": {
+          "description": "Very short flight with dry plumage. Travel 5 metres continuously through the air. The bird's feathers are dry throughout the attempt. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count."
+        },
+        "wet_500m": {
+          "description": "Long flight with wet plumage. Travel 500 metres continuously through the air immediately after heavy rain. The bird's body and wing feathers are thoroughly wet and remain wet throughout the attempt; it cannot dry them before taking off. Take off from level ground with 20 metres of unobstructed space. Air is still, temperature is 20 C, and there are no obstacles or external assistance. Walking, jumping, and passive falling do not count."
+        }
+      }
+    },
+    "guilt": {
+      "id": "guilt",
+      "name": "Guilt",
+      "bindings": [
+        {
+          "class_id": "legal_case",
+          "query_template": "Is this person guilty?",
+          "target_definition": "Satisfy all elements of the supplied hypothetical property-damage offence without an applicable situation-specific exception. This is not a determination under real-world law.",
+          "source_query_id": "is_guilty"
+        }
+      ],
+      "contexts": {
+        "ordinary_situation": {
+          "description": "Ordinary situation: there is no imminent serious danger and the person is not performing official duties. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context."
+        },
+        "emergency_necessity": {
+          "description": "Emergency situation: imminent serious danger threatens a person; the actor is not performing official duties. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context."
+        },
+        "official_duties": {
+          "description": "Official-duty situation: the person is performing official duties and there is no imminent serious danger. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context."
+        },
+        "supervisors_order": {
+          "description": "Supervisor's order situation: a workplace supervisor has ordered the actor to damage the property. There is no imminent serious danger and the actor is not performing official duties. The supervisor or friend does not act on behalf of the property owner; the order or request does not establish owner consent. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context."
+        },
+        "friends_request": {
+          "description": "Friend's request situation: a friend has asked the actor to damage the property. There is no imminent serious danger and the actor is not performing official duties. The supervisor or friend does not act on behalf of the property owner; the order or request does not establish owner consent. Judge only this hypothetical property-damage offence using the stipulated facts; no other offences or defences apply. The same property and act are assessed in each context."
+        }
+      }
+    },
+    "run": {
+      "id": "run",
+      "name": "Running",
+      "bindings": [
+        {
+          "class_id": "human",
+          "query_template": "Can this person run?",
+          "target_definition": "Complete the required distance by continuous running at at least the specified pace on the stated terrain, in the stipulated current state, without assistance or walking breaks.",
+          "source_query_id": "can_run"
+        }
+      ],
+      "contexts": {
+        "run_100m_8kmh": {
+          "description": "Run 100 metres continuously at 8 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as the person's demonstrated rested capacity, not a guarantee in a fatigued or injured state."
+        },
+        "run_5km_10kmh": {
+          "description": "Run 5,000 metres continuously at 10 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as demonstrated rested capacity, not a guarantee in a fatigued or injured state."
+        },
+        "run_1km_uphill": {
+          "description": "Run 1,000 metres continuously at 8 km/h on a dry gravel trail with a constant 10 percent uphill gradient at 20 C. No walking breaks or external assistance. The reported level-track test does not itself establish uphill endurance; consider the stipulated training, mobility, and fatigue."
+        },
+        "run_100m_12kmh": {
+          "description": "Run 100 metres continuously at 12 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as demonstrated rested capacity, not a guarantee in a fatigued or injured state. Keep the stipulated mobility and fatigue unchanged."
+        },
+        "run_10km_8kmh": {
+          "description": "Run 10,000 metres continuously at 8 km/h on a dry, level track at 20 C. No walking breaks or external assistance. Interpret reported sustained test distance and pace as demonstrated rested capacity, not a guarantee in a fatigued or injured state. Keep the stipulated mobility and fatigue unchanged."
+        }
+      }
+    },
+    "survive": {
+      "id": "survive",
+      "name": "Survival",
+      "bindings": [
+        {
+          "class_id": "mammal",
+          "query_template": "Can this mammal survive?",
+          "target_definition": "The stipulated individual remains alive for the full interval under the supplied environmental and resource conditions, without rescue. Temporary stress or reversible damage is allowed.",
+          "source_query_id": "can_survive_mammal",
+          "contexts": [
+            "mammal_mild_7d",
+            "mammal_cold_24h",
+            "mammal_heat_24h",
+            "mammal_no_water_food_3d",
+            "mammal_no_food_14d"
+          ]
+        },
+        {
+          "class_id": "plant",
+          "query_template": "Can this plant survive?",
+          "target_definition": "Be alive at the end of the specified interval under the stated conditions. Temporary wilting or damage is allowed; growth, flowering, and perfect health are not required.",
+          "source_query_id": "can_survive_plant",
+          "contexts": [
+            "plant_no_water_3d",
+            "plant_hot_drought_30d",
+            "plant_freezing_7d",
+            "plant_watered_7d",
+            "plant_waterlogged_7d"
+          ]
+        }
+      ],
+      "contexts": {
+        "mammal_mild_7d": {
+          "description": "Survive 7 days at a temperature suitable for the species, with species-appropriate food and hydration supplied as needed. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question."
+        },
+        "mammal_cold_24h": {
+          "description": "Survive 24 hours at a constant -20 C. Food and hydration are supplied as needed. There is no heated shelter, insulation added by humans, or opportunity to leave the cold environment. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question."
+        },
+        "mammal_heat_24h": {
+          "description": "Survive 24 hours at a constant 40 C. Food and hydration are supplied as needed. There is no active cooling or opportunity to leave the hot environment. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question."
+        },
+        "mammal_no_water_food_3d": {
+          "description": "Survive 3 days at a temperature suitable for the species with no fluid intake, including drinking, absorption, and moisture from food. Food is not supplied during this interval. A species-required supporting medium remains available but cannot provide hydration; this is a constructed exposure condition. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question."
+        },
+        "mammal_no_food_14d": {
+          "description": "Survive 14 days at a temperature suitable for the species without food or calorie intake. Hydration is supplied as needed. Use the stipulated developmental stage, health, and energy reserves without changing them before the start. The animal is in a safe enclosure with its species-appropriate supporting medium (air or water), no predators, injury, or external rescue. The specified temperature applies to that surrounding medium throughout the interval. Judge whether this individual is alive at the end; temporary physiological stress is allowed. Do not answer a species-level reproduction question."
+        },
+        "plant_no_water_3d": {
+          "description": "Remain for 3 days without watering or rain at a constant 20 C, 50 percent relative humidity, and bright indirect light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable well-drained substrate, no external water reservoir, and no pests. Judge survival at the end, allowing temporary wilting."
+        },
+        "plant_hot_drought_30d": {
+          "description": "Remain for 30 days without watering or rain at a constant 35 C, 30 percent relative humidity, and direct sunlight for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable well-drained substrate, no external water reservoir, and no pests. Judge survival at the end, allowing temporary damage."
+        },
+        "plant_freezing_7d": {
+          "description": "Remain for 7 days without watering or rain at a constant -10 C, including roots and substrate, with daylight for 8 hours per day and no frost protection. The plant starts in the stipulated state in a 10-litre pot with suitable substrate, no external water reservoir, and no pests. Judge survival at the end, allowing temporary damage or dormancy."
+        },
+        "plant_watered_7d": {
+          "description": "Remain for 7 days at a constant 20 C, 50 percent relative humidity, and bright indirect light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable well-drained substrate and no pests. Water is supplied as needed to maintain suitable soil moisture after the start, without waterlogging. Keep the stipulated root condition and initial health. Judge survival at the end, allowing temporary damage."
+        },
+        "plant_waterlogged_7d": {
+          "description": "Remain for 7 days at a constant 20 C, 50 percent relative humidity, and bright indirect light for 12 hours per day. The plant starts in the stipulated state in a 10-litre pot with suitable substrate and no pests. Immediately after the start, the entire root zone is continuously saturated with standing water and no drainage for the full interval. Keep the stipulated root condition and initial health. Judge survival at the end, allowing temporary damage."
+        }
+      }
+    }
+  },
+  "task_label_schema": {
+    "components": [
+      "yes",
+      "no",
+      "unknown"
+    ],
+    "minimum": 0,
+    "maximum": 1,
+    "sum": 1,
+    "sum_tolerance": 1e-09,
+    "interpretation": {
+      "yes": "supporting belief mass",
+      "no": "opposing belief mass",
+      "unknown": "uncommitted uncertainty mass"
+    }
+  }
+}

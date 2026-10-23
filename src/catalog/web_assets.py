@@ -1,67 +1,55 @@
-"""Export public catalog definitions for the static project page."""
+"""Export definitions and explicitly selected frozen feature-sample releases."""
 from pathlib import Path
-import re
-from .io import load, write
+from .files import FORMAT, FileCatalog
+from .releases import read_releases, read_snapshot
+from .io import write
+from .opinions import TASK_LABEL_SCHEMA
 
 
-def export_catalog(root):
+def export_catalog(root, catalog_version='v1'):
     root = Path(root)
-    classes = []
-    for directory in sorted((root / 'catalog/classes').iterdir()):
-        if not (directory / 'class.yaml').exists():
-            continue
-        definition = load(directory / 'class.yaml')
-        classes.append({'id': definition['id'], 'name': definition.get('name', definition['id']),
-                        'collections': definition.get('collections', []),
-                        'instances': load(directory / 'list.yaml')['instances'],
-                        'features': load(directory / 'features.yaml')['features']})
-    tasks = []
-    for path in sorted((root / 'catalog/tasks').glob('*/task.yaml')):
-        task = load(path)
-        tasks.append({'id': task['id'], 'name': task.get('name', task['id']), 'bindings': task['bindings'],
-                      'contexts': load(path.with_name('contexts.yaml'))['contexts']})
-    write(root / 'docs/assets/catalog.json', {'classes': classes, 'tasks': tasks})
+    catalog = FileCatalog(root, catalog_version=catalog_version)
+    classes = [{**c, 'features': {f['id']: {k: v for k, v in f.items() if k != 'id'} for f in c['features']}}
+               for c in catalog.classes.values()]
+    tasks = list(catalog.tasks.values())
+    write(root / 'docs/assets/catalog.json', {'catalog_version': catalog_version, 'classes': classes, 'tasks': tasks, 'task_label_schema': TASK_LABEL_SCHEMA})
+    write(root / 'docs/assets/info.json', {
+        'catalog_version': catalog_version,
+        'sample_definition': 'A sample is determined by a random combination of feature values, subject to the selected generation constraints.',
+        'classes': {c['id']: {k: v for k, v in c.items() if k != 'features'} for c in classes},
+        'features': {c['id']: c['features'] for c in classes},
+        'tasks': {t['id']: t for t in tasks},
+        'task_label_schema': TASK_LABEL_SCHEMA,
+    })
 
 
-def export_instance_labels(root):
-    """Publish release label selections only; generated values stay local."""
+def export_release_samples(root):
     root = Path(root)
-    features, tasks = {}, {}
-    directories = [path for path in (root / 'releases').glob('v*/') if re.fullmatch(r'v[1-9][0-9]*', path.name)]
-    for directory in sorted(directories, key=lambda path: int(path.name[1:])):
-        if not (directory / 'meta_info.json').exists():
-            continue
-        meta = load(directory / 'meta_info.json')
-        if meta.get('id') != directory.name:
-            raise ValueError('Release directory/ID mismatch')
-        if not isinstance(meta.get('classes'), list) or not meta['classes'] or not all(isinstance(cid, str) and cid for cid in meta['classes']):
-            raise ValueError('Release metadata requires explicit classes')
-        for key in ('instance_range', 'feature_range'):
-            interval = meta.get(key)
-            if (not isinstance(interval, list) or len(interval) != 2
-                    or any(type(value) is not int for value in interval)
-                    or not 1 <= interval[0] <= interval[1]):
-                raise ValueError(f'Release metadata requires an inclusive {key}')
-        if (not isinstance(meta.get('tasks'), dict) or not meta['tasks']
-                or any(not isinstance(ids, list) or not ids or not all(isinstance(i, str) and i for i in ids)
-                       for ids in meta['tasks'].values())):
-            raise ValueError('Release metadata requires explicit task/context IDs')
-        shared = {'kind': 'release', 'name': directory.name,
-                  'available': meta.get('status') != 'labels_unavailable',
-                  'classes': meta.get('classes', []), 'instance_range': meta.get('instance_range'),
-                  'feature_range': meta.get('feature_range'), 'contexts': meta.get('tasks', {})}
-        features[directory.name] = {**shared, 'features': {}}
-        tasks[directory.name] = {**shared, 'tasks': {}}
-        if shared['available']:
-            features[directory.name]['features'] = {
-                path.stem: load(path) for path in sorted((directory / 'labels/features').glob('*.json'))}
-            tasks[directory.name]['tasks'] = {
-                path.stem: load(path) for path in sorted((directory / 'labels/tasks_per_context').glob('*.json'))}
-    write(root / 'docs/assets/instance_labels.json', {'sources': features})
-    write(root / 'docs/assets/task_labels.json', {'sources': tasks})
+    sources = {}
+    for release_id, meta in read_releases(root).items():
+        available = meta.get('format') == FORMAT and meta.get('status') == 'released'
+        samples, tasks = read_snapshot(root, meta) if available else ({}, {})
+        frozen = FileCatalog(root / 'releases' / release_id) if available else None
+        sources[release_id] = {'available': available, 'classes': meta['classes'],
+                               'status': meta['status'], 'samples': samples, 'tasks': tasks,
+                               'sample_provenance': meta.get('sample_provenance', {}),
+                               'label_provenance': meta.get('label_provenance', {}),
+                               'feature_encoding': meta.get('feature_encoding', {}),
+                               'task_label_schema': meta.get('task_label_schema'),
+                               'definitions': ({'classes': list(frozen.classes.values()),
+                                                'tasks': list(frozen.tasks.values()),
+                                                'contexts': [{'task_id': tid, 'class_id': cid, **context}
+                                                             for (tid, cid, _), context in frozen.contexts.items()]}
+                                               if frozen else None)}
+    write(root / 'docs/assets/release_samples.json', {'sources': sources})
+
 
 
 if __name__ == '__main__':
-    root = Path(__file__).resolve().parents[2]
-    export_catalog(root)
-    export_instance_labels(root)
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[2])
+    parser.add_argument('--catalog-version', default='v1')
+    args = parser.parse_args()
+    export_catalog(args.root, catalog_version=args.catalog_version)
+    export_release_samples(args.root)

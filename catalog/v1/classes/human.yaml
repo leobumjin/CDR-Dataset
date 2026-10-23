@@ -1,0 +1,45 @@
+id: human
+name: Human
+features:
+  human_f_001:
+    name: has_5km_endurance
+    description: The demonstrated rested sustained test distance is at least 5,000 metres.
+    labeling: 'Distance in a documented continuous rested running test: at least 5,000 m = 1, established
+      maximum below 5,000 m = 0. Incomplete tests or conflicting evidence remain missing. Use the same
+      joint distance/pace/terrain/rest-state test record for related features.'
+  human_f_002:
+    name: can_sustain_10kmh
+    description: The demonstrated rested sustained test pace is at least 10 km/h.
+    labeling: 'Pace in a documented sustained rested running test: at least 10 km/h = 1, established sustained
+      pace below 10 km/h = 0. Brief peak speed, incomplete tests and conflicting evidence remain missing.
+      Keep pace linked to the same test record as the reported distance.'
+  human_f_003:
+    name: has_unrestricted_mobility
+    description: How unrestricted the person’s mobility is.
+    labeling: 'Current mobility: unrestricted gait and limb movement = 1, partial limitation while retaining
+      independent running movement = 0.5, a limitation preventing running movement = 0. Use stipulated
+      functional limitations rather than a diagnosis or role alone.'
+  human_f_004:
+    name: is_rested
+    description: How rested the person is.
+    labeling: 'Current rest state: recovered with no documented residual fatigue = 1, partly recovered
+      with mild or moderate residual fatigue = 0.5, exhausted or severely fatigued = 0.'
+  human_f_005:
+    name: has_uphill_training
+    description: The stipulated profile includes regular uphill training.
+    labeling: 'Stipulated uphill training: explicitly regular uphill training = 1, occasional or intermittent
+      uphill training = 0.5, explicitly no uphill training = 0. Level-track performance and a role name
+      alone do not establish uphill training.'
+  human_f_006:
+    name: has_regular_training
+    description: How regularly the person trains.
+    labeling: 'Training frequency over the stipulated recent four-week period: at least three running
+      or endurance sessions per week on average = 1, at least one but fewer than three = 0.5, fewer than
+      one = 0. An explicitly regular, occasional, or absent training profile maps to 1, 0.5, or 0 respectively
+      when counts are not supplied; contradictory frequency evidence remains unresolved.'
+  human_f_007:
+    name: has_100m_endurance
+    description: The demonstrated rested sustained test distance is at least 100 metres.
+    labeling: 'Distance in a documented continuous rested running test: at least 100 m = 1, established
+      maximum below 100 m = 0. Incomplete tests or conflicting evidence remain missing. Use the same test
+      record as has_5km_endurance; a 5 km demonstration also establishes 100 m.'

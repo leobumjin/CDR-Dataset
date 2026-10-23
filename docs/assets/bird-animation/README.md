@@ -26,7 +26,7 @@ its context: the second normal region explicitly restores dry conditions. This
 is not a physical simulation of drying or a temporal experiment.
 
 CSS is scoped to `.bird-demo-section`. Asset loading resolves relative to the JS
-file, including under the `/CDR-Dataset/` prefix. Use `bash shells/serve.sh` for
+file, including under the `/CDR-Dataset/` prefix. Use `bash tools/serve.sh` for
 local HTTP preview. Small screens can scroll the landscape horizontally.
 
 Wet regions apply `.is-wet`: the SVG shows a darker, clumped wing with sheen and

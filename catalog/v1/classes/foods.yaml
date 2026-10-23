@@ -1,0 +1,35 @@
+id: foods
+name: Foods
+features:
+  foods_f_001:
+    name: is_perishable
+    description: Whether the food requires temperature control to limit spoilage or microbial growth.
+    labeling: Time/temperature-control food (FDA Food Code TCS) = 1, semi_perishable = 0.5, shelf_stable
+      = 0.
+  foods_f_002:
+    name: is_high_acid
+    description: The food’s typical acidity.
+    labeling: 'Typical pH: below 4.2 = 1, 4.2-4.6 = 0.5, above 4.6 = 0 (FDA Food Code Table B bands).'
+  foods_f_003:
+    name: is_low_moisture
+    description: The food’s typical water activity.
+    labeling: 'Typical water activity: below 0.88 = 1, 0.88-0.92 = 0.5, above 0.92 = 0 (FDA Food Code
+      Table B bands).'
+  foods_f_004:
+    name: is_fully_cooked
+    description: Whether the food is fully cooked or pasteurised.
+    labeling: Fully cooked or pasteurised = 1, partly_cooked (for example cooked rice with raw fillings)
+      = 0.5, raw = 0.
+  foods_f_005:
+    name: contains_raw_animal_protein
+    description: Whether the food contains raw animal protein.
+    labeling: 'Raw meat, fish, or egg: main_ingredient = 1, partial = 0.5, none = 0.'
+  foods_f_006:
+    name: is_commercially_sealed
+    description: Whether the food is in commercially sealed packaging.
+    labeling: 'Packaging: commercially_sealed = 1, opened_and_resealed = 0.5, unpackaged = 0.'
+  foods_f_007:
+    name: is_cooked_starch_dish
+    description: Whether the food is a cooked starch dish.
+    labeling: 'Cooked rice or pasta: main_ingredient = 1, partial = 0.5, none = 0 (Bacillus cereus risk,
+      FDA Bad Bug Book).'

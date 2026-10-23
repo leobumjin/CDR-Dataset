@@ -53,28 +53,3 @@ def write(path, body):
         os.replace(temporary, path)
     finally:
         Path(temporary).unlink(missing_ok=True)
-
-
-def instance_items(document, class_id):
-    """Validate a class-scoped instance mapping and expose internal ID records."""
-    if (not isinstance(document, dict) or set(document) != {'class_id', 'instances'}
-            or document['class_id'] != class_id or not isinstance(document['instances'], dict)):
-        raise ValueError('list.yaml requires matching class_id and an instances mapping')
-    items = []
-    for iid, spec in document['instances'].items():
-        if (not isinstance(iid, str) or not iid or not isinstance(spec, dict)
-                or set(spec) != {'name'} or not isinstance(spec['name'], str) or not spec['name']):
-            raise ValueError('Instance keys must be nonempty IDs with exactly a name field')
-        items.append({'id': iid, **spec})
-    return items
-
-
-def instance_document(class_id, items):
-    instances = {}
-    for item in items:
-        if item['id'] in instances:
-            raise ValueError(f"Duplicate instance ID: {item['id']}")
-        instances[item['id']] = {'name': item['name']}
-    document = {'class_id': class_id, 'instances': instances}
-    instance_items(document, class_id)
-    return document

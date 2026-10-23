@@ -1,26 +1,50 @@
-# Release selections
+# Feature-sample releases
+
+A release freezes explicitly selected sample feature vectors and optional task
+labels. Samples are defined by features, not real object names. N/R/R² release
+families are retired. Feature origin and task-label generation/review provenance
+are independent; constructed samples may have AI-generated judgments.
 
 ```text
-releases/
-  v1/
-    meta_info.json
-    labels/
-      features/<class>.json
-      tasks_per_context/<task>.json
-      groups/<class>.json
+releases/<version>/
+  shells/                               # version-specific execution entrypoints
+  scripts/                              # feature sampling and LLM task labeling
+  meta_info.json
+  catalog/                              # frozen semantic definitions
+  samples/<class>.json                   # sample ID -> feature ID -> value
+  labels/tasks_per_context/<task>.json   # optional sample ID -> context ID -> label
 ```
 
-meta_info.json explicitly declares the release ID, classes, inclusive instance_range
-and feature_range, and task IDs mapped to context ID lists. Selected values use the
-same compact mappings as generated results. Keep source selection and evidence
-references here when assembling real release labels.
+Current metadata uses format feature_samples_v1 and status planned, in_progress,
+ready or released. Ready/released snapshots require a catalog commit, source
+checksums, frozen definitions and artifact checksums. There is no required task
+label coverage and no assumed feature encoding. Missing labels stay missing.
 
-The current v1 entry defines the manual 1–100 preview scope, with features 1–7,
-but its status is labels_unavailable. No values have been released for this new
-catalog. The website therefore shows NA. Historical v1 payloads remain unchanged
-under versions/v1 and data/v1; their IDs are not reassigned to current catalog IDs.
-No v2 entry exists yet. Website version options follow actual release metadata.
+Assemble a new local release only from explicit source IDs:
 
-Generated script results remain under labels/generated/<script_name>/ and are
-never used as a fallback for unavailable release labels. Run
-`python -m src.catalog.web_assets` after editing release selections or labels.
+```bash
+python -m src.catalog.releases \
+  --release-id v2 \
+  --sample-source sample_run \
+  --label-sources task_run \
+  --catalog-commit <catalog-commit>
+```
+
+The IDs above are placeholders, not existing releases. Omit --label-sources for a
+feature-only release. Label sources must resolve to the exact selected sample
+vectors; overlapping judgments are rejected instead of implicitly choosing a
+source. Source checksums and separate sample/label provenance are retained.
+Frozen definitions, rather than later live catalog edits, interpret release data.
+Existing release snapshots cannot be overwritten. A directory containing only
+scripts/ and shells/ may receive its first snapshot; generation code is preserved. Assembly does not publish or
+upload anything. Use `python -m src.catalog releases` to validate snapshots and
+`python -m src.catalog.web_assets` to refresh public JSON after assembly.
+
+releases/v1 currently contains generation code, not a published feature-sample snapshot. Historical versions/v1
+and data/v1 remain unchanged and are not reinterpreted as feature-sample releases. New source runs are never a fallback for unavailable releases.
+
+Task labels contain exactly three subjective-logic masses: yes (support), no
+(opposition), unknown (uncommitted uncertainty). Each is a finite number in [0, 1]
+and their sum must be 1 within 1e-9. task_label_schema records this contract.
+Invalid opinions are rejected, not silently normalized. Absent labels remain
+separate from explicit full uncertainty {yes: 0, no: 0, unknown: 1}.

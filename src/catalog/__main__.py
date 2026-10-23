@@ -2,29 +2,27 @@ import argparse
 import json
 from pathlib import Path
 from .files import FileCatalog
+from .releases import read_releases
+from .sample_sources import SourceRun
 
 
 def main():
-    parser = argparse.ArgumentParser(description='CDR file catalogs')
-    parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[2])
-    sub = parser.add_subparsers(dest='command', required=True)
-    for name in ('stats', 'validate'):
+    p = argparse.ArgumentParser(description='CDR feature definitions and anonymous sample sources')
+    p.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[2])
+    p.add_argument('--catalog-version', default='v1')
+    sub = p.add_subparsers(dest='command', required=True)
+    for name in ('stats', 'validate', 'releases'):
         sub.add_parser(name)
-    sub.add_parser('annotate').add_argument('input', type=Path)
-    p = sub.add_parser('feature-sources')
-    p.add_argument('class_id')
-    p.add_argument('--output', type=Path)
-    args = parser.parse_args()
-    catalog = FileCatalog(args.root)
-    if args.command == 'feature-sources':
-        result = catalog.feature_sources(args.class_id)
-        if args.output:
-            args.output.parent.mkdir(parents=True, exist_ok=True)
-            args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
-            result = {'output': str(args.output)}
-    elif args.command == 'annotate':
-        result = catalog.append_label(json.loads(args.input.read_text()))
+    sub.add_parser('source').add_argument('source_id')
+    a = p.parse_args()
+    catalog = FileCatalog(a.root, catalog_version=a.catalog_version)
+    if a.command == 'releases':
+        result = read_releases(a.root)
+    elif a.command == 'source':
+        result = SourceRun(a.root, a.source_id, catalog=catalog).stats()
     else:
+        if a.command == 'validate':
+            read_releases(a.root)
         result = catalog.stats()
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
