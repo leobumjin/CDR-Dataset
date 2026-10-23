@@ -120,7 +120,11 @@ class BackendTests(unittest.TestCase):
     def test_openai_requests_structured_opinions_and_saves_model_provenance(self):
         client = FakeClient()
         args = self.args('openai', '--reasoning-effort', 'low')
-        result = execute(args, backend_factory=lambda args: OpenAIBackend(args, client=client))
+        args.batch_size = 2
+        with patch('tqdm.tqdm') as progress:
+            result = execute(args, backend_factory=lambda args: OpenAIBackend(args, client=client))
+        progress.assert_called_once_with(total=5, desc='Label inference', unit='request', file=sys.stderr)
+        self.assertEqual(progress.return_value.__enter__.return_value.update.call_count, 5)
         self.assertEqual(result['requests'], 5)
         self.assertEqual(result['cached_input_tokens'], 640)
         self.assertEqual(result['shared_prefixes'], 5)
@@ -175,7 +179,8 @@ class BackendTests(unittest.TestCase):
         calls = {}
         def llm(**kwargs):
             calls['model'] = kwargs
-            def chat(messages, sampling_params):
+            def chat(messages, sampling_params, use_tqdm):
+                calls['use_tqdm'] = use_tqdm
                 calls['messages'] = messages
                 calls['sampling'] = sampling_params
                 return [SimpleNamespace(outputs=[SimpleNamespace(text=json.dumps({'ctx': RATIO}), finish_reason='stop', token_ids=[1, 2])])]
@@ -188,6 +193,7 @@ class BackendTests(unittest.TestCase):
         self.assertEqual(calls['model']['tensor_parallel_size'], 2)
         self.assertEqual(calls['sampling'][0]['temperature'], 0.25)
         self.assertTrue(calls['model']['enable_prefix_caching'])
+        self.assertFalse(calls['use_tqdm'])
         self.assertEqual(calls['sampling'][0]['structured_outputs']['json']['required'], ['ctx'])
         self.assertEqual(parse_output(output['output'], ['ctx']), {'ctx': OPINION})
         self.assertEqual(output['status'], 'completed')

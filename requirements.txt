@@ -1,2 +1,3 @@
 # Catalog, sampling, validation and website exports.
 PyYAML>=6,<7
+tqdm>=4.66,<5

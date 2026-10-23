@@ -87,6 +87,7 @@ def execute(args, *, backend_factory=create_backend):
                'shared_prefixes': len({job['prompt_cache_key'] for job in jobs})}
     if args.dry_run:
         return summary
+    from tqdm import tqdm
     import uuid
     attempt = root / 'runs/inference' / (sid + '-' + uuid.uuid4().hex)
     attempt.mkdir(parents=True)
@@ -109,7 +110,8 @@ def execute(args, *, backend_factory=create_backend):
     try:
         backend = backend_factory(args)
         metadata.update(backend.metadata)
-        with (attempt / 'responses.jsonl').open('x') as log:
+        with (attempt / 'responses.jsonl').open('x') as log, tqdm(
+                total=len(jobs), desc='Label inference', unit='request', file=sys.stderr) as progress:
             for start in range(0, len(jobs), args.batch_size):
                 batch = jobs[start:start + args.batch_size]
                 count = 0
@@ -126,6 +128,7 @@ def execute(args, *, backend_factory=create_backend):
                         raise ValueError('Model response was incomplete; inspect the saved attempt')
                     labels = parse_output(output['output'], job['keys'])
                     records.setdefault(job['task_id'], {}).setdefault(job['sample_id'], {}).update(labels)
+                    progress.update(1)
                 if count != len(batch):
                     raise ValueError('Backend output count mismatch')
         metadata['status'] = 'complete'

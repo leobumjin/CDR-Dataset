@@ -225,3 +225,17 @@ and sum before writing any completed source.
 Dry-run reports the number of requests and distinct shared prefixes without
 making model calls. GPU cache hit rates and API cache savings require a real run;
 unit tests only verify prefix stability, backend settings and output validation.
+
+## Inference progress display
+
+Actual runs show one overall tqdm bar on stderr, with the total number of
+requests, completed validated responses, rate, and estimated remaining time.
+vLLM's per-batch request/processing bars are disabled. The overall bar advances
+as responses are validated; vLLM returns each batch together, so updates arrive
+in batches. JSON summaries remain on stdout.
+
+Shared feature definitions and labeling instructions precede task/context data;
+only the final suffix changes with sample feature values. Samples sharing a
+task/class/context are adjacent, and one vLLM engine with prefix caching enabled
+is reused across all batches. This allows cached prefix computation to be reused;
+actual cache hits depend on token-block alignment and available cache capacity.

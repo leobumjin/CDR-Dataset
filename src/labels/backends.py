@@ -89,7 +89,7 @@ class VLLMBackend:
             structured_outputs=StructuredOutputsParams(json=response_schema(job['keys'])))
             for job in jobs]
         outputs = self.llm.chat([[{'role': 'user', 'content': job['prompt']}] for job in jobs],
-                                sampling_params=sampling)
+                                sampling_params=sampling, use_tqdm=False)
         if len(outputs) != len(jobs):
             raise ValueError('vLLM output count mismatch')
         for result in outputs:
