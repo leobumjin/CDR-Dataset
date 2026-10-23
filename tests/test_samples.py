@@ -173,7 +173,7 @@ class SampleTests(unittest.TestCase):
         from src.catalog.opinions import validate_feature_opinion
         random_samples(self.root, source_id='opinions', classes=['bird'], count=5)
         run = SourceRun(self.root, 'opinions')
-        self.assertEqual(run.feature_encoding['sampling'], 'uniform_simplex')
+        self.assertEqual(run.feature_encoding['sampling'], 'balanced_regions')
         for features in run.samples['bird'].values():
             for value in features.values():
                 validate_feature_opinion(value)
@@ -187,6 +187,34 @@ class SampleTests(unittest.TestCase):
             with self.subTest(value=bad), self.assertRaises(ValueError):
                 random_samples(self.root, source_id='invalid', feature_values=[bad])
         self.assertFalse((self.root / 'labels/generated/invalid').exists())
+
+    def test_confidence_regions_have_equal_probability_and_recorded_constraints(self):
+        from releases.v1.scripts.prepare_samples import FEATURE_REGIONS, in_region
+        random_samples(self.root, source_id='regions', classes=['bird'], count=1000, seed=13)
+        run = SourceRun(self.root, 'regions')
+        counts = dict.fromkeys(FEATURE_REGIONS, 0)
+        for features in run.samples['bird'].values():
+            for value in features.values():
+                regions = [key for key in FEATURE_REGIONS if in_region(value, key)]
+                self.assertEqual(len(regions), 1)
+                counts[regions[0]] += 1
+        config = run.meta['sampling_config']
+        self.assertEqual(config['region_counts'], counts)
+        self.assertEqual(config['regions'], FEATURE_REGIONS)
+        self.assertEqual(config['region_probabilities'], dict.fromkeys(FEATURE_REGIONS, 0.25))
+        total = sum(counts.values())
+        for count in counts.values():
+            self.assertLess(abs(count / total - 0.25), 0.025)
+
+    def test_uniform_simplex_baseline_is_still_available(self):
+        from releases.v1.scripts.prepare_samples import FEATURE_REGIONS, in_region
+        random_samples(self.root, source_id='baseline', classes=['bird'], count=100,
+                       sampling='uniform_simplex')
+        run = SourceRun(self.root, 'baseline')
+        self.assertEqual(run.feature_encoding['sampling'], 'uniform_simplex')
+        self.assertNotIn('region_probabilities', run.meta['sampling_config'])
+        self.assertTrue(any(not any(in_region(v, key) for key in FEATURE_REGIONS)
+                            for row in run.samples['bird'].values() for v in row.values()))
 
     def test_sampler_covers_all_defined_features(self):
         random_samples(self.root, source_id='samples_all', count=10, seed=7)
