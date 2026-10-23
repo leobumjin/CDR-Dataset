@@ -219,8 +219,8 @@ class SampleTests(unittest.TestCase):
     def test_total_count_default_remainders_and_small_runs(self):
         random_samples(self.root, source_id='default')
         run = SourceRun(self.root, 'default')
-        self.assertEqual(run.stats()['samples'], 100)
-        self.assertEqual({len(rows) for rows in run.samples.values()}, {10})
+        self.assertEqual(run.stats()['samples'], 5000)
+        self.assertEqual({len(rows) for rows in run.samples.values()}, {500})
         for count in (3, 13):
             source = f'total_{count}'
             random_samples(self.root, source_id=source, count=count)

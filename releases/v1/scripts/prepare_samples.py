@@ -47,7 +47,7 @@ def sample_region(rng, region):
             return value
 
 
-def generate(root, *, seed=0, source_id='samples', classes=None, count=100,
+def generate(root, *, seed=0, source_id='samples', classes=None, count=5000,
              feature_values=None, catalog_version='v1', sampling='balanced_regions'):
     root = Path(root)
     catalog = FileCatalog(root, catalog_version=catalog_version)
@@ -116,8 +116,8 @@ def main():
     p.add_argument('--catalog-version', default='v1')
     p.add_argument('--seed', type=int, default=0)
     p.add_argument('--source-id', default='samples')
-    p.add_argument('--count', type=int, default=100,
-                   help='Total samples across selected classes (default: 100), allocated as evenly as possible')
+    p.add_argument('--count', type=int, default=5000,
+                   help='Total samples across selected classes (default: 5000), allocated as evenly as possible')
     p.add_argument('--classes', nargs='+')
     p.add_argument('--sampling', choices=['balanced_regions', 'uniform_simplex'],
                    default='balanced_regions', help='Default: equal-probability choice of four confidence regions')
