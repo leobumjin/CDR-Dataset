@@ -177,6 +177,7 @@ class SampleTests(unittest.TestCase):
         for features in run.samples['bird'].values():
             for value in features.values():
                 validate_feature_opinion(value)
+                self.assertTrue(all(mass == round(mass, 2) for mass in value.values()))
         fixed = {'belief': 0.7, 'disbelief': 0.2, 'uncertain': 0.1}
         random_samples(self.root, source_id='fixed', classes=['bird'], count=2, feature_values=[fixed])
         self.assertTrue(all(v == fixed for row in SourceRun(self.root, 'fixed').samples['bird'].values() for v in row.values()))
@@ -187,6 +188,24 @@ class SampleTests(unittest.TestCase):
             with self.subTest(value=bad), self.assertRaises(ValueError):
                 random_samples(self.root, source_id='invalid', feature_values=[bad])
         self.assertFalse((self.root / 'labels/generated/invalid').exists())
+
+    def test_feature_rounding_preserves_total_for_rounding_up_and_down(self):
+        from releases.v1.scripts.prepare_samples import round_opinion
+        from src.catalog.opinions import validate_feature_opinion
+        for value in (
+            {'belief': 0.03991316534681377, 'disbelief': 0.10418248548143272,
+             'uncertain': 0.8559043491717535},
+            {'belief': 1 / 3, 'disbelief': 1 / 3, 'uncertain': 1 / 3},
+            {'belief': 0.336, 'disbelief': 0.336, 'uncertain': 0.328},
+        ):
+            rounded = round_opinion(value)
+            validate_feature_opinion(rounded)
+            self.assertTrue(all(mass == round(mass, 2) for mass in rounded.values()))
+        random_samples(self.root, source_id='rounded_fixed', classes=['bird'], count=1,
+                       feature_values=[value])
+        run = SourceRun(self.root, 'rounded_fixed')
+        self.assertEqual(run.feature_encoding['decimal_places'], 2)
+        self.assertTrue(all(v == rounded for row in run.samples['bird'].values() for v in row.values()))
 
     def test_confidence_regions_have_equal_probability_and_recorded_constraints(self):
         from releases.v1.scripts.prepare_samples import FEATURE_REGIONS, in_region

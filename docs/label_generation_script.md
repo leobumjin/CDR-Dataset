@@ -40,6 +40,14 @@ then samples uniformly within that region by rejection from Dirichlet(1,1,1):
 | Balanced | every component between 0.25 and 0.40 |
 | High uncertainty | uncertain >= 0.7 |
 
+Before storage, feature opinions are quantized to two decimal places using
+largest-remainder allocation of 100 hundredths. This preserves a total mass of 1
+and the selected region bounds. Ties use belief, disbelief, uncertain order.
+The same quantization applies to uniform-simplex samples and explicit
+`--feature-values`; metadata records the precision and quantization rule.
+Existing sources are unchanged. The continuous distribution above describes
+values before quantization.
+
 Region choices are independent, so realized counts fluctuate around 25%; this
 is not an exact quota. The fixed default seed is 0. The same seed and options
 reproduce the same values. `sources.json` records `sampling_config` with the base

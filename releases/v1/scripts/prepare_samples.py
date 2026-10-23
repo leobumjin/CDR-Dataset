@@ -7,6 +7,7 @@ if __package__ in (None, ""):
 
 import argparse
 import json
+import math
 import os
 import random
 from datetime import datetime, timezone
@@ -39,6 +40,17 @@ def sample_simplex(rng):
     return {'belief': first, 'disbelief': second - first, 'uncertain': 1 - second}
 
 
+def round_opinion(value):
+    """Allocate 100 hundredths by largest remainder, preserving total mass."""
+    keys = tuple(FEATURE_VALUE_SCHEMA['components'])
+    scaled = [value[key] * 100 for key in keys]
+    units = [math.floor(mass) for mass in scaled]
+    order = sorted(range(len(keys)), key=lambda i: scaled[i] - units[i], reverse=True)
+    for i in order[:100 - sum(units)]:
+        units[i] += 1
+    return {key: units[i] / 100 for i, key in enumerate(keys)}
+
+
 def sample_region(rng, region):
     # Rejection preserves uniform density within the selected region.
     while True:
@@ -63,6 +75,7 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=5000,
             raise ValueError('Supply a nonempty list of feature opinion objects')
         for value in feature_values:
             validate_feature_opinion(value)
+        feature_values = [round_opinion(value) for value in feature_values]
     rng = random.Random(seed)
     region_counts = dict.fromkeys(FEATURE_REGIONS, 0)
 
@@ -70,10 +83,10 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=5000,
         if feature_values is not None:
             return dict(rng.choice(feature_values))
         if sampling == 'uniform_simplex':
-            return sample_simplex(rng)
+            return round_opinion(sample_simplex(rng))
         region = rng.choice(tuple(FEATURE_REGIONS))
         region_counts[region] += 1
-        return sample_region(rng, region)
+        return round_opinion(sample_region(rng, region))
 
     sampling_metadata = {'base_distribution': 'Dirichlet(1,1,1)',
                          'algorithm': 'two_sorted_uniform_cuts'}
@@ -98,9 +111,12 @@ def generate(root, *, seed=0, source_id='samples', classes=None, count=5000,
             'created_at': datetime.now(timezone.utc).isoformat(),
             'provenance': {'method': 'random', 'script': os.environ.get('CDR_ENTRYPOINT', 'python releases/v1/scripts/prepare_samples.py')},
             'feature_encoding': {**FEATURE_VALUE_SCHEMA,
+                                 'decimal_places': 2,
                                  'sampling': sampling if feature_values is None else 'discrete_uniform',
                                  **({'values': feature_values} if feature_values is not None else {})},
-            'sampling_config': sampling_metadata if feature_values is None else {'algorithm': 'uniform_choice'},
+            'sampling_config': {**(sampling_metadata if feature_values is None else {'algorithm': 'uniform_choice'}),
+                                'quantization': {'decimal_places': 2, 'algorithm': 'largest_remainder',
+                                                 'tie_break': list(FEATURE_VALUE_SCHEMA['components'])}},
             'selection': {'classes': selected, 'count': count, 'class_counts': class_counts},
             'definition_snapshot': {cid: catalog.classes[cid]['features'] for cid in selected},
             'note': 'Independently sampled feature combinations. No real object identity or observed-feature claim.'}
