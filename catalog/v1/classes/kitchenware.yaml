@@ -1,0 +1,33 @@
+id: kitchenware
+name: Kitchenware
+features:
+  kitchenware_f_001:
+    name: is_brittle
+    description: The brittleness of the item’s material.
+    labeling: 'Material: brittle (glass, ceramic, porcelain) = 1, semi_rigid (laminated or tempered glass,
+      hard plastic, acrylic, melamine, enamel) = 0.5, tough (metal, wood, silicone, polyethylene) = 0.'
+  kitchenware_f_002:
+    name: is_thin_walled
+    description: The thinness of the item’s walls.
+    labeling: 'Wall thickness: thin = 1, medium = 0.5, thick = 0.'
+  kitchenware_f_003:
+    name: is_heavy
+    description: The item’s weight.
+    labeling: 'Weight: heavy = 1, medium = 0.5, light = 0.'
+  kitchenware_f_004:
+    name: has_fragile_parts
+    description: Whether the item has fragile protruding parts.
+    labeling: 'Protruding parts: long_or_thin (stem, neck, limbs) = 1, small_handle = 0.5, none = 0.'
+  kitchenware_f_005:
+    name: is_already_chipped
+    description: The extent of existing chips or surface flaws.
+    labeling: 'Condition: already_chipped = 1, small_surface_flaw = 0.5, new = 0.'
+  kitchenware_f_006:
+    name: is_heat_shock_resistant
+    description: The item’s resistance to sudden temperature changes.
+    labeling: 'Resistance to sudden temperature change: resistant (borosilicate glass, zirconia, metal,
+      silicone) = 1, moderate = 0.5, vulnerable (ordinary glass) = 0.'
+  kitchenware_f_007:
+    name: is_small
+    description: The item’s size relative to a hand.
+    labeling: 'Size: smaller than a hand = 1, medium = 0.5, large = 0.'

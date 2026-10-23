@@ -1,0 +1,2 @@
+# Catalog, sampling, validation and website exports.
+PyYAML>=6,<7

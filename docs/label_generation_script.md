@@ -1,270 +1,176 @@
-# Label generation script
+# Versioned sample preparation and LLM labeling
 
-Use `shells/labels/random_label.sh` to generate compact feature and task label templates.
-The implementation is `src/labels/random_label.py`. Run commands from the repository root.
+Catalogs are small, explicit snapshots: catalog/v1/classes/*.yaml and
+catalog/v1/tasks/*.yaml. Future changes use catalog/v2/, catalog/v3/, etc. The
+existing ten feature groups and four tasks are in v1; no future version is implied.
+Catalog versions are independent of the historical versions/v1 publication.
 
-## Sample and feature ID ranges
-
-Sample ID means instance ID. All ranges below include both endpoints.
-
-| Class | Manual sample IDs | Additional sample IDs | Feature IDs | Task |
-| --- | --- | --- | --- | --- |
-| `bird` | `bird_0001`–`bird_0100` | `bird_0101`–`bird_0300` (CUB) | `bird_f_001`–`bird_f_007` | `fly` |
-| `human` | `human_0001`–`human_0100` | None | `human_f_001`–`human_f_007` | `run` |
-| `legal_case` | `legal_case_0001`–`legal_case_0100` | None | `legal_case_f_001`–`legal_case_f_007` | `guilt` |
-| `mammal` | `mammal_0001`–`mammal_0100` | None | `mammal_f_001`–`mammal_f_007` | `survive` |
-| `plant` | `plant_0001`–`plant_0100` | None | `plant_f_001`–`plant_f_007` | `survive` |
-
-CUB original class IDs 1–200 map to bird sample IDs 101–300. Manual samples include
-ordinary examples and exceptions. Names and scenarios are not feature labels.
-The full catalog contains 700 samples. This generator selects only the 500 manual
-samples: 3,500 feature values and 2,500 task values. CUB samples are excluded.
-
-## Feature IDs
-
-### bird
-
-| Feature ID | Name |
-| --- | --- |
-| `bird_f_001` | `is_large` |
-| `bird_f_002` | `has_flight_wings` |
-| `bird_f_003` | `has_developed_flight_plumage` |
-| `bird_f_004` | `has_intact_wings` |
-| `bird_f_005` | `is_rested` |
-| `bird_f_006` | `has_unhealed_fracture` |
-| `bird_f_007` | `has_severe_fatigue` |
-
-### human
-
-| Feature ID | Name |
-| --- | --- |
-| `human_f_001` | `has_5km_endurance` |
-| `human_f_002` | `can_sustain_10kmh` |
-| `human_f_003` | `has_unrestricted_mobility` |
-| `human_f_004` | `is_rested` |
-| `human_f_005` | `has_uphill_training` |
-| `human_f_006` | `has_regular_training` |
-| `human_f_007` | `has_100m_endurance` |
-
-### legal_case
-
-| Feature ID | Name |
-| --- | --- |
-| `legal_case_f_001` | `caused_property_damage` |
-| `legal_case_f_002` | `intentional_damage` |
-| `legal_case_f_003` | `property_belongs_to_another` |
-| `legal_case_f_004` | `has_owner_consent` |
-| `legal_case_f_005` | `necessary_to_prevent_imminent_harm` |
-| `legal_case_f_006` | `has_lawful_authorisation` |
-| `legal_case_f_007` | `within_official_scope` |
-
-### mammal
-
-| Feature ID | Name |
-| --- | --- |
-| `mammal_f_001` | `is_large` |
-| `mammal_f_002` | `is_cold_adapted` |
-| `mammal_f_003` | `is_heat_adapted` |
-| `mammal_f_004` | `is_drought_adapted` |
-| `mammal_f_005` | `is_adult` |
-| `mammal_f_006` | `is_healthy` |
-| `mammal_f_007` | `has_adequate_energy_reserves` |
-
-### plant
-
-| Feature ID | Name |
-| --- | --- |
-| `plant_f_001` | `is_succulent` |
-| `plant_f_002` | `is_fern` |
-| `plant_f_003` | `has_established_roots` |
-| `plant_f_004` | `is_healthy` |
-| `plant_f_005` | `has_moist_soil` |
-| `plant_f_006` | `has_succulent_leaves` |
-| `plant_f_007` | `is_shrub` |
-
-## Task and context IDs
-
-| Task | Class | Context IDs |
-| --- | --- | --- |
-| `fly` | `bird` | `dry_20m`, `dry_500m`, `wet_20m`, `dry_5m`, `wet_500m` |
-| `run` | `human` | `run_100m_8kmh`, `run_5km_10kmh`, `run_1km_uphill`, `run_100m_12kmh`, `run_10km_8kmh` |
-| `guilt` | `legal_case` | `ordinary_situation`, `emergency_necessity`, `official_duties`, `supervisors_order`, `friends_request` |
-| `survive` | `mammal` | `mammal_mild_7d`, `mammal_cold_24h`, `mammal_heat_24h`, `mammal_no_water_food_3d`, `mammal_no_food_14d` |
-| `survive` | `plant` | `plant_no_water_3d`, `plant_hot_drought_30d`, `plant_freezing_7d`, `plant_watered_7d`, `plant_waterlogged_7d` |
-
-## Command options
-
-| Option | Default | Meaning |
-| --- | --- | --- |
-| `--source-id NAME` | `random_label` | Output directory `labels/generated/NAME`; no date suffix is added. |
-| `--classes CLASS ...` | Five configured classes | Select one or more class IDs from the table above. |
-| `--instance-range START END` | `1 100` | Select inclusive numeric sample ID suffixes within each selected class. |
-| `--feature-range START END` | `1 7` | Select inclusive numeric feature ID suffixes within each selected class. |
-| `--tasks [TASK ...]` | Configured tasks | Select task IDs; passing the option without IDs disables task output. |
-| `--contexts [CONTEXT ...]` | Configured context IDs | Select context IDs for the selected classes and tasks; no IDs disables task output. |
-| `--seed INTEGER` | `0` | Seed for reproducible random values. |
-| `--root PATH` | Repository root | Catalog and output root; primarily useful for isolated runs. |
-
-Ranges filter existing IDs and include both endpoints. Instance ranges must stay
-within manual suffixes 1–100; feature ranges must stay within 1–7. For example,
---feature-range 2 4 selects feature IDs ending in 002, 003 and 004. Requests for
-CUB instance suffixes 101–300 are rejected by this generator.
-
-Feature range affects feature output only; instance range affects both output kinds.
-Default classes and task/context IDs are explicitly configured in the script.
-New catalog entries outside that scope do not silently expand generation. Context
-metadata records the concrete IDs actually generated, grouped by task. Instance and
-feature ranges are always concrete numeric pairs, including when CLI flags are omitted.
-Selections with no output, unknown IDs and invalid ranges fail before publication.
-
-## Examples
-
-Generate or regenerate the complete checked-in template:
-
-```bash
-bash shells/labels/random_label.sh
-```
-
-Generate two human samples with three features and one context:
-
-```bash
-bash shells/labels/random_label.sh \
-  --source-id random_human_example \
-  --classes human \
-  --instance-range 1 2 \
-  --feature-range 1 3 \
-  --tasks run \
-  --contexts run_100m_8kmh \
-  --seed 42
-```
-
-Generate feature values for manual samples across all classes, without task values:
-
-```bash
-bash shells/labels/random_label.sh \
-  --source-id random_manual_features \
-  --instance-range 1 100 \
-  --feature-range 1 7 \
-  --tasks \
-  --seed 0
-```
-
-## Output format
+releases/v1/shells/ has two entrypoints for the first v1 experiment:
 
 ```text
-labels/generated/random_label/
-  sources.json
-  features/
-    bird.json
-    human.json
-    legal_case.json
-    mammal.json
-    plant.json
-  tasks_per_context/
-    fly.json
-    run.json
-    guilt.json
-    survive.json
+releases/v1/shells/run1_prepare_samples.sh
+releases/v1/shells/run1_prepare_labels.sh
 ```
 
-Only files with selected values are created. Feature files map sample IDs to
-feature IDs to values:
+## 1. Prepare feature samples
+
+```bash
+bash releases/v1/shells/run1_prepare_samples.sh --count 100 --seed 0
+bash releases/v1/shells/run1_prepare_samples.sh --classes bird --count 10 --source-id v1_bird_samples
+bash releases/v1/shells/run1_prepare_samples.sh --classes bird --count 10 --source-id v1_custom_samples --feature-values '[{"belief":0.7,"disbelief":0.2,"uncertain":0.1}]'
+```
+
+The wrapper selects catalog version v1 and defaults to source v1_run1_samples.
+It samples a random combination of values for every feature, without object names
+or task labels. --classes defaults to all groups; --count defaults to 100 per group.
+Each feature value is an object with exactly `belief`, `disbelief`, and `uncertain`:
+finite numbers in [0, 1] whose sum is 1 (tolerance 1e-9). These represent support
+for the feature predicate, opposition, and uncommitted uncertainty. By default,
+the generator independently samples each feature uniformly on the three-component
+simplex (Dirichlet(1,1,1)), using two sorted uniform cuts. The seed reproduces the
+same values. `--feature-values` optionally supplies a nonempty list of valid
+opinion objects to sample uniformly instead; scalar values are rejected.
+This source encoding is recorded explicitly and is distinct from task labels,
+which continue to use `yes`, `no`, and `unknown`. Historical source encodings
+remain unchanged. Independent sampling does not claim physical
+realizability or enforce domain-specific dependencies.
+
+Each source ID is immutable. Choose a new ID for another execution. The source
+records catalog_version, the selected encoding, seed and provenance, and freezes
+only the selected catalog version. IDs reference samples inside their source;
+features define the samples' meaning.
+
+## 2. Prepare LLM-generated labels
+
+```bash
+PYTHON=python bash releases/v1/shells/run1_prepare_labels.sh --backend vllm --model google/gemma-3-27b-it --dry-run
+bash releases/v1/shells/run1_prepare_labels.sh --backend vllm --model google/gemma-3-27b-it
+bash releases/v1/shells/run1_prepare_labels.sh --backend openai --model "$OPENAI_MODEL" --source-id v1_run1_openai_labels
+```
+
+Run the wrapper without model arguments to select an API or vLLM model:
+
+```bash
+bash releases/v1/shells/run1_prepare_labels.sh
+bash releases/v1/shells/run1_prepare_labels.sh --dry-run
+```
+
+The shared `shells/common/models.sh` defines `API_MODELS` and `VLLM_MODELS`.
+The first choice is OpenAI `gpt-4o-mini`; press Enter to select it. Noninteractive
+runs use the first configured choice (also gpt-4o-mini by default). Supplying
+`--backend vllm` limits selection to vLLM models. Explicit `--backend` and `--model`
+skip selection; unlisted models require both. No API calls or model loading happen
+during selection. `--help` skips selection entirely.
+
+Future release wrappers can source `shells/common/select_label_model.sh`, call
+`select_label_model "$@"`, and prepend `"${LABEL_MODEL_ARGS[@]}"` to their script
+arguments. The selected backend/model are also available as `LABEL_BACKEND` and
+`LABEL_MODEL`. Model configuration is shared across releases.
+
+OpenAI runs use `PYTHON` or `python`; vLLM runs prefer the configured venv unless
+`PYTHON` is supplied. Install `requirements-openai.txt` in the chosen API Python
+environment and set `OPENAI_API_KEY` before actual API execution.
+
+OPENAI_MODEL above is an explicitly selected model ID. The wrapper defaults to sample source v1_run1_samples and output v1_run1_labels.
+It requires the sample source to belong to catalog version v1 and uses its frozen
+feature/task/context definitions. --sample-source and --source-id override these
+IDs. --tasks and --contexts optionally restrict applicable requests. Groups without
+task bindings do not produce task requests.
+
+Dry-run prepares and validates requests without SDK imports, GPU loading, API calls or weight downloads.
+Actual vLLM labeling requires a configured GPU runtime and model access. OpenAI
+labeling instead requires its optional SDK and OPENAI_API_KEY in the environment. Auxiliary setup
+is separate from the experiment entrypoints:
+
+```bash
+python -m pip install -r requirements-openai.txt  # OpenAI only
+bash tools/setup_vllm.sh                         # vLLM only
+bash tools/setup_vllm.sh --check
+```
+
+Inputs contain only feature values, their definitions/encoding, task, context and
+task_label_schema. Object names, external identities, sample IDs and hidden raw
+profiles never enter prompts. Model responses require all requested context keys:
 
 ```json
-{
-  "human_0001": {
-    "human_f_001": 1,
-    "human_f_002": 0.5
-  }
-}
+{"dry_20m": {"value": {"yes": 0.7, "no": 0.2, "unknown": 0.1}, "reason": "Basis in supplied features and context."}}
 ```
 
-Task files map sample IDs to context IDs to values:
+Exactly yes, no and unknown are required, finite and in [0, 1], summing to 1 within
+1e-9. These are support, opposition and uncommitted uncertainty masses. Fully
+insufficient evidence is {yes: 0, no: 0, unknown: 1}. Null/scalar labels, extra
+components, duplicate keys, booleans and invalid sums are rejected without automatic
+normalization. An absent judgment means it was not produced; it differs from an
+explicit full-unknown opinion. Missing feature values remain absent keys.
 
-```json
-{
-  "human_0001": {
-    "run_100m_8kmh": "true"
-  }
-}
+Task-only sources reference sample_source with checksums, retain catalog_version,
+and record ai_generated and unverified provenance. Exact prompts, raw responses,
+actual model/revision and settings are saved. Failed attempts remain under
+runs/inference/; completed sources also preserve responses.json.
+
+Shared options include --model, --batch-size and --max-tokens. --temperature is
+omitted for OpenAI by default and defaults to 0 for vLLM. OpenAI options include
+--reasoning-effort, --timeout and --max-retries; vLLM options include --revision,
+--seed, --tensor-parallel-size, --max-model-len and --gpu-memory-utilization. PYTHON overrides the
+interpreter; CDR_VENV overrides the runtime directory.
+
+## Validation, releases and tools
+
+```bash
+python -m src.catalog --catalog-version v1 validate
+python -m src.catalog source v1_run1_samples
+python -m src.catalog.web_assets --catalog-version v1
+bash tools/serve.sh
 ```
 
-These are illustrative values, not a promised seed result. Source, class and task
-are determined by the directory and filename. Do not repeat record metadata for
-each value. `sources.json` stores the run ID, seed, creation time, synthetic origin,
-temporary value sets and the selected classes, instance/feature ranges, tasks and
-contexts. The default instance_range is [1, 100] and feature_range is [1, 7]. The recorded contexts value is a
-task-to-context-list mapping of actual output, with an empty object for no task output.
+Source storage remains labels/generated/<source-id>/ with sources.json, frozen
+catalog/, samples/<class>.json and optional tasks_per_context/<task>.json. Generated
+sources stay local and never become website fallback data. Successful runs update
+only their script metadata entry. Source generation never automatically creates a
+release or publishes data. See [release assembly](../releases/README.md).
 
-## Regeneration, reproducibility and validation
+Other preview/setup/historical publication helpers live in tools/. Retired named-catalog code, random task-label helpers and unversioned wrappers
+have been removed. Frozen
+historical versions/v1 and data/v1 exports remain unchanged.
 
-The default `labels/generated/random_label/` is regenerated in place. A named source other
-than random_label must not already exist. Catalog validation runs before
-creation and after writing; failed publication restores the previous template.
-A filtered regeneration replaces the template with that selection, rather than
-merging it with the previous selection.
+## Dependencies and backend implementation
 
-The same seed, selection and catalog reproduce the values; timestamps may differ.
-Task and feature values are sampled independently. Feature values are temporary
-0, 0.5 or 1 placeholders; task values are the strings true, false and ambiguous.
-They are not factual labels or inferred answers. The formal catalog feature value
-encoding remains undecided. Corrections and factual checks should use separate
-source runs, with evidence recorded once in source metadata.
+requirements.txt contains only base catalog/sampling dependencies. OpenAI and vLLM
+are optional, separate dependency files; OpenAI labeling does not require CUDA.
+The Python implementations are releases/v1/scripts/prepare_samples.py and
+releases/v1/scripts/prepare_labels.py,
+with prompt text and formatting in releases/v1/scripts/prompts.py
+and backend adapters in src/labels/backends.py. No model-specific entrypoint is
+needed. API keys are read only from the environment and never saved in metadata.
 
-The generator requires a valid catalog and its source metadata. A missing CUB
-source binding prevents generation even when selecting another class, because the
-whole catalog is validated first. Restore genuine source metadata before running;
-do not manufacture collection history to bypass this check.
+OpenAI requests use the [official Responses API structured-output format](https://developers.openai.com/api/docs/guides/structured-outputs).
+Both backend paths still validate opinion sums locally. Raw outputs, actual
+response model IDs and provenance are saved, and incomplete/refused/invalid output
+never becomes a completed source. Successful results remain unverified model
+estimates unless separately reviewed with evidence.
 
-Git tracks `catalog/`, `labels/README.md` and `labels/generated/random_label/`. Other
-label source directories are ignored. See [the repository guide](../AGENT.md)
-and [label storage](../labels/README.md).
+## Shared prompt prefixes and JSON decoding
 
-## Website script metadata
+`releases/v1/scripts/prompts.py` separates `common_prefix(job)` from
+`sample_suffix(job)`. Feature definitions and source encoding come first, followed
+by labeling instructions, opinion schema, task, context and requested keys. Only
+the final suffix contains the sample feature values. JSON keys are sorted for
+stable serialization. Requests already run in task/class/context groups, keeping
+samples with the same prefix adjacent. No previous sample's answer enters another
+sample's prompt.
 
-Successful catalog generation updates `docs/assets/catalog_generation_scripts.json`
-with manual and cub entries. Label generation updates
-`docs/assets/label_generation_scripts.json` with a random_label entry. Each script replaces only its
-own entry, preserving the others. Failed validation leaves this registry unchanged.
-This is an execution summary for the website, not a hand-maintained catalog snapshot.
-For example, a successful manual run writes:
+OpenAI requests send a deterministic hash of the common prefix as
+`prompt_cache_key` and retain strict JSON-schema output. Actual cache use is
+provider-dependent, including minimum prefix length and cache availability; a key
+does not guarantee a hit. Each response records `cached_input_tokens` from API
+usage, and the completed run reports the total. Raw usage remains in responses.json.
+See [OpenAI prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
 
-```json
-{
-  "manual": {
-    "script": "shells/catalog/manual.sh",
-    "classes": ["bird", "human", "legal_case", "mammal", "plant"],
-    "instance_range": [1, 100]
-  }
-}
-```
-
-The random_label entry also records source, selected feature range, tasks, contexts
-and seed. The contexts field maps task IDs to the actual generated context ID lists;
-it is an empty object when no task values are generated. Numeric ranges are explicit and limited to the manual generation scope. Entries describe the latest successful
-execution of each script; per-source provenance remains in labels/generated/<source>/sources.json.
-
-## Context definitions
-
-`catalog/tasks/<task>/contexts.yaml` uses context IDs as keys:
-
-```yaml
-task_id: fly
-contexts:
-  dry_20m:
-    description: Short flight with dry plumage. Travel 20 metres continuously through the air.
-```
-
-Each entry contains description only. Class applicability is defined by task bindings.
-For a single-class task all contexts apply to that class. In multi-class tasks,
-`task.yaml` lists context IDs under each binding's contexts field. There are no
-per-context class_id or revision fields; definition history is tracked in Git.
-
-## Release views
-
-Generated results live under labels/generated/<script_name>/ and are not published
-as website label values. A release uses releases/<version>/meta_info.json to select
-classes, inclusive instance and feature ranges, and task/context IDs. Selected values
-belong in releases/<version>/labels/. The website offers actual release versions
-from that metadata. Current v1 has no label values, so all displayed values are NA.
-The historical v1 payloads are unchanged and are not matched to the new manual IDs.
+vLLM explicitly enables prefix caching and uses per-request
+`StructuredOutputsParams(json=...)` with the same opinion response schema.
+See [vLLM structured outputs](https://docs.vllm.ai/en/v0.11.0/examples/offline_inference/structured_outputs.html).
+Both paths parse JSON locally, validate exact context keys, nonempty reasons,
+finite masses and the sum constraint before writing any completed source.
+Dry-run reports the number of requests and distinct shared prefixes without
+making model calls. GPU cache hit rates and API cache savings require a real run;
+unit tests only verify prefix stability, backend settings and output validation.

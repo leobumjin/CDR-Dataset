@@ -1,0 +1,31 @@
+id: cars
+name: Cars
+features:
+  cars_f_001:
+    name: has_long_range
+    description: The vehicle’s current driving range in mild weather.
+    labeling: 'Mild-weather current range: at least 400 km = 1, 250-399 km = 0.5, under 250 km = 0.'
+  cars_f_002:
+    name: is_battery_electric
+    description: Whether the vehicle uses a battery electric powertrain.
+    labeling: 'Powertrain: battery_electric = 1, plug_in_hybrid = 0.5, hybrid, petrol, or diesel = 0.'
+  cars_f_003:
+    name: has_winter_tires
+    description: The suitability of the fitted tyres for winter conditions.
+    labeling: 'Tyres: winter = 1, all_season = 0.5, summer = 0.'
+  cars_f_004:
+    name: has_snow_traction_drive
+    description: The drive layout’s suitability for traction in snow.
+    labeling: 'Drive layout: awd or 4wd = 1, fwd = 0.5, rwd = 0.'
+  cars_f_005:
+    name: has_high_ground_clearance
+    description: The vehicle’s ground clearance.
+    labeling: 'Ground clearance: at least 200 mm = 1, 160-199 mm = 0.5, under 160 mm = 0.'
+  cars_f_006:
+    name: has_healthy_starter_battery
+    description: The condition of the 12 V starter battery.
+    labeling: '12 V starter battery: healthy = 1, aging = 0.5, weak = 0.'
+  cars_f_007:
+    name: is_mechanically_sound
+    description: The vehicle’s mechanical condition.
+    labeling: 'Mechanical condition: sound = 1, minor_issue = 0.5, major_fault = 0.'

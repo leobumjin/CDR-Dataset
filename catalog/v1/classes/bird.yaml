@@ -1,0 +1,46 @@
+id: bird
+name: Bird
+features:
+  bird_f_001:
+    name: is_large
+    description: How large the bird's body is relative to birds in general.
+    labeling: 'Adult body mass for the identified species, using the documented typical value or midpoint
+      of its reported adult range: at least 1,000 g = 1, 250 g to under 1,000 g = 0.5, under 250 g = 0.
+      These are dataset size bands. Do not substitute the current individual’s age or condition for species
+      size.'
+  bird_f_002:
+    name: has_flight_wings
+    description: How well the bird's wing anatomy is suited to powered flight.
+    labeling: 'Wing anatomy: wings structurally adapted for powered flight = 1, documented reduced or
+      vestigial flight structures retaining partial flight adaptations = 0.5, wings specialised for swimming
+      or lacking functional powered-flight anatomy = 0. Evaluate anatomy independently of injury, fatigue,
+      and current flight performance.'
+  bird_f_003:
+    name: has_developed_flight_plumage
+    description: How fully the bird's flight feathers have developed.
+    labeling: 'Flight-feather development: fully developed flight feathers = 1, partially grown or incompletely
+      developed flight feathers = 0.5, flight feathers absent or not yet developed = 0. Use the individual’s
+      documented developmental state; do not infer maturity from the species name.'
+  bird_f_004:
+    name: has_intact_wings
+    description: How intact and undamaged the bird's wings are.
+    labeling: 'Current wing condition: both wings intact without documented damage = 1, minor damage with
+      retained wing movement = 0.5, major structural damage or loss of functional use of either wing =
+      0. A species name alone does not establish intact wings.'
+  bird_f_005:
+    name: is_rested
+    description: How rested the bird is.
+    labeling: 'Current rest state: recovered with no documented residual fatigue = 1, partly recovered
+      with mild or moderate residual fatigue = 0.5, exhausted or severely fatigued = 0. Do not infer rest
+      from species identity.'
+  bird_f_006:
+    name: has_unhealed_fracture
+    description: The presence of a wing fracture that has not healed.
+    labeling: 'Current wing fracture: confirmed unhealed wing fracture = 1, explicitly no fracture or
+      a fully healed fracture = 0. Uncertain, suspected or conflicting fracture evidence remains missing;
+      do not assign 0.5.'
+  bird_f_007:
+    name: has_severe_fatigue
+    description: The severity of the bird's current fatigue.
+    labeling: 'Current fatigue: severe fatigue or exhaustion = 1, mild or moderate fatigue = 0.5, explicitly
+      rested with no fatigue = 0. Use the same documented fatigue state as is_rested, with the scale reversed.'

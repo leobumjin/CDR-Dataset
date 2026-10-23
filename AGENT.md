@@ -1,293 +1,178 @@
 # Data management guide
 
-Keep repository documentation in English. Separate catalog definitions, source-run
-results and release exports. The active classes are bird, human, legal_case, mammal
-and plant; the active tasks are fly, run, guilt and survive.
+Keep repository documentation and the visible website in English.
 
-## Concepts and storage
+## Model
 
-- Class and instance describe a category and its entries. A species name does not
-  establish the fatigue, injury or other state of an observed individual.
-- Task is independent of class: Flying is a task, while Bird–Flying is a binding.
-- Features define characteristics; labels store values and judgments separately.
-- Context specifies the conditions under which a task is evaluated.
-- A source directory represents one collection, inference or verification run.
-- A release explicitly selects results from source runs. Do not automatically prefer
-  the latest source or a particular model.
+A sample is defined by its feature values. It has a source-scoped `sample_id` for
+reference, not an object name or an assumed real-world identity. Catalog classes
+are feature groups, not registries of named entities. Keep the existing ten groups
+and stable 70 feature IDs unless explicitly changing their definitions.
+
+- Catalog defines feature meanings, tasks, class/task bindings and contexts.
+- Source runs own sample feature vectors and optionally task labels.
+- Task inference consumes feature values, their definitions/encoding, a task and
+  context. Never pass object names, original identities, sample IDs or hidden raw
+  profiles to the model. Sample IDs remain external bookkeeping.
+- Feature provenance and label generation/review provenance are independent.
+  Constructed samples may have AI-generated labels. A label is not verified ground
+  truth merely because a model produced it.
+- There are no N/R/R2 release families, real-name grounding flags, catalog instance
+  lists, reserved instance ranges or name-based feature inference.
+- Feature values have no universal range/type. Put an encoding in source metadata;
+  the v1 sampler uses belief/disbelief/uncertain masses in [0,1] summing to 1,
+  recorded as a subjective_logic source encoding. Historical encodings remain local.
+- Task labels contain exactly yes, no and unknown masses in [0, 1], summing to 1
+  (floating-point tolerance 1e-9). Yes is support, no opposition and unknown
+  uncommitted uncertainty. Do not normalize invalid model output silently.
+- Missing features remain absent keys. A missing task label means not generated;
+  an explicit {yes: 0, no: 0, unknown: 1} is a generated opinion with full uncertainty.
+  Never conflate these states or substitute null/scalar labels.
 
 ```text
-catalog/                         # YAML definitions; tracked
-  classes/<class>/
-    class.yaml                   # collection sources, ID ranges, scripts
-    list.yaml                    # class_id and instances keyed by ID
-    features.yaml                # feature IDs with name and description
-  tasks/<task>/
-    task.yaml                    # task and class bindings
-    contexts.yaml                # class-specific task conditions
-src/catalog/                     # catalog validation and collection code
-src/labels/random_label.py       # random template generator
-shells/catalog/                  # catalog generation entrypoints
-shells/labels/random_label.sh    # label generation entrypoint
-labels/generated/<source_run>/             # source-specific JSON results
-  sources.json                   # shared source metadata and selection settings
-  features/<class>.json          # instance ID -> feature ID -> value
-  tasks_per_context/<task>.json   # instance ID -> context ID -> value
-  groups/<class>.json            # item ID -> group membership list
-releases/<version>/               # future selected, clean exports
-runs/                            # local execution and archive files; ignored
-data/                            # source caches and frozen payloads; ignored
+catalog/<version>/classes/<class>.yaml             # group identity + features
+catalog/<version>/tasks/<task>.yaml                # task + bindings + context definitions
+labels/generated/<source_run>/
+  sources.json                          # format, provenance, encoding, selections
+  catalog/                              # frozen source definitions
+  samples/<class>.json                   # sample ID -> feature ID -> value
+  tasks_per_context/<task>.json          # optional sample ID -> context ID -> label
+releases/<version>/
+  meta_info.json                        # explicit sources, hashes and provenance
+  catalog/                              # frozen definitions
+  samples/<class>.json                   # frozen sample vectors
+  labels/tasks_per_context/<task>.json   # optional frozen judgments
 ```
 
-There is no active catalog/labels directory. Create result categories only when
-that source actually produces them. Preserve missing values as missing keys;
-absence does not mean false, ambiguous or an explicit unknown.
+## Definitions
 
-## Catalog IDs and generation
+Catalog loading discovers flat classes/*.yaml and tasks/*.yaml, never list.yaml. Feature keys use
+`<class>_f_001`; definitions contain name, description and optional labeling rubric.
+Feature names describe predicates, not sample identities. Keep IDs stable when
+renaming. Definition history belongs in Git. Reject duplicate IDs/names, missing
+names/descriptions, unknown bindings and unbound contexts. Multi-class tasks must
+explicitly bind their context IDs; do not infer applicability from ID prefixes.
 
-Instance definitions contain only their display name:
+Do not move sample values into catalog definitions or inherit class-wide encodings.
+Changing a definition must not automatically reinterpret historical results.
 
-```yaml
-class_id: bird
-instances:
-  bird_0001:
-    name: House sparrow
-```
+## Source runs and generation
 
-The key is the stable ID. Never reuse an existing ID for a different meaning or
-reorder authored seeds in a way that reassigns IDs. Source and range declarations
-belong in class.yaml; detailed provenance belongs in sources.json, not list.yaml.
+Read docs/label_generation_script.md before changing generators. Current sources
+explicitly declare `format: feature_samples_v1`. Use SourceRun to load an explicitly
+selected run. FileCatalog reads definitions only; it does not scan old source runs
+or select a preferred result. Old named sources are not automatically migrated.
 
-Each class reserves 0001–0100 for authored instances. Edit the checked-in seeds in
-src/catalog/manual_instances.yaml, then run:
+Sources contain direct feature maps, with no per-sample name or wrapper object.
+Sample IDs must be unique within one source; resolve them with their source ID
+across runs. Do not assume that identical ID strings from different runs mean the
+same feature combination. Repeated vectors are allowed; sample IDs are references,
+not semantic object identities.
 
-```bash
-bash shells/catalog/manual.sh
-```
+Source runs are immutable. Use a new source ID for each execution; failed validation
+must leave no completed source directory. Explicit source references carry checksums.
+Task-only runs reference `sample_source` instead of copying or reconstructing its
+features. The shared task-label schema is in src/catalog/opinions.py and is included
+in model inputs. Validate every response, source and release against it. Label metadata records generation method and review status separately;
+verified status requires evidence references. Preserve raw AI requests/responses.
 
-Bird, mammal and plant each have 100 named examples. Human uses ten roles crossed
-with ten situations; legal_case uses ten actions crossed with ten situations.
-These are authored examples, not verified observations. Include ordinary cases and
-exceptions. Manual generation preserves slots above 100 and creates no labels.
+- prepare_samples samples each feature independently as belief/disbelief/uncertain
+  masses summing to 1, uniformly on the simplex by default or from an explicit
+  list of valid opinion objects; it never generates task labels.
+- prepare_labels uses --backend openai|vllm and an explicit --model. Both backends
+  consume the same anonymous requests and validate the same opinion contract.
+  --dry-run imports no model SDK and makes no network requests.
 
-Bird also reserves 0101–0300 for CUB-200-2011 original classes 1–200:
+Do not run model inference, downloads or publication merely to edit this pipeline.
+Source provenance may retain external identifiers for auditing, but model inputs
+must exclude them. Keep raw observations, constructed values and model estimates
+explicitly distinguished in provenance.
 
-```bash
-bash shells/catalog/classes_bird_cub.sh
-```
+## Releases
 
-Collection indices are inclusive catalog ID ranges. Ranges within a class must not
-overlap. The CUB collector adds 100 to original class IDs, preserves manual slots,
-checks the pinned source checksum and records original IDs, names, mirror revision,
-URLs and offset in source metadata. Local input files retain local provenance.
-Do not describe CUB class names as verified feature or ecological observations.
+Releases select feature samples and optionally task labels. Use src/catalog/releases.py
+to assemble a new local snapshot from explicit source IDs and a catalog commit.
+Require matching sample vectors, reject overlapping labels and preserve generation
+and review provenance. Freeze definitions and artifact checksums. Existing release
+snapshots must never be overwritten. A version directory containing only scripts/
+and shells/ may receive its first snapshot without modifying its code. Sources are never chosen by recency.
 
-The current definitions have 700 instances and 35 features. Previous class JSON
-and the pre-migration bird list are archived in runs/archive/manual-catalog-migration.
-Historical CUB bindings for IDs 1–100 do not describe the new manual entries.
-The inactive ConceptNet collector remains an alternative implementation; it must
-not reinterpret existing CUB or manual IDs.
+No task labels is a valid release state. Missing labels do not imply a special
+synthetic/real type. Keep historical versions/v1 and data/v1 unchanged; do not
+transfer their IDs or judgments to feature-defined samples. The empty legacy
+releases/v1 preview stub has been removed. Typed N/R/R2 plans are
+retired. Publication/upload is a separate user-authorized action.
 
-## Features
+## Website
 
-Each class has seven experimental features from v1. Feature keys use the
-<class>_f_001 format, with three digits. Keep IDs stable when names change.
-Each feature contains name and description; do not repeat its ID or revision inside.
-Duplicate IDs/names and missing names/descriptions are validation errors.
+Serve docs/ locally with tools/serve.sh. The Catalog page lives at /catalog/
+and displays sample IDs and feature vectors, never named
+catalog instances. Catalog mode displays definitions without invented samples.
+The class browser includes Features and Task-Context tabs. There is no separate
+Task–Context page; keep navigation within the selected class.
+Use frozen release definitions for released values. Preserve numeric zero and show
+missing values as `-`. Keep search focus and accessible feature information.
 
-Descriptions explain general characteristics rather than temporary label encoding
-or reminders about future implementation. Keep definitions separate from values.
-The formal feature encoding is undecided: do not impose a 0/0.5/1, boolean or null
-policy on the catalog. Add values or type only after the encoding is chosen.
-Normal feature annotation remains blocked until that schema is configured.
+Regenerate assets with `python -m src.catalog.web_assets`. catalog.json contains
+only definitions. release_samples.json contains only explicit releases; unpublished
+source runs never appear as fallback data. Keep historical v1 pages/examples separate.
+Generation script registries record actual successful runs only.
 
-Species traits and individual states have different scopes. Preserve that scope
-and evidence in source metadata. Do not invent observations, fill missing facts
-from similarly named species, or infer flight ability solely from taxonomy.
-There is no separate states.yaml layer or automatic default individual state.
-
-Definition history belongs in Git. Record the catalog commit used by inference
-and release workflows when implementing those workflows. Existing compatibility
-revision fields alone do not identify a historical feature definition.
-
-## Label generation
-
-Read [the label generation guide](docs/label_generation_script.md) before
-changing a generator, ID selection or template format. It documents all sample
-(instance) ID ranges, feature ID ranges, task/context IDs, CLI options and examples.
-Keep that guide synchronized with scripts and catalog definitions.
-
-Successful generation scripts write website metadata to separate JSON registries:
-
-- `docs/assets/catalog_generation_scripts.json`: manual and cub entries.
-- `docs/assets/label_generation_scripts.json`: random_label and future label generators.
-
-Each script updates only its own entry after validation succeeds. Keep entries
-concise, with script paths and execution selections. Do not combine catalog and
-label metadata or hand-maintain large catalog snapshots. Failed runs leave the
-registries unchanged. Null range filters mean all available IDs. Label metadata contexts maps task IDs
-to actual generated context ID lists, even when the CLI context filter was omitted. Keep metadata in
-English. Prose guides belong under docs/; page assets belong under docs/assets/.
-
-```bash
-bash shells/labels/random_label.sh \
-  --classes human \
-  --instance-range 1 100 \
-  --feature-range 1 7 \
-  --tasks run \
-  --seed 0
-```
-
-The default output is labels/generated/random_label, with no date suffix. Re-running
-regenerates that template. Other --source-id values must be new and are not
-silently overwritten. Filters use inclusive numeric ID suffixes. Omitted filters
-use the generator’s explicit manual scope (instances 1–100, features 1–7, and
-configured task/context IDs); --tasks with no IDs selects features only.
-
-Store class/range/task/context selections and seed once in sources.json. Feature
-JSON maps instance ID to feature ID to value; task JSON maps instance ID to context
-ID to value. Do not repeat source, record ID, revision, status, timestamp or provenance
-for every value. Source and class/task are resolved from directories and filenames.
-Legacy assertion arrays remain readable; the legacy append API must not modify
-compact source snapshots.
-
-Random templates independently sample feature values from 0, 0.5 and 1, and task
-values from the strings true, false and ambiguous. This encoding is local to the
-synthetic template source; it does not set the formal catalog encoding. Random
-values are not observations, model inference, factual checks or inferred task answers.
-The same seed, selection and catalog reproduce values. The default manual selection produces
-3,500 feature values and 2,500 task values.
-
-## Sources, updates and groups
-
-Create a source folder only for an actual collection or execution. sources.json.id
-must match its directory. Store available URLs, versions, checksums, retrieval times,
-raw snapshots, transformation settings and selection rules there. For model runs,
-record actual model identity, prompt/input references and execution settings.
-Keep imported facts, constructed examples, model judgments and factual reviews distinct.
-Do not manufacture provenance or mark imports as fact-checked automatically.
-
-New judgments or factual checks belong in new source-run directories. Select the
-needed sources at release time; do not silently choose the latest value. Preserve
-actual evidence and verification details in source metadata.
-
-Group results map each item to a list of objects containing group_id. Multiple
-memberships are allowed. Declare referenced groups in the same file; duplicate
-memberships, unknown groups and cycles are invalid. A catalog ID-to-concept binding
-is distinct from an observed ConceptNet IsA edge.
-
-Task definitions belong in task.yaml, with class-specific bindings and questions.
-Context definitions belong in contexts.yaml as an ID-keyed mapping with description
-only. Do not repeat class_id or revision in context definitions. A single-class task
-applies all its contexts to that binding. For multi-class tasks such as survive,
-each task.yaml binding lists its context IDs in contexts; do not infer applicability
-from an ID prefix. Reject unknown or unbound context IDs. Definition history belongs
-in Git. Keep task and context identities stable.
-Changing definitions must not automatically transfer old judgments to new meanings.
-
-## Releases and scope
-
-Keep existing versions/v1 and data/v1 exports unchanged. Runtime catalog generators
-must not depend on v1 imports. Release preparation should explicitly record catalog
-history, selected source IDs/checksums, selected profiles/results, sampling and splits.
-The new release exporter and hosting integrations are not implemented yet.
-Do not claim they exist or publish/upload without a corresponding user request.
-When only schemas or documentation are requested, do not run source collection,
-model inference or large downloads. Report validation failures without replacing
-missing evidence with invented data.
-
-## Git tracking
-
-Track catalog/, labels/README.md and labels/generated/random_label/. Ignore other generated
-labels/ directories and write locks. Keep runs/ and data/ local. Use a new source ID
-for separate executions while retaining random_label as the checked-in example.
-
-## Validation and references
-
-Run checks appropriate to the change from the repository root. Documentation-only
-changes do not require regenerating catalogs or labels.
+## Validation and storage
 
 ```bash
 python -m src.catalog validate
 python -m unittest discover -s tests -q
-bash -n shells/catalog/manual.sh shells/catalog/classes_bird_cub.sh
-bash -n shells/labels/random_label.sh
+node tests/test_ui.cjs
+python -m src.catalog.web_assets
 ```
 
-Catalog validation requires the referenced source-run metadata. If CUB metadata is
-missing, report the missing binding; do not fabricate a replacement source history.
+Use `python -m src.catalog source <source_id>` to validate an explicit source and
+`python -m src.catalog releases` to validate release manifests/snapshots.
+Keep runs/, data/ and generated source payloads local/ignored. Retired named
+catalog code and unversioned wrappers have been removed. Preserve historical
+versions/v1 and data/v1 artifacts and their independent publication tools.
 
-- [Catalog storage](catalog/README.md)
-- [Label storage](labels/README.md)
-- [Label generation and ID ranges](docs/label_generation_script.md)
-- [Release preparation](releases/README.md)
 
-The random label generator is restricted to manual instance suffixes 1–100 and
-feature suffixes 1–7. CUB instances are excluded, including explicit requests above
-100. DEFAULT_CLASSES and DEFAULT_CONTEXTS explicitly bound the default selection;
-new catalog contexts do not silently enter generation. Website label metadata must
-record concrete instance/feature ranges and task-to-context lists, never null ranges.
+## Catalog versions and execution entrypoints
 
-## Static website
+Catalog definitions live in catalog/v1/{classes,tasks}/. A new catalog version
+gets a separate v2/, v3/, etc.; do not choose the latest directory implicitly or
+create speculative version copies. --catalog-version explicitly selects a version
+(default v1). Sources record catalog_version and freeze only that version's
+classes/tasks. Task runs inherit frozen sample definitions and must match the
+version required by their wrapper. Releases retain catalog_version.
 
-The repository website is served from docs/. Keep the visible interface in English.
-The home page shows class/task combination cards and links to docs/instances/index.html and
-docs/task-context/index.html pages. Keep instance and context browsing off the home
-page. Preserve class and task filters in cross-page URLs. Frozen releases and
-illustrative examples are presented separately.
-`docs/assets/catalog.json` is exported from YAML definitions by src/catalog/web_assets.py.
-Successful manual and CUB catalog generation refresh this asset automatically.
-After direct definition edits, run `python -m src.catalog.web_assets`.
-The browser reads this snapshot and the separate label/catalog script metadata.
-Never display random template judgments as factual answers. Keep legacy example tab
-selectors scoped to their own component to avoid interfering with catalog tabs.
-Preview locally with `bash shells/serve.sh`; publishing is a separate action.
+releases/<version>/shells/ contains versioned experiment entrypoints;
+releases/<version>/scripts/ contains their Python generation implementations:
+- releases/v1/shells/run1_prepare_samples.sh samples feature combinations without task labels;
+  default source ID v1_run1_samples. Its encoding is a source parameter.
+- releases/v1/shells/run1_prepare_labels.sh runs LLM task inference for that sample source;
+  default output v1_run1_labels. --dry-run validates requests without loading a model.
 
-The Instances page uses a left-hand selectable list and a right-hand feature table
-with a separate aligned label-value column. Source selection is explicit. Show NA
-for absent or null values and preserve numeric zero as a real value. Display a
-synthetic notice for random_label. At narrow widths stack the list above details.
-`docs/assets/instance_labels.json` and task_labels.json publish only releases defined
-under releases/<version>/meta_info.json and releases/<version>/labels/. Generated
-random labels must never appear on the website. Release metadata explicitly selects
-classes, instance_range, feature_range and task-to-context IDs; filter website
-instances and features to that scope. Current v1 labels are unavailable, so every
-value is NA. This is not a migration or reinterpretation of historical v1 payloads.
-Running `python -m src.catalog.web_assets` refreshes the public assets.
+Use new source IDs for reruns. Auxiliary preview/setup/legacy publication tools
+live in tools/.
+Catalog v1 is distinct from the immutable historical versions/v1 publication.
 
-On the Instances page, keep search above the left-hand instance list. Use labeled
-class icon buttons (including All) with aria-pressed selection state. Preserve the
-search input DOM while refreshing results so typing focus is retained. Label source
-selection stays above the workspace; Task–Context page class filters remain independent.
 
-Keep instance detail rows compact: show feature names and values by default, with
-feature IDs/descriptions in hover/focus tooltips. Do not use expandable toggles.
-Tooltips must remain hoverable and support Escape dismissal. Keep the instance title and
-ID together. Use the global sr-only class for table captions so accessible captions
-do not add visible repeated headings.
+## Model backends and dependencies
 
-The dedicated docs/task-context/index.html page selects class, task, context and
-source to browse sample judgments. Bind task/context options to the chosen class;
-never infer class applicability from context ID prefixes. Show missing judgments
-as NA. Hover/focus tooltips show instance identity and source-specific features;
-keep tooltips hoverable and dismissible with Escape. Sample links open the selected
-instance detail. Mark synthetic template results clearly. The page reads
-`docs/assets/task_labels.json` and instance_labels.json, both exported only from releases/, using each version’s explicit scope.
+Install requirements.txt for catalog/sampling work, requirements-openai.txt for
+OpenAI labeling, or requirements-vllm.txt for local GPU labeling. Keep SDK imports
+inside backend construction so dry runs need only the base dependencies.
 
-The old docs/contexts/ definitions-only page has been removed. Route context
-browsing and task links to docs/task-context/; do not restore the duplicate page.
+OPENAI_API_KEY stays in the environment; never save it in CLI settings, prompts or
+source metadata. OpenAI uses Responses API structured output, with local validation
+for opinion bounds and sum. Record actual response models, usage, IDs and raw output.
+vLLM records the requested model/revision, resolved revision, generation settings
+and raw output. Incomplete/invalid responses must leave a failed attempt record,
+not a completed label source. Tests use fake backends; no paid API/GPU execution is
+implied by modifying this repository.
 
-Keep detailed task definitions, aggregate catalog counts and label-generation
-summaries off the home page. Retain the class/task combination cards, links to
-Instances and Task–Context, reasoning examples and released dataset information.
+## Shared labeling model selection
 
-## Generated results and release selections
-
-Generated results live under labels/generated/<script_name>/; defaults are
-random_label and classes_bird_cub. Separate custom run IDs may be specified.
-Release metadata lives at releases/<version>/meta_info.json. Compact selected
-feature/task values belong in releases/<version>/labels/features/<class>.json and
-labels/tasks_per_context/<task>.json. Do not use labels/released/ or a root release/.
-Track the generated random_label example and release definitions; other generated
-runs remain ignored. The website selects actual release versions, preserving
-release choice across links. Show NA for unavailable or missing values and never
-substitute generated templates. Add v2 only when its metadata actually exists.
+Keep API_MODELS and VLLM_MODELS in shells/common/models.sh. Release labeling
+wrappers source shells/common/select_label_model.sh for interactive choices and
+explicit CLI overrides. The default is OpenAI gpt-4o-mini. Noninteractive runs
+use the first configured matching model; --help must bypass selection. Model
+selection alone must not import SDKs, load GPU models or call APIs.

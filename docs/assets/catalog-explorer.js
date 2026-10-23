@@ -1,262 +1,207 @@
-/* Public catalog definitions and successful generation scopes. */
+/* Definitions contain feature groups; samples exist only in explicit releases. */
 (() => {
-  const assets = new URL('.', document.currentScript.src);
-  const panel = document.getElementById('catalog-panel');
-  const classSelect = document.getElementById('catalog-class');
-  const search = document.getElementById('catalog-search');
-  const classButtons = document.getElementById('instance-class-buttons');
-  let selectedClass = '';
-  const labelSelect = document.getElementById('instance-label-source');
-  let labelSources = {};
-  let labelsReady = false;
-  let labelsFailed = false;
-  let selectedInstance = null;
-  const taskSelect = document.getElementById('catalog-task');
-  const params = new URLSearchParams(window.location.search);
-  let data;
-  const view = document.body.dataset.catalogView || 'tasks';
-  let page = 0;
-  const pageSize = 24;
+  const node = id => document.getElementById(id);
+  const home = node('catalog-combinations');
+  const detail = node('instance-detail-content');
+  if (!home && !detail) return;
+  const base = new URL('.', document.currentScript.src);
   const el = (tag, text, className) => {
-    const node = document.createElement(tag);
-    if (text !== undefined) node.textContent = text;
-    if (className) node.className = className;
-    return node;
+    const item = document.createElement(tag);
+    if (text !== undefined) item.textContent = text;
+    if (className) item.className = className;
+    return item;
   };
-  const className = id => data.classes.find(item => item.id === id)?.name || id;
-  const matches = text => text.toLowerCase().includes((search?.value || '').trim().toLowerCase());
-  const collection = (item, id) => {
-    const number = Number(id.slice(id.lastIndexOf('_') + 1));
-    return item.collections.find(source => number >= source.indices[0] && number <= source.indices[1])?.source || 'Unspecified';
-  };
-  function render() {
-    if (!panel) return;
-    const cid = classSelect ? classSelect.value : selectedClass;
-    const tid = taskSelect?.value || '';
-    const scope = labelSources[labelSelect?.value];
-    const selected = data.classes.filter(item => (!cid || item.id === cid) && (!scope?.classes?.length || scope.classes.includes(item.id)));
-    const fragment = document.createDocumentFragment();
-    panel.setAttribute('aria-labelledby', 'catalog-title');
-    let records;
-    if (view === 'instances') {
-      records = selected.flatMap(item => Object.entries(item.instances).map(([id, instance]) => ({id, ...instance, class: item, source: collection(item, id)})))
-        .filter(item => (!scope?.instance_range || (Number(item.id.split('_').at(-1)) >= scope.instance_range[0] && Number(item.id.split('_').at(-1)) <= scope.instance_range[1])) && matches(`${item.id} ${item.name} ${item.class.name} ${item.source}`));
-    } else {
-      records = data.tasks.filter(task => (!cid || task.bindings.some(binding => binding.class_id === cid)) && matches(`${task.id} ${task.name} ${task.bindings.map(binding => `${binding.class_id} ${binding.query_template}`).join(' ')}`));
-    }
-    const maxPage = Math.max(0, Math.ceil(records.length / pageSize) - 1);
-    page = Math.min(page, maxPage);
-    fragment.append(el('p', `${records.length.toLocaleString()} ${view}${(search?.value || '').trim() ? ' matching your search' : ''}`, 'catalog-result-count'));
-    if (view === 'instances') {
-      renderInstances(records);
-      return;
-    }
-    if (!records.length) fragment.append(el('p', 'No results. Try another class or search term.', 'catalog-empty'));
-    const grid = el('div', undefined, view === 'instances' ? 'catalog-instance-grid' : 'catalog-entry-grid');
-    for (const record of records.slice(page * pageSize, (page + 1) * pageSize)) {
-      const card = el('article', undefined, 'catalog-entry');
-        card.append(el('p', record.id, 'catalog-entry-id'), el('h3', record.name));
-        for (const binding of record.bindings.filter(binding => !cid || binding.class_id === cid)) {
-          card.append(el('p', `${className(binding.class_id)} · ${binding.query_template}`, 'catalog-task-binding'));
-          card.append(el('p', binding.target_definition));
-        }
-        const button = el('a', 'View task–context labels', 'catalog-text-button');
-        const contextUrl = new URL('../task-context/', assets);
-        contextUrl.searchParams.set('task', record.id);
-        contextUrl.searchParams.set('class', cid || record.bindings[0].class_id);
-        button.href = contextUrl;
-        card.append(button);
-      grid.append(card);
-    }
-    fragment.append(grid);
-    if (records.length > pageSize) {
-      const pagination = el('nav', undefined, 'catalog-pagination');
-      pagination.setAttribute('aria-label', 'Catalog pages');
-      const previous = el('button', 'Previous');
-      const next = el('button', 'Next');
-      previous.type = next.type = 'button';
-      previous.disabled = page === 0;
-      next.disabled = page === maxPage;
-      previous.addEventListener('click', () => { page--; render(); panel.focus(); });
-      next.addEventListener('click', () => { page++; render(); panel.focus(); });
-      pagination.append(previous, el('span', `Page ${page + 1} of ${maxPage + 1}`), next);
-      fragment.append(pagination);
-    }
-    panel.replaceChildren(fragment);
-  }
-  function renderInstances(records) {
-    const listHost = document.getElementById('instance-list-content');
-    const detail = document.getElementById('instance-detail-content');
-    const title = document.getElementById('instance-list-title');
-    title.textContent = `${records.length.toLocaleString()} instances`;
-    if (!records.length) {
-      listHost.replaceChildren(el('p', 'No results. Try another class or search term.', 'catalog-empty'));
-      detail.replaceChildren(el('p', 'Select an instance to view its features.', 'catalog-empty'));
-      return;
-    }
-    if (!records.some(record => record.id === selectedInstance)) selectedInstance = records[0].id;
-    const selected = records.find(record => record.id === selectedInstance);
-    const list = el('ul', undefined, 'instance-list');
-    for (const record of records) {
-      const item = el('li');
-      const button = el('button', undefined, 'instance-list-button');
-      button.type = 'button';
-      button.setAttribute('aria-pressed', String(record.id === selectedInstance));
-      button.append(el('span', record.name), el('span', record.id, 'catalog-entry-id'));
-      button.addEventListener('click', () => {
-        const scrollTop = list.scrollTop;
-        selectedInstance = record.id;
-        render();
-        const nextList = listHost.querySelector('.instance-list');
-        if (nextList) {
-          nextList.scrollTop = scrollTop;
-          nextList.querySelector('[aria-pressed="true"]')?.focus({preventScroll: true});
-        }
-      });
-      item.append(button);
-      list.append(item);
-    }
-    listHost.replaceChildren(list);
-    detail.replaceChildren();
-    const heading = el('div', undefined, 'instance-detail-heading');
-    heading.append(el('h2', selected.name, 'instance-detail-title'), el('span', selected.id, 'catalog-entry-id'));
-    detail.append(heading);
-    const source = labelSources[labelSelect?.value];
-    const note = !labelsReady ? 'Loading label values…' : labelsFailed ? 'Label data could not be loaded. Values are unavailable.' : source ? (source.available === false ? `Release ${labelSelect.value} · labels unavailable` : `Release ${labelSelect.value}`) : 'No release selected.';
-    detail.append(el('p', note, 'catalog-entry-meta'));
-    const table = el('table', undefined, 'instance-feature-table');
-    const caption = el('caption', `Features and label values for ${selected.name}`, 'sr-only');
-    const head = el('thead');
-    const headers = el('tr');
-    for (const title of ['Feature', 'Value']) {
-      const cell = el('th', title); cell.setAttribute('scope', 'col'); headers.append(cell);
-    }
-    head.append(headers);
-    const body = el('tbody');
-    Object.entries(selected.class.features).filter(([fid]) => !source?.feature_range || (Number(fid.split('_').at(-1)) >= source.feature_range[0] && Number(fid.split('_').at(-1)) <= source.feature_range[1])).forEach(([fid, feature]) => {
-      const row = el('tr');
-      const name = el('th'); name.setAttribute('scope', 'row');
-      const info = el('span', undefined, 'instance-feature-info');
-      const trigger = el('span', feature.name, 'instance-feature-trigger');
-      trigger.tabIndex = 0;
-      const tooltip = el('span', undefined, 'instance-feature-tooltip');
-      tooltip.id = `feature-tooltip-${fid}`;
-      tooltip.setAttribute('role', 'tooltip');
-      trigger.setAttribute('aria-describedby', tooltip.id);
-      tooltip.append(el('span', fid, 'catalog-entry-id'), el('span', feature.description, 'instance-feature-description'));
-      trigger.addEventListener('keydown', event => {
-        if (event.key === 'Escape') info.classList.add('tooltip-dismissed');
-      });
-      for (const event of ['mouseenter', 'focusin']) info.addEventListener(event, () => info.classList.remove('tooltip-dismissed'));
-      info.append(trigger, tooltip);
-      name.append(info);
-      const stored = source?.features?.[selected.class.id]?.[selected.id];
-      const value = stored && Object.prototype.hasOwnProperty.call(stored, fid) ? stored[fid] : null;
-      const display = value === null || value === undefined ? 'NA' : typeof value === 'object' ? JSON.stringify(value) : String(value);
-      row.append(name, el('td', labelsReady ? display : '…', display === 'NA' ? 'instance-label-na' : 'instance-label-value'));
-      body.append(row);
-    });
-    table.append(caption, head, body);
-    detail.append(table);
-  }
-  labelSelect?.addEventListener('change', () => { if (data) render(); });
-  [classSelect, search, taskSelect].filter(Boolean).forEach(control => control.addEventListener(control === search ? 'input' : 'change', () => { page = 0; if (data) render(); }));
-  async function get(name) {
-    const response = await fetch(new URL(name, assets));
-    if (!response.ok) throw new Error(`${name}: ${response.status}`);
+  async function read(name) {
+    const response = await fetch(new URL(name, base));
+    if (!response.ok) throw new Error(name);
     return response.json();
   }
-  if (view === 'instances') get('instance_labels.json').then(payload => {
-    labelSources = payload.sources;
-    Object.keys(labelSources).forEach(id => labelSelect?.append(new Option(`Release ${id}`, id)));
-    if (labelSelect) {
-      const requested = params.get('release');
-      labelSelect.value = Object.hasOwn(labelSources, requested) ? requested : (Object.keys(labelSources).at(-1) || '');
-    }
-    labelsReady = true;
-    if (data) render();
-  }).catch(() => { labelsReady = true; labelsFailed = true; if (data) render(); });
-  get('catalog.json').then(catalog => {
-    data = catalog;
-    let instances = 0;
-    let features = 0;
-    data.classes.forEach(item => {
-      classSelect?.append(new Option(item.name, item.id));
-      instances += Object.keys(item.instances).length;
-      features += Object.keys(item.features).length;
-    });
-    if (data.classes.some(item => item.id === params.get('class'))) selectedClass = params.get('class');
-    if (classSelect) classSelect.value = selectedClass;
-    if (classButtons) {
-      const options = [{id: '', name: 'All'}, ...data.classes];
-      for (const item of options) {
-        const button = el('button', undefined, 'instance-class-button');
-        button.type = 'button';
-        button.dataset.classId = item.id;
-        button.setAttribute('aria-pressed', String(item.id === selectedClass));
-        const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        icon.setAttribute('viewBox', '0 0 48 48');
-        icon.setAttribute('aria-hidden', 'true');
-        if (item.id) {
-          const iconId = {bird:'bird',human:'human',legal_case:'legal',mammal:'mammal',plant:'plant'}[item.id];
-          const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-          use.setAttribute('href', new URL(`project-overview/icons.svg#${iconId}`, assets));
-          icon.append(use);
-        } else {
-          for (const [x, y] of [[8,8],[28,8],[8,28],[28,28]]) {
-            const square = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            for (const [key, value] of Object.entries({x,y,width:12,height:12,rx:2})) square.setAttribute(key, value);
-            icon.append(square);
-          }
-        }
-        button.append(icon, el('span', item.name));
-        button.addEventListener('click', () => {
-          selectedClass = item.id;
-          selectedInstance = null;
-          classButtons.querySelectorAll('button').forEach(control => control.setAttribute('aria-pressed', String(control === button)));
-          render();
-        });
-        classButtons.append(button);
+  const iconIds = {bird: 'bird', human: 'human', legal_case: 'legal', mammal: 'mammal', plant: 'plant',
+    cars: 'car', foods: 'food', garments: 'garment', smartphones: 'smartphone', kitchenware: 'kitchenware'};
+  function iconFor(id) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'category-icon');
+    svg.setAttribute('viewBox', '0 0 48 48');
+    svg.setAttribute('aria-hidden', 'true');
+    if (id) {
+      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', new URL(`project-overview/icons.svg#${iconIds[id] || id}`, base));
+      svg.append(use);
+    } else {
+      for (const [x, y] of [[8, 8], [28, 8], [8, 28], [28, 28]]) {
+        const square = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        for (const [key, value] of Object.entries({x, y, width: 12, height: 12, rx: 2})) square.setAttribute(key, value);
+        svg.append(square);
       }
     }
-    if (search) search.value = params.get('q') || '';
-    selectedInstance = params.get('instance');
-    if (taskSelect) {
-      data.tasks.forEach(task => taskSelect.append(new Option(task.name, task.id)));
-      if (data.tasks.some(task => task.id === params.get('task'))) taskSelect.value = params.get('task');
-    }
-    const counts = document.getElementById('catalog-stats');
-    [[data.tasks.length, 'Tasks'], [instances, 'Instances'], [data.tasks.reduce((sum, task) => sum + Object.keys(task.contexts).length, 0), 'Contexts'], [features, 'Features']].forEach(([count, label]) => {
-      const item = el('div');
-      item.append(el('strong', count.toLocaleString()), el('span', label));
-      counts?.append(item);
-    });
-    const combinations = document.getElementById('catalog-combinations');
-    data.classes.forEach(item => data.tasks.filter(task => task.bindings.some(binding => binding.class_id === item.id)).forEach(task => {
-      const li = el('li', undefined, 'category-card');
-      const link = el('a');
-      const instanceUrl = new URL('../instances/', assets);
-      instanceUrl.searchParams.set('class', item.id);
-      link.href = instanceUrl;
-      const iconId = {bird: 'bird', human: 'human', legal_case: 'legal', mammal: 'mammal', plant: 'plant'}[item.id];
-      const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      icon.setAttribute('class', 'category-icon');
-      icon.setAttribute('viewBox', '0 0 48 48');
-      icon.setAttribute('aria-hidden', 'true');
-      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-      use.setAttribute('href', new URL(`project-overview/icons.svg#${iconId}`, assets));
-      icon.append(use);
-      link.append(icon, el('strong', `${item.name} – ${task.name}`), el('span', `${Object.keys(item.instances).length} instances`));
-      li.append(link);
-      combinations?.append(li);
-    }));
-    render();
-  }).catch(() => {
-    if (!panel) {
-      document.getElementById('catalog-combinations')?.replaceChildren(el('li', 'Catalog preview is unavailable. Use the Instances or Task–Context page above.'));
+    return svg;
+  }
+  const display = value => value === undefined || value === null ? '-' : typeof value === 'object' ? JSON.stringify(value) : String(value);
+  Promise.all([read('catalog.json'), home ? Promise.resolve({sources: {}}) : read('release_samples.json')]).then(([catalog, releases]) => {
+    if (home) {
+      home.replaceChildren();
+      const midpoint = Math.ceil(catalog.classes.length / 2);
+      for (const groups of [catalog.classes.slice(0, midpoint), catalog.classes.slice(midpoint)]) {
+        if (!groups.length) continue;
+        const row = el('div', undefined, 'instance-stream-row');
+        const track = el('div', undefined, 'instance-stream-track');
+        for (const duplicate of [false, true]) {
+          const items = el('ul', undefined, 'instance-stream-group');
+          if (duplicate) items.setAttribute('aria-hidden', 'true');
+          for (const group of groups) {
+            const chip = el('li', undefined, 'instance-stream-chip');
+            const label = el('span', undefined, 'instance-stream-label');
+            label.append(el('strong', group.name));
+            chip.append(iconFor(group.id), label);
+            items.append(chip);
+          }
+          track.append(items);
+        }
+        row.append(track);
+        home.append(row);
+      }
       return;
     }
-    panel.replaceChildren(el('p', 'The catalog could not be loaded. Please refresh or download the definitions below.'));
-    const link = el('a', 'Catalog JSON'); link.href = new URL('catalog.json', assets); panel.append(link);
+    const params = new URLSearchParams(window.location.search);
+    const version = node('catalog-version');
+    version.replaceChildren(new Option(catalog.catalog_version, catalog.catalog_version));
+    version.value = catalog.catalog_version;
+    const source = node('instance-label-source');
+    const buttons = node('instance-class-buttons');
+    const classSearch = node('class-search');
+    let cid = params.get('class') || '';
+    let selectedId = params.get('sample') || '';
+    const tabNames = ['Features', 'Task-Context'];
+    let selectedContext = '';
+    let activeTab = ['tasks', 'contexts', 'task-context'].includes(params.get('tab')) ? 'Task-Context' : 'Features';
+    source.replaceChildren(new Option('Catalog definitions', ''));
+    for (const id of Object.keys(releases.sources)) source.append(new Option(`Release ${id}`, id));
+    source.value = Object.hasOwn(releases.sources, params.get('release')) ? params.get('release') : '';
+    function groupsFor(release) {
+      if (!release?.definitions) return catalog.classes;
+      return release.definitions.classes.map(c => ({...c, features: Object.fromEntries(c.features.map(f => [f.id, f]))}));
+    }
+    function render() {
+      const release = releases.sources[source.value];
+      const groups = groupsFor(release);
+      if (!groups.some(c => c.id === cid)) cid = groups[0]?.id || '';
+      const available = groups.filter(c => c.id === cid);
+      buttons.replaceChildren();
+      const classQuery = (classSearch?.value || '').trim().toLowerCase();
+      const matchingGroups = groups.filter(c => `${c.id} ${c.name}`.toLowerCase().includes(classQuery));
+      for (const [id, name] of matchingGroups.map(c => [c.id, c.name])) {
+        const button = el('button', undefined, 'instance-class-button');
+        button.append(iconFor(id), el('span', name));
+        button.setAttribute('aria-pressed', String(cid === id));
+        button.addEventListener('click', () => { cid = id; selectedId = ''; render(); });
+        buttons.append(button);
+      }
+      if (!matchingGroups.length) buttons.append(el('p', 'No matching classes.', 'catalog-empty'));
+      const records = available.flatMap(c => Object.entries(release?.samples?.[c.id] || {}).map(([id, features]) => ({id, features, group: c})));
+      const selected = records.find(s => s.id === selectedId) || records[0];
+      selectedId = selected?.id || '';
+      detail.replaceChildren();
+      const group = selected?.group || available[0];
+      if (!group) { detail.append(el('p', 'No matching feature group.')); return; }
+      const taskDefinitions = release?.definitions?.tasks || catalog.tasks;
+      const boundTasks = taskDefinitions.filter(t => t.bindings.some(b => b.class_id === group.id));
+      const availableTabs = boundTasks.length ? tabNames : ['Features'];
+      if (!availableTabs.includes(activeTab)) activeTab = 'Features';
+      detail.append(el('h2', group.name));
+      const tabs = el('div', undefined, 'class-detail-tabs');
+      tabs.setAttribute('role', 'tablist');
+      tabs.setAttribute('aria-label', 'Class information');
+      for (const name of availableTabs) {
+        const tab = el('button', name, 'class-detail-tab');
+        tab.id = `class-tab-${name.toLowerCase()}`;
+        tab.type = 'button';
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('aria-selected', String(activeTab === name));
+        tab.setAttribute('aria-controls', 'class-detail-panel');
+        tab.tabIndex = activeTab === name ? 0 : -1;
+        tab.addEventListener('click', () => { activeTab = name; render(); });
+        tab.addEventListener('keydown', event => {
+          let index = availableTabs.indexOf(name);
+          if (event.key === 'ArrowRight') index = (index + 1) % availableTabs.length;
+          else if (event.key === 'ArrowLeft') index = (index + availableTabs.length - 1) % availableTabs.length;
+          else if (event.key === 'Home') index = 0;
+          else if (event.key === 'End') index = availableTabs.length - 1;
+          else return;
+          event.preventDefault();
+          activeTab = availableTabs[index];
+          render();
+          node(`class-tab-${activeTab.toLowerCase()}`)?.focus();
+        });
+        tabs.append(tab);
+      }
+      const content = el('div', undefined, 'class-detail-panel');
+      content.id = 'class-detail-panel';
+      content.setAttribute('role', 'tabpanel');
+      content.setAttribute('aria-labelledby', `class-tab-${activeTab.toLowerCase()}`);
+      detail.append(tabs, content);
+      if (activeTab === 'Task-Context') {
+        const entries = boundTasks.flatMap(task => {
+          const binding = task.bindings.find(b => b.class_id === group.id);
+          const definitions = task.contexts || Object.fromEntries((release?.definitions?.contexts || [])
+            .filter(c => c.task_id === task.id && (!c.class_id || c.class_id === group.id))
+            .map(c => [c.id, c]));
+          return (binding.contexts || Object.keys(definitions)).filter(id => definitions[id])
+            .map(id => ({key: `${task.id}:${id}`, id, task: task.name, question: binding.query_template, description: definitions[id].description}));
+        });
+        if (!entries.length) { content.append(el('p', 'No tasks or contexts are defined for this class.', 'catalog-empty')); return; }
+        const current = entries.find(c => c.key === selectedContext) || entries[0];
+        selectedContext = current.key;
+        content.append(el('h3', `Task: ${current.question}`, 'context-task-question'));
+        const workspace = el('div', undefined, 'context-workspace');
+        const choices = el('nav', undefined, 'context-choices');
+        choices.setAttribute('aria-label', 'Contexts');
+        const description = el('article', undefined, 'context-description');
+        description.id = 'selected-context-description';
+        description.append(el('h4', current.id), el('p', current.description));
+        for (const entry of entries) {
+          const button = el('button', entry.id, 'context-choice');
+          button.type = 'button';
+          button.setAttribute('aria-pressed', String(entry.key === selectedContext));
+          button.setAttribute('aria-controls', description.id);
+          button.title = entry.task;
+          button.addEventListener('click', () => { selectedContext = entry.key; render(); });
+          choices.append(button);
+        }
+        workspace.append(choices, description);
+        content.append(workspace);
+        return;
+      }
+      const table = el('table', undefined, 'instance-feature-table');
+      const thead = el('thead');
+      const tbody = el('tbody');
+      const head = el('tr');
+      head.append(el('th', 'Feature'), el('th', 'T+F+U=1'));
+      thead.append(head);
+      table.append(thead, tbody);
+      for (const [fid, f] of Object.entries(group.features)) {
+        const row = el('tr');
+        const cell = el('th');
+        cell.setAttribute('scope', 'row');
+        const info = el('span', undefined, 'instance-feature-info');
+        const trigger = el('button', f.name, 'instance-feature-trigger');
+        trigger.setAttribute('aria-describedby', `feature-tip-${fid}`);
+        const tooltip = el('span', `${fid} · ${f.description}`, 'instance-feature-tooltip');
+        tooltip.id = `feature-tip-${fid}`;
+        tooltip.setAttribute('role', 'tooltip');
+        trigger.addEventListener('keydown', event => { if (event.key === 'Escape') info.classList.add('tooltip-dismissed'); });
+        for (const event of ['mouseenter', 'focusin']) info.addEventListener(event, () => info.classList.remove('tooltip-dismissed'));
+        info.append(trigger, tooltip);
+        cell.append(info);
+        row.append(cell, el('td', display(selected?.features[fid])));
+        tbody.append(row);
+      }
+      content.append(table);
+    }
+    classSearch?.addEventListener('input', render);
+    source.addEventListener('change', () => { selectedId = ''; render(); });
+    render();
+  }).catch(() => {
+    const target = detail || home;
+    target.replaceChildren(el('p', 'Data could not be loaded. Sample values are unavailable.', 'catalog-empty'));
   });
 })();

@@ -1,0 +1,45 @@
+id: legal_case
+name: Legal Case
+features:
+  legal_case_f_001:
+    name: caused_property_damage
+    description: The person damaged the property.
+    labeling: Stipulated actual property damage caused by the person = 1; explicitly no actual damage
+      or no causation by that person = 0. Missing or disputed facts stay missing. An attempt without actual
+      damage is 0.
+  legal_case_f_002:
+    name: intentional_damage
+    description: The damage was intentional.
+    labeling: Intent to cause the stipulated damage = 1; explicitly accidental or unintended damage =
+      0. Intent to act alone does not establish intent to damage. Missing or disputed intent stays missing.
+  legal_case_f_003:
+    name: property_belongs_to_another
+    description: The damaged property belongs to another person.
+    labeling: Damaged property wholly belongs to another person = 1, jointly belongs to the actor and
+      another person = 0.5, belongs solely to the actor = 0. Unknown or disputed ownership stays missing.
+  legal_case_f_004:
+    name: has_owner_consent
+    description: The owner consented to this damage.
+    labeling: Valid owner consent explicitly covers this damage = 1; consent explicitly absent, refused,
+      withdrawn or outside scope = 0. Unknown or disputed consent stays missing; silence is insufficient.
+  legal_case_f_005:
+    name: necessary_to_prevent_imminent_harm
+    description: In the emergency context, the damage was solely necessary to prevent the stipulated imminent
+      serious danger; this fact does not establish an emergency in other contexts.
+    labeling: Conditional on the emergency context being applied, this damage is solely necessary to prevent
+      its stipulated imminent serious danger = 1; at least one required condition explicitly fails = 0.
+      Unknown or disputed facts stay missing. This feature does not create an emergency in other contexts.
+  legal_case_f_006:
+    name: has_lawful_authorisation
+    description: Lawful authorisation is present. Official-duty exemption separately requires necessary
+      damage within the authorised scope; authorisation alone does not establish exemption.
+    labeling: Valid lawful authorisation explicitly present = 1; explicitly absent or invalid = 0. Unknown
+      or disputed authorisation stays missing. Authorisation alone does not establish necessity or an
+      official-duty exemption.
+  legal_case_f_007:
+    name: within_official_scope
+    description: The damage was necessary and within the authorised scope of the official duties assessed
+      in the official-duty context.
+    labeling: Conditional on the official-duty context being applied, this damage is both necessary and
+      within the authorised scope = 1; either condition explicitly fails = 0. Unknown or disputed facts
+      stay missing. A role or authorisation alone is insufficient.

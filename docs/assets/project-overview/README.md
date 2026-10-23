@@ -1,16 +1,11 @@
 # Project overview assets
 
-The home page now uses `../catalog-explorer.js` and `../catalog.json` to render
-class/task combinations and task summaries. Instance and context browsing live on
-the separate /instances/ and /task-context/ pages. The latter uses task-context.js
-to show sample judgments for a selected task and context. Catalog
-JSON is generated from catalog YAML by `python -m src.catalog.web_assets` and is
-also refreshed after successful manual/CUB catalog generation.
+The home page renders feature-group and task links from catalog.json using
+catalog-explorer.js. The /catalog/ URL displays the Catalog with an explicit catalog version selector. Its Features and Task-Context tabs share the selected class. The separate
+Task–Context page has been removed. The browser reads release_samples.json; generated source runs are never fallback
+website data. Catalog mode contains definitions only, with no object list.
 
-`icons.svg` provides the class icons. `statistics.js` supports the separate frozen
-v1 release statistics table. `config.json` and `overview.js` are retained legacy
-overview assets; the home page no longer loads overview.js.
-
-Generation scope is read from the separate catalog_generation_scripts.json and
-label_generation_scripts.json assets. The catalog snapshot contains definitions,
-not random feature or task judgments. Preview with `bash shells/serve.sh`.
+Run `python -m src.catalog.web_assets` after editing definitions or assembling
+releases. Frozen release definitions interpret frozen feature values. icons.svg
+and the separate historical v1 statistics/example assets remain available.
+Preview locally with `bash tools/serve.sh`.

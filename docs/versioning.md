@@ -53,8 +53,8 @@ python versions/v1/generation/run.py inputs --run trial-001
 # Continue feature/label generation and final splitting as documented in:
 # versions/v1/generation/README.md
 python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
-python shells/release.py verify v1
-bash shells/huggingface.sh prepare --version v1
+python tools/release.py verify v1
+bash tools/huggingface.sh prepare --version v1
 ```
 
 Offline verification and restoration need no HF token. Generation into `runs/`
@@ -74,8 +74,8 @@ and distribution audit; model training/evaluation is an independent local task.
    every file in `data/v2` and `versions/v2/generation` except Python caches;
    paths are relative to the repository root. Record provenance and teacher.
 5. Register v2 in `versions/registry.json` with `data`, `pipeline`, `manifest`,
-   `primary_teacher`, and status. Verify with `python shells/release.py verify v2`.
-6. Run `bash shells/huggingface.sh prepare --version v2`, inspect the payload,
+   `primary_teacher`, and status. Verify with `python tools/release.py verify v2`.
+6. Run `bash tools/huggingface.sh prepare --version v2`, inspect the payload,
    then explicitly upload with `upload --version v2 --repo-id leo-bjpark/CDR-Dataset`.
 7. Commit the code, metadata, and resulting `versions/v2/huggingface.json` receipt.
    Data stays out of Git. Advance the registry's `latest` after acceptance.

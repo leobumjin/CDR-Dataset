@@ -10,7 +10,7 @@ See `versions/v1/generation/README.md` for the archived generation pipeline.
 
 ```bash
 python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
-python shells/release.py verify v1
+python tools/release.py verify v1
 ```
 
 Evaluation checks data integrity and distributions, not model performance.
@@ -21,9 +21,9 @@ Evaluation checks data integrity and distributions, not model performance.
 python -m pip install -r requirements-huggingface.txt
 hf auth login
 # Offline verification, evaluation, and staging only:
-bash shells/huggingface.sh --version v1 --dry-run
+bash tools/huggingface.sh --version v1 --dry-run
 # Prepare and publish publicly:
-bash shells/huggingface.sh --version v1
+bash tools/huggingface.sh --version v1
 ```
 
 The default repository is https://huggingface.co/datasets/leo-bjpark/CDR-Dataset.
@@ -76,7 +76,7 @@ test = load_dataset('leo-bjpark/CDR-Dataset', 'v1', split='test')
 ## Download local files
 
 ```bash
-bash shells/huggingface.sh download --version v1
+bash tools/huggingface.sh download --version v1
 ```
 
 Download uses the recorded config publication's commit SHA when available,

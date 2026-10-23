@@ -84,29 +84,42 @@ Experimental features are derived from the constructed profiles for Humans and L
 
 The [v1 details page](https://leobumjin.github.io/CDR-Dataset/v1/) documents domains and queries, entities, feature categories and labeling, context categories, and query labeling. Version-specific [generation instructions](versions/v1/generation/README.md), [release notes](versions/v1/README.md), and [statistics](versions/v1/statistics.json) are retained in this repository.
 
-## Incremental catalog
+## Feature-defined samples
 
-Bird definitions now use YAML under [catalog/classes/bird/](catalog/classes/bird/)
-and [catalog/tasks/fly/](catalog/tasks/fly/). Bird class names and metadata come from CUB-200-2011 using
-`bash shells/catalog/classes_bird_cub.sh` and are stored as JSON under
-[labels/](labels/), grouped by source or execution. Feature and task judgments
-will be stored there separately when produced.
-Instance list entries contain `id` and `name`.
-See the [catalog guide](catalog/README.md) and run `python -m src.catalog validate`.
-Other classes retain their previous format. Frozen v1 and its publication
-workflow are unchanged; `releases/` is reserved for future selected outputs.
+The active development pipeline defines each sample by a feature-value combination,
+without object names or a catalog instance list. Classes group feature definitions;
+tasks and contexts determine how those features are evaluated. Feature origin and
+task-label generation/review provenance are independent. Constructed samples can
+receive AI-generated task labels. There are no N/R/R² release families.
+
+```bash
+python -m pip install -r requirements.txt
+python -m src.catalog validate
+bash releases/v1/shells/run1_prepare_samples.sh --source-id sample_run --count 100 --seed 0
+PYTHON=python bash releases/v1/shells/run1_prepare_labels.sh --sample-source sample_run --source-id task_run --backend vllm --model google/gemma-3-27b-it --dry-run
+```
+
+See [catalog definitions](catalog/README.md), [generation](docs/label_generation_script.md)
+and [release assembly](releases/README.md).
+Choose --backend openai or --backend vllm and pass --model explicitly for labels.
+OpenAI requires requirements-openai.txt and OPENAI_API_KEY; vLLM requires the
+separate local GPU runtime. No API/GPU resources are needed for --dry-run.
+
+Retired named catalogs and code have been removed. The historical v1 data described above and
+its publication workflow remain unchanged; new samples do not inherit its labels.
 
 ## Repository and versioning
 
 ```text
 CDR-Dataset/
-├── src/catalog/               # Catalog collection, validation and storage code
+├── src/catalog/               # Feature definitions, sample validation and release assembly
 ├── catalog/                   # Catalog definitions and documentation
-│   ├── classes/               # Groups, instance profiles and feature definitions
-│   ├── tasks/                 # General task definitions and contexts
-│   └── labels/                # Unmigrated legacy results for other classes
-├── labels/                    # Bird source-run JSON metadata and results
-├── release/                   # Future clean selected outputs
+│   └── v1/                   # Versioned classes/*.yaml and tasks/*.yaml
+├── labels/                    # Anonymous sample sources and optional task labels
+├── releases/                  # Versioned generation code and frozen releases
+│   └── v1/
+│       ├── shells/            # Experiment execution entrypoints
+│       └── scripts/           # Feature sampling and LLM task-context labeling
 ├── versions/
 │   ├── registry.json          # Current version registry
 │   └── v1/
@@ -115,7 +128,7 @@ CDR-Dataset/
 │       ├── SCHEMA.md
 │       ├── statistics.json
 │       └── manifest.json      # Provenance and checksums
-├── shells/                    # Local preview, HF publication, release checks
+├── tools/                     # Preview, runtime setup and historical publication tools
 ├── evaluation/                # Dataset integrity and distribution audits
 ├── docs/                      # GitHub Pages and version detail pages
 ├── data/                      # Local dataset payloads — Git ignored
@@ -128,10 +141,10 @@ Generation code and metadata remain tracked in Git. Dataset payloads are distrib
 
 ```bash
 python -m pip install -r requirements-huggingface.txt
-bash shells/huggingface.sh download --version v1
+bash tools/huggingface.sh download --version v1
 
 python evaluation/evaluate.py --data data/v1 --output runs/v1/evaluation.json
-python shells/release.py verify v1
+python tools/release.py verify v1
 ```
 
 Fresh generation runs are kept under `runs/`; follow the [v1 generation guide](versions/v1/generation/README.md) for dependencies and API stages. The evaluation command above audits the dataset rather than running language-model experiments.
@@ -142,10 +155,10 @@ Fresh generation runs are kept under `runs/`; follow the [v1 generation guide](v
 hf auth login
 
 # Prepare and check the payload locally.
-bash shells/huggingface.sh --version v1 --dry-run
+bash tools/huggingface.sh --version v1 --dry-run
 
 # Prepare and upload the public v1 config.
-bash shells/huggingface.sh --version v1
+bash tools/huggingface.sh --version v1
 ```
 
 The default destination is `leo-bjpark/CDR-Dataset`. Uploads update the selected version and preserve other version configs. See the [Hugging Face workflow](docs/huggingface.md) for staging, authentication, and download details.
@@ -153,7 +166,7 @@ The default destination is `leo-bjpark/CDR-Dataset`. Uploads update the selected
 ### Preview the project page
 
 ```bash
-bash shells/serve.sh
+bash tools/serve.sh
 ```
 
-Open [localhost:8000](http://127.0.0.1:8000/) for the project page or [localhost:8000/v1/](http://127.0.0.1:8000/v1/) for v1 details. An optional port can be supplied with `bash shells/serve.sh 8080`.
+Open [localhost:8000](http://127.0.0.1:8000/) for the project page or [localhost:8000/v1/](http://127.0.0.1:8000/v1/) for v1 details. An optional port can be supplied with `bash tools/serve.sh 8080`.

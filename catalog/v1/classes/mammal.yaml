@@ -1,0 +1,48 @@
+id: mammal
+name: Mammal
+features:
+  mammal_f_001:
+    name: is_large
+    description: How large the mammal’s body is relative to mammals in general.
+    labeling: 'Adult body mass for the identified species, using the documented typical value or midpoint
+      of its reported adult range: at least 100 kg = 1, 10 kg to under 100 kg = 0.5, under 10 kg = 0.
+      These are dataset size bands. Do not substitute the current individual’s age or condition for species
+      size.'
+  mammal_f_002:
+    name: is_cold_adapted
+    description: The mammal’s morphological and physiological adaptations to cold conditions.
+    labeling: 'Documented species adaptations to cold: specialised cold-climate insulation or physiology
+      = 1, moderate or seasonal cold adaptations = 0.5, explicitly limited cold adaptation characteristic
+      of warm-climate specialists = 0. Use documented traits, not a survival judgment for the task’s temperature.'
+  mammal_f_003:
+    name: is_heat_adapted
+    description: The mammal’s morphological and physiological adaptations to hot conditions.
+    labeling: 'Documented species adaptations to heat: specialised hot-climate thermoregulation = 1, moderate
+      or seasonal heat adaptations = 0.5, explicitly limited heat adaptation characteristic of cold-climate
+      specialists = 0. Use documented traits, not a survival judgment for the task’s temperature.'
+  mammal_f_004:
+    name: is_drought_adapted
+    description: The mammal’s adaptations for conserving water when water is scarce.
+    labeling: 'Documented species adaptations to water scarcity: specialised water-conserving physiology
+      or storage = 1, moderate water-conserving adaptations with continued regular water dependence =
+      0.5, explicitly little drought adaptation and strong dependence on frequent water access = 0. Do
+      not infer adaptation from a single survival outcome.'
+  mammal_f_005:
+    name: is_adult
+    description: The individual’s developmental maturity.
+    labeling: 'Individual developmental stage: reproductively mature adult = 1, subadult approaching maturity
+      = 0.5, infant or juvenile not approaching maturity = 0. Use species-appropriate documented maturity;
+      a species name alone does not establish adulthood.'
+  mammal_f_006:
+    name: is_healthy
+    description: The individual’s health.
+    labeling: 'Current individual health: explicitly healthy with no active impairment = 1, mild or moderate
+      illness or injury = 0.5, severe illness or injury with major functional impairment = 0. Do not infer
+      health from species identity or absence of a health statement.'
+  mammal_f_007:
+    name: has_adequate_energy_reserves
+    description: How adequate the individual’s energy reserves are.
+    labeling: 'Current individual energy reserves: documented adequate body condition and energy stores
+      for normal maintenance = 1, marginal or depleted reserves without severe emaciation = 0.5, severely
+      depleted reserves or emaciation = 0. Evaluate the stipulated starting condition, independently of
+      predicted task survival.'

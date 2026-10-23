@@ -1,9 +1,0 @@
-id: mammal
-name: Mammal
-revision: 1
-collections:
-- source: manual
-  indices:
-  - 1
-  - 100
-  script: shells/catalog/manual.sh

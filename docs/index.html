@@ -1,30 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="landing-page">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CDR-Dataset: Contextual Default Retraction Dataset. Evaluating contextual default reasoning and belief retraction in language models.">
   <meta name="theme-color" content="#9b324d">
   <title>CDR-Dataset · Contextual Default Retraction Dataset</title>
-  <link rel="stylesheet" href="styles.css?v=white-3">
+  <link rel="stylesheet" href="styles.css?v=grounding-colors-8">
   <link rel="stylesheet" href="assets/bird-animation/animation.css?v=alice-white-5">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <header class="landing-header">
+    <a class="brand" href="#overview">CDR-Dataset</a>
+    <nav class="landing-nav" aria-label="Main sections">
+      <a href="#overview" aria-current="location">Overview</a>
+      <a href="#examples">Examples</a>
+      <a href="#release">Release</a>
+      <a class="landing-data-link" href="catalog/">Catalog</a>
+    </nav>
+  </header>
   <main id="main">
-    <div class="hero">
-      <div data-bird-demo><p class="source">Bird transition example · dry → wet → dry conditions.</p></div>
-      <div class="hero-divider" aria-hidden="true"></div>
+    <section id="overview" class="hero landing-section" aria-label="Overview">
       <h1>C<span class="title-d">D</span><span class="title-r">R</span>-Dataset</h1>
       <p class="subtitle">Contextual Default Retraction Dataset</p>
-      <p class="lead">Evaluating how language models reason with defaults and revise beliefs.</p>
+      <p class="lead">Exploring how <strong>AI models</strong> reason and generalize across feature combinations and contexts.</p>
       <div class="hero-links"><a class="button" href="https://github.com/leobumjin/CDR-Dataset"><svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.64 5.28-5.15 5.56.4.35.76 1.04.76 2.1v3.07c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/></svg> GitHub</a><a class="button" href="https://huggingface.co/datasets/leo-bjpark/CDR-Dataset"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 1 1 14 0"/><path d="M9 12h.01M15 12h.01M9 15q3 3 6 0"/><path d="m8 20-4-2-2-4q-.5-1.5 1-1.5L5 15l-1-4q0-1.5 1.3-1L8 15m8 5 4-2 2-4q.5-1.5-1-1.5L19 15l1-4q0-1.5-1.3-1L16 15"/></svg> Hugging Face</a></div>
-      <nav class="catalog-nav" aria-label="Dataset navigation"><a href="instances/">Instances</a><a href="task-context/">Task–Context</a><a href="#statistics">Releases</a></nav>
-      <p class="catalog-kicker">A growing catalog of tasks, instances and contexts</p>
-      <ul id="catalog-combinations" class="category-cards" aria-label="Class and task combinations"></ul>
-    </div>
-    <section id="examples" aria-labelledby="examples-title">
-      <h2 id="examples-title">Reasoning examples</h2>
+      <div id="catalog-combinations" class="instance-stream" aria-label="Catalog categories"></div>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <div data-bird-demo><p class="source">Bird transition example · dry → wet → dry conditions.</p></div>
+    </section>
+    <section class="landing-section" id="examples" aria-labelledby="examples-title">
+      <h2 id="examples-title">Examples</h2>
       <p class="examples-intro">Illustrative examples of how context changes an answer. These examples are separate from the growing catalog and random label templates.</p>
       <div class="example-domain-tabs" role="tablist" aria-label="Example domain">
         <button type="button" id="tab-bird" role="tab" aria-selected="true" aria-controls="bird-example" tabindex="0">Bird</button>
@@ -146,8 +153,9 @@
       </div>
 
     </section>
-    <section id="statistics" aria-labelledby="statistics-title">
-      <h2 id="statistics-title">Released datasets</h2>
+    <section id="release" class="landing-section" aria-labelledby="statistics-title">
+      <span id="statistics" class="landing-anchor" aria-hidden="true"></span>
+      <h2 id="statistics-title">Release</h2>
       <div class="resource-table-wrap dataset-summary">
         <table class="resource-table">
           <caption class="sr-only">Version 1 dataset structure</caption>
@@ -160,9 +168,10 @@
     </section>
   </main>
   <footer><span>CDR-Dataset · Contextual Default Retraction Dataset</span><a href="https://github.com/leobumjin/CDR-Dataset">GitHub</a></footer>
+  <script src="assets/landing-navigation.js" defer></script>
   <script src="assets/dataset-examples/examples.js" defer></script>
   <script src="assets/project-overview/statistics.js" defer></script>
-  <script src="assets/catalog-explorer.js" defer></script>
+  <script src="assets/catalog-explorer.js?v=feature-samples-icons-3" defer></script>
   <script src="assets/bird-animation/animation.js?v=alice-captions-2" defer></script>
   <script>
 

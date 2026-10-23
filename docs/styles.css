@@ -512,3 +512,225 @@ h1 .title-d { color: var(--secondary); }
 .sample-tooltip-features dd { margin: 0; color: var(--secondary); font: 500 13px/1.6 ui-monospace, monospace; }
 @media (max-width: 800px) { .task-context-controls { grid-template-columns: 1fr 1fr; } .judgment-samples { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .task-context-controls, .judgment-list-toolbar { grid-template-columns: 1fr; } .judgment-samples { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Two rows of catalog categories drift from left to right. */
+.instance-stream { overflow: hidden; margin: 16px 0 0; padding: 6px 0; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
+.instance-stream-row { overflow: hidden; padding: 6px 0; }
+.instance-stream-track { display: flex; width: max-content; animation: instance-drift 40s linear infinite; }
+.instance-stream-row:nth-child(2) .instance-stream-track { animation-duration: 46s; }
+.instance-stream-group { display: flex; flex: none; gap: 12px; list-style: none; padding: 0 12px 0 0; margin: 0; }
+.instance-stream-chip { box-sizing: border-box; width: 190px; flex: none; display: flex; align-items: center; gap: 12px; padding: 14px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); text-align: left; }
+.instance-stream-chip .category-icon { flex: none; width: 32px; height: 32px; margin: 0; }
+.instance-stream-label { display: flex; flex-direction: column; gap: 3px; white-space: nowrap; }
+.instance-stream-label strong { color: var(--accent); font-size: 13px; font-weight: 600; }
+@keyframes instance-drift { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .instance-stream { mask-image: none; }
+  .instance-stream-row { overflow-x: auto; }
+  .instance-stream-track { animation: none; }
+  .instance-stream-group[aria-hidden="true"] { display: none; }
+}
+
+/* The landing page follows three screen-sized chapters. */
+html.landing-page { scroll-padding-top: 82px; scroll-snap-type: y proximity; }
+.landing-page .landing-header { position: sticky; top: 0; z-index: 30; min-height: 66px; padding: 12px 0; background: var(--paper); }
+.landing-nav { display: flex; gap: 28px; }
+.landing-nav a { padding: 6px 0; color: var(--muted); text-decoration: none; font-size: 14px; border-bottom: 2px solid transparent; }
+.landing-nav a[aria-current="location"] { color: var(--accent); border-color: var(--accent); }
+.landing-page .landing-section { position: relative; min-height: calc(100svh - 82px); scroll-snap-align: start; scroll-margin-top: 0; padding-top: 42px; padding-bottom: 48px; }
+.landing-page #overview { border-top: 0; }
+.landing-page #release { display: flex; flex-direction: column; justify-content: center; }
+.landing-anchor { position: absolute; top: 0; }
+@media (max-width: 600px) {
+  .landing-page .landing-header { gap: 12px; }
+  .landing-nav { gap: 16px; }
+  .landing-nav a { font-size: 12px; }
+  .landing-page .landing-section { padding-top: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.landing-page { scroll-snap-type: none; }
+}
+
+/* Keep catalog navigation in the header and the overview compact. */
+.landing-nav { align-items: center; gap: 22px; }
+.landing-nav .landing-data-link { margin-left: 10px; padding-left: 22px; border-left: 1px solid var(--line); }
+.landing-page #overview { padding-top: 24px; padding-bottom: 24px; }
+.landing-page #overview h1 { font-size: clamp(32px, 4.5vw, 42px); margin-bottom: 8px; }
+.landing-page #overview .subtitle { font-size: 22px; margin-bottom: 6px; }
+.landing-page #overview .hero-links { margin-top: 16px; }
+.landing-page #overview .catalog-kicker { margin: 14px 0 0; }
+.landing-page #overview .instance-stream { margin-top: 8px; padding: 0; }
+.landing-page #overview .instance-stream-chip { padding: 8px 16px; }
+.landing-page #overview .hero-divider { margin: 12px auto; }
+.landing-page #overview .bird-demo-section { margin-top: 0; margin-bottom: 0; }
+@media (max-width: 700px) {
+  .landing-page .landing-header { flex-wrap: wrap; justify-content: center; gap: 2px 16px; padding: 8px 0; }
+  .landing-nav { justify-content: center; flex-wrap: wrap; gap: 8px 14px; }
+  .landing-nav .landing-data-link { margin-left: 0; padding-left: 14px; }
+  .landing-nav a { font-size: 12px; }
+  .landing-page #overview .lead { font-size: 15px; }
+}
+
+/* Subtle full-width backgrounds distinguish the three landing chapters. */
+.landing-page .landing-section { isolation: isolate; }
+.landing-page .landing-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--chapter-background, #fff);
+  box-shadow: 0 0 0 100vmax var(--chapter-background, #fff);
+  clip-path: inset(0 -100vmax);
+  pointer-events: none;
+}
+.landing-page #overview { --chapter-background: #ffffff; }
+.landing-page #examples { --chapter-background: #f3f6f3; border-top-color: #dce5dc; }
+.landing-page #release { --chapter-background: #ffffff; border-top-color: var(--line); }
+.landing-page #examples > h2, .landing-page #release > h2 { padding-top: 12px; }
+.landing-page #examples > h2::before, .landing-page #release > h2::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 3px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+  background: var(--secondary);
+}
+.landing-page #release > h2::before { background: var(--accent); }
+
+/* Extend the sticky header surface across the viewport. */
+.landing-page .landing-header { isolation: isolate; }
+.landing-page .landing-header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--paper);
+  box-shadow: 0 0 0 100vmax var(--paper);
+  clip-path: inset(0 -100vmax);
+  pointer-events: none;
+}
+.landing-page .landing-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+  box-shadow: 0 0 0 100vmax var(--line);
+  clip-path: inset(0 -100vmax);
+  pointer-events: none;
+}
+
+body[data-catalog-view="instances"] .catalog-page-heading { max-width: none; }
+.instances-title-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.instances-title-row h1 { margin: 0; }
+.instances-title-row .button { white-space: nowrap; }
+
+.instances-downloads { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+
+.task-context-definition-entry + .task-context-definition-entry { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 20px; }
+.task-context-definition-entry h2 { font-size: 18px; }
+body:has(.task-context-browser) .catalog-page-heading { max-width: none; }
+
+/* Put the dataset scope above a balanced grid of compact class filters. */
+.instance-toolbar { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+.instance-filter-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 12px; }
+.instance-filter-heading > span { font-weight: 600; }
+.instance-filter-heading .instance-source-control { flex-direction: row; align-items: center; gap: 10px; }
+.instance-filter-heading select { min-width: 150px; padding: 7px 10px; }
+.instance-class-buttons { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.instance-class-button { flex: initial; min-width: 0; flex-direction: row; justify-content: flex-start; gap: 9px; padding: 10px 12px; text-align: left; }
+.instance-class-button svg { flex: none; width: 23px; height: 23px; }
+@media (max-width: 800px) { .instance-class-buttons { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 520px) {
+  .instance-class-buttons { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .instance-class-button { padding: 9px 7px; gap: 6px; font-size: 11px; }
+  .instance-class-button svg { width: 20px; height: 20px; }
+  .instance-filter-heading select { min-width: 130px; }
+}
+
+/* Keep all definitions available without pushing sample controls far below them. */
+.task-context-browser .judgment-definition { max-height: 360px; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+.task-context-browser .judgment-definition:focus-visible { outline: 2px solid var(--secondary); outline-offset: 3px; }
+.task-context-definition-entry h2 { overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .task-context-browser .judgment-definition { max-height: 280px; }
+}
+
+.grounding-badge { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 22px; height: 22px; border: 1px solid var(--grounding-border, currentColor); border-radius: 50%; font: 700 11px/1 system-ui, sans-serif; letter-spacing: 0; vertical-align: middle; }
+.grounding-real { --grounding-border: #d5a5b2; color: #9b324d; background: #f7ecef; }
+.grounding-neutral { --grounding-border: #b8b8b8; color: #171717; background: #f1f1f1; }
+.instance-class-button .grounding-badge { margin-left: auto; }
+.grounding-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 8px; font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+.feature-basis { margin-left: 10px; }
+@media (max-width: 520px) { .instance-class-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Feature and class grounding share the same circular R/N notation. */
+.grounding-badge.feature-basis { margin-left: 10px; padding: 0; }
+
+/* Align feature badges as a consistent visual column, separate from names/values. */
+.instance-feature-table tbody th { position: relative; padding-right: 46px; }
+.instance-feature-table tbody th > .grounding-badge { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); margin: 0; }
+.instance-class-button[aria-pressed="true"] .grounding-badge { box-shadow: 0 0 0 2px var(--panel); }
+
+/* Anonymous feature samples retain the existing two-column browsing layout. */
+.instance-list-item { display: block; width: 100%; text-align: left; padding: 10px 12px; border: 1px solid var(--line); background: transparent; color: inherit; cursor: pointer; overflow-wrap: anywhere; }
+.instance-list-item[aria-pressed="true"] { border-color: var(--secondary); font-weight: 600; }
+.instance-list-item:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+.instance-feature-trigger { background: transparent; border: 0; color: inherit; text-align: left; padding: 0; }
+.judgment-sample { display: flex; justify-content: space-between; gap: 16px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; }
+.judgment-sample a { overflow-wrap: anywhere; }
+
+
+/* Feature groups on the left, selected group's features on the right. */
+.instance-workspace-classes { grid-template-columns: minmax(190px, 25%) minmax(0, 1fr); }
+.class-sidebar { padding: 18px 16px; }
+.class-sidebar .instance-column-title { margin: 0 0 14px; }
+.class-sidebar .instance-class-buttons { grid-template-columns: minmax(0, 1fr); }
+.class-sidebar .instance-class-button { width: 100%; font-size: 13px; }
+@media (max-width: 680px) {
+  .instance-workspace-classes { grid-template-columns: minmax(0, 1fr); }
+  .class-sidebar .instance-class-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.class-search { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; color: var(--muted); font-size: 12px; }
+.class-search input { box-sizing: border-box; width: 100%; min-width: 0; }
+
+.class-detail-tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin: 16px 0; }
+.class-detail-tab { padding: 10px 16px; background: transparent; color: var(--muted); border: 0; border-bottom: 2px solid transparent; border-radius: 0; }
+.class-detail-tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.class-detail-tab:focus-visible { outline: 2px solid var(--secondary); outline-offset: -2px; }
+.class-definition-section { margin-bottom: 24px; }
+.class-context-entry { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.class-context-entry h4 { margin: 0 0 6px; font-size: 14px; }
+.class-context-entry p { margin: 0; }
+
+.context-workspace { display: grid; grid-template-columns: minmax(140px, 25%) minmax(0, 1fr); gap: 24px; }
+.context-choices { display: flex; flex-direction: column; gap: 6px; }
+.context-choice { text-align: left; padding: 10px 12px; background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; overflow-wrap: anywhere; }
+.context-choice[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+.context-description { min-width: 0; }
+.context-description h3 { margin-top: 0; }
+.context-description h4 { margin: 12px 0; }
+@media (max-width: 680px) {
+  .context-workspace { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .context-choices { flex-direction: row; flex-wrap: wrap; }
+}
+
+.context-task-question { margin: 0 0 20px; font-size: 17px; }
+.context-description > h4:first-child { margin-top: 0; }
+
+/* Keep class search visible while scrolling through the class list. */
+.class-sidebar .instance-class-buttons {
+  max-height: 360px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  align-content: start;
+  padding: 2px 6px 2px 2px;
+  scrollbar-width: thin;
+}
+@media (max-width: 680px) {
+  .class-sidebar .instance-class-buttons { max-height: 240px; }
+}
